@@ -22,7 +22,7 @@ class SplashController extends GetxController {
   }
 
   toHomePageMember() async {
-    await Future.delayed(const Duration(seconds: 7));
+    await Future.delayed(const Duration(seconds: 2));
     Get.offNamedUntil(
       Routes.LOCATION,
       (route) => false,
