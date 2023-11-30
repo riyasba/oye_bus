@@ -21,6 +21,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   get: ^4.6.6
   flutter_svg: ^2.0.9
+  animated_bottom_navigation_bar: ^1.3.0
 
 dev_dependencies:
   flutter_test:
@@ -38,4 +39,5 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/bottom_nav_icons/
 

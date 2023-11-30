@@ -25,7 +25,7 @@ class SplashController extends GetxController {
     await Future.delayed(const Duration(seconds: 2));
     Get.offNamedUntil(
       // Routes.LOCATION,
-      Routes.NOTIFICATION,
+      Routes.BOTTUMNAVIGATION,
       (route) => false,
     );
   }
