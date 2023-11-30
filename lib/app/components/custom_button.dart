@@ -46,6 +46,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oye_bus/app/components/contsands.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -79,13 +80,13 @@ class CustomElevatedButton extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(  35.r,),
               border: Border.all(width: 1.5, color: kred)),
           child: Text(text,
               style: TextStyle(
                   color: textColor,
                   fontSize: 20,
-                  fontWeight: FontWeight.w700)),
+                  fontWeight: FontWeight.w600)),
         ),
     );
   }

@@ -12,7 +12,11 @@ abstract class Routes {
   static const OFFERS = _Paths.OFFERS;
   static const BOTTUMNAVIGATION = _Paths.BOTTUMNAVIGATION;
   static const BOOKINGHISTORY = _Paths.BOOKINGHISTORY;
+  static const REGISTER = _Paths.REGISTER;
+  static const OTP = _Paths.OTP;
 }
+
+
 
 abstract class _Paths {
   _Paths._();
@@ -25,4 +29,6 @@ abstract class _Paths {
   static const OFFERS = '/offers';
   static const BOTTUMNAVIGATION = '/bottumnavigation';
   static const BOOKINGHISTORY = '/bookinghistory';
+  static const REGISTER = '/register';
+  static const OTP = '/otp';
 }
