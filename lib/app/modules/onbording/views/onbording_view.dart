@@ -6,14 +6,31 @@ import 'package:oye_bus/app/components/contsands.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import '../controllers/onbording_controller.dart';
 
-
-
 class OnbordingView extends GetView<OnbordingController> {
   const OnbordingView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: SvgPicture.asset('assets/images/Seart 1.svg')),
+      body: Center(
+          child: Column(
+        children: [
+          Image.asset('assets/images/Seart 1.png'),
+          ksizedbox10,
+          Text(
+            'Easy Booking',
+            style: minbalckfont,
+          ),
+          ksizedbox10,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'All your trips in one place. Regular reminders about you upcoming trips.',
+              ),
+            ],
+          )
+        ],
+      )),
       bottomNavigationBar: Container(
         height: 150.h,
         child: Padding(
@@ -22,7 +39,7 @@ class OnbordingView extends GetView<OnbordingController> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               CustomElevatedButton(
-                text: 'CONTINUE',
+                text: 'JOIN US',
                 color: kred,
                 textColor: kwhite,
                 onPressed: () {
@@ -36,13 +53,14 @@ class OnbordingView extends GetView<OnbordingController> {
               ),
               ksizedbox10,
               CustomElevatedButton(
-                text: 'Cancel',
+                text: 'LOGIN',
                 color: kwhite,
                 textColor: kred,
                 onPressed: () {},
                 width: double.infinity,
                 height: 45,
               ),
+              ksizedbox10
             ],
           ),
         ),

@@ -8,6 +8,10 @@ abstract class Routes {
   static const ONBORDING = _Paths.ONBORDING;
   static const LOCATION = _Paths.LOCATION;
   static const LOGIN = _Paths.LOGIN;
+  static const NOTIFICATION = _Paths.NOTIFICATION;
+  static const OFFERS = _Paths.OFFERS;
+  static const BOTTUMNAVIGATION = _Paths.BOTTUMNAVIGATION;
+  static const BOOKINGHISTORY = _Paths.BOOKINGHISTORY;
 }
 
 abstract class _Paths {
@@ -17,4 +21,8 @@ abstract class _Paths {
   static const ONBORDING = '/onbording';
   static const LOCATION = '/location';
   static const LOGIN = '/login';
+  static const NOTIFICATION = '/notification';
+  static const OFFERS = '/offers';
+  static const BOTTUMNAVIGATION = '/bottumnavigation';
+  static const BOOKINGHISTORY = '/bookinghistory';
 }

@@ -27,5 +27,6 @@ import 'package:google_fonts/google_fonts.dart';
   var redfont =
     GoogleFonts.montserrat(
                   fontSize: 16.h, fontWeight: FontWeight.w700, color: kred,);
-  var maxfont = TextStyle(fontWeight: FontWeight.w600, fontSize: 18);
+  var minbalckfont =     GoogleFonts.montserrat(
+                  fontSize: 15.h, fontWeight: FontWeight.w600,);
 

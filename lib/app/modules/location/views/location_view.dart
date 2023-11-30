@@ -167,11 +167,11 @@ class LocationView extends GetView<LocationController> {
               CustomElevatedButton(
                 text: 'Cancel',
                 color: kwhite,
-                textColor: kgrey,
+                textColor: kred,
                 onPressed: () {},
                 width: double.infinity,
                 height: 45,
-              ),
+              ),ksizedbox10
             ],
           ),
         ),
