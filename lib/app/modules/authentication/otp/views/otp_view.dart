@@ -14,8 +14,8 @@ class OtpView extends GetView<OtpController> {
   @override
   Widget build(BuildContext context) {
     bool hasError = false;
-    return Scaffold(
-      appBar: AppBar(),
+    return Scaffold(backgroundColor: kwhite,
+      appBar: AppBar(backgroundColor: kwhite,),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
