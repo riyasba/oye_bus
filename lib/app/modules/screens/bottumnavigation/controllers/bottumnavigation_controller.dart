@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:oye_bus/app/modules/home/views/home_view.dart';
+import 'package:oye_bus/app/modules/screens/home/views/home_view.dart';
 import 'package:oye_bus/app/modules/screens/bookinghistory/views/bookinghistory_view.dart';
 import 'package:oye_bus/app/modules/screens/offers/views/offers_view.dart';
 

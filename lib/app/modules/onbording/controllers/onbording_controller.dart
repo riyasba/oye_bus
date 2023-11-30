@@ -3,21 +3,22 @@ import 'package:get/get.dart';
 class OnbordingController extends GetxController {
   //TODO: Implement OnbordingController
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+ final _index = 0.obs;
+  final _isLastPage = false.obs;
+
+  int get index => _index.value;
+  bool get isLastPage => _isLastPage.value;
+
+  void setIndex(int currentIndex) {
+    _index.value = currentIndex;
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  bool checkLastPage() {
+    if (_index.value == 2) {
+      _isLastPage.value = true;
+      return true;
+    } else {
+      return false;
+    }
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

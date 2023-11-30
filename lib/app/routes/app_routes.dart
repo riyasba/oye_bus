@@ -12,6 +12,10 @@ abstract class Routes {
   static const OFFERS = _Paths.OFFERS;
   static const BOTTUMNAVIGATION = _Paths.BOTTUMNAVIGATION;
   static const BOOKINGHISTORY = _Paths.BOOKINGHISTORY;
+  static const REGISTER = _Paths.REGISTER;
+  static const OTP = _Paths.OTP;
+  static const LOCATIONPERMISSON = _Paths.LOCATIONPERMISSON;
+  static const BUSLOADINGSPLASH = _Paths.BUSLOADINGSPLASH;
 }
 
 abstract class _Paths {
@@ -25,4 +29,8 @@ abstract class _Paths {
   static const OFFERS = '/offers';
   static const BOTTUMNAVIGATION = '/bottumnavigation';
   static const BOOKINGHISTORY = '/bookinghistory';
+  static const REGISTER = '/register';
+  static const OTP = '/otp';
+  static const LOCATIONPERMISSON = '/locationpermisson';
+  static const BUSLOADINGSPLASH = '/busloadingsplash';
 }

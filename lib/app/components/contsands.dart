@@ -20,13 +20,15 @@ import 'package:google_fonts/google_fonts.dart';
   Color kwhite = Colors.white;
   Color korange = Color(0xFFFF5003);
   Color kred = Color(0xFFDC0000);
-  Color kyellow = Color(0xFFff9021);
+  Color kgreen = Color(0xFF77B43F);
 
 
 
-  var redfont =
-    GoogleFonts.montserrat(
-                  fontSize: 16.h, fontWeight: FontWeight.w700, color: kred,);
+  // var redfont =
+  //   GoogleFonts.montserrat(
+  //                 fontSize: 16.h, fontWeight: FontWeight.w700, color: kred,);
   var minbalckfont =     GoogleFonts.montserrat(
-                  fontSize: 15.h, fontWeight: FontWeight.w600,);
+                  fontSize: 17.h, fontWeight: FontWeight.bold,);
 
+                   var appbarfont =     GoogleFonts.montserrat(
+              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black);
