@@ -53,7 +53,7 @@ class _SuccessfulScreenState extends State<SuccessfulScreen> {
           InkWell(
             onTap: () {
               Get.toNamed(
-                Routes.BOTTUMNAVIGATION,
+                Routes.LOCATIONPERMISSON,
               );
             },
             child: Padding(

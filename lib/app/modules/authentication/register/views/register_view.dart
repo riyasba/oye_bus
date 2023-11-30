@@ -170,7 +170,7 @@ class RegisterView extends GetView<RegisterController> {
                         },
                       ),
                       ksizedbox10,
-                       Row(
+                      Row(
                         children: [
                           kwidth5,
                           Text(
@@ -282,14 +282,22 @@ class RegisterView extends GetView<RegisterController> {
                         },
                       ),
                       ksizedbox20,
-               Row(children: [Text('Have a Referral Code',   style: Theme.of(context)
+                      Row(
+                        children: [
+                          Text(
+                            'Have a Referral Code',
+                            style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
                                 .copyWith(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14.sp,
-                                  color:kred,
-                                ) ,)],)  , SizedBox(
+                                  color: kred,
+                                ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
                         height: 5.h,
                       ),
                       UserInputField(
@@ -302,22 +310,64 @@ class RegisterView extends GetView<RegisterController> {
                         //   }
                         //   return null;
                         // },
-                      ),   ksizedbox40,CustomElevatedButton(
-                                  height: 45.h,
-                                  width: 1.sw,
-                                  onPressed: () {
-                                    Get.toNamed(
-                                      Routes.OTP,
-                                    );
-                                  },
-                                  text: 'GENERATE OTP',
-                                  color: kred,
-                                  textColor:kwhite,
-                               
-                              ),ksizedbox40 ],
+                      ),
+                      ksizedbox40,
+                      CustomElevatedButton(
+                        height: 45.h,
+                        width: 1.sw,
+                        onPressed: () {
+                          Get.toNamed(
+                            Routes.OTP,
+                          );
+                        },
+                        text: 'GENERATE OTP',
+                        color: kred,
+                        textColor: kwhite,
+                      ),
+                      ksizedbox10,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'By logging in, you agree to our',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            ' Terms and Conditions',
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.w500,
+                                decoration: TextDecoration.underline,
+                                decorationColor: Colors.blue),
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'and',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Text(
+                            ' Privacy Policy',
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.w500,
+                                decoration: TextDecoration.underline,
+                                decorationColor: Colors.blue),
+                          )
+                        ],
+                      ),
+                      ksizedbox40,
+                    ],
                   ),
                 ),
-             ],
+              ],
             ),
           ],
         ),

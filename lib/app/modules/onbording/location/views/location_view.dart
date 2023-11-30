@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:oye_bus/app/components/contsands.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
@@ -15,17 +15,11 @@ class LocationView extends GetView<LocationController> {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.arrow_back),
-        title: Text(
-          'Choose the Language',
-          style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 18.sp,
-                                  
-                                )
-        ),
+        title: Text('Choose the Language',
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18.sp,
+                )),
         centerTitle: true,
       ),
       body: Center(
@@ -71,17 +65,16 @@ class LocationView extends GetView<LocationController> {
                   ksizedbox20,
                   Row(
                     children: [
-                      Text('Choose the Country',   style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 17.sp,
-                                  color:kred,
-                                )),
+                      Text('Choose the Country',
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 17.sp,
+                                    color: kred,
+                                  )),
                     ],
                   ),
-                  ksizedbox20,
+                  ksizedbox10,
                   Container(
                     width: double.infinity,
                     height: 40.h,
@@ -118,20 +111,19 @@ class LocationView extends GetView<LocationController> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  ksizedbox20,
+                  ksizedbox10,
                   Row(
                     children: [
-                      Text('Choose the Language',  style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 17.sp,
-                                  color:kred,
-                                )),
+                      Text('Choose the Language',
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 17.sp,
+                                    color: kred,
+                                  )),
                     ],
                   ),
-                  ksizedbox20,
+                  ksizedbox10,
                   Container(
                     width: double.infinity,
                     height: 40.h,
@@ -191,7 +183,8 @@ class LocationView extends GetView<LocationController> {
                 onPressed: () {},
                 width: double.infinity,
                 height: 45,
-              ),ksizedbox10
+              ),
+              ksizedbox10
             ],
           ),
         ),

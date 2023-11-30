@@ -6,9 +6,8 @@ import '../modules/authentication/otp/bindings/otp_binding.dart';
 import '../modules/authentication/otp/views/otp_view.dart';
 import '../modules/authentication/register/bindings/register_binding.dart';
 import '../modules/authentication/register/views/register_view.dart';
-import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
-
+import '../modules/busloadingsplash/bindings/busloadingsplash_binding.dart';
+import '../modules/busloadingsplash/views/busloadingsplash_view.dart';
 import '../modules/onbording/bindings/onbording_binding.dart';
 import '../modules/onbording/location/bindings/location_binding.dart';
 import '../modules/onbording/location/views/location_view.dart';
@@ -17,6 +16,10 @@ import '../modules/screens/bookinghistory/bindings/bookinghistory_binding.dart';
 import '../modules/screens/bookinghistory/views/bookinghistory_view.dart';
 import '../modules/screens/bottumnavigation/bindings/bottumnavigation_binding.dart';
 import '../modules/screens/bottumnavigation/views/bottumnavigation_view.dart';
+import '../modules/screens/home/bindings/home_binding.dart';
+import '../modules/screens/home/views/home_view.dart';
+import '../modules/screens/locationpermisson/bindings/locationpermisson_binding.dart';
+import '../modules/screens/locationpermisson/views/locationpermisson_view.dart';
 import '../modules/screens/notification/bindings/notification_binding.dart';
 import '../modules/screens/notification/views/notification_view.dart';
 import '../modules/screens/offers/bindings/offers_binding.dart';
@@ -66,7 +69,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.NOTIFICATION,
-      page: () =>  NotificationView(),
+      page: () => NotificationView(),
       binding: NotificationBinding(),
     ),
     GetPage(
@@ -93,6 +96,16 @@ class AppPages {
       name: _Paths.OTP,
       page: () => const OtpView(),
       binding: OtpBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOCATIONPERMISSON,
+      page: () => const LocationpermissonView(),
+      binding: LocationpermissonBinding(),
+    ),
+    GetPage(
+      name: _Paths.BUSLOADINGSPLASH,
+      page: () => const BusloadingsplashView(),
+      binding: BusloadingsplashBinding(),
     ),
   ];
 }

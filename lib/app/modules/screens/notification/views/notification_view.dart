@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/contsands.dart';
-
 import '../controllers/notification_controller.dart';
+
+
 
 class NotificationView extends GetView<NotificationController> {
 
