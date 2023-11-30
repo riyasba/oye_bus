@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class NotificationController extends GetxController {
   //TODO: Implement NotificationController
-
+   RxInt containerindex=0.obs;
   final count = 0.obs;
   @override
   void onInit() {
