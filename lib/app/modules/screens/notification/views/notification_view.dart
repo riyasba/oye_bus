@@ -6,10 +6,21 @@ import '../controllers/notification_controller.dart';
 
 
 class NotificationView extends GetView<NotificationController> {
-
+ 
 
    NotificationView({Key? key}) : super(key: key);
   
+  List names = ["M", "D", "Y", "T"];
+  List msgname = ['Booking Alerts',
+  '20% Offer this Coupons',
+  'Your Trip Complete ',
+  'Devon Lane'];
+  List subtitle=[
+    'Replied your message.',
+    'Commented on your post.',
+    'Followed your work.',
+    'Followed your work.'
+  ];
  
   @override
   Widget build(BuildContext context) {
@@ -80,13 +91,12 @@ class NotificationView extends GetView<NotificationController> {
         ),
         ksizedbox40,
         ListView.builder(
-          itemCount: 5,
+          itemCount: names.length,
           shrinkWrap: true,
-      
           itemBuilder: (context,index){
              return ListTile(
              title: Container(
-              height: 80,
+              height: 85,
           
               decoration: BoxDecoration(
                 boxShadow: <BoxShadow>[
@@ -99,32 +109,86 @@ class NotificationView extends GetView<NotificationController> {
                 borderRadius: BorderRadius.circular(5),
                color: Colors.grey.shade100
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 8,
-                        width: 8,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xffFFC107
-)
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10,right: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                   mainAxisAlignment: MainAxisAlignment.center,    
+                        
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                       
+                        Row(
+                      
+                          children: [
+                             Padding(
+                          padding: const EdgeInsets.only(left: 0), 
+                          child: Container(
+                            height: 8,
+                            width: 8,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xffFFC107
+                        )
+                            ),
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                   
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8),
+                              child: Container(
+                                height: 55,
+                                width: 55,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xff219F98)
+                                ),
+                                child: Center(
+                                  child:Text(names[index],
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500
+                                  ),),
+                                ),
+                              ),
+                            ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(msgname[index],
+                                             
+                                    style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500
+                                    ),),
+                                    Text(subtitle[index],
+                                    style: TextStyle(
+                                      fontSize:   12,
+                                      color: kgrey
+                                    ),)
+                                            
+                                  ],
+                                ),
+                              ),
+                          ],
                         ),
-                      )
-                    ],
-                  )
-                ],
+                      
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 0,left: 0),
+                          child: Text('2m',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: kgrey
+                          ),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               )
              ),
              );

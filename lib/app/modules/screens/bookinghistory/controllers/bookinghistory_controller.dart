@@ -4,9 +4,11 @@ class BookinghistoryController extends GetxController {
   //TODO: Implement BookinghistoryController
 
   final count = 0.obs;
+ RxInt containerindex =0.obs; 
   @override
   void onInit() {
     super.onInit();
+  
   }
 
   @override
@@ -17,6 +19,7 @@ class BookinghistoryController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    
   }
 
   void increment() => count.value++;

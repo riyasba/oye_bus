@@ -74,7 +74,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.OFFERS,
-      page: () => const OffersView(),
+      page: () =>  OffersView(),
       binding: OffersBinding(),
     ),
     GetPage(
@@ -84,7 +84,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BOOKINGHISTORY,
-      page: () => const BookinghistoryView(),
+      page: () =>  BookinghistoryView(),
       binding: BookinghistoryBinding(),
     ),
     GetPage(

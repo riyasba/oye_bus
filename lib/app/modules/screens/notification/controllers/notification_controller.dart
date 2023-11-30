@@ -4,9 +4,12 @@ class NotificationController extends GetxController {
   //TODO: Implement NotificationController
    RxInt containerindex=0.obs;
   final count = 0.obs;
+
+
   @override
   void onInit() {
     super.onInit();
+    
   }
 
   @override

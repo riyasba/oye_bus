@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/modules/screens/home/views/home_view.dart';
 import 'package:oye_bus/app/modules/screens/bookinghistory/views/bookinghistory_view.dart';
+import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';
+import 'package:oye_bus/app/modules/screens/notification/views/notification_view.dart';
 import 'package:oye_bus/app/modules/screens/offers/views/offers_view.dart';
 
 class BottumnavigationController extends GetxController {
@@ -14,7 +16,8 @@ class BottumnavigationController extends GetxController {
      HomeView(),
      OffersView(),
      BookinghistoryView(),
-     HomeView(),
+     NotificationView(),
+    //  HomeView(),
   ]);
 
    final _bottomNavIconsList = Rx<List<String>>([
@@ -36,6 +39,7 @@ class BottumnavigationController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    Get.put(NotificationController());
   }
 
   @override

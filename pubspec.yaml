@@ -43,4 +43,10 @@ flutter:
   assets:
     - assets/images/
     - assets/bottom_nav_icons/
-
+    - assets/offers_icon/
+ 
+  fonts:
+    - family: Proxima
+      fonts:
+        - asset: fonts/Proxima Nova Regular.ttf
+        
