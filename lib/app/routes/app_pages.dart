@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../modules/authentication/login/bindings/login_binding.dart';
 import '../modules/authentication/login/views/login_view.dart';
 import '../modules/authentication/otp/bindings/otp_binding.dart';
@@ -17,6 +18,8 @@ import '../modules/onbording/location/views/location_view.dart';
 import '../modules/onbording/views/onbording_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
+import '../modules/referfriends/bindings/referfriends_binding.dart';
+import '../modules/referfriends/views/referfriends_view.dart';
 import '../modules/screens/bookinghistory/bindings/bookinghistory_binding.dart';
 import '../modules/screens/bookinghistory/views/bookinghistory_view.dart';
 import '../modules/screens/bottumnavigation/bindings/bottumnavigation_binding.dart';
@@ -31,10 +34,8 @@ import '../modules/screens/offers/bindings/offers_binding.dart';
 import '../modules/screens/offers/views/offers_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+
 part 'app_routes.dart';
-
-
-
 
 class AppPages {
   AppPages._();
@@ -128,6 +129,11 @@ class AppPages {
       name: _Paths.COPASSENGERS,
       page: () => const CopassengersView(),
       binding: CopassengersBinding(),
+    ),
+    GetPage(
+      name: _Paths.REFERFRIENDS,
+      page: () => const ReferfriendsView(),
+      binding: ReferfriendsBinding(),
     ),
   ];
 }

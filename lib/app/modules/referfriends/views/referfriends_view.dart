@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/contsands.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
-import 'package:oye_bus/app/modules/profile/views/widget/formfield_view.dart';
 
+import '../controllers/referfriends_controller.dart';
 
-class AddcopassengersView extends GetView {
-  const AddcopassengersView({Key? key}) : super(key: key);
+class ReferfriendsView extends GetView<ReferfriendsController> {
+  const ReferfriendsView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,62 +24,52 @@ class AddcopassengersView extends GetView {
               child: Icon(Icons.arrow_back),
             ),
             title: Text(
-              'Add Co-Passengers',
+              'Refer Friends',
               style: appbarfont,
             ),
             centerTitle: true,
           ),
           body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ksizedbox20,
-                FormfieldView(
-                  text: 'Riyas',
-                  labeltext: 'Name',
-                ),
-                FormfieldView(
-                  text: '23',
-                  labeltext: 'Age',
-                ),
-                FormfieldView(
-                  text: 'Male',
-                  labeltext: 'Gender',
-                ),
-                ksizedbox40,
-                ksizedbox40,
-                ksizedbox40,
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
-                  child: CustomElevatedButton(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/images/Group 59 (1).png'),
+                  ksizedbox10,
+                  Text(
+                    'When your friend completes his / her first trip with use',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                  ),
+                  ksizedbox40,
+                  CustomElevatedButton(
                     height: 45.h,
                     width: 1.sw,
                     onPressed: () {
-                      // Get.toNamed(
-                      //   Routes.REGISTER,
+                      // Get.to(
+                      //   AddcopassengersView(),
                       // );
                     },
-                    text: 'SAVE',
+                    text: 'REFER NOW',
                     color: kred,
                     textColor: kwhite,
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
-                  child: CustomElevatedButton(
+                  ksizedbox10,
+                  CustomElevatedButton(
                     height: 45.h,
                     width: 1.sw,
                     onPressed: () {
-                      // Get.toNamed(
-                      //   Routes.LOGIN,
+                      // Get.to(
+                      //   AddcopassengersView(),
                       // );
                     },
                     text: 'Cancel',
                     color: kwhite,
                     textColor: kred,
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

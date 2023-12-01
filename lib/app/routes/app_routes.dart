@@ -19,6 +19,7 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   static const CARD = _Paths.CARD;
   static const COPASSENGERS = _Paths.COPASSENGERS;
+  static const REFERFRIENDS = _Paths.REFERFRIENDS;
 }
 
 abstract class _Paths {
@@ -39,4 +40,5 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const CARD = '/card';
   static const COPASSENGERS = '/copassengers';
+  static const REFERFRIENDS = '/referfriends';
 }

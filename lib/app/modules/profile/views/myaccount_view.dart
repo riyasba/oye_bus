@@ -67,7 +67,11 @@ class MyaccountView extends GetView {
                     ),
                     ksizedbox20,
                     MyaccountbuttonView(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(
+                          Routes.REFERFRIENDS,
+                        );
+                      },
                       text: 'Refer Fiends',
                     ),
                     ksizedbox20,
