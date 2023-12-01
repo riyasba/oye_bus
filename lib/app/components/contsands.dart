@@ -21,7 +21,7 @@ import 'package:google_fonts/google_fonts.dart';
   Color korange = Color(0xFFFF5003);
   Color kred = Color(0xFFDC0000);
   Color kgreen = Color(0xFF77B43F);
-
+Color kblack = Color(0xFF000000);
 
 
   // var redfont =

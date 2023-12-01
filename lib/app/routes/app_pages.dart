@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../modules/authentication/login/bindings/login_binding.dart';
 import '../modules/authentication/login/views/login_view.dart';
 import '../modules/authentication/otp/bindings/otp_binding.dart';
@@ -8,10 +7,16 @@ import '../modules/authentication/register/bindings/register_binding.dart';
 import '../modules/authentication/register/views/register_view.dart';
 import '../modules/busloadingsplash/bindings/busloadingsplash_binding.dart';
 import '../modules/busloadingsplash/views/busloadingsplash_view.dart';
+import '../modules/card/bindings/card_binding.dart';
+import '../modules/card/views/card_view.dart';
+import '../modules/copassengers/bindings/copassengers_binding.dart';
+import '../modules/copassengers/views/copassengers_view.dart';
 import '../modules/onbording/bindings/onbording_binding.dart';
 import '../modules/onbording/location/bindings/location_binding.dart';
 import '../modules/onbording/location/views/location_view.dart';
 import '../modules/onbording/views/onbording_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
 import '../modules/screens/bookinghistory/bindings/bookinghistory_binding.dart';
 import '../modules/screens/bookinghistory/views/bookinghistory_view.dart';
 import '../modules/screens/bottumnavigation/bindings/bottumnavigation_binding.dart';
@@ -26,8 +31,10 @@ import '../modules/screens/offers/bindings/offers_binding.dart';
 import '../modules/screens/offers/views/offers_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
-
 part 'app_routes.dart';
+
+
+
 
 class AppPages {
   AppPages._();
@@ -74,7 +81,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.OFFERS,
-      page: () =>  OffersView(),
+      page: () => OffersView(),
       binding: OffersBinding(),
     ),
     GetPage(
@@ -84,7 +91,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BOOKINGHISTORY,
-      page: () =>  BookinghistoryView(),
+      page: () => BookinghistoryView(),
       binding: BookinghistoryBinding(),
     ),
     GetPage(
@@ -106,6 +113,21 @@ class AppPages {
       name: _Paths.BUSLOADINGSPLASH,
       page: () => const BusloadingsplashView(),
       binding: BusloadingsplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.CARD,
+      page: () => const CardView(),
+      binding: CardBinding(),
+    ),
+    GetPage(
+      name: _Paths.COPASSENGERS,
+      page: () => const CopassengersView(),
+      binding: CopassengersBinding(),
     ),
   ];
 }

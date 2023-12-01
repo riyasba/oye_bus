@@ -16,7 +16,7 @@ class RegisterView extends GetView<RegisterController> {
     var nameController = TextEditingController();
     var phoneNumberController = TextEditingController();
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(backgroundColor: kwhite,
         title: Text(
           'Create Acount',
           style: appbarfont,
