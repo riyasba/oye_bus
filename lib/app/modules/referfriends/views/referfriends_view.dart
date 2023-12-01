@@ -50,9 +50,20 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
-                        children: [Text('Your Code:',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20),
-                        ),Text('OYE32BUS',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20,color: kred),
-                        )],
+                        children: [
+                          Text(
+                            'Your Code:',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 20),
+                          ),
+                          Text(
+                            'OYE32BUS',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                                color: kred),
+                          )
+                        ],
                       ),
                     ),
                   ),
