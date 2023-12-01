@@ -1,3 +1,4 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -41,6 +42,19 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                     'When your friend completes his / her first trip with use',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                  ),
+                  ksizedbox20,
+                  DottedBorder(
+                    color: Colors.black,
+                    strokeWidth: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [Text('Your Code:',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20),
+                        ),Text('OYE32BUS',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20,color: kred),
+                        )],
+                      ),
+                    ),
                   ),
                   ksizedbox40,
                   CustomElevatedButton(
