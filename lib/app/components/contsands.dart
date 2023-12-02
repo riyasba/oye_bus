@@ -32,3 +32,6 @@ Color kblack = Color(0xFF000000);
 
                    var appbarfont =     GoogleFonts.montserrat(
               fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black);
+
+ var smalbalckfont =     GoogleFonts.montserrat(
+                  fontSize: 15.h, fontWeight: FontWeight.bold,);

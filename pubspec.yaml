@@ -31,6 +31,8 @@ dependencies:
   path_provider: ^2.1.1
   open_file: ^3.3.2
   share: ^2.0.4
+  flutter_launcher_icons: ^0.13.1
+  # location: 
 
   #share_plus: ^7.2.1
 
@@ -48,11 +50,20 @@ flutter:
   uses-material-design: true
 
 
+
+
   assets:
     - assets/images/
     - assets/bottom_nav_icons/
     - assets/offers_icon/
  
+
+flutter_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/images/image 2 (1).png"
+
+
   fonts:
     - family: Proxima
       fonts:

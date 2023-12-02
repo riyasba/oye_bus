@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/contsands.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
-import 'package:oye_bus/app/modules/profile/views/widget/formfield_view.dart';
+import 'package:oye_bus/app/modules/screens/appprofile/profile/views/widget/formfield_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class EditprofileView extends GetView {
@@ -40,45 +40,45 @@ class EditprofileView extends GetView {
                       Padding(
                         padding: const EdgeInsets.only(top: 1),
                         child: Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50)),
-                            child: Image.asset(
-                              "assets/images/fi_2102647.png",
-                            ),
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50)),
+                          child: Image.asset(
+                            "assets/images/fi_2102647.png",
+                          ),
 
-                            //  profileController.isLoading.isTrue
-                            //     ? const Center(
-                            //         child: CircularProgressIndicator(),
-                            //       )
-                            // : profileController
-                            //         .otherUserProfileData.isEmpty
-                            //     ? Container()
-                            //     : ClipRRect(
-                            //         borderRadius:
-                            //             BorderRadius.circular(50),
-                            //         child: profileController
-                            //                     .otherUserProfileData
-                            //                     .first
-                            //                     .user
-                            //                     .profilePicture ==
-                            //                 null
+                          //  profileController.isLoading.isTrue
+                          //     ? const Center(
+                          //         child: CircularProgressIndicator(),
+                          //       )
+                          // : profileController
+                          //         .otherUserProfileData.isEmpty
+                          //     ? Container()
+                          //     : ClipRRect(
+                          //         borderRadius:
+                          //             BorderRadius.circular(50),
+                          //         child: profileController
+                          //                     .otherUserProfileData
+                          //                     .first
+                          //                     .user
+                          //                     .profilePicture ==
+                          //                 null
 
-                            //             ?
-                            //              Image.asset(
-                            //                 "assets/icons/profil_img.jpeg",
-                            //               )
+                          //             ?
+                          //              Image.asset(
+                          //                 "assets/icons/profil_img.jpeg",
+                          //               )
 
-                            //             : Image.network(
-                            //                 profileController
-                            //                     .otherUserProfileData
-                            //                     .first
-                            //                     .user
-                            //                     .profilePicture,
-                            //               ),
-                            //       ),
-                            ),
+                          //             : Image.network(
+                          //                 profileController
+                          //                     .otherUserProfileData
+                          //                     .first
+                          //                     .user
+                          //                     .profilePicture,
+                          //               ),
+                          //       ),
+                        ),
                       ),
                     ],
                   ),
