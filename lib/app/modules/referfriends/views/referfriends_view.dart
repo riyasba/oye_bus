@@ -1,4 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:expansion_tile_group/expansion_tile_group.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -47,10 +48,13 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                   DottedBorder(
                     color: Colors.black,
                     strokeWidth: 1,
+                    radius:
+                        Radius.circular(16), // Add this line for border radius
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
+                        
                           Text(
                             'Your Code:',
                             style: TextStyle(
@@ -59,10 +63,19 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                           Text(
                             'OYE32BUS',
                             style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
+                              color: kred,
+                            ),
+                          ),kwidth10,kwidth10,
+                          Text(
+                            'Copy',
+                            style: TextStyle(
+                                fontSize: 19,
                                 fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                                color: kred),
-                          )
+                                color: Colors.blue),
+                          ),
+                          Image.asset('assets/images/copy 1.png')
                         ],
                       ),
                     ),

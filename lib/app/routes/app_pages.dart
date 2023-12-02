@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/aboutus/bindings/aboutus_binding.dart';
+import '../modules/aboutus/views/aboutus_view.dart';
 import '../modules/authentication/login/bindings/login_binding.dart';
 import '../modules/authentication/login/views/login_view.dart';
 import '../modules/authentication/otp/bindings/otp_binding.dart';
@@ -12,6 +14,8 @@ import '../modules/card/bindings/card_binding.dart';
 import '../modules/card/views/card_view.dart';
 import '../modules/copassengers/bindings/copassengers_binding.dart';
 import '../modules/copassengers/views/copassengers_view.dart';
+import '../modules/helpfaq/bindings/helpfaq_binding.dart';
+import '../modules/helpfaq/views/helpfaq_view.dart';
 import '../modules/onbording/bindings/onbording_binding.dart';
 import '../modules/onbording/location/bindings/location_binding.dart';
 import '../modules/onbording/location/views/location_view.dart';
@@ -32,6 +36,8 @@ import '../modules/screens/notification/bindings/notification_binding.dart';
 import '../modules/screens/notification/views/notification_view.dart';
 import '../modules/screens/offers/bindings/offers_binding.dart';
 import '../modules/screens/offers/views/offers_view.dart';
+import '../modules/settings/bindings/settings_binding.dart';
+import '../modules/settings/views/settings_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 
@@ -134,6 +140,21 @@ class AppPages {
       name: _Paths.REFERFRIENDS,
       page: () => const ReferfriendsView(),
       binding: ReferfriendsBinding(),
+    ),
+    GetPage(
+      name: _Paths.HELPFAQ,
+      page: () => const HelpfaqView(),
+      binding: HelpfaqBinding(),
+    ),
+    GetPage(
+      name: _Paths.ABOUTUS,
+      page: () => const AboutusView(),
+      binding: AboutusBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => const SettingsView(),
+      binding: SettingsBinding(),
     ),
   ];
 }

@@ -81,7 +81,9 @@ class MyaccountView extends GetView {
                     ),
                     ksizedbox20,
                     MyaccountbuttonView(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(Routes.HELPFAQ);
+                      },
                       text: 'Help',
                     ),
                     ksizedbox20,
