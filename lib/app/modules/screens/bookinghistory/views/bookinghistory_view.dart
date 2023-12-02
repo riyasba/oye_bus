@@ -201,11 +201,16 @@ class BookinghistoryView extends GetView<BookinghistoryController> {
                                                 )
                                               ],
                                             ),
-                                            Text(
-                                              'You can rate once you complete thee trip',
-                                              style: TextStyle(
-                                                  color: Color(0xff1675DB),
-                                                  fontSize: 10),
+                                            GestureDetector(
+                                              onTap: (){
+                                                Get.toNamed(Routes.BUSTRIP_REVIEWS);
+                                              },
+                                              child: Text(
+                                                'You can rate once you complete thee trip',
+                                                style: TextStyle(
+                                                    color: Color(0xff1675DB),
+                                                    fontSize: 10),
+                                              ),
                                             )
                                           ],
                                         ),
@@ -281,22 +286,27 @@ class BookinghistoryView extends GetView<BookinghistoryController> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text('Booking ID: 3424SS8AY27'),
-                                              Container(
-                                                height: 27,
-                                                width: 100,
-                                                decoration: BoxDecoration(
-                                                    color: Color(0xffFF0000),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            23)),
-                                                child: Center(
-                                                  child: Text(
-                                                    containermsg[index],
-                                                    style: TextStyle(
-                                                        color: kwhite,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w400),
+                                              GestureDetector(
+                                                onTap: (){
+                                                  Get.toNamed(Routes.BOOKING_CANCELLATION);
+                                                },
+                                                child: Container(
+                                                  height: 27,
+                                                  width: 100,
+                                                  decoration: BoxDecoration(
+                                                      color: Color(0xffFF0000),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              23)),
+                                                  child: Center(
+                                                    child: Text(
+                                                      'Cancelled',
+                                                      style: TextStyle(
+                                                          color: kwhite,
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.w400),
+                                                    ),
                                                   ),
                                                 ),
                                               )
