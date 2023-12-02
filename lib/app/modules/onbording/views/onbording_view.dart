@@ -15,7 +15,7 @@ class OnbordingView extends GetView<OnbordingController> {
   Widget build(BuildContext context) {
     final pageController = PageController();
     return Obx(
-      () => Scaffold(
+      () => Scaffold(backgroundColor: kwhite,
         body: SafeArea(
           child: NotificationListener<OverscrollIndicatorNotification>(
             onNotification: (notification) {

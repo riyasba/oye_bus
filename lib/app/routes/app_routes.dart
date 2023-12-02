@@ -16,6 +16,13 @@ abstract class Routes {
   static const OTP = _Paths.OTP;
   static const LOCATIONPERMISSON = _Paths.LOCATIONPERMISSON;
   static const BUSLOADINGSPLASH = _Paths.BUSLOADINGSPLASH;
+  static const PROFILE = _Paths.PROFILE;
+  static const CARD = _Paths.CARD;
+  static const COPASSENGERS = _Paths.COPASSENGERS;
+  static const REFERFRIENDS = _Paths.REFERFRIENDS;
+  static const HELPFAQ = _Paths.HELPFAQ;
+  static const ABOUTUS = _Paths.ABOUTUS;
+  static const SETTINGS = _Paths.SETTINGS;
 }
 
 abstract class _Paths {
@@ -33,4 +40,11 @@ abstract class _Paths {
   static const OTP = '/otp';
   static const LOCATIONPERMISSON = '/locationpermisson';
   static const BUSLOADINGSPLASH = '/busloadingsplash';
+  static const PROFILE = '/profile';
+  static const CARD = '/card';
+  static const COPASSENGERS = '/copassengers';
+  static const REFERFRIENDS = '/referfriends';
+  static const HELPFAQ = '/helpfaq';
+  static const ABOUTUS = '/aboutus';
+  static const SETTINGS = '/settings';
 }

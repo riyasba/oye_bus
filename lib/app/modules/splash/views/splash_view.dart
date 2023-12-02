@@ -16,7 +16,8 @@ class SplashView extends GetView<SplashController> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [ksizedbox10,
+          children: [
+            ksizedbox10,
             Image.asset(
               'assets/images/image 2 (1).png',
               height: 500,
