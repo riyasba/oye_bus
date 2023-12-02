@@ -4,6 +4,7 @@ class BustripReviewsController extends GetxController {
   //TODO: Implement BustripReviewsController
 
   final count = 0.obs;
+  RxInt containercolor = 0.obs;
   @override
   void onInit() {
     super.onInit();

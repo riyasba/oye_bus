@@ -608,7 +608,11 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        leading:     Icon(Icons.arrow_back),
+        leading:     GestureDetector(
+          onTap: (){
+            Get.back();
+          },
+          child: Icon(Icons.arrow_back)),
         title:  Text('Your Ticket Details',
           style: TextStyle(
           fontSize: 20,
