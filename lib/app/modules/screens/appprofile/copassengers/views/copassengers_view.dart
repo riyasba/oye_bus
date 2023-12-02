@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/contsands.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
-import 'package:oye_bus/app/modules/copassengers/views/addcopassengers_view.dart';
+import 'package:oye_bus/app/modules/screens/appprofile/copassengers/views/addcopassengers_view.dart';
 import '../controllers/copassengers_controller.dart';
 
 class CopassengersView extends GetView<CopassengersController> {

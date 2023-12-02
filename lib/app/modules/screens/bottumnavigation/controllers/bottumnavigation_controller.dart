@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oye_bus/app/modules/profile/views/myaccount_view.dart';
+import 'package:oye_bus/app/modules/screens/appprofile/profile/views/myaccount_view.dart';
 import 'package:oye_bus/app/modules/screens/home/views/home_view.dart';
 import 'package:oye_bus/app/modules/screens/bookinghistory/views/bookinghistory_view.dart';
 import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';

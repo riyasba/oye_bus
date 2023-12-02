@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/contsands.dart';
-import 'package:oye_bus/app/modules/profile/views/widget/myaccountbutton_view.dart';
+import 'package:oye_bus/app/modules/screens/appprofile/profile/views/widget/myaccountbutton_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class MyaccountView extends GetView {
@@ -93,12 +93,16 @@ class MyaccountView extends GetView {
                     ),
                     ksizedbox20,
                     MyaccountbuttonView(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(Routes.SETTINGS);
+                      },
                       text: 'Settings',
                     ),
                     ksizedbox20,
                     MyaccountbuttonView(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(Routes.ABOUTUS);
+                      },
                       text: 'About Us',
                     ),
                     ksizedbox20,

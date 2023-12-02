@@ -16,7 +16,9 @@ class RegisterView extends GetView<RegisterController> {
     var nameController = TextEditingController();
     var phoneNumberController = TextEditingController();
     return Scaffold(
-      appBar: AppBar(backgroundColor: kwhite,
+      backgroundColor: kwhite,
+      appBar: AppBar(
+        backgroundColor: kwhite,
         title: Text(
           'Create Acount',
           style: appbarfont,
@@ -30,7 +32,8 @@ class RegisterView extends GetView<RegisterController> {
           children: [
             Column(
               children: [
-                Image.asset('assets/images/Group 1.png'),
+                Image.asset(
+                    'assets/images/image_processing20191205-7937-1ftlnk1.gif'),
                 // ksizedbox20,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -52,7 +55,7 @@ class RegisterView extends GetView<RegisterController> {
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),
-                    )
+                    ),
                   ],
                 ),
                 ksizedbox10,
