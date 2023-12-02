@@ -16,6 +16,8 @@ import '../modules/copassengers/bindings/copassengers_binding.dart';
 import '../modules/copassengers/views/copassengers_view.dart';
 import '../modules/helpfaq/bindings/helpfaq_binding.dart';
 import '../modules/helpfaq/views/helpfaq_view.dart';
+import '../modules/bustrip_reviews/bindings/bustrip_reviews_binding.dart';
+import '../modules/bustrip_reviews/views/bustrip_reviews_view.dart';
 import '../modules/onbording/bindings/onbording_binding.dart';
 import '../modules/onbording/location/bindings/location_binding.dart';
 import '../modules/onbording/location/views/location_view.dart';
@@ -38,6 +40,8 @@ import '../modules/screens/offers/bindings/offers_binding.dart';
 import '../modules/screens/offers/views/offers_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
+import '../modules/screens/ticket_details/bindings/ticket_details_binding.dart';
+import '../modules/screens/ticket_details/views/ticket_details_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 
@@ -155,6 +159,15 @@ class AppPages {
       name: _Paths.SETTINGS,
       page: () => const SettingsView(),
       binding: SettingsBinding(),
+      
+    ),
+    GetPage(name: _Paths.TICKET_DETAILS,
+      page: () => const TicketDetailsView(),
+      binding: TicketDetailsBinding(),),
+    GetPage(
+      name: _Paths.BUSTRIP_REVIEWS,
+      page: () => const BustripReviewsView(),
+      binding: BustripReviewsBinding(),
     ),
   ];
 }

@@ -23,6 +23,8 @@ abstract class Routes {
   static const HELPFAQ = _Paths.HELPFAQ;
   static const ABOUTUS = _Paths.ABOUTUS;
   static const SETTINGS = _Paths.SETTINGS;
+  static const TICKET_DETAILS = _Paths.TICKET_DETAILS;
+  static const BUSTRIP_REVIEWS = _Paths.BUSTRIP_REVIEWS;
 }
 
 abstract class _Paths {
@@ -47,4 +49,6 @@ abstract class _Paths {
   static const HELPFAQ = '/helpfaq';
   static const ABOUTUS = '/aboutus';
   static const SETTINGS = '/settings';
+  static const TICKET_DETAILS = '/ticket-details';
+  static const BUSTRIP_REVIEWS = '/bustrip-reviews';
 }
