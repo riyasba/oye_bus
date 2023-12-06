@@ -28,6 +28,7 @@ abstract class Routes {
   static const BOOKING_CANCELLATION = _Paths.BOOKING_CANCELLATION;
   static const REVIEW_REFUND_DETAILS = _Paths.REVIEW_REFUND_DETAILS;
   static const TICKET_CANCELLATION = _Paths.TICKET_CANCELLATION;
+  static const BUSSEATMAPING = _Paths.BUSSEATMAPING;
 }
 
 abstract class _Paths {
@@ -57,4 +58,5 @@ abstract class _Paths {
   static const BOOKING_CANCELLATION = '/booking-cancellation';
   static const REVIEW_REFUND_DETAILS = '/review-refund-details';
   static const TICKET_CANCELLATION = '/ticket-cancellation';
+  static const BUSSEATMAPING = '/busseatmaping';
 }

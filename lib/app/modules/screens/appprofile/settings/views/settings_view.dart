@@ -1,22 +1,82 @@
-import 'package:expansion_tile_group/expansion_tile_group.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/contsands.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
-import 'package:oye_bus/app/routes/app_pages.dart';
-
 import '../controllers/settings_controller.dart';
 
 class SettingsView extends GetView<SettingsController> {
   SettingsView({Key? key}) : super(key: key);
-  final GlobalKey<ExpansionTileCustomState> itemKey = GlobalKey();
 
   String dropdowncountry = 'Canada';
   String dropdowncurrency = 'INR';
   String dropdownlanguage = 'Hindi';
   String dropdownAccount = 'Delete your account';
+
+  back(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          backgroundColor: Colors.white,
+          title: Column(
+            children: [],
+          ),
+          content: const Text(
+            "Are you sure want to delete your account?",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 17,
+            ),
+          ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Container(
+                    height: 40,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(16)),
+                    child: Center(
+                        child: Text("NO",
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w500))),
+                  ),
+                ),
+                InkWell(
+                  child: Container(
+                    height: 40,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        color: kred, borderRadius: BorderRadius.circular(16)),
+                    child: Center(
+                      child: Text(
+                        "YES",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: kwhite),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            ksizedbox10
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -281,6 +341,7 @@ class SettingsView extends GetView<SettingsController> {
                           height: 45.h,
                           width: 1.sw,
                           onPressed: () {
+                            back(context);
                             // Get.toNamed(
                             //   Routes.REGISTER,
                             // );

@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 
-import '../modules/screens/appprofile/aboutus/bindings/aboutus_binding.dart';
-import '../modules/screens/appprofile/aboutus/views/aboutus_view.dart';
 import '../modules/authentication/login/bindings/login_binding.dart';
 import '../modules/authentication/login/views/login_view.dart';
 import '../modules/authentication/otp/bindings/otp_binding.dart';
@@ -12,26 +10,30 @@ import '../modules/booking_cancellation/bindings/booking_cancellation_binding.da
 import '../modules/booking_cancellation/views/booking_cancellation_view.dart';
 import '../modules/busloadingsplash/bindings/busloadingsplash_binding.dart';
 import '../modules/busloadingsplash/views/busloadingsplash_view.dart';
-import '../modules/screens/appprofile/card/bindings/card_binding.dart';
-import '../modules/screens/appprofile/card/views/card_view.dart';
-import '../modules/screens/appprofile/copassengers/bindings/copassengers_binding.dart';
-import '../modules/screens/appprofile/copassengers/views/copassengers_view.dart';
-import '../modules/screens/appprofile/helpfaq/bindings/helpfaq_binding.dart';
-import '../modules/screens/appprofile/helpfaq/views/helpfaq_view.dart';
-import '../modules/bustrip_reviews/bindings/bustrip_reviews_binding.dart';
-import '../modules/bustrip_reviews/views/bustrip_reviews_view.dart';
+import '../modules/busseatmaping/bindings/busseatmaping_binding.dart';
+import '../modules/busseatmaping/views/busseatmaping_view.dart';
 import '../modules/bustrip_reviews/bindings/bustrip_reviews_binding.dart';
 import '../modules/bustrip_reviews/views/bustrip_reviews_view.dart';
 import '../modules/onbording/bindings/onbording_binding.dart';
 import '../modules/onbording/location/bindings/location_binding.dart';
 import '../modules/onbording/location/views/location_view.dart';
 import '../modules/onbording/views/onbording_view.dart';
+import '../modules/review_refund_details/bindings/review_refund_details_binding.dart';
+import '../modules/review_refund_details/views/review_refund_details_view.dart';
+import '../modules/screens/appprofile/aboutus/bindings/aboutus_binding.dart';
+import '../modules/screens/appprofile/aboutus/views/aboutus_view.dart';
+import '../modules/screens/appprofile/card/bindings/card_binding.dart';
+import '../modules/screens/appprofile/card/views/card_view.dart';
+import '../modules/screens/appprofile/copassengers/bindings/copassengers_binding.dart';
+import '../modules/screens/appprofile/copassengers/views/copassengers_view.dart';
+import '../modules/screens/appprofile/helpfaq/bindings/helpfaq_binding.dart';
+import '../modules/screens/appprofile/helpfaq/views/helpfaq_view.dart';
 import '../modules/screens/appprofile/profile/bindings/profile_binding.dart';
 import '../modules/screens/appprofile/profile/views/profile_view.dart';
 import '../modules/screens/appprofile/referfriends/bindings/referfriends_binding.dart';
 import '../modules/screens/appprofile/referfriends/views/referfriends_view.dart';
-import '../modules/review_refund_details/bindings/review_refund_details_binding.dart';
-import '../modules/review_refund_details/views/review_refund_details_view.dart';
+import '../modules/screens/appprofile/settings/bindings/settings_binding.dart';
+import '../modules/screens/appprofile/settings/views/settings_view.dart';
 import '../modules/screens/bookinghistory/bindings/bookinghistory_binding.dart';
 import '../modules/screens/bookinghistory/views/bookinghistory_view.dart';
 import '../modules/screens/bottumnavigation/bindings/bottumnavigation_binding.dart';
@@ -44,8 +46,6 @@ import '../modules/screens/notification/bindings/notification_binding.dart';
 import '../modules/screens/notification/views/notification_view.dart';
 import '../modules/screens/offers/bindings/offers_binding.dart';
 import '../modules/screens/offers/views/offers_view.dart';
-import '../modules/screens/appprofile/settings/bindings/settings_binding.dart';
-import '../modules/screens/appprofile/settings/views/settings_view.dart';
 import '../modules/screens/ticket_details/bindings/ticket_details_binding.dart';
 import '../modules/screens/ticket_details/views/ticket_details_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -165,7 +165,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SETTINGS,
-      page: () =>  SettingsView(),
+      page: () => SettingsView(),
       binding: SettingsBinding(),
     ),
     GetPage(
@@ -192,6 +192,11 @@ class AppPages {
       name: _Paths.TICKET_CANCELLATION,
       page: () => const TicketCancellationView(),
       binding: TicketCancellationBinding(),
+    ),
+    GetPage(
+      name: _Paths.BUSSEATMAPING,
+      page: () => const BusseatmapingView(),
+      binding: BusseatmapingBinding(),
     ),
   ];
 }

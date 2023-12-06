@@ -192,97 +192,99 @@ class RegisterView extends GetView<RegisterController> {
                       SizedBox(
                         height: 5.h,
                       ),
-                      TextFormField(
-                        controller: phoneNumberController,
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              fontSize: 15.sp,
-                              color: Colors.black,
-                            ),
-                        autofocus: false,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          isDense: true,
-                          prefixIcon: Container(
-                            width: 75.w,
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 8.w,
-                            ),
-                            alignment: Alignment.center,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    controller.phoneCode.isEmpty
-                                        ? '+1'
-                                        : '+${controller.phoneCode}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayMedium!
-                                        .copyWith(
-                                          fontSize: 13.sp,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w400,
-                                        ),
+                      Obx(
+                        ()=> TextFormField(
+                          controller: phoneNumberController,
+                          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                                fontSize: 15.sp,
+                                color: Colors.black,
+                              ),
+                          autofocus: false,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            isDense: true,
+                            prefixIcon: Container(
+                              width: 75.w,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 8.w,
+                              ),
+                              alignment: Alignment.center,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      controller.phoneCode.isEmpty
+                                          ? '+1'
+                                          : '+${controller.phoneCode}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayMedium!
+                                          .copyWith(
+                                            fontSize: 13.sp,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                    ),
                                   ),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    FocusManager.instance.primaryFocus
-                                        ?.unfocus();
-                                    controller.selectCountry(
-                                      context: context,
-                                    );
-                                  },
-                                  child: Icon(
-                                    Icons.keyboard_arrow_down,
-                                    size: 24.sp,
-                                    color: Colors.black,
+                                  InkWell(
+                                    onTap: () {
+                                      FocusManager.instance.primaryFocus
+                                          ?.unfocus();
+                                      controller.selectCountry(
+                                        context: context,
+                                      );
+                                    },
+                                    child: Icon(
+                                      Icons.keyboard_arrow_down,
+                                      size: 24.sp,
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
+                            border: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                width: 1.5,
+                                color: Colors.black,
+                                style: BorderStyle.solid,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                60.r,
+                              ),
+                            ),
+                            contentPadding: EdgeInsets.only(
+                              left: 10.w,
+                              right: 10.w,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                width: 1.2,
+                                color: Colors.black,
+                                style: BorderStyle.solid,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                60.r,
+                              ),
+                            ),
+                            hintText: "5874536954",
+                            hintStyle:
+                                Theme.of(context).textTheme.titleLarge!.copyWith(
+                                      fontSize: 15.sp,
+                                      color: Colors.grey[600],
+                                      fontWeight: FontWeight.w100,
+                                    ),
+                            fillColor: Colors.white,
+                            filled: true,
                           ),
-                          border: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              width: 1.5,
-                              color: Colors.black,
-                              style: BorderStyle.solid,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              60.r,
-                            ),
-                          ),
-                          contentPadding: EdgeInsets.only(
-                            left: 10.w,
-                            right: 10.w,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              width: 1.2,
-                              color: Colors.black,
-                              style: BorderStyle.solid,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              60.r,
-                            ),
-                          ),
-                          hintText: "5874536954",
-                          hintStyle:
-                              Theme.of(context).textTheme.titleLarge!.copyWith(
-                                    fontSize: 15.sp,
-                                    color: Colors.grey[600],
-                                    fontWeight: FontWeight.w100,
-                                  ),
-                          fillColor: Colors.white,
-                          filled: true,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Phone number is required";
+                            }
+                            return null;
+                          },
                         ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Phone number is required";
-                          }
-                          return null;
-                        },
                       ),
                       ksizedbox20,
                       Row(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gif/gif.dart';
 import 'package:oye_bus/app/components/contsands.dart';
 
 class OnboardingPageWidget extends StatelessWidget {
@@ -18,8 +19,10 @@ class OnboardingPageWidget extends StatelessWidget {
     return Column(
       children: [
         ksizedbox40,
-        Image.asset(
-          imageAsset,
+        Gif(
+          fps: 30,
+          image: AssetImage(imageAsset),
+          autostart: Autostart.once,
           fit: BoxFit.contain,
         ),
         ksizedbox10,

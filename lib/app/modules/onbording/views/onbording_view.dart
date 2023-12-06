@@ -15,7 +15,8 @@ class OnbordingView extends GetView<OnbordingController> {
   Widget build(BuildContext context) {
     final pageController = PageController();
     return Obx(
-      () => Scaffold(backgroundColor: kwhite,
+      () => Scaffold(
+        backgroundColor: kwhite,
         body: SafeArea(
           child: NotificationListener<OverscrollIndicatorNotification>(
             onNotification: (notification) {
@@ -32,23 +33,38 @@ class OnbordingView extends GetView<OnbordingController> {
                       index,
                     ),
                     children: const [
-                      OnboardingPageWidget(
-                        imageAsset: 'assets/images/Seart.gif',
-                        subtext:
-                            "Booking your preferred bus ticket is just a few taps away. Date and time choose everone booked bus tickets simple process.",
-                        text: 'Easy Booking',
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          OnboardingPageWidget(
+                            imageAsset: 'assets/images/Seart.gif',
+                            subtext:
+                                "Booking your preferred bus ticket is just a few taps away. Date and time choose everone booked bus tickets simple process.",
+                            text: 'Easy Booking',
+                          ),
+                        ],
                       ),
-                      OnboardingPageWidget(
-                        imageAsset: 'assets/images/Suitecase.gif',
-                        subtext:
-                            "All your trips in one place. Regular reminders about you upcoming trips.",
-                        text: 'Manage Trips',
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          OnboardingPageWidget(
+                            imageAsset: 'assets/images/Suitecase.gif',
+                            subtext:
+                                "All your trips in one place. Regular reminders about you upcoming trips.",
+                            text: 'Manage Trips',
+                          ),
+                        ],
                       ),
-                      OnboardingPageWidget(
-                        imageAsset: 'assets/images/LAST.gif',
-                        subtext:
-                            "Track real time location of your bus and share with friends & Family",
-                        text: 'Track Bus',
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          OnboardingPageWidget(
+                            imageAsset: 'assets/images/LAST.gif',
+                            subtext:
+                                "Track real time location of your bus and share with friends & Family",
+                            text: 'Track Bus',
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -63,9 +79,9 @@ class OnbordingView extends GetView<OnbordingController> {
                           color: Colors.white,
                           child: Column(
                             children: [
-                              SizedBox(
-                                height: 10.h,
-                              ),
+                              // SizedBox(
+                              //   height: 10.h,
+                              // ),
                               SmoothPageIndicator(
                                 effect: const ExpandingDotsEffect(
                                   dotColor: Color.fromARGB(255, 245, 168, 168),
@@ -95,6 +111,7 @@ class OnbordingView extends GetView<OnbordingController> {
                                     Get.toNamed(
                                       Routes.REGISTER,
                                     );
+                                    
                                   },
                                   text: 'JOIN US',
                                   color: kred,
