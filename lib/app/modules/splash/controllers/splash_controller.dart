@@ -10,7 +10,7 @@ class SplashController extends GetxController {
     toHomePageMember();
     super.onInit();
   }
-
+      
   @override
   void onReady() {
     super.onReady();

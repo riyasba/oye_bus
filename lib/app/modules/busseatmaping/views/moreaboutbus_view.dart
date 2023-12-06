@@ -17,7 +17,7 @@ class MoreaboutbusView extends GetView<BusseatmapingController> {
   ];
 
   /// List of body icon
-  List<String> image = [
+  List<String> assetimage = [
   'assets/images/fi_6023285 (1).png'
    "assets/images/bus-driver 1.png",
    "assets/images/coffee 1.png"
@@ -51,16 +51,17 @@ class MoreaboutbusView extends GetView<BusseatmapingController> {
               height: 80,
               child: ListView.builder(shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
-                  itemCount: image.length,
+                  itemCount: assetimage.length,
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (ctx, index) {
+                  itemBuilder: (ctx, index2) {
                     return Column(
                       children: [
                         GestureDetector(
                           onTap: () {
-                            controller.setIndex(index);
+                            print(assetimage[index2]);
+                            controller.setIndex(index2);
                             pageController.animateToPage(
-                              index,
+                              index2,
                               duration: const Duration(milliseconds: 200),
                               curve: Curves.ease,
                             );
@@ -71,10 +72,10 @@ class MoreaboutbusView extends GetView<BusseatmapingController> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   CircleAvatar(
-                                    backgroundImage:AssetImage( image[index] ,),
-                                    backgroundColor:controller.current.value == index
-                                          ? Colors.black
-                                          : Colors.grey.shade400 ,
+                                   child: Image.asset(assetimage[index2]),
+                                    // backgroundColor:controller.current.value == index
+                                    //       ? Colors.black
+                                    //       : Colors.grey.shade400 ,
                                     
                                    
                                     // size: controller.current.value == index
@@ -85,10 +86,10 @@ class MoreaboutbusView extends GetView<BusseatmapingController> {
                                     //     : Colors.grey.shade400,
                                   ),
                                   Text(
-                                    items[index],
+                                    items[index2],
                                     style: GoogleFonts.ubuntu(
                                       fontWeight: FontWeight.w500,
-                                      color: controller.current.value == index
+                                      color: controller.current.value == index2
                                           ? Colors.black
                                           : Colors.grey.shade400,
                                     ),

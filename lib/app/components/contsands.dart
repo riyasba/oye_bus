@@ -35,3 +35,5 @@ Color kblack = Color(0xFF000000);
 
  var smalbalckfont =     GoogleFonts.montserrat(
                   fontSize: 15.h, fontWeight: FontWeight.bold,);
+
+          var primaryFont =  GoogleFonts.montserrat();

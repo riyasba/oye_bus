@@ -75,7 +75,7 @@ class OffersView extends GetView<OffersController> {
                           color: kwhite,
                           boxShadow: <BoxShadow>[
                             BoxShadow(
-                              offset: Offset(0.0, 0.75),
+                              offset: const Offset(0.0, 0.75),
                               color: kgrey,
                               blurRadius: 5
                             )

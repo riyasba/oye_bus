@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:oye_bus/app/modules/busseatmaping/views/busseatmaping_view.dart';
 import 'package:oye_bus/app/modules/screens/appprofile/profile/views/myaccount_view.dart';
 import 'package:oye_bus/app/modules/screens/bookinghistory/views/bookinghistory_view.dart';
+import 'package:oye_bus/app/modules/screens/home/views/home_view.dart';
 import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';
 import 'package:oye_bus/app/modules/screens/offers/views/offers_view.dart';
 
@@ -11,7 +12,8 @@ class BottumnavigationController extends GetxController {
 
   final _currrentIndex = 0.obs;
   final _screens = Rx<List<Widget>>([
-    BusseatmapingView(),
+    // BusseatmapingView(),
+      HomeView(),
     OffersView(),
     BookinghistoryView(),
     MyaccountView(),
