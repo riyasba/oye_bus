@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:oye_bus/app/modules/busseatmaping/controllers/busseatmaping_controller.dart';
+import 'package:oye_bus/app/modules/screens/busseatmaping/controllers/busseatmaping_controller.dart';
 
 class MoreaboutbusView extends GetView<BusseatmapingController> {
   MoreaboutbusView({Key? key}) : super(key: key);

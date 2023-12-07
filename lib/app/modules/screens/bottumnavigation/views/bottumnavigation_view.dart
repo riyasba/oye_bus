@@ -22,11 +22,6 @@ class BottumnavigationView extends GetView<BottumnavigationController> {
             title: Column(
               children: [
                 Image.asset('assets/images/exit.png'),
-                // Text("Comeback Soon!",
-                //     style: TextStyle(
-                //         fontSize: 25.sp,
-                //         fontWeight: FontWeight.bold,
-                //         color: Colors.black)),
               ],
             ),
             content: const Text(

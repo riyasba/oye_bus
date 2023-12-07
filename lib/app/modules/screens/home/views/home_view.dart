@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/contsands.dart';
-import 'package:oye_bus/app/modules/busseatmaping/views/busseatmaping_view.dart';
+import 'package:oye_bus/app/modules/screens/busseatmaping/views/busseatmaping_view.dart';
 import 'package:oye_bus/app/modules/screens/home/widgets/home_app_bar_widget.dart';
 
 import '../controllers/home_controller.dart';

@@ -10,8 +10,8 @@ import '../modules/booking_cancellation/bindings/booking_cancellation_binding.da
 import '../modules/booking_cancellation/views/booking_cancellation_view.dart';
 import '../modules/busloadingsplash/bindings/busloadingsplash_binding.dart';
 import '../modules/busloadingsplash/views/busloadingsplash_view.dart';
-import '../modules/busseatmaping/bindings/busseatmaping_binding.dart';
-import '../modules/busseatmaping/views/busseatmaping_view.dart';
+import '../modules/screens/busseatmaping/bindings/busseatmaping_binding.dart';
+import '../modules/screens/busseatmaping/views/busseatmaping_view.dart';
 import '../modules/bustrip_reviews/bindings/bustrip_reviews_binding.dart';
 import '../modules/bustrip_reviews/views/bustrip_reviews_view.dart';
 import '../modules/onbording/bindings/onbording_binding.dart';
