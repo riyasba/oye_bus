@@ -37,3 +37,6 @@ Color kblack = Color(0xFF000000);
                   fontSize: 15.h, fontWeight: FontWeight.bold,);
 
           var primaryFont =  GoogleFonts.montserrat();
+          var bussmidfont=          
+            GoogleFonts.montserrat(
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black);

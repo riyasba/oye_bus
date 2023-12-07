@@ -18,7 +18,6 @@ class HomeView extends GetView<HomeController> {
       () => HomeController(),
     );
     return Scaffold(
-      // backgroundColor: Colors.white,
       appBar: const PreferredSize(
         preferredSize:  Size.fromHeight(55),
         child: HomeAppBarWidget(),
@@ -413,7 +412,7 @@ class HomeView extends GetView<HomeController> {
                 fontWeight: FontWeight.w500
                 ),
               
-                )
+                ),
               ],
             ),
           ),
