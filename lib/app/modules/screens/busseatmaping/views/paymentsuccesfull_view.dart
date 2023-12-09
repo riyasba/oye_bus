@@ -1,35 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
 import 'package:gif/gif.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
-class SuccessfulScreen extends StatefulWidget {
-  const SuccessfulScreen({super.key});
-
-  @override
-  State<SuccessfulScreen> createState() => _SuccessfulScreenState();
-}
-
-class _SuccessfulScreenState extends State<SuccessfulScreen> {
+class PaymentsuccesfullView extends GetView {
+  const PaymentsuccesfullView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: kwhite,
+     
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-        Gif(fps: 30,
+          Gif(fps: 30,
                   autostart: Autostart.once,
            
             fit: BoxFit.cover, image: AssetImage( 'assets/images/7efs.gif',),
           ),
           //   ksizedbox30,
           Text(
-            "Successful!",
+            "Payment Verified",
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displaySmall!.copyWith(
                   fontSize: 18.sp,
@@ -41,7 +35,7 @@ class _SuccessfulScreenState extends State<SuccessfulScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Text(
-              "Your Mobile number has been successfully verified",
+              "Your payment was successful and you can start travel your seat enjoy movements.",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.displaySmall!.copyWith(
                     fontSize: 14.sp,
@@ -52,28 +46,22 @@ class _SuccessfulScreenState extends State<SuccessfulScreen> {
           ),
           ksizedbox40,
 
-          InkWell(
-            onTap: () {
-              Get.toNamed(
-                Routes.LOCATIONPERMISSON,
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(31.r), color: kgreen),
-                child: Center(
-                    child: Text('DONE',
-                        style: TextStyle(
-                            color: kwhite,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600))),
-              ),
+         Padding(
+           padding: const EdgeInsets.all(8.0),
+           child: CustomElevatedButton(
+              height: 45.h,
+              width: 1.sw,
+              onPressed: () {
+               Get.to(PaymentsuccesfullView());
+                   Get.toNamed(
+                Routes.BOTTUMNAVIGATION,
+                 );
+              },
+              text: 'Next',
+              color: kred,
+              textColor: kwhite,
             ),
-          ),
+         )
         ],
       ),
     );

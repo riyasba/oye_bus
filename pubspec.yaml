@@ -38,6 +38,7 @@ dependencies:
   im_stepper: 
   shimmer: ^3.0.0
   custom_clippers: ^2.0.0
+  dotted_line: ^3.2.2
   # location: 
 
   #share_plus: ^7.2.1
