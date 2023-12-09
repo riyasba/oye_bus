@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/modules/screens/busseatmaping/views/moreaboutbus_view.dart';
+import 'package:oye_bus/app/modules/screens/busseatmaping/views/pickanddrop_view.dart';
 import '../controllers/busseatmaping_controller.dart';
 
 class BusseatmapingView extends GetView<BusseatmapingController> {
@@ -418,18 +419,22 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                     color: Colors.black,
                                   ),
                             ),
-                            Text(
-                              'More about this bus',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(
-                                    decoration: TextDecoration.underline,
-                                    decorationColor: Colors.blue,
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 10.sp,
-                                    color: Colors.blue,
-                                  ),
+                            InkWell(onTap: () {
+                        Get.to(MoreaboutbusView());
+                            },
+                              child: Text(
+                                'More about this bus',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(
+                                      decoration: TextDecoration.underline,
+                                      decorationColor: Colors.blue,
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 10.sp,
+                                      color: Colors.blue,
+                                    ),
+                              ),
                             ),
                           ],
                         ),
@@ -450,9 +455,7 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                     child: CustomElevatedButton(
                       height: 45.h,
                       width: 1.sw,
-                      onPressed: () {
-                        Get.to(MoreaboutbusView());
-                      },
+                      onPressed:              (){Get.to(PickanddropView());},         
                       text: 'proceed',
                       color: kred,
                       textColor: kwhite,

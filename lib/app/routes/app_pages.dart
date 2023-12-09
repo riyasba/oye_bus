@@ -65,7 +65,7 @@ class AppPages {
   AppPages._();
 
   // static const INITIAL = Routes.SPLASH;
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.BOTTUMNAVIGATION;
 
   static final routes = [
     GetPage(

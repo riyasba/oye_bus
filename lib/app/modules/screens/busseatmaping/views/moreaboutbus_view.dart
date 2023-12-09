@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:oye_bus/app/components/contsands.dart';
+import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busseatmaping/controllers/busseatmaping_controller.dart';
 import 'package:oye_bus/app/modules/screens/busseatmaping/views/amnitiesphotos_view.dart';
 import 'package:oye_bus/app/modules/screens/busseatmaping/views/busrating_view.dart';
@@ -153,7 +153,7 @@ class MoreaboutbusView extends GetView<BusseatmapingController> {
               Container(
                 margin: const EdgeInsets.only(top: 30),
                 width: double.infinity,
-                height: size.height * 0.9,
+                height: 1000,
                 child: PageView(
                   onPageChanged: (index) => controller.setIndex(
                     index,

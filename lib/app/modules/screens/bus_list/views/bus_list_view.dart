@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/bus_list/widgets/seperator_widgets.dart';
+import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
 
 import '../controllers/bus_list_controller.dart';
 
@@ -99,175 +100,180 @@ class BusListView extends GetView<BusListController> {
         itemBuilder: (context,index){
           return Padding(
             padding: const EdgeInsets.fromLTRB(15,5,15,5),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 5,
-                    color: klightGrey
-                  )
-                ],
-                borderRadius: BorderRadius.circular(15)
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset("assets/home_page/oye_small_icon.png",height: 40,),
-                           const SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("KMPL Kalaimakal Travels",style: smalbalckfont.copyWith(
-                                  fontSize: 14
-                                ),),
-                                Text("Volvo Multi Axle Semi Sleeper (2+2)",style: primaryFont.copyWith(
-                                  fontSize: 11
-                                ),)
-                              ],
-                            )
-                          ],
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            color: const Color.fromARGB(255, 148, 238, 151).withOpacity(0.5)
-                          ),
-                          padding: EdgeInsets.all(5),
-                          child: Center(
-                            child: Text("CHEAPEST",style: smalbalckfont.copyWith(
-                              color: const Color.fromARGB(255, 45, 172, 53),
-                              fontSize: 12
-                            ),),
-                          ),
-                        )
-                      ],
-                    ),
-                   const SizedBox(
-                      height: 20,
-                    ),
-                    //time row
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("06:50AM",style: smalbalckfont.copyWith(
-                              fontSize: 14,
-                            ),),
-                             Text("Chennai CMBT",style: primaryFont.copyWith(
-                              fontSize: 11,
-                              color: Colors.black45
-                            ),)
-                          ],
-                        ),
-                       
-                        Column(
-                          children: [
-                            Text("04:05hrs",style: primaryFont.copyWith(
-                              fontSize: 10,
-                              color: Colors.black54
-                            ),),
-                            Row(
-                              children: [
-                                Container(
-                                  height: 4,
-                                  width: 4,
-                                  decoration: BoxDecoration(
-                                    color: const Color.fromARGB(115, 66, 66, 66),
-                                    borderRadius: BorderRadius.circular(10)
-                                  ),
-                                ),
-                                Container(
-                                  height: 1,
-                                  width: 50,
-                                  decoration: const BoxDecoration(
-                                     color: Color.fromARGB(115, 141, 139, 139),
-                                  
-                                  ),
-                                  
-                                ),
-                               const  Icon(Icons.directions_bus_rounded,size: 13,color: Colors.black54,),
-                                Container(
-                                  height: 1,
-                                  width: 50,
-                                  decoration: const BoxDecoration(
-                                    color: Color.fromARGB(115, 141, 139, 139),
-                                  ),
-                                ),
-                                 Container(
-                                  height: 4,
-                                  width: 4,
-                                  decoration: BoxDecoration(
-                                     color: const Color.fromARGB(115, 66, 66, 66),
-                                    borderRadius: BorderRadius.circular(10)
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text("06:50AM",style: smalbalckfont.copyWith(
-                              fontSize: 14,
-                            ),),
-                             Text("Chennai CMBT",style: primaryFont.copyWith(
-                              fontSize: 11,
-                              color: Colors.black45
-                            ),)
-                          ],
-                        ),
-                      ],
-                    ),
-                  const  SizedBox(
-                      height: 20,
-                    ),
-                    //Amount row
-                    const MySeparator(
-                      color: Colors.grey,
-                    ),
-                   const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                           const Icon(Icons.star,color: Colors.yellow,),
-                            Text("4.4",style: primaryFont.copyWith(
-                              fontSize: 11
-                            ),)
-                          ],
-                        ),
-                         Row(
-                          children: [
-                           const Icon(Icons.person_outlined,size: 17,),
-                            Text("32",style: primaryFont.copyWith(
-                              fontSize: 11
-                            ),)
-                          ],
-                        ),
-                        Text("₹3454",style: smalbalckfont.copyWith(
-                          fontSize: 15,
-
-                        ),)
-                      ],
+            child: InkWell(
+              onTap: (){
+                Get.to(PassengerInfoView());
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 5,
+                      color: klightGrey
                     )
                   ],
+                  borderRadius: BorderRadius.circular(15)
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Image.asset("assets/home_page/oye_small_icon.png",height: 40,),
+                             const SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("KMPL Kalaimakal Travels",style: smalbalckfont.copyWith(
+                                    fontSize: 14
+                                  ),),
+                                  Text("Volvo Multi Axle Semi Sleeper (2+2)",style: primaryFont.copyWith(
+                                    fontSize: 11
+                                  ),)
+                                ],
+                              )
+                            ],
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: const Color.fromARGB(255, 148, 238, 151).withOpacity(0.5)
+                            ),
+                            padding: EdgeInsets.all(5),
+                            child: Center(
+                              child: Text("CHEAPEST",style: smalbalckfont.copyWith(
+                                color: const Color.fromARGB(255, 45, 172, 53),
+                                fontSize: 12
+                              ),),
+                            ),
+                          )
+                        ],
+                      ),
+                     const SizedBox(
+                        height: 20,
+                      ),
+                      //time row
+            
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("06:50AM",style: smalbalckfont.copyWith(
+                                fontSize: 14,
+                              ),),
+                               Text("Chennai CMBT",style: primaryFont.copyWith(
+                                fontSize: 11,
+                                color: Colors.black45
+                              ),)
+                            ],
+                          ),
+                         
+                          Column(
+                            children: [
+                              Text("04:05hrs",style: primaryFont.copyWith(
+                                fontSize: 10,
+                                color: Colors.black54
+                              ),),
+                              Row(
+                                children: [
+                                  Container(
+                                    height: 4,
+                                    width: 4,
+                                    decoration: BoxDecoration(
+                                      color: const Color.fromARGB(115, 66, 66, 66),
+                                      borderRadius: BorderRadius.circular(10)
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 1,
+                                    width: 50,
+                                    decoration: const BoxDecoration(
+                                       color: Color.fromARGB(115, 141, 139, 139),
+                                    
+                                    ),
+                                    
+                                  ),
+                                 const  Icon(Icons.directions_bus_rounded,size: 13,color: Colors.black54,),
+                                  Container(
+                                    height: 1,
+                                    width: 50,
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromARGB(115, 141, 139, 139),
+                                    ),
+                                  ),
+                                   Container(
+                                    height: 4,
+                                    width: 4,
+                                    decoration: BoxDecoration(
+                                       color: const Color.fromARGB(115, 66, 66, 66),
+                                      borderRadius: BorderRadius.circular(10)
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text("06:50AM",style: smalbalckfont.copyWith(
+                                fontSize: 14,
+                              ),),
+                               Text("Chennai CMBT",style: primaryFont.copyWith(
+                                fontSize: 11,
+                                color: Colors.black45
+                              ),)
+                            ],
+                          ),
+                        ],
+                      ),
+                    const  SizedBox(
+                        height: 20,
+                      ),
+                      //Amount row
+                      const MySeparator(
+                        color: Colors.grey,
+                      ),
+                     const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                             const Icon(Icons.star,color: Colors.yellow,),
+                              Text("4.4",style: primaryFont.copyWith(
+                                fontSize: 11
+                              ),)
+                            ],
+                          ),
+                           Row(
+                            children: [
+                             const Icon(Icons.person_outlined,size: 17,),
+                              Text("32",style: primaryFont.copyWith(
+                                fontSize: 11
+                              ),)
+                            ],
+                          ),
+                          Text("₹3454",style: smalbalckfont.copyWith(
+                            fontSize: 15,
+            
+                          ),)
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
