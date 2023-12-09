@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busseatmaping/views/busseatmaping_view.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/bus_list/views/bus_list_view.dart';

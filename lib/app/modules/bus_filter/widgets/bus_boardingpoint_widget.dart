@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oye_bus/app/components/contsands.dart';
+import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/bus_filter/controllers/bus_filter_controller.dart';
 
 class BusBoardingwidget extends GetView<BusFilterController>  {
@@ -24,6 +24,11 @@ class BusBoardingwidget extends GetView<BusFilterController>  {
                                     
                                     controller: boardingController,
                                     decoration: InputDecoration(
+                                      hintText: ' Search Boarding Points',
+                                      hintStyle: TextStyle(
+                                        fontSize: 11,
+                                        fontFamily: 'Proxima '
+                                      ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(21)
                                       )
@@ -33,11 +38,12 @@ class BusBoardingwidget extends GetView<BusFilterController>  {
                               ),
                              
                                  Container(
-                                  height: 1000,
+                             
                                   width: MediaQuery.of(context).size.width * 0.45,
                                   child: ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
-                                    itemCount:controller.dropinglist.length,
+                                    itemCount:controller.bordinglist.length,
                                     itemBuilder: (context ,index){
                                     return Obx(()=>
                                        Container(
@@ -52,10 +58,10 @@ class BusBoardingwidget extends GetView<BusFilterController>  {
                                        
                                           Container(
                                             width: 100,
-                                            child: Text(controller.dropinglist[index])),
+                                            child: Text(controller.bordinglist[index])),
                                         GestureDetector(
                                           onTap: (){
-                                          controller.dropcheckindex(index);
+                                          controller.bordingcheckindex(index);
                                           controller.update();
                                           },
                                           child: Container(
@@ -63,18 +69,20 @@ class BusBoardingwidget extends GetView<BusFilterController>  {
                                             width: 25,
                                             decoration: BoxDecoration(
                                               shape: BoxShape.circle,
-                                              color:controller.dropcheckindex==index?Color(0xffFF0000):kgrey
+                                              color:controller.bordingcheckindex==index?Color(0xffFF0000)
+                                              :Colors.grey.shade300
                                             ),
                                             child: Center(
                                               child: Icon(Icons.check,
+                                              size: 15.5,
                                               color: kwhite,
                                               ),
                                             ),
                                           ),
                                         )
                                         ],
-                                                                        ),
-                                                                        ksizedbox10,
+                                      ),
+                                        ksizedbox10,
                                           ],
                                         ),
                                       ),

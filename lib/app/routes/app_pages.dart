@@ -1,4 +1,8 @@
 import 'package:get/get.dart';
+import 'package:oye_bus/app/modules/bus_filter/bindings/bus_filter_binding.dart';
+import 'package:oye_bus/app/modules/bus_filter/views/bus_filter_view.dart';
+import 'package:oye_bus/app/modules/reservation_details/bindings/reservation_details_binding.dart';
+import 'package:oye_bus/app/modules/reservation_details/views/reservation_details_view.dart';
 
 import '../modules/authentication/login/bindings/login_binding.dart';
 import '../modules/authentication/login/views/login_view.dart';
@@ -64,8 +68,8 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  // static const INITIAL = Routes.SPLASH;
-  static const INITIAL = Routes.BOTTUMNAVIGATION;
+   static const INITIAL = Routes.SPLASH;
+  // static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
@@ -220,5 +224,15 @@ class AppPages {
       page: () => const PassengerInfoView(),
       binding: PassengerInfoBinding(),
     ),
+    GetPage(name: _Paths.BUSFILTER, 
+    page: ()=>BusFilterView(),
+    binding: BusFilterBinding()),
+
+    GetPage(
+      name: _Paths.RESERVATIONDETAILS, 
+      page: ()=>ReservationDetailsView(),
+      binding: ReservationDetailsBinding()
+      ),
+
   ];
 }

@@ -36,6 +36,8 @@ dependencies:
   timeline_tile:
   percent_indicator: 
   im_stepper: 
+  shimmer: ^3.0.0
+  custom_clippers: ^2.0.0
   # location: 
 
   #share_plus: ^7.2.1

@@ -5,11 +5,11 @@ class NotificationController extends GetxController {
    RxInt containerindex=0.obs;
   final count = 0.obs;
 
-
+ RxBool isLoading = false.obs;
   @override
   void onInit() {
     super.onInit();
-    
+   setDefault();
   }
 
   @override
@@ -23,4 +23,9 @@ class NotificationController extends GetxController {
   }
 
   void increment() => count.value++;
+  setDefault() async{
+    isLoading(false);
+    await Future.delayed(Duration(seconds: 5));
+      isLoading(true);
+  }
 }

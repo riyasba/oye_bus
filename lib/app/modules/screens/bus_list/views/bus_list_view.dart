@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/modules/bus_filter/views/bus_filter_view.dart';
 import 'package:oye_bus/app/modules/screens/bus_list/widgets/seperator_widgets.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
+import 'package:oye_bus/app/routes/app_pages.dart';
 
+import '../../../bus_filter/views/bus_filter_view.dart';
 import '../controllers/bus_list_controller.dart';
 
 class BusListView extends GetView<BusListController> {
@@ -26,12 +29,20 @@ class BusListView extends GetView<BusListController> {
               actions: [
                 Padding(
                   padding: const EdgeInsets.only(right: 15),
-                  child: Container(
-                    height: 33,
-                    width: 33,
-                    decoration: BoxDecoration(
-                      color: klightGrey,
-                      borderRadius: BorderRadius.circular(40)
+                  child: GestureDetector(
+                    onTap: (){
+                      Get.toNamed(Routes.BUSFILTER);
+                    },
+                    child: Container(
+                      height: 33,
+                      width: 33,
+                      decoration: BoxDecoration(
+                        color: klightGrey,
+                        borderRadius: BorderRadius.circular(40)
+                      ),
+                      child: Center(
+                        child: Image.asset('assets/offers_icon/filtericon.png'),
+                      ),
                     ),
                   ),
                 )

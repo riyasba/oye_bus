@@ -32,6 +32,8 @@ abstract class Routes {
   static const SEARCH = _Paths.SEARCH;
   static const BUS_LIST = _Paths.BUS_LIST;
   static const PASSENGER_INFO = _Paths.PASSENGER_INFO;
+  static const BUSFILTER = _Paths.BUSFILTER;
+  static const RESERVATIONDETAILS = _Paths.RESERVATIONDETAILS;
 }
 
 abstract class _Paths {
@@ -65,4 +67,6 @@ abstract class _Paths {
   static const SEARCH = '/search';
   static const BUS_LIST = '/bus-list';
   static const PASSENGER_INFO = '/passenger-info';
+  static const BUSFILTER = '/busfilter';
+  static const RESERVATIONDETAILS = '/reservation-details';
 }

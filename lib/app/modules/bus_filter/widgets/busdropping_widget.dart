@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oye_bus/app/components/contsands.dart';
+import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/bus_filter/controllers/bus_filter_controller.dart';
 
 class BusDroppingwidget extends GetView<BusFilterController>  {
     BusDroppingwidget({Key? key}) : super(key: key);
- var boardingController = TextEditingController();
+ var droppingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return    Container(
@@ -22,8 +22,13 @@ class BusDroppingwidget extends GetView<BusFilterController>  {
                                 child: Center(
                                   child: TextField(
                                     
-                                    controller: boardingController,
+                                    controller: droppingController,
                                     decoration: InputDecoration(
+                                      hintText: ' Search Dropping Points',
+                                      hintStyle: TextStyle(
+                                        fontSize: 11,
+                                        fontFamily: 'Proxima '
+                                      ),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(21)
                                       )
@@ -33,9 +38,10 @@ class BusDroppingwidget extends GetView<BusFilterController>  {
                               ),
                              
                                  Container(
-                                  height: 1000,
+                              
                                   width: MediaQuery.of(context).size.width * 0.45,
                                   child: ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
                                     itemCount:controller.dropinglist.length,
                                     itemBuilder: (context ,index){
@@ -63,10 +69,12 @@ class BusDroppingwidget extends GetView<BusFilterController>  {
                                             width: 25,
                                             decoration: BoxDecoration(
                                               shape: BoxShape.circle,
-                                              color:controller.dropcheckindex==index?Color(0xffFF0000):kgrey
+                                              color:controller.dropcheckindex==index?Color(0xffFF0000)
+                                              :Colors.grey.shade300
                                             ),
                                             child: Center(
                                               child: Icon(Icons.check,
+                                              size: 15.5,
                                               color: kwhite,
                                               ),
                                             ),
