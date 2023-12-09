@@ -47,60 +47,62 @@ class BookinghistoryView extends GetView<BookinghistoryController> {
                     ),
                   ),
                   ksizedbox20,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          controller.containerindex(0);
-                          controller.update();
-                        },
-                        child: Container(
-                          height: 45,
-                          width: 160,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(23),
-                              color: controller.containerindex.value == 0
-                                  ? Color(0xffFFC107)
-                                  : Colors.grey.shade200),
-                          child: Center(
-                            child: Text(
-                              'Completed',
-                              style: TextStyle(
-                                  color: controller.containerindex.value == 0
-                                      ? Colors.black
-                                      : kgrey,
-                                  fontWeight: FontWeight.w500),
+                  Obx(()=>
+                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            controller.containerindex(0);
+                            controller.update();
+                          },
+                          child: Container(
+                            height: 45,
+                            width: 160,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(23),
+                                color: controller.containerindex.value == 0
+                                    ? Color(0xffFFC107)
+                                    : Colors.grey.shade200),
+                            child: Center(
+                              child: Text(
+                                'Completed',
+                                style: TextStyle(
+                                    color: controller.containerindex.value == 0
+                                        ? Colors.black
+                                        : kgrey,
+                                    fontWeight: FontWeight.w500),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          controller.containerindex(1);
-                          controller.update();
-                        },
-                        child: Container(
-                          height: 45,
-                          width: 160,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(23),
-                              color: controller.containerindex.value == 1
-                                  ? Color(0xffFFC107)
-                                  : Colors.grey.shade200),
-                          child: Center(
-                            child: Text(
-                              'Cancelled',
-                              style: TextStyle(
-                                  color: controller.containerindex.value == 1
-                                      ? Colors.black
-                                      : kgrey,
-                                  fontWeight: FontWeight.w500),
+                        GestureDetector(
+                          onTap: () {
+                            controller.containerindex(1);
+                            controller.update();
+                          },
+                          child: Container(
+                            height: 45,
+                            width: 160,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(23),
+                                color: controller.containerindex.value == 1
+                                    ? Color(0xffFFC107)
+                                    : Colors.grey.shade200),
+                            child: Center(
+                              child: Text(
+                                'Cancelled',
+                                style: TextStyle(
+                                    color: controller.containerindex.value == 1
+                                        ? Colors.black
+                                        : kgrey,
+                                    fontWeight: FontWeight.w500),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),

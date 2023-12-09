@@ -53,7 +53,21 @@ class ReservationDetailsView extends GetView<ReservationDetailsController> {
                           child: Image.asset('assets/offers_icon/resershareicon.png'),
                         )
                       ],
-                    )
+                    ),
+                    Text('10 Nov 2023, Saturday',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Proxima',
+                      fontWeight: FontWeight.w400,
+                      color: kwhite
+                    ),),
+                    ksizedbox10,
+                    Container(
+                      width: 374,
+                      child: Text('------------------------------------------------------',
+                      style: TextStyle(
+                        color: kwhite
+                      ),))
                   ],
                 ),
               ),
