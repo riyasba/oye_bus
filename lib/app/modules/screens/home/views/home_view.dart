@@ -26,7 +26,7 @@ class HomeView extends GetView<HomeController> {
         preferredSize:  Size.fromHeight(55),
         child: HomeAppBarWidget(),
       ),
-      body: ListView(
+      body: ListView(physics: BouncingScrollPhysics(),
         children: [
         const  SizedBox(
             height: 15,
