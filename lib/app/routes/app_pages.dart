@@ -18,6 +18,8 @@ import '../modules/onbording/bindings/onbording_binding.dart';
 import '../modules/onbording/location/bindings/location_binding.dart';
 import '../modules/onbording/location/views/location_view.dart';
 import '../modules/onbording/views/onbording_view.dart';
+import '../modules/screens/passenger_info/bindings/passenger_info_binding.dart';
+import '../modules/screens/passenger_info/views/passenger_info_view.dart';
 import '../modules/review_refund_details/bindings/review_refund_details_binding.dart';
 import '../modules/review_refund_details/views/review_refund_details_view.dart';
 import '../modules/screens/appprofile/aboutus/bindings/aboutus_binding.dart';
@@ -38,6 +40,8 @@ import '../modules/screens/bookinghistory/bindings/bookinghistory_binding.dart';
 import '../modules/screens/bookinghistory/views/bookinghistory_view.dart';
 import '../modules/screens/bottumnavigation/bindings/bottumnavigation_binding.dart';
 import '../modules/screens/bottumnavigation/views/bottumnavigation_view.dart';
+import '../modules/screens/bus_list/bindings/bus_list_binding.dart';
+import '../modules/screens/bus_list/views/bus_list_view.dart';
 import '../modules/screens/home/bindings/home_binding.dart';
 import '../modules/screens/home/views/home_view.dart';
 import '../modules/screens/locationpermisson/bindings/locationpermisson_binding.dart';
@@ -46,6 +50,8 @@ import '../modules/screens/notification/bindings/notification_binding.dart';
 import '../modules/screens/notification/views/notification_view.dart';
 import '../modules/screens/offers/bindings/offers_binding.dart';
 import '../modules/screens/offers/views/offers_view.dart';
+import '../modules/screens/search/bindings/search_binding.dart';
+import '../modules/screens/search/views/search_view.dart';
 import '../modules/screens/ticket_details/bindings/ticket_details_binding.dart';
 import '../modules/screens/ticket_details/views/ticket_details_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -58,7 +64,8 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;
+  // static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
@@ -197,6 +204,21 @@ class AppPages {
       name: _Paths.BUSSEATMAPING,
       page: () => const BusseatmapingView(),
       binding: BusseatmapingBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEARCH,
+      page: () => const SearchView(),
+      binding: SearchBinding(),
+    ),
+    GetPage(
+      name: _Paths.BUS_LIST,
+      page: () => const BusListView(),
+      binding: BusListBinding(),
+    ),
+    GetPage(
+      name: _Paths.PASSENGER_INFO,
+      page: () => const PassengerInfoView(),
+      binding: PassengerInfoBinding(),
     ),
   ];
 }
