@@ -9,18 +9,18 @@ class BusseatmapingController extends GetxController {
     super.onInit();
   }
 
-
-
-
-  
- RxInt current = 0.obs;
-
+  RxInt current = 0.obs;
+  RxInt currentbording = 1.obs;
 
   int get index1 => current.value;
-
+ // int get index3 => currentbording.value;
 
   void setIndex(int currentIndex) {
     current(currentIndex);
+  }
+
+  void dropingIndex(int currentbordingindex) {
+    currentbording(currentbordingindex);
   }
 
   @override

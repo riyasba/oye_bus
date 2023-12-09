@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:oye_bus/app/components/contsands.dart';
+import 'package:oye_bus/app/components/const.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final double? width;
@@ -32,17 +32,18 @@ class CustomElevatedButton extends StatelessWidget {
       onTap: onPressed,
       child:Container(
           alignment: Alignment.center,
-          height: 50,
+          height: 55,
           width: double.infinity,
           decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.circular(  35.r,),
+              borderRadius: BorderRadius.circular(  10.r,),
               border: Border.all(width: 1.5, color: kred)),
-          child: Text(text,
-              style: TextStyle(
-                  color: textColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600)),
+          child: Text(text
+              .toUpperCase()
+                  ,style: smalbalckfont.copyWith(
+                    color: textColor,
+                    fontSize: 20,
+                  )),
         ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:oye_bus/app/components/contsands.dart';
+import 'package:oye_bus/app/components/const.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -25,7 +25,7 @@ class CustomButton extends StatelessWidget {
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
-                35.r,
+                10.r,
               ),
               side: BorderSide(
                 color: kred,

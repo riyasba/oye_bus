@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/contsands.dart';
+import 'package:oye_bus/app/modules/screens/busseatmaping/views/busseatmaping_view.dart';
+import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/busseatmaping/views/busseatmaping_view.dart';
+import 'package:oye_bus/app/modules/screens/bus_list/views/bus_list_view.dart';
 import 'package:oye_bus/app/modules/screens/home/widgets/home_app_bar_widget.dart';
+import 'package:oye_bus/app/modules/screens/search/views/search_destiny_view.dart';
+import 'package:oye_bus/app/modules/screens/search/views/search_view.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -18,7 +24,6 @@ class HomeView extends GetView<HomeController> {
       () => HomeController(),
     );
     return Scaffold(
-      // backgroundColor: Colors.white,
       appBar: const PreferredSize(
         preferredSize:  Size.fromHeight(55),
         child: HomeAppBarWidget(),
@@ -128,6 +133,8 @@ class HomeView extends GetView<HomeController> {
                               width: size.width * 0.6,
                               child:  TextField(
                                 controller: controller.fromPlaceTxtController,
+                                readOnly: true,
+                                onTap: ()=> Get.to(()=> SearchView()),
                                   style: smalbalckfont.copyWith(
                                   fontSize: 15
                                  ),
@@ -136,7 +143,7 @@ class HomeView extends GetView<HomeController> {
                             ),
                               Container(
                               height: 1,
-                              width: size.width * 0.67,
+                              width: size.width * 0.6.w,
                               color: const Color.fromRGBO(158, 158, 158, 1),
                               ),
                             const  SizedBox(
@@ -150,6 +157,8 @@ class HomeView extends GetView<HomeController> {
                               width: size.width * 0.6,
                               child:  TextField(
                                  controller: controller.toPlaceTxtController,
+                                  readOnly: true,
+                                onTap: ()=> Get.to(()=> SearchDestinyView()),
                                  style: smalbalckfont.copyWith(
                                   fontSize: 15
                                  ),
@@ -258,7 +267,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                      )
                 ),
- const SizedBox(
+                  const SizedBox(
                   width: 10,
                 ),
 
@@ -377,7 +386,8 @@ class HomeView extends GetView<HomeController> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: GestureDetector(
               onTap: (){
-                Get.to(()=> BusseatmapingView());
+                Get.to(()=> BusListView());
+                
               },
               child: Container(
                 height: 55,
@@ -413,7 +423,7 @@ class HomeView extends GetView<HomeController> {
                 fontWeight: FontWeight.w500
                 ),
               
-                )
+                ),
               ],
             ),
           ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:oye_bus/app/components/contsands.dart';
+import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
-import 'package:oye_bus/app/modules/busseatmaping/views/moreaboutbus_view.dart';
+import 'package:oye_bus/app/modules/screens/busseatmaping/views/moreaboutbus_view.dart';
 import '../controllers/busseatmaping_controller.dart';
 
 class BusseatmapingView extends GetView<BusseatmapingController> {
@@ -386,77 +386,80 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                       ],
                     ),
                     ksizedbox30,
-                    Container(
-                      width: size.width,
-                      height: size.height * 0.2,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7),
-                          color: kwhite),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  children: [
-                                    Text(
-                                      '02 Seat | L6, L7',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleLarge!
-                                          .copyWith(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14.sp,
-                                            color: Colors.black,
-                                          ),
-                                    ),
-                                    Text(
-                                      'More about this bus',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleLarge!
-                                          
-                                          .copyWith(
-                                             decoration: TextDecoration.underline,
-                                             decorationColor: Colors.blue,
-                                            fontWeight: FontWeight.w300,
-                                            fontSize: 10.sp,
-                                            color: Colors.blue,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  '₹4000',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge!
-                                      .copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 17.sp,
-                                        color: Colors.black,
-                                      ),
-                                )
-                              ],
-                            ),
-                          ),ksizedbox10,
-                     CustomElevatedButton(
-                                  height: 45.h,
-                                  width: 1.sw,
-                                  onPressed: () {
-                                  Get.to(MoreaboutbusView());
-                                  },
-                                  text: 'proceed',
-                                  color: kred,
-                                  textColor: kwhite,
-                                ),   ],
-                      ),
-                    ),
                   ],
                 ),
               ],
+            ),
+          ),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: size.width,
+              height: 110.h,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(7), color: kwhite),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(mainAxisAlignment: MainAxisAlignment.center,
+                          children: [ksizedbox10,
+                            Text(
+                              '02 Seat | L6, L7',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.sp,
+                                    color: Colors.black,
+                                  ),
+                            ),
+                            Text(
+                              'More about this bus',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    decoration: TextDecoration.underline,
+                                    decorationColor: Colors.blue,
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 10.sp,
+                                    color: Colors.blue,
+                                  ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          '₹4000',
+                          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 17.sp,
+                                color: Colors.black,
+                              ),
+                        )
+                      ],
+                    ),
+                  ),
+                  ksizedbox10,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CustomElevatedButton(
+                      height: 45.h,
+                      width: 1.sw,
+                      onPressed: () {
+                        Get.to(MoreaboutbusView());
+                      },
+                      text: 'proceed',
+                      color: kred,
+                      textColor: kwhite,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

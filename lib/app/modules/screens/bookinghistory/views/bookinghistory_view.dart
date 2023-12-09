@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:oye_bus/app/components/contsands.dart';
+import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 import '../controllers/bookinghistory_controller.dart';

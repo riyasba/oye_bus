@@ -23,10 +23,14 @@ import 'package:google_fonts/google_fonts.dart';
   Color kgreen = Color(0xFF77B43F);
 Color kblack = Color(0xFF000000);
 
+Color klightGrey = Color(0xffD9D9D9);
+
+Color kYellow = const Color(0xffFFD400);
+
 
   // var redfont =
   //   GoogleFonts.montserrat(
-  //                 fontSize: 16.h, fontWeight: FontWeight.w700, color: kred,);
+  //                 fontSize: 16.h, fontWeight: FontWeight.w700, color: kred,);f
   var minbalckfont =     GoogleFonts.montserrat(
                   fontSize: 17.h, fontWeight: FontWeight.bold,);
 
@@ -37,3 +41,7 @@ Color kblack = Color(0xFF000000);
                   fontSize: 15.h, fontWeight: FontWeight.bold,);
 
           var primaryFont =  GoogleFonts.montserrat();
+
+             var bussmidfont=          
+            GoogleFonts.montserrat(
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black);
