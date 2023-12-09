@@ -20,4 +20,11 @@ class PassengerInfoController extends GetxController {
   }
 
   void increment() => count.value++;
+
+  RxBool isWhatsappSend = true.obs;
+
+  RxBool iHaveGstNumber = false.obs;
+
+
+
 }

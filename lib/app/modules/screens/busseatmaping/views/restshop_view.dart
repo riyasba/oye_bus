@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:oye_bus/app/components/contsands.dart';
+import 'package:oye_bus/app/components/const.dart';
 
 class RestshopView extends GetView {
   const RestshopView({Key? key}) : super(key: key);
