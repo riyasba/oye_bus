@@ -153,7 +153,7 @@ class MoreaboutbusView extends GetView<BusseatmapingController> {
               Container(
                 margin: const EdgeInsets.only(top: 30),
                 width: double.infinity,
-                height: size.height * 0.9,
+                height: 1000,
                 child: PageView(
                   onPageChanged: (index) => controller.setIndex(
                     index,

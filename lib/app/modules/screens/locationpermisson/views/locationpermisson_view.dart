@@ -6,10 +6,9 @@ import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 import '../controllers/locationpermisson_controller.dart';
 
-
 class LocationpermissonView extends GetView<LocationpermissonController> {
   const LocationpermissonView({Key? key}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,31 +42,35 @@ class LocationpermissonView extends GetView<LocationpermissonController> {
                       fontWeight: FontWeight.w300,
                     ),
               ),
-              ksizedbox40,ksizedbox40,
-             //  ListenLocationWidget(),
-          CustomElevatedButton(
-                          height: 45.h,
-                          width: 1.sw,
-                          onPressed: () {
-                            Get.toNamed(
-                              Routes.BUSLOADINGSPLASH,
-                            );
-                          },
-                          text: 'USE CURRENT LOCATION',
-                          color: kred,
-                          textColor: kwhite,
-                        ),ksizedbox10,  CustomElevatedButton(
-                          height: 45.h,
-                          width: 1.sw,
-                          onPressed: () {
-                            Get.toNamed(
-                              Routes.BUSLOADINGSPLASH,
-                            );
-                          },
-                          text: 'Skip',
-                          color: kwhite,
-                          textColor: kred,
-                        ),    ],
+              ksizedbox40,
+              ksizedbox40,
+              //  ListenLocationWidget(),
+              CustomElevatedButton(
+                height: 45.h,
+                width: 1.sw,
+                onPressed: () {
+                  Get.toNamed(
+                    Routes.BUSLOADINGSPLASH,
+                  );
+                },
+                text: 'USE CURRENT LOCATION',
+                color: kred,
+                textColor: kwhite,
+              ),
+              ksizedbox10,
+              CustomElevatedButton(
+                height: 45.h,
+                width: 1.sw,
+                onPressed: () {
+                  Get.toNamed(
+                    Routes.BUSLOADINGSPLASH,
+                  );
+                },
+                text: 'Skip',
+                color: kwhite,
+                textColor: kred,
+              ),
+            ],
           ),
         ),
       ),

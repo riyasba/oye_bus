@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
 import 'package:oye_bus/app/modules/screens/busseatmaping/views/busseatmaping_view.dart';
 import 'package:oye_bus/app/components/const.dart';
@@ -45,10 +44,10 @@ class HomeView extends GetView<HomeController> {
                      Text("Search for Bus Tickets",style: primaryFont.copyWith(
                       fontSize: 11,
                       fontWeight: FontWeight.w400
-                    ),)
+                    ),),
                   ],
                 ),
-                Image.asset("assets/home_page/bus_loading_gif.gif",height: 70,)
+                Image.asset("assets/home_page/bus_loading_gif.gif",height: 70,),
               ],
             ),
           ),
