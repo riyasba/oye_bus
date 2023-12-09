@@ -29,7 +29,8 @@ class HomeAppBarWidget extends GetView<HomeController> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Get.toNamed(Routes.BUSSEATMAPING);
+                        Get.toNamed(Routes.RESERVATIONDETAILS);
+                        // Get.toNamed(Routes.BUSSEATMAPING);
                       },
                       child: SvgPicture.asset(
                         "assets/home_page/menu_icon.svg",
