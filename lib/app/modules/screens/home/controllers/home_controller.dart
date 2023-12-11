@@ -27,6 +27,7 @@ class HomeController extends GetxController {
   var toPlaceTxtController = TextEditingController();
 
   RxBool isAcBusOnly = false.obs;
+  
 
   List<OffersModel> offersList = [
     OffersModel(image: "assets/home_page/bus_offer_image.png",buttonName: "FIRST",title: "Save up to Rs.250 on bus tickets",validity: "30 Nov"),

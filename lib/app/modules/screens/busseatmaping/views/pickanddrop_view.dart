@@ -24,7 +24,7 @@ class PickanddropView extends GetView {
             style: appbarfont,
           ),
           bottom: TabBar(
-            dividerHeight: 0,
+           // dividerHeight: 0,
             automaticIndicatorColorAdjustment: true,
             labelColor: kwhite,
             padding: const EdgeInsets.only(right: 15, left: 15),

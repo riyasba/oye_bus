@@ -47,7 +47,7 @@ class BookinghistoryView extends GetView<BookinghistoryController> {
             indicatorSize: TabBarIndicatorSize.tab,
             automaticIndicatorColorAdjustment: true,
             labelColor: kwhite,
-            dividerHeight: 0,
+        //    dividerHeight: 0,
             padding: const EdgeInsets.only(right: 15, left: 15,),
             unselectedLabelColor: Colors.black,
             indicator: BoxDecoration(

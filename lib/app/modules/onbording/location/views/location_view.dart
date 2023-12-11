@@ -30,46 +30,51 @@ class LocationView extends GetView<LocationController> {
               ListView(
                 shrinkWrap: true,
                 children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Color.fromARGB(0, 158, 158, 158),
-                            width: 2.0),
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Color.fromARGB(0, 158, 158, 158),
-                            width: 1.0),
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Color.fromARGB(0, 158, 158, 158),
-                            width: 1.0),
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      hintText: 'Search',
-                      fillColor: Colors.grey[200],
-                      focusColor: Colors.grey[200],
-                      isDense: true,
-                      filled: true,
-                      prefixIcon: Icon(Icons.search),
-                      suffixIcon: const Icon(
-                        CupertinoIcons.clear,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                TextFormField(
+  decoration: InputDecoration(
+    contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+    border: OutlineInputBorder(
+      borderSide: const BorderSide(
+        color: Color.fromARGB(0, 158, 158, 158),
+        width: 2.0,
+      ),
+      borderRadius: BorderRadius.circular(16.0),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: const BorderSide(
+        color: Color.fromARGB(0, 158, 158, 158),
+        width: 1.0,
+      ),
+      borderRadius: BorderRadius.circular(16.0),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: const BorderSide(
+        color: Color.fromARGB(0, 158, 158, 158),
+        width: 1.0,
+      ),
+      borderRadius: BorderRadius.circular(16.0),
+    ),
+    hintText: 'Search',
+    fillColor: Colors.grey[200],
+    focusColor: Colors.grey[200],
+    isDense: true,
+    filled: true,
+    prefixIcon: Icon(Icons.search),
+    suffixIcon: const Icon(
+      CupertinoIcons.clear,
+      color: Colors.white,
+    ),
+  ),
+),
+
                   ksizedbox20,
                   Row(
                     children: [
                       Text('Choose the Country',
                           style:
                               Theme.of(context).textTheme.titleLarge!.copyWith(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 17.sp,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16.sp,
                                     color: kred,
                                   )),
                     ],
@@ -117,8 +122,8 @@ class LocationView extends GetView<LocationController> {
                       Text('Choose the Language',
                           style:
                               Theme.of(context).textTheme.titleLarge!.copyWith(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 17.sp,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16.sp,
                                     color: kred,
                                   )),
                     ],
