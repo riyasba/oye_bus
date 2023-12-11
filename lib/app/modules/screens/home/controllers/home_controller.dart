@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/models/offers_models.dart';
+import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -8,6 +10,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+       Get.put(NotificationController());
   }
 
   @override
@@ -33,6 +36,23 @@ class HomeController extends GetxController {
   ];
 
 
+
+    Future<void> selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2000), // Set the starting date for the picker
+      lastDate: DateTime(2101), // Set the ending date for the picker
+    );
+    if (picked != null && picked != selectedDate) {
+      
+ selectedDate = picked;
+ update();
+     
+    }
+  }
+
+ DateTime selectedDate = DateTime.now();
    
   
   ulta() {

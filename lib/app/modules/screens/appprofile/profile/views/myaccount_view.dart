@@ -36,7 +36,9 @@ class MyaccountView extends GetView {
                     children: [
                       ksizedbox30,
                       MyaccountbuttonView(
-                        onPressed: () {},
+                        onPressed: () {Get.toNamed(
+                            Routes.BOTTUMNAVIGATION,
+                          );},
                         text: 'My Booking',
                       ),
                       ksizedbox20,
