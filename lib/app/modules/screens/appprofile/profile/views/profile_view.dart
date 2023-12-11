@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/appprofile/profile/views/editprofile_view.dart';
 import 'package:oye_bus/app/modules/screens/appprofile/profile/views/widget/formfield_view.dart';
-import 'package:oye_bus/app/modules/screens/bottumnavigation/views/bottumnavigation_view.dart';
+
 import '../controllers/profile_controller.dart';
 
 
