@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
-import 'package:oye_bus/app/components/comon_custombutton.dart';
+
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/modules/screens/busseatmaping/views/boardingselection_view.dart';
 import 'package:oye_bus/app/modules/screens/busseatmaping/views/dropingselection_view.dart';
 import 'package:oye_bus/app/modules/screens/busseatmaping/views/reviewbookingdetails_view.dart';
+import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
 
 class PickanddropView extends GetView {
   const PickanddropView({Key? key}) : super(key: key);
@@ -47,10 +48,14 @@ class PickanddropView extends GetView {
             height: 45.h,
             width: 1.sw,
             onPressed: () {
-              Get.to(ReviewbookingdetailsView());
+            
+            
+               Get.to(PassengerInfoView());
               //    Get.toNamed(
               // Routes.BUSLOADINGSPLASH,
               //  );
+
+
             },
             text: 'proceed',
             color: kred,

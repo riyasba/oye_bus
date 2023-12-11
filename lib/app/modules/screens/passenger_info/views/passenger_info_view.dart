@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/bus_list/widgets/seperator_widgets.dart';
+import 'package:oye_bus/app/modules/screens/busseatmaping/views/reviewbookingdetails_view.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/widgets/dotted_line_small.dart';
 
 import '../controllers/passenger_info_controller.dart';
@@ -751,19 +752,21 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                     )
         ],
       ),
-      bottomNavigationBar: Container(
-        height: 55,
-        decoration: BoxDecoration(
-          color: kred
-        ),
-        alignment: Alignment.center,
-        child: Text(
-        "Proceed".toUpperCase(),
-        style: primaryFont.copyWith(
-          color: Colors.white,
-          fontSize: 18,
-          fontWeight: FontWeight.bold
-        ),
+      bottomNavigationBar: InkWell(onTap: (){               Get.to(ReviewbookingdetailsView());},
+        child: Container(
+          height: 55,
+          decoration: BoxDecoration(
+            color: kred
+          ),
+          alignment: Alignment.center,
+          child: Text(
+          "Proceed".toUpperCase(),
+          style: primaryFont.copyWith(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold
+          ),
+          ),
         ),
       ),
     );

@@ -50,8 +50,7 @@ class BookinghistoryView extends GetView<BookinghistoryController> {
             padding: const EdgeInsets.only(right: 15, left: 15),
             unselectedLabelColor: Colors.black,
             indicator: BoxDecoration(
-                borderRadius: BorderRadius.circular(30), color:  controller.containerindex.value == 0
-                                       ? Colors.grey.shade200: Color(0xffFFC107)),
+                borderRadius: BorderRadius.circular(30), color:  kred),
             tabs: [
                 Tab(
                   text: 'Completed',

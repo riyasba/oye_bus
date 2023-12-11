@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oye_bus/app/modules/screens/busseatmaping/views/busseatmaping_view.dart';
-import 'package:oye_bus/app/modules/screens/appprofile/profile/views/myaccount_view.dart';
+import 'package:oye_bus/app/modules/screens/appprofile/profile/views/profile_view.dart';
+
 import 'package:oye_bus/app/modules/screens/bookinghistory/views/bookinghistory_view.dart';
 import 'package:oye_bus/app/modules/screens/home/views/home_view.dart';
 import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';
 import 'package:oye_bus/app/modules/screens/offers/views/offers_view.dart';
+
 
 class BottumnavigationController extends GetxController {
 
@@ -16,7 +17,9 @@ class BottumnavigationController extends GetxController {
       HomeView(),
     OffersView(),
     BookinghistoryView(),
-    MyaccountView(),
+    ProfileView(),
+                           
+                          
     //  HomeView(),
   ]);
 

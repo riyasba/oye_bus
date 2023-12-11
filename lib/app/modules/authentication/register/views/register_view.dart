@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:gif/gif.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/components/user_input_field.dart';
@@ -32,9 +33,14 @@ class RegisterView extends GetView<RegisterController> {
           children: [
             Column(
               children: [
-                Image.asset(
-                    'assets/images/image_processing20191205-7937-1ftlnk1.gif'),
-                // ksizedbox20,
+                Gif(
+                  fps: 30,
+                  autostart: Autostart.once,
+                  fit: BoxFit.cover,
+                  image: AssetImage(
+                    'assets/images/image_processing20191205-7937-1ftlnk1.gif',
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -193,12 +199,13 @@ class RegisterView extends GetView<RegisterController> {
                         height: 5.h,
                       ),
                       Obx(
-                        ()=> TextFormField(
+                        () => TextFormField(
                           controller: phoneNumberController,
-                          style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontSize: 15.sp,
-                                color: Colors.black,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    fontSize: 15.sp,
+                                    color: Colors.black,
+                                  ),
                           autofocus: false,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
@@ -269,12 +276,14 @@ class RegisterView extends GetView<RegisterController> {
                               ),
                             ),
                             hintText: "5874536954",
-                            hintStyle:
-                                Theme.of(context).textTheme.titleLarge!.copyWith(
-                                      fontSize: 15.sp,
-                                      color: Colors.grey[600],
-                                      fontWeight: FontWeight.w100,
-                                    ),
+                            hintStyle: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  fontSize: 15.sp,
+                                  color: Colors.grey[600],
+                                  fontWeight: FontWeight.w100,
+                                ),
                             fillColor: Colors.white,
                             filled: true,
                           ),

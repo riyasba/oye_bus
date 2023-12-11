@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/bus_filter/views/bus_filter_view.dart';
 import 'package:oye_bus/app/modules/screens/bus_list/widgets/seperator_widgets.dart';
+import 'package:oye_bus/app/modules/screens/busseatmaping/views/busseatmaping_view.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
@@ -113,7 +114,9 @@ class BusListView extends GetView<BusListController> {
             padding: const EdgeInsets.fromLTRB(15,5,15,5),
             child: InkWell(
               onTap: (){
-                Get.to(PassengerInfoView());
+
+                Get.to(BusseatmapingView());
+               // Get.to(PassengerInfoView());
               },
               child: Container(
                 decoration: BoxDecoration(

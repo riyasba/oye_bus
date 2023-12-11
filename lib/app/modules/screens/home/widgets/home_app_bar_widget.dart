@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/modules/screens/appprofile/profile/views/myaccount_view.dart';
 import 'package:oye_bus/app/modules/screens/home/controllers/home_controller.dart';
+import 'package:oye_bus/app/modules/screens/notification/views/notification_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class HomeAppBarWidget extends GetView<HomeController> {
@@ -29,7 +31,8 @@ class HomeAppBarWidget extends GetView<HomeController> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Get.toNamed(Routes.RESERVATIONDETAILS);
+                        Get.to( MyaccountView(),);
+                        //Get.toNamed(Routes.RESERVATIONDETAILS);
                         // Get.toNamed(Routes.BUSSEATMAPING);
                       },
                       child: SvgPicture.asset(
@@ -75,10 +78,15 @@ class HomeAppBarWidget extends GetView<HomeController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(
-                      "assets/home_page/bell_icons.svg",
-                      height: 25,
-                      fit: BoxFit.fill,
+                    InkWell(
+                      onTap: (){
+                        Get.to(NotificationView());
+                        },
+                      child: SvgPicture.asset(
+                        "assets/home_page/bell_icons.svg",
+                        height: 25,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ],
                 ),

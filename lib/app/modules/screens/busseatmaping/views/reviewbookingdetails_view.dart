@@ -33,8 +33,8 @@ class ReviewbookingdetailsView extends GetView {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      height: 532,
-                      width: 374,
+                      height: 532.h,
+                      width:double.infinity,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           color: Colors.grey[300]),
