@@ -34,7 +34,7 @@ class ReviewbookingdetailsView extends GetView {
                   children: [
                     Container(
                       height: 532.h,
-                      width:double.infinity,
+                      width:320.w,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           color: Colors.grey[300]),
