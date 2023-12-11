@@ -23,7 +23,7 @@ class HomeAppBarWidget extends GetView<HomeController> {
               Container(
                 height: 40,
                 width: 40,
-                decoration: BoxDecoration(
+                decoration: BoxDecoration( 
                     color: Colors.grey[100],
                     borderRadius: BorderRadius.circular(10)),
                 child: Row(
@@ -32,7 +32,7 @@ class HomeAppBarWidget extends GetView<HomeController> {
                     InkWell(
                       onTap: () {
                         Get.to( MyaccountView(),);
-                        //Get.toNamed(Routes.RESERVATIONDETAILS);
+                      
                         // Get.toNamed(Routes.BUSSEATMAPING);
                       },
                       child: SvgPicture.asset(

@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
-import 'package:oye_bus/app/modules/bus_filter/widgets/bus_arrivaltime_destination_widget.dart';
-import 'package:oye_bus/app/modules/bus_filter/widgets/bus_boardingpoint_widget.dart';
-import 'package:oye_bus/app/modules/bus_filter/widgets/bus_facilites_widget.dart';
-import 'package:oye_bus/app/modules/bus_filter/widgets/bus_features_widget.dart';
-import 'package:oye_bus/app/modules/bus_filter/widgets/bus_operator_widget.dart';
-import 'package:oye_bus/app/modules/bus_filter/widgets/busdropping_widget.dart';
+import 'package:oye_bus/app/modules/bus_filter/views/widgets/bus_arrivaltime_destination_widget.dart';
+import 'package:oye_bus/app/modules/bus_filter/views/widgets/bus_boardingpoint_widget.dart';
+import 'package:oye_bus/app/modules/bus_filter/views/widgets/bus_facilites_widget.dart';
+import 'package:oye_bus/app/modules/bus_filter/views/widgets/bus_features_widget.dart';
+import 'package:oye_bus/app/modules/bus_filter/views/widgets/bus_operator_widget.dart';
+import 'package:oye_bus/app/modules/bus_filter/views/widgets/busdropping_widget.dart';
 
 import '../controllers/bus_filter_controller.dart';
 
@@ -22,17 +22,15 @@ class BusFilterView extends GetView<BusFilterController> {
   Widget build(BuildContext context) {
     return Scaffold(
     appBar: AppBar(
-      title:  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Filter Buses',
-                      style: TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w600
-                      ),),
-                      Image.asset('assets/offers_icon/filtercancelicon.png')
-                    ],
-                  ),
+      centerTitle: true,
+      title:  Text('Filter Buses',
+                      style: appbarfont),
+            actions: [
+                 Padding(
+                   padding: const EdgeInsets.only(right: 10),
+                   child: Image.asset('assets/offers_icon/filtercancelicon.png'),
+                 )
+            ],
                  
     ),
       body:ListView(

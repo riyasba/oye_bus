@@ -70,11 +70,15 @@ towards chrompet''',
           child: ListTile(
             leading: Checkbox(
               value: item.isSelected,
+        
+              checkColor: Color(0xffFFC107),
               onChanged: (newValue) {
                 // Handle onChanged event
                 // For example: setState(() { item.isSelected = newValue; });
               },
-              shape: CircleBorder(),
+              shape: CircleBorder(
+                
+              ),
             ),
             title: Text(
               item.title,

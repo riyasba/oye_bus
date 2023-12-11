@@ -24,6 +24,7 @@ class PickanddropView extends GetView {
             style: appbarfont,
           ),
           bottom: TabBar(
+            dividerHeight: 0,
             automaticIndicatorColorAdjustment: true,
             labelColor: kwhite,
             padding: const EdgeInsets.only(right: 15, left: 15),
@@ -31,19 +32,23 @@ class PickanddropView extends GetView {
             indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(30), color: kred),
             tabs: [
-              Tab(text: '        BOARDING        '),
-              Tab(text: '        DROPPING        '),
+              Tab(text: '          BOARDING              '),
+              Tab(text: '        DROPPING         '),
             ],
           ),
         ),
-        body: TabBarView(
-          children: [
-            BoardingselectionView(),
-            DropingselectionView(),
-          ],
+        body: Padding(
+          padding: const EdgeInsets.only(top: 8,bottom: 8),
+          child: TabBarView(
+            children: [
+              BoardingselectionView(),
+              DropingselectionView(),
+              ksizedbox10
+            ],
+          ),
         ),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 12,right: 12,bottom: 12),
           child: CustomElevatedButton(
             height: 45.h,
             width: 1.sw,

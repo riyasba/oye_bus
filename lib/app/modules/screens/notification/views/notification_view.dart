@@ -35,16 +35,15 @@ class NotificationView extends GetView<NotificationController> {
           Get.back();
         },
         child: Icon(Icons.arrow_back)),
-        title: const Text('NotificationView',
-        style: TextStyle(
-          fontSize: 20,
-          
-        ),),
+        title:  Text('NotificationView',
+        style: appbarfont),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: Icon(Icons.search,
-            size: 25,),
+            size: 25,
+            color: Colors.black,
+            ),
           )
         ],
         centerTitle: true,

@@ -19,7 +19,7 @@ class BookinghistoryView extends GetView<BookinghistoryController> {
     'Complete',
   ];
 
- 
+ int containerindex=0;
  
   @override
   Widget build(BuildContext context) {
@@ -47,13 +47,15 @@ class BookinghistoryView extends GetView<BookinghistoryController> {
             indicatorSize: TabBarIndicatorSize.tab,
             automaticIndicatorColorAdjustment: true,
             labelColor: kwhite,
-            padding: const EdgeInsets.only(right: 15, left: 15),
+            dividerHeight: 0,
+            padding: const EdgeInsets.only(right: 15, left: 15,),
             unselectedLabelColor: Colors.black,
             indicator: BoxDecoration(
-                borderRadius: BorderRadius.circular(30), color:  kred),
+                borderRadius: BorderRadius.circular(23), color:  Color(0xffFFC107)),
             tabs: [
                 Tab(
                   text: 'Completed',
+               
                 ),
                 Tab(
                   text: 'Cancelled',
@@ -152,15 +154,106 @@ class BookinghistoryView extends GetView<BookinghistoryController> {
           //       ),
           //     )
               
-          //     ),
-          body: 
-              TabBarView(children: [
-                  BookingCompletedWidget(),
-                BookingCancelledWidget(),
+            //     preferredSize: Size.fromHeight(
+            //       100,
+            //     ),
+            //     child: SafeArea(
+            //       child: Column(
+            //         children: [
+            //           Padding(
+            //             padding: const EdgeInsets.only(left: 8, right: 8),
+            //             child: Row(
+            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //               children: [
+            //                 GestureDetector(
+            //                   onTap: (){
+            //                     Get.back();
+            //                   },
+            //                   child: Icon(Icons.arrow_back)),
+            //                 Text(
+            //                   'My Bookings',
+            //                   style: TextStyle(
+            //                     fontSize: 20,
+            //                   ),
+            //                 ),
+            //                 Image.asset('assets/offers_icon/bellicon.png')
+            //               ],
+            //             ),
+            //           ),
+                    
+            //           ksizedbox20,
+            //           Obx(()=>
+            //              Row(
+            //               mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //               children: [
+            //                 GestureDetector(
+            //                   onTap: () {
+            //                     controller.containerindex(0);
+            //                     controller.update();
+            //                   },
+            //                   child: Container(
+            //                     height: 45,
+            //                     width: 160,
+            //                     decoration: BoxDecoration(
+            //                         borderRadius: BorderRadius.circular(23),
+            //                         color: controller.containerindex.value == 0
+            //                             ? Color(0xffFFC107)
+            //                             : Colors.grey.shade200),
+            //                     child: Center(
+            //                       child: Text(
+            //                         'Completed',
+            //                         style: TextStyle(
+            //                             color: controller.containerindex.value == 0
+            //                                 ? Colors.black
+            //                                 : kgrey,
+            //                             fontWeight: FontWeight.w500),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //                 GestureDetector(
+            //                   onTap: () {
+            //                     controller.containerindex(1);
+            //                     controller.update();
+            //                   },
+            //                   child: Container(
+            //                     height: 45,
+            //                     width: 160,
+            //                     decoration: BoxDecoration(
+            //                         borderRadius: BorderRadius.circular(23),
+            //                         color: controller.containerindex.value == 1
+            //                             ? Color(0xffFFC107)
+            //                             : Colors.grey.shade200),
+            //                     child: Center(
+            //                       child: Text(
+            //                         'Cancelled',
+            //                         style: TextStyle(
+            //                             color: controller.containerindex.value == 1
+            //                                 ? Colors.black
+            //                                 : kgrey,
+            //                             fontWeight: FontWeight.w500),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     )
+                
+            //     ),
+            body: 
+                TabBarView(children: [
+                    BookingCompletedWidget(),
+                  BookingCancelledWidget(),
+                
+               
+              ],
               
-             
-            ],
-          )),
+            )),
+    
     );
   }
 }

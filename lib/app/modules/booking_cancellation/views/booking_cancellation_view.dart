@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
@@ -21,11 +22,12 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
             },
             child: Icon(Icons.arrow_back)),
           title: Text('Cancellation',
-          style: TextStyle(
-            fontSize: 20
-          ),),
+          style:appbarfont),
           actions: [
-          Image.asset('assets/offers_icon/supporticon.png')
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Image.asset('assets/offers_icon/supporticon.png'),
+          )
           ],
          ),
       body: Padding(
@@ -213,7 +215,7 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
                  ),
               ),
               SizedBox(
-                height: 200,
+                height: 230.h,
               ),
             GestureDetector(
                     onTap: (){

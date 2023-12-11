@@ -18,11 +18,12 @@ class TicketCancellationView extends GetView<TicketCancellationController> {
             },
             child: Icon(Icons.arrow_back)),
           title: Text('Your Ticket Details',
-          style: TextStyle(
-            fontSize: 20
-          ),),
+          style: appbarfont),
           actions: [
-          Image.asset('assets/offers_icon/supporticon.png')
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Image.asset('assets/offers_icon/supporticon.png'),
+          )
           ],
          ),
       body: ListView(

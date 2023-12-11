@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/modules/screens/busseatmaping/views/paymentsuccesfull_view.dart';
+import 'package:oye_bus/app/routes/app_pages.dart';
 
 class ReviewbookingdetailsView extends GetView {
   const ReviewbookingdetailsView({Key? key}) : super(key: key);
@@ -451,7 +452,7 @@ class ReviewbookingdetailsView extends GetView {
             height: 45.h,
             width: 1.sw,
             onPressed: () {
-              Get.to(PaymentsuccesfullView());
+              Get.toNamed(Routes.RESERVATIONDETAILS);
               //    Get.toNamed(
               // Routes.BUSLOADINGSPLASH,
               //  );

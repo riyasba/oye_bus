@@ -41,13 +41,14 @@ class OffersView extends GetView<OffersController> {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.arrow_back),
-        title: const Text('Checkout some offers?',
-        style: TextStyle(
-          fontSize: 20
-        ),),
+        title:  Text('Checkout some offers',
+          style: appbarfont,),
         centerTitle: true,
         actions: [
-        Image.asset('assets/offers_icon/bellicon.png')
+        Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: Image.asset('assets/offers_icon/bellicon.png'),
+        )
         ],
       ),
        body: ListView(
@@ -142,6 +143,7 @@ class OffersView extends GetView<OffersController> {
               )
             ],
            ),
+           ksizedbox10,
          ],
        ),
     );

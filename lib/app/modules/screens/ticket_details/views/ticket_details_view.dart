@@ -614,13 +614,13 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
           },
           child: Icon(Icons.arrow_back)),
         title:  Text('Your Ticket Details',
-          style: TextStyle(
-          fontSize: 20,
-          
-        ),
+          style:appbarfont,
         ),
         actions: [
-            Image.asset('assets/offers_icon/bellicon.png')
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: Image.asset('assets/offers_icon/bellicon.png'),
+            )
         ],
       ),
        
