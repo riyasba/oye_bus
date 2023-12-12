@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:gif/gif.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
-import 'package:oye_bus/app/modules/reservation_details/views/reservation_details_view.dart';
+
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class PaymentsuccesfullView extends GetView {

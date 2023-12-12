@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
-import 'package:oye_bus/app/modules/authentication/register/views/register_view.dart';
+
 import 'package:oye_bus/app/modules/screens/locationpermisson/views/locationpermisson_view.dart';
-import 'package:oye_bus/app/modules/screens/offers/views/offers_view.dart';
+
 import 'package:oye_bus/app/modules/screens/profile/views/widget/myaccountbutton_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
+import 'package:url_launcher/url_launcher.dart' as launcher;
 
 class MyaccountView extends GetView {
   const MyaccountView({Key? key}) : super(key: key);
@@ -92,7 +94,13 @@ class MyaccountView extends GetView {
                       ),
                       ksizedbox20,
                       MyaccountbuttonView(
-                        onPressed: () {},
+                        onPressed: () async {
+                          Uri uri = Uri.parse('tel:+1-555-010-999');
+                          if (!await launcher.launchUrl(uri)) {
+                            debugPrint(
+                                "Could not launch the uri"); // because the simulator doesn't has the phone app
+                          }
+                        },
                         text: 'Call Support',
                       ),
                       ksizedbox20,

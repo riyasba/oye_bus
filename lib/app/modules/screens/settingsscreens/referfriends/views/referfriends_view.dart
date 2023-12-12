@@ -1,11 +1,14 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:expansion_tile_group/expansion_tile_group.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
+import 'package:share/share.dart';
 
 import '../controllers/referfriends_controller.dart';
 
@@ -54,7 +57,6 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                        
                           Text(
                             'Your Code:',
                             style: TextStyle(
@@ -67,7 +69,9 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                               fontSize: 20,
                               color: kred,
                             ),
-                          ),kwidth10,kwidth10,
+                          ),
+                          kwidth10,
+                          kwidth10,
                           Text(
                             'Copy',
                             style: TextStyle(
@@ -75,7 +79,24 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                                 fontWeight: FontWeight.w600,
                                 color: Colors.blue),
                           ),
-                          Image.asset('assets/images/copy 1.png')
+                          InkWell(
+                            onTap: () {
+                              //  FlutterClipboard.copy('6543').then(
+                              //    (value) =>
+                              Fluttertoast.showToast(
+                                  msg: "Copy to clipboard",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.CENTER,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: kblue,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0
+                                  //),
+                                  //print("code copied")
+                                  );
+                            },
+                            child: Image.asset('assets/images/copy 1.png'),
+                          ),
                         ],
                       ),
                     ),
@@ -85,6 +106,8 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                     height: 45.h,
                     width: 1.sw,
                     onPressed: () {
+                      String referralmsg = "hei";
+                      Share.share('$referralmsg');
                       // Get.to(
                       //   AddcopassengersView(),
                       // );

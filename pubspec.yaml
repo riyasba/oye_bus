@@ -13,9 +13,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
- 
   cupertino_icons: ^1.0.2
   google_fonts: ^6.1.0
   flutter_screenutil: ^5.9.0
@@ -41,6 +38,10 @@ dependencies:
   dotted_line: ^3.2.2
   flutter_rating_bar: ^4.0.1
   document_file_save_plus: ^2.0.0
+  flutter_phone_direct_caller: ^2.1.1
+  url_launcher: ^6.2.2
+  clipboard: ^0.1.3
+  fluttertoast: ^8.2.4
   # location: 
 
   #share_plus: ^7.2.1
