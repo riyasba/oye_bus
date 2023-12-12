@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
-import 'package:oye_bus/app/modules/screens/home/controllers/home_controller.dart';
+import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
 import 'package:oye_bus/app/modules/screens/search/widgets/recent_chips.dart';
 

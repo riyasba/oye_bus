@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
-import 'package:oye_bus/app/modules/screens/bus_list/widgets/seperator_widgets.dart';
-import 'package:oye_bus/app/modules/screens/busseatmaping/views/reviewbookingdetails_view.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/bus_list/widgets/seperator_widgets.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/reviewbookingdetails_view.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/widgets/dotted_line_small.dart';
 
 import '../controllers/passenger_info_controller.dart';
