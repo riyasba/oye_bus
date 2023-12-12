@@ -1,6 +1,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
@@ -58,8 +59,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                   child: Container(
-                                    height: 70,
-                                    width: 165,
+                                    height: 70.h,
+                                    width: 165.w,
                                     decoration: BoxDecoration(
                                                          
                                       color:controller.colorindex.value==0? Color(0xffFF0000):
@@ -69,7 +70,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                       child: Text('Sort by',
                                       style: TextStyle(
                                         color: controller.colorindex.value==0?kwhite:Colors.black,
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima '
                                       ),),
@@ -77,8 +78,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                   ),
                                 ),
                                   Container(
-                                  height: 1,
-                                  width: 165,
+                                  height: 1.h,
+                                  width: 165.w,
                                   decoration: BoxDecoration(
                                     color: Colors.black
                                   ),
@@ -89,8 +90,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70,
-                                    width: 165,
+                                    height: 70.h,
+                                    width: 165.w,
                                     decoration: BoxDecoration(
                                                           
                                        color:controller.colorindex.value==1? Color(0xffFF0000):
@@ -101,7 +102,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
                                         color: controller.colorindex.value==1?kwhite:Colors.black
@@ -110,8 +111,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                    ),
                                  ),
                                   Container(
-                                  height: 1,
-                                  width: 165,
+                                  height: 1.h,
+                                  width: 165.w,
                                   decoration: BoxDecoration(
                                     color: Colors.black
                                   ),
@@ -122,8 +123,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70,
-                                    width: 165,
+                                    height: 70.h,
+                                    width: 165.w,
                                     decoration: BoxDecoration(
                                                           
                                      color:controller.colorindex.value==2? Color(0xffFF0000):
@@ -134,7 +135,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
                                         color: controller.colorindex.value==2?kwhite:Colors.black
@@ -143,8 +144,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                  ),
                                  ),
                                   Container(
-                                  height: 1,
-                                  width: 165,
+                                  height: 1.h,
+                                  width: 165.w,
                                   decoration: BoxDecoration(
                                     color: Colors.black
                                   ),
@@ -155,8 +156,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                      controller.update();
                                   },
                                    child: Container(
-                                    height: 70,
-                                    width: 165,
+                                    height: 70.h,
+                                    width: 165.w,
                                     decoration: BoxDecoration(
                                     color:controller.colorindex.value==3? Color(0xffFF0000):
                                         Color(0xffFFEDED)
@@ -166,7 +167,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
                                         color: controller.colorindex.value==3?kwhite:Colors.black
@@ -175,8 +176,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                    ),
                                  ),
                                 Container(
-                                  height: 1,
-                                  width: 165,
+                                  height: 1.h,
+                                  width: 165.w,
                                   decoration: BoxDecoration(
                                     color: Colors.black
                                   ),
@@ -187,8 +188,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70,
-                                    width: 165,
+                                    height: 70.h,
+                                    width: 165.w,
                                     decoration: BoxDecoration(
                                       color:controller.colorindex.value==4? Color(0xffFF0000):
                                         Color(0xffFFEDED)
@@ -198,7 +199,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
                                         color: controller.colorindex.value==4?kwhite:Colors.black
@@ -207,8 +208,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                    ),
                                  ),
                                   Container(
-                                  height: 1,
-                                  width: 165,
+                                  height: 1.h,
+                                  width: 165.w,
                                   decoration: BoxDecoration(
                                     color: Colors.black
                                   ),
@@ -219,8 +220,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70,
-                                    width: 165,
+                                    height: 70.h,
+                                    width: 165.w,
                                     decoration: BoxDecoration(
                                       color:controller.colorindex.value==5? Color(0xffFF0000):
                                         Color(0xffFFEDED)
@@ -230,7 +231,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
                                         color: controller.colorindex.value==5?kwhite:Colors.black
@@ -238,8 +239,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     ),
                                     ),
                                  ),  Container(
-                                  height: 1,
-                                  width: 165,
+                                  height: 1.h,
+                                  width: 165.w,
                                   decoration: BoxDecoration(
                                     color: Colors.black
                                   ),
@@ -250,8 +251,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70,
-                                    width: 165,
+                                    height: 70.h,
+                                    width: 165.w,
                                     decoration: BoxDecoration(
                                          color:controller.colorindex.value==6? Color(0xffFF0000):
                                         Color(0xffFFEDED)
@@ -261,7 +262,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
                                         color: controller.colorindex.value==6?kwhite:Colors.black
@@ -270,8 +271,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                    ),
                                  ),
                                  Container(
-                                  height: 1,
-                                  width: 165,
+                                  height: 1.h,
+                                  width: 165.w,
                                   decoration: BoxDecoration(
                                     color: Colors.black
                                   ),
@@ -282,8 +283,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70,
-                                    width: 165,
+                                    height: 70.h,
+                                    width: 165.w,
                                     decoration: BoxDecoration(
                                          color:controller.colorindex.value==7? Color(0xffFF0000):
                                         Color(0xffFFEDED)
@@ -293,7 +294,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
                                         color: controller.colorindex.value==7?kwhite:Colors.black
@@ -302,8 +303,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                    ),
                                  ),
                                    Container(
-                                  height: 1,
-                                  width: 165,
+                                  height: 1.h,
+                                  width: 165.w,
                                   decoration: BoxDecoration(
                                     color: Colors.black
                                   ),
@@ -314,8 +315,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70,
-                                    width: 165,
+                                    height: 70.h,
+                                    width: 165.w,
                                     decoration: BoxDecoration(
                                          color:controller.colorindex.value==8? Color(0xffFF0000):
                                         Color(0xffFFEDED)
@@ -325,7 +326,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
                                         color: controller.colorindex.value==8?kwhite:Colors.black
@@ -334,8 +335,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                    ),
                                  ),
                                    Container(
-                                  height: 1,
-                                  width: 165,
+                                  height: 1.h,
+                                  width: 165.w,
                                   decoration: BoxDecoration(
                                     color: Colors.black
                                   ),
@@ -346,8 +347,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70,
-                                    width: 165,
+                                    height: 70.h,
+                                    width: 165.w,
                                     decoration: BoxDecoration(
                                          color:controller.colorindex.value==9? Color(0xffFF0000):
                                         Color(0xffFFEDED)
@@ -357,7 +358,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
                                         color: controller.colorindex.value==9?kwhite:Colors.black
@@ -379,7 +380,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 120,
+                                      width: 120.w,
                                       child: Text('Relevance')),
                                     Checkbox( 
                                       shape: CircleBorder(),
@@ -393,7 +394,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 120,
+                                      width: 120.w,
                                       child: Text('Price - Low to High')),
                                      Checkbox( 
                                       shape: CircleBorder(),
@@ -407,7 +408,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 120,
+                                      width: 120.w,
                                       child: Text('Best rated first')),
                                      Checkbox( 
                                       shape: CircleBorder(),
@@ -421,7 +422,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 120,
+                                      width: 120.w,
                                       child: Text('Early departure')),
                                      Checkbox( 
                                       shape: CircleBorder(),
@@ -435,7 +436,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 120,
+                                      width: 120.w,
                                       child: Text('Late departure')),
                                      Checkbox( 
                                       shape: CircleBorder(),
@@ -458,7 +459,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 20,
+                                      width: 20.w,
                                       child: Image.asset('assets/offers_icon/depatureicon1.png')),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 10,left: 3),
@@ -467,13 +468,13 @@ class BusFilterView extends GetView<BusFilterController> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 95,
+                                            width: 95.w,
                                             child: Text('06:00 - 12:00')),
                                           Container(
-                                            width:95,
+                                            width:95.w,
                                             child: Text('Morning ',
                                             style: TextStyle(
-                                              fontSize: 11
+                                              fontSize: 11.sp
                                             ),),
                                           )
                                         ],
@@ -492,7 +493,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 20,
+                                      width: 20.w,
                                       child: Image.asset('assets/offers_icon/depatureicon2.png')),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 10,left: 3),
@@ -501,13 +502,13 @@ class BusFilterView extends GetView<BusFilterController> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 95,
+                                            width: 95.w,
                                             child: Text('12:00 - 18:00')),
                                           Container(
-                                            width: 95,
+                                            width: 95.w,
                                             child: Text('Afternoon',
                                             style: TextStyle(
-                                              fontSize: 11
+                                              fontSize: 11.sp
                                             ),),
                                           )
                                         ],
@@ -526,7 +527,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 20,
+                                      width: 20.w,
                                       child: Image.asset('assets/offers_icon/depatureicon3.png',
                                 
                                       ),
@@ -538,13 +539,13 @@ class BusFilterView extends GetView<BusFilterController> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width:95,
+                                            width:95.w,
                                             child: Text('18:00 - 24:00')),
                                           Container(
-                                            width: 95,
+                                            width: 95.w,
                                             child: Text('Evening',
                                             style: TextStyle(
-                                              fontSize: 11
+                                              fontSize: 11.sp
                                             ),),
                                           )
                                         ],
@@ -563,7 +564,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 20,
+                                      width: 20.w,
                                       child: Image.asset('assets/offers_icon/depatureicon4.png')),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 10,left: 3),
@@ -572,13 +573,13 @@ class BusFilterView extends GetView<BusFilterController> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width:95,
+                                            width:95.w,
                                             child: Text('00:00 - 06:00')),
                                           Container(
-                                            width: 95,
+                                            width: 95.w,
                                             child: Text('Night',
                                             style: TextStyle(
-                                              fontSize: 11
+                                              fontSize: 11.sp
                                             ),),
                                           )
                                         ],
@@ -605,13 +606,13 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 20,
+                                      width: 20.w,
                                       child: Image.asset('assets/offers_icon/bustypeicon1.png')),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 0,left: 5),
                                       child: 
                                           Container(
-                                            width: 95,
+                                            width: 95.w,
                                             child: Text('Seater')),
                                           
                                         
@@ -629,13 +630,13 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 20,
+                                      width: 20.w,
                                       child: Image.asset('assets/offers_icon/bustypeicon2.png')),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 0,left: 5),
                                       child: 
                                           Container(
-                                            width: 95,
+                                            width: 95.w,
                                             child: Text('Sleeper')),
                                          
                                         
@@ -653,7 +654,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 20,
+                                      width: 20.w,
                                       child: Image.asset('assets/offers_icon/bustypeicon3.png',
                                 
                                       ),
@@ -662,7 +663,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                       padding: const EdgeInsets.only(top: 0,left: 5),
                                       child:
                                           Container(
-                                            width:95,
+                                            width:95.w,
                                             child: Text('AC')),
                                         
                                     ),
@@ -679,13 +680,13 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 20,
+                                      width: 20.w,
                                       child: Image.asset('assets/offers_icon/bustypeicon4.png')),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 0,left: 5),
                                       child: 
                                           Container(
-                                            width:95,
+                                            width:95.w,
                                             child: Text('Non - Ac')),
                                         
                                     ),
@@ -710,13 +711,13 @@ class BusFilterView extends GetView<BusFilterController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 20,
+                                      width: 20.w,
                                       child: Image.asset('assets/offers_icon/singlewinseaticon.png')),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 0,left: 5),
                                       child: 
                                           Container(
-                                            width: 95,
+                                            width: 95.w,
                                             child: Text('Single Seats')),
                                           
                                         
@@ -763,8 +764,8 @@ class BusFilterView extends GetView<BusFilterController> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          height: 51,
-                          width: 155,
+                          height: 51.h,
+                          width: 155.w,
                           decoration: BoxDecoration(
                              borderRadius: BorderRadius.circular(7),
                             color: Colors.grey.shade300
@@ -773,14 +774,14 @@ class BusFilterView extends GetView<BusFilterController> {
                             child: Text('CLEAR',
                             style: TextStyle(
                               fontFamily: 'Proxima ',
-                              fontSize: 17,
+                              fontSize: 17.sp,
                               fontWeight: FontWeight.w700
                             ),),
                           ),
                         ),
                         Container(
-                        height: 51,
-                          width: 155,
+                        height: 51.h,
+                          width: 155.w,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(7),
                             color:Color(0xffFF0000)
@@ -789,7 +790,7 @@ class BusFilterView extends GetView<BusFilterController> {
                             child: Text('APPLY',
                             style: TextStyle(
                               fontFamily: 'Proxima ',
-                              fontSize: 17,
+                              fontSize: 17.sp,
                               fontWeight: FontWeight.w700,
                               color: kwhite
                             )),

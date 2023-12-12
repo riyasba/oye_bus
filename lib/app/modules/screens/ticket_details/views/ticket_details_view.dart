@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
@@ -541,7 +542,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                   pdfLib.Padding(
                     padding: pdfLib.EdgeInsets.only(left: 10),
                     child: pdfLib.Container(
-                      width: 200,
+                      width: 200.w,
                       child: pdfLib.Text('KMPL Kalaimakal Travels TN 01 BC 3432',
                       style: pdfLib.TextStyle(
                      
@@ -551,7 +552,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                   pdfLib.Padding(
                     padding:pdfLib.EdgeInsets.only(top: 10),
                     child: pdfLib.Container(
-                      width: 374,
+                      width: 374.w,
                       decoration: pdfLib.BoxDecoration(
                         
                       ),
@@ -631,8 +632,8 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
            child: Column(
             children: [
              Container(
-              height: 532,
-              width: 374,
+              height: 532.h,
+              width: 374.w,
               decoration: BoxDecoration(
                 color: Color(0xffFFD400)
               ),
@@ -647,7 +648,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       children: [
                         Text('KMRL Kalaimakal',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.w500
                         ),),
                         Text('A/C Seater / Sleepr (2+1) - 1 Seat')
@@ -661,7 +662,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         Column(
                           children: [
                             Container(
-                              height: 130,
+                              height: 130.h,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -671,20 +672,20 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                       Text('21:50'),
                                         Text('10 Nov',
                                   style: TextStyle(
-                                    fontSize: 10
+                                    fontSize: 10.sp
                                   ),)
                                     ],
                                   ),
                                    Text('7h 15m',
                                    style: TextStyle(
-                                    fontSize: 10
+                                    fontSize: 10.sp
                                    ),),
                                    Column(
                                     children: [
                                       Text('05:05'),
                                       Text('11 Nov',
                                       style: TextStyle(
-                                        fontSize: 10
+                                        fontSize: 10.sp
                                       ),)
                                     ],
                                    )
@@ -698,23 +699,23 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                           child: Column(
                             children: [
                               Container(
-                                height: 15,
-                                width: 20,
+                                height: 15.h,
+                                width: 20.w,
                                 decoration: BoxDecoration(
                                   color: Colors.black,
                                   shape: BoxShape.circle
                                 ),
                               ),
                               Container(
-                                height: 92,
-                                width: 5,
+                                height: 92.h,
+                                width: 5.w,
                                 decoration: BoxDecoration(
                                   color: Colors.black
                                 ),
                               ),
                                  Container(
-                                height: 15,
-                                width: 20,
+                                height: 15.h,
+                                width: 20.w,
                                 decoration: BoxDecoration(
                                   color: Colors.black,
                                   shape: BoxShape.circle
@@ -730,7 +731,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: 130,
+                                height: 130.h,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -750,7 +751,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                   ),
                   ksizedbox10,
                   Container(
-                    width: 374,
+                    width: 374.w,
                     decoration: BoxDecoration(
                       
                     ),
@@ -764,7 +765,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     padding: const EdgeInsets.only(left: 10),
                     child: Text('21:50 PM - 06:15AM',
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 15.sp,
                       fontWeight: FontWeight.w600
                     ),),
                   ),
@@ -828,7 +829,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                   ),
                   ksizedbox10,
                   Container(
-                    width: 374,
+                    width: 374.w,
                     decoration: BoxDecoration(
                       
                     ),
@@ -840,7 +841,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: Container(
-                      width: 200,
+                      width: 200.w,
                       child: Text('KMPL Kalaimakal Travels TN 01 BC 3432',
                       style: TextStyle(
                         fontWeight: FontWeight.w700
@@ -848,7 +849,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                   ),
                      ksizedbox10,
                   Container(
-                    width: 374,
+                    width: 374.w,
                     decoration: BoxDecoration(
                       
                     ),
@@ -878,12 +879,13 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
               ),
              ),
              ksizedbox10,
-             Container(width: 374,
+             Container(
+              width: 374.w,
              child: Column(
                children: [
                  Text('Bus information will be shared on the following number on the day trip of journey.',
                  style: TextStyle(
-                  height: 1.5,
+                  height: 1.5.h,
                   fontFamily: 'Proxima '
                  ),),
                  

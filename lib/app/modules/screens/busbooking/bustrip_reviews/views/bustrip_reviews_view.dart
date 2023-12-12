@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
@@ -20,7 +21,7 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
         ),
         title: Text(
           'Bus Trip Reviews',
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: 20.sp),
         ),
         actions: [
           Image.asset('assets/offers_icon/supporticon.png'),
@@ -34,8 +35,8 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 131,
-                  width: 470,
+                  height: 131.sp,
+                  width: 470.sp,
                   decoration: BoxDecoration(color: Colors.grey.shade200),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -44,7 +45,7 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                       Text(
                         'KMPL Kalaimakal Travels',
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 18.sp,
                             fontFamily: 'Proxima',
                             fontWeight: FontWeight.w700),
                       ),
@@ -74,7 +75,7 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                   'Ratings & Reviews',
                   style: TextStyle(
                       fontFamily: 'Proxima ',
-                      fontSize: 16.5,
+                      fontSize: 16.5.sp,
                       fontWeight: FontWeight.w600),
                 ),
                 ksizedbox10,
@@ -109,7 +110,7 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                       '3.4 ',
                       style: TextStyle(
                           fontFamily: 'Proxima',
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontWeight: FontWeight.w600),
                     )
                   ],
@@ -120,7 +121,7 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                     'What Travellers Liked',
                     style: TextStyle(
                         fontFamily: 'Proxima',
-                        fontSize: 18,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -135,8 +136,8 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                           controller.update();
                         },
                         child: Container(
-                          height: 45,
-                          width: 160,
+                          height: 45.h,
+                          width: 160.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(34),
                               color: controller.containercolor.value == 0
@@ -158,8 +159,8 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                           controller.update();
                         },
                         child: Container(
-                          height: 45,
-                          width: 160,
+                          height: 45.h,
+                          width: 160.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(34),
                               color: controller.containercolor.value == 1
@@ -186,8 +187,8 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                           controller.update();
                         },
                         child: Container(
-                          height: 45,
-                          width: 160,
+                          height: 45.h,
+                          width: 160.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(34),
                               color: controller.containercolor.value == 2
@@ -209,8 +210,8 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                           controller.update();
                         },
                         child: Container(
-                          height: 45,
-                          width: 160,
+                          height: 45.h,
+                          width: 160.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(34),
                               color: controller.containercolor.value == 3
@@ -237,8 +238,8 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                           controller.update();
                         },
                         child: Container(
-                          height: 45,
-                          width: 160,
+                          height: 45.h,
+                          width: 160.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(34),
                               color: controller.containercolor.value == 4
@@ -260,8 +261,8 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                           controller.update();
                         },
                         child: Container(
-                          height: 45,
-                          width: 160,
+                          height: 45.h,
+                          width: 160.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(34),
                               color: controller.containercolor.value == 5
@@ -288,8 +289,8 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                           controller.update();
                         },
                         child: Container(
-                          height: 45,
-                          width: 160,
+                          height: 45.h,
+                          width: 160.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(34),
                               color: controller.containercolor.value == 6
@@ -311,8 +312,8 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                           controller.update();
                         },
                         child: Container(
-                          height: 45,
-                          width: 160,
+                          height: 45.h,
+                          width: 160.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(34),
                               color: controller.containercolor.value == 7
@@ -333,13 +334,13 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                   'Reviews',
                   style: TextStyle(
                       fontFamily: 'Proxima ',
-                      fontSize: 16.5,
+                      fontSize: 16.5.sp,
                       fontWeight: FontWeight.w700),
                 ),
                 ksizedbox20,
                 Container(
-                  height: 100,
-                  width: 377,
+                  height: 100.h,
+                  width: 377.w,
                   decoration: BoxDecoration(
                       border: Border.all(width: 1, color: kgrey),
                       borderRadius: BorderRadius.circular(4)),
@@ -349,8 +350,8 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                       child: Text(
                         'Hi this bus super and good qulaitys and pick up and dropping safe this bus..',
                         style: TextStyle(
-                          height: 1.4,
-                          fontSize: 15.5,
+                          height: 1.4.h,
+                          fontSize: 15.5.sp,
                           fontFamily: 'Proxima ',
                         ),
                       ),
@@ -363,8 +364,8 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                     Get.back();
                   },
                   child: Container(
-                    height: 50,
-                    width: 399,
+                    height: 50.h,
+                    width: 399.w,
                     decoration: BoxDecoration(
                         color: Color(0xffEE0000),
                         borderRadius: BorderRadius.circular(4)),
@@ -373,7 +374,7 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                         'SUBMIT REVIEWS',
                         style: TextStyle(
                             fontFamily: 'Proxima ',
-                            fontSize: 18,
+                            fontSize: 18.sp,
                             fontWeight: FontWeight.w600,
                             color: kwhite),
                       ),

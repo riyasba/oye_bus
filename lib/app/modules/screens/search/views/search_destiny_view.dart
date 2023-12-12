@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
@@ -23,7 +24,7 @@ class SearchDestinyView extends GetView<BusSearchController> {
           child: Padding(
             padding: const EdgeInsets.only(top: 5),
             child: Container(
-              height: 40,
+              height: 40.h,
               decoration: BoxDecoration(
                 color: klightGrey.withOpacity(0.5)
               ),
@@ -38,10 +39,10 @@ class SearchDestinyView extends GetView<BusSearchController> {
                       },
                       child: const Icon(Icons.arrow_back,color: Colors.black,)),
                     Text("Choose Destinations Points",style: smalbalckfont.copyWith(
-                      fontSize: 16
+                      fontSize: 16.sp
                     ),),
                     Container(
-                      width: 30,
+                      width: 30.w,
                     )
                   ],
                 ),
@@ -53,16 +54,16 @@ class SearchDestinyView extends GetView<BusSearchController> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         const SizedBox(
-            height: 25,
+          SizedBox(
+            height: 25.h,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Container(
-              height: 55,
+              height: 55.h,
               child: TextField(
                 style: primaryFont.copyWith(
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w500
                 ),
                   decoration: InputDecoration(
@@ -88,8 +89,8 @@ class SearchDestinyView extends GetView<BusSearchController> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 20,
+           SizedBox(
+            height: 20.h,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -106,7 +107,7 @@ class SearchDestinyView extends GetView<BusSearchController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(controller.placesList[index],style: primaryFont.copyWith(
-                      fontSize: 18,
+                      fontSize: 18.sp,
                     ),),
                   if(index != controller.placesList.length -1)  Divider()
                         
@@ -115,11 +116,11 @@ class SearchDestinyView extends GetView<BusSearchController> {
               );
             }),
           ),
-          const SizedBox(
-            height: 20,
+           SizedBox(
+            height: 20.h,
           ),
           Container(
-              height: 40,
+              height: 40.h,
               decoration: BoxDecoration(
                 color: klightGrey.withOpacity(0.5)
               ),
@@ -129,17 +130,17 @@ class SearchDestinyView extends GetView<BusSearchController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Recent Searches",style: smalbalckfont.copyWith(
-                      fontSize: 16
+                      fontSize: 16.sp
                     ),),
                     Text("Routes",style: primaryFont.copyWith(
-                      fontSize: 12
+                      fontSize: 12.sp
                     ),),
                   ],
                 ),
               ),
             ),
-            const SizedBox(
-            height: 20,
+             SizedBox(
+            height: 20.h,
           ),
 
           Padding(
@@ -149,8 +150,8 @@ class SearchDestinyView extends GetView<BusSearchController> {
                 RecentChip(
                   places: "Chennai - Salem",
                 ),
-                const SizedBox(
-                  width: 15,
+                 SizedBox(
+                  width: 15.w,
                 ),
                 RecentChip(
                   places: "Chennai - Erode",

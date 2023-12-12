@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:gif/gif.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
+import 'package:oye_bus/app/modules/reservation_details/views/reservation_details_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class PaymentsuccesfullView extends GetView {
@@ -52,10 +53,10 @@ class PaymentsuccesfullView extends GetView {
               height: 45.h,
               width: 1.sw,
               onPressed: () {
-               Get.to(PaymentsuccesfullView());
-                   Get.toNamed(
-                Routes.BOTTUMNAVIGATION,
-                 );
+               Get.toNamed(Routes.RESERVATIONDETAILS);
+                //    Get.toNamed(
+                // Routes.BOTTUMNAVIGATION,
+                //  );
               },
               text: 'Next',
               color: kred,

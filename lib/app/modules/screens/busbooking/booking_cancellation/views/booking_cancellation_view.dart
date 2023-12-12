@@ -37,8 +37,8 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
        crossAxisAlignment: CrossAxisAlignment.start,
           children: [
               Container(
-                height: 140,
-                width: 399,
+                height: 140.h,
+                width: 399.w,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(8)
@@ -51,14 +51,14 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
                     children: [
                           Text('KMPL Kalaimakal Travels',
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 17.sp,
                             fontWeight: FontWeight.w700,
                             fontFamily: 'Proxima ',
                   
                           ),
                           ),
                           Container(
-                            width: 399,
+                            width: 399.w,
                             child: Text('------------------------------------------------------------------------------',
                             maxLines: 1,
                             style: TextStyle(
@@ -70,20 +70,20 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
                               Text('Chennai',
                               style: TextStyle(
                                    color: Colors.grey,
-                                  fontSize: 15.5,
+                                  fontSize: 15.5.sp,
                                     fontFamily: 'Proxima ',
                               ),),
                               Icon(Icons.arrow_forward),
                               Text('Bengaluru',
                             style: TextStyle(
                                  color: Colors.grey,
-                                  fontSize: 15.5,
+                                  fontSize: 15.5.sp,
                                     fontFamily: 'Proxima ',
                             ),)
                             ],
                           ),
                            Container(
-                            width: 399,
+                            width: 399.w,
                             child: Text('------------------------------------------------------------------------------',
                             maxLines: 1,
                             style: TextStyle(
@@ -95,12 +95,12 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
                                 Text('06:50AM',
                                  style: TextStyle(
                                   color: Colors.grey,
-                                  fontSize: 15.5,
+                                  fontSize: 15.5.sp,
                                     fontFamily: 'Proxima ',
                                 ),),
                                 Text('12:15PM',
                                  style: TextStyle(
-                                     fontSize: 15.5,
+                                     fontSize: 15.5.sp,
                                   color: Colors.grey,
                                     fontFamily: 'Proxima ',
                                 ),)
@@ -112,13 +112,13 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
                                 Text('Fri,10 Nov',
                                 style: TextStyle(
                                   color: Colors.grey,
-                                  fontSize: 12,
+                                  fontSize: 12.sp,
                                     fontFamily: 'Proxima ',
                                 ),),
                                 Text('Fri,10 Nov',
                                  style: TextStyle(
                                   color: Colors.grey,
-                                  fontSize: 12,
+                                  fontSize: 12.sp,
                                     fontFamily: 'Proxima ',
                                 ),
                                 )
@@ -132,7 +132,7 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
               Text('Journey Details',
               style: TextStyle(
                   fontFamily: 'Proxima ',
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w600
               ),),
               ksizedbox10,
@@ -140,13 +140,13 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
                 children: [
                   Text('Ticket Number :',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     color: kgrey,
                     fontFamily: 'Proxima ',
                   ),),
                   Text(' 33434JS776WU',
                    style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.sp,
                   
                     fontFamily: 'Proxima ',
                     fontWeight: FontWeight.w600
@@ -157,7 +157,7 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
               ksizedbox30,
               Text('Select Passengers',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 18.sp,
                   
                     fontFamily: 'Proxima ',
                     fontWeight: FontWeight.w600
@@ -165,8 +165,8 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
               ksizedbox20,
               Obx(()=>
                  Container(
-                  height: 52,
-                  width: 389,
+                  height: 52.sp,
+                  width: 389.sp,
                   decoration:BoxDecoration(
                    borderRadius: BorderRadius.circular(7),
                     border: Border.all(
@@ -222,8 +222,8 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
                       Get.toNamed(Routes.REVIEW_REFUND_DETAILS);
                     },
                     child: Container(
-                      height: 50,
-                      width: 399,
+                      height: 50.h,
+                      width: 399.w,
                       decoration: BoxDecoration(
                         color: Color(0xffEE0000),
                         borderRadius: BorderRadius.circular(4)
@@ -232,7 +232,7 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
                         child: Text('REVIEW REFUND DETAILS',
                         style: TextStyle(
                            fontFamily: 'Proxima ',
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
                           color: kwhite
                         ),
@@ -245,7 +245,7 @@ class BookingCancellationView extends GetView<BookingCancellationController> {
                     child: Text('Cancel',
                     style: TextStyle(
                       fontFamily: 'Proxima ',
-                      fontSize: 16
+                      fontSize: 16.sp
                     ),),
                   )
 

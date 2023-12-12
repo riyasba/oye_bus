@@ -452,7 +452,7 @@ class ReviewbookingdetailsView extends GetView {
             height: 45.h,
             width: 1.sw,
             onPressed: () {
-              Get.toNamed(Routes.RESERVATIONDETAILS);
+              Get.to(PaymentsuccesfullView());
               //    Get.toNamed(
               // Routes.BUSLOADINGSPLASH,
               //  );

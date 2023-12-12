@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
@@ -46,16 +47,16 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                     Row(
                       children: [
                         Icon(Icons.directions_bus_rounded,color: kred,),
-                       const  SizedBox(
-                          width: 10,
+                         SizedBox(
+                          width: 10.w,
                         ),
                         Text("KMPL Kalaimakal Travels",style: smalbalckfont.copyWith(
-                          fontSize: 15
+                          fontSize: 15.sp
                         ),)
                       ],
                     ),
-                   const  SizedBox(
-                      height: 10,
+                     SizedBox(
+                      height: 10.w,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -66,34 +67,34 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                width: 110,
+                                width: 110.w,
                                 child: Text("Tambaram valacherry",maxLines: 1, overflow: TextOverflow.ellipsis,style: primaryFont.copyWith(
-                                  fontSize: 14
+                                  fontSize: 14.sp
                                 ),)),
                         
                               Container(
-                                width: 110,
+                                width: 110.w,
                                   child: Text("Chennai",style: primaryFont.copyWith(
                                     color: Colors.black45,
-                                    fontSize: 12
+                                    fontSize: 12.sp
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               Container(
-                                width: 110,
+                                width: 110.w,
                                   child: RichText(
                                     text: TextSpan(text: "22:45 ",style: primaryFont.copyWith(
                                       color: Colors.black87,
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 14
+                                      fontSize: 14.sp
                                     ),
                                     children: [
                                       TextSpan(
                                         text: "Fri, 10 Nov",style: primaryFont.copyWith(
                                       color: Colors.black45,
-                                      fontSize: 13
+                                      fontSize: 13.sp
                                     ),
                                       )
                                     ]
@@ -111,16 +112,16 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              width: 110,
+                              width: 110.w,
                               child: Text("Attibele toll plaza",maxLines: 1, overflow: TextOverflow.ellipsis,style: primaryFont.copyWith(
-                                fontSize: 14
+                                fontSize: 14.sp
                               ),)),
 
                             Container(
-                              width: 110,
+                              width: 110.w,
                                 child: Text("bangalore",style: primaryFont.copyWith(
                                   color: Colors.black45,
-                                  fontSize: 12
+                                  fontSize: 12.sp
                                 ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_filter/controllers/bus_filter_controller.dart';
@@ -34,7 +35,7 @@ class BusfeaturesWidget extends GetView<BusFilterController>  {
                                         children: [
                                            Image.asset(controller.featureiconlist[index]),
                                           Container(
-                                            width: 100,
+                                            width: 100.w,
                                             child: Text(controller.featureslist[index])),
                                         GestureDetector(
                                           onTap: (){
@@ -42,8 +43,8 @@ class BusfeaturesWidget extends GetView<BusFilterController>  {
                                           controller.update();
                                           },
                                           child: Container(
-                                            height: 25,
-                                            width: 25,
+                                            height: 25.h,
+                                            width: 25.w,
                                             decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               color:controller.featurescheckindex==index?Color(0xffFF0000)
