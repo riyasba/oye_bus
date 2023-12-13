@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/modules/bustracking/views/bustracking_view.dart';
+import 'package:oye_bus/app/modules/bustracking/views/widget/map.dart';
 import 'package:oye_bus/app/modules/screens/settingsscreens/myaccount_view.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/screens/notification/views/notification_view.dart';
-import 'package:oye_bus/app/routes/app_pages.dart';
+
 
 class HomeAppBarWidget extends GetView<HomeController> {
   const HomeAppBarWidget({Key? key}) : super(key: key);
@@ -53,18 +55,20 @@ class HomeAppBarWidget extends GetView<HomeController> {
                       style: smalbalckfont.copyWith(
                           fontSize: 17, fontWeight: FontWeight.w800),
                     ),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.location_on_outlined,
-                          size: 13,
-                        ),
-                        Text(
-                          "Chennai, Nungambakkam",
-                          style: primaryFont.copyWith(
-                              fontSize: 11, fontWeight: FontWeight.w400),
-                        ),
-                      ],
+                    InkWell(onTap: (){Get.to(MapSample());},
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.location_on_outlined,
+                            size: 13,
+                          ),
+                          Text(
+                            "Chennai, Nungambakkam",
+                            style: primaryFont.copyWith(
+                                fontSize: 11, fontWeight: FontWeight.w400),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),
