@@ -5,13 +5,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/paymentsuccesfull_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class ReviewbookingdetailsView extends GetView {
-  const ReviewbookingdetailsView({Key? key}) : super(key: key);
+ 
+   ReviewbookingdetailsView({Key? key,
+
+   }) : super(key: key);
+
+   
   @override
   Widget build(BuildContext context) {
+    Get.put(BusseatmapingController());
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -452,7 +459,13 @@ class ReviewbookingdetailsView extends GetView {
             height: 45.h,
             width: 1.sw,
             onPressed: () {
-              Get.to(PaymentsuccesfullView());
+              final busSreatMapController = Get.find<BusseatmapingController>();
+            busSreatMapController.payUseingEaseBuzzSubs(
+              mobilenumber:'9043131548',
+              email: 'sharmilamani2025@gmail.com', 
+              amount:'1000', 
+              name: 'sharmila'
+            );
               //    Get.toNamed(
               // Routes.BUSLOADINGSPLASH,
               //  );

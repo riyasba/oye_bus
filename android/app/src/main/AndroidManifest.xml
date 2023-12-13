@@ -1,8 +1,10 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+ package="com.example.oye_bus"
+  xmlns:tools="http://schemas.android.com/tools">
+
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
-   
         android:label="oye_bus"
         android:name="${applicationName}"
         android:enableOnBackInvokedCallback="true"
@@ -38,5 +40,4 @@
           <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyB-E9dcvDYK_dQ5UNws7ROvpqp7eQ9tDE4"/>
     </application>
-    
 </manifest>
