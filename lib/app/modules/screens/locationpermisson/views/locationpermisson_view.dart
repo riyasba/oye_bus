@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:gif/gif.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
@@ -26,7 +27,16 @@ class LocationpermissonView extends GetView<LocationpermissonController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/Register.gif'),
+              Gif(
+                fps: 30,
+                autostart: Autostart.once,
+                fit: BoxFit.fill,
+                image: AssetImage(
+                  'assets/images/Register.gif',
+                ),
+              ),
+              //
+
               ksizedbox20,
               Text(
                 'Hi, nice to meet you!',
