@@ -208,7 +208,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BUSSEATMAPING,
-      page: () => const BusseatmapingView(),
+      page: () =>  BusseatmapingView(),
       binding: BusseatmapingBinding(),
     ),
     GetPage(
@@ -227,16 +227,18 @@ class AppPages {
       binding: PassengerInfoBinding(),
     ),
     GetPage(
-        name: _Paths.BUSFILTER,
-        page: () => BusFilterView(),
-        binding: BusFilterBinding()),
+      name: _Paths.BUSFILTER,
+      page: () => BusFilterView(),
+      binding: BusFilterBinding(),
+    ),
     GetPage(
-        name: _Paths.RESERVATIONDETAILS,
-        page: () => ReservationDetailsView(),
-        binding: ReservationDetailsBinding()),
+      name: _Paths.RESERVATIONDETAILS,
+      page: () => ReservationDetailsView(),
+      binding: ReservationDetailsBinding(),
+    ),
     GetPage(
       name: _Paths.BUSTRACKING,
-      page: () => const BustrackingView(),
+      page: () => BustrackingView(),
       binding: BustrackingBinding(),
     ),
   ];

@@ -1,11 +1,15 @@
 import 'dart:async';
 
+import 'package:dotted_line/dotted_line.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/bustracking/views/widget/map.dart';
 
 import '../controllers/bustracking_controller.dart';
@@ -14,7 +18,7 @@ class BustrackingView extends GetView<BustrackingController> {
   const BustrackingView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MapSample();
+    return Scaffold();
   }
 }
 
@@ -24,6 +28,8 @@ class Mapsybol extends StatefulWidget {
   @override
   State<Mapsybol> createState() => _MapsybolState();
 }
+
+final bustrackingController = Get.find<BustrackingController>();
 
 class _MapsybolState extends State<Mapsybol> {
   List<LatLng> polylineCoordinates = [
@@ -75,11 +81,11 @@ class _MapsybolState extends State<Mapsybol> {
     controller.animateCamera(CameraUpdate.newCameraPosition(_chennaiPosition));
   }
 
-static final CameraPosition _chennaiPosition = CameraPosition(
-  target: LatLng(13.0827, 80.2707), // Chennai coordinates
-  tilt: 59.0,
-  zoom: 15.0,
-);
+  static final CameraPosition _chennaiPosition = CameraPosition(
+    target: LatLng(13.0827, 80.2707), // Chennai coordinates
+    tilt: 59.0,
+    zoom: 15.0,
+  );
   _init() async {
     _location = Location();
     _cameraPosition = CameraPosition(
@@ -111,17 +117,19 @@ static final CameraPosition _chennaiPosition = CameraPosition(
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Bus Route Map'),centerTitle: true,
+      appBar: AppBar(
+        title: Text('Bus Route Map'),
+        centerTitle: true,
         leading: InkWell(
             onTap: () => Get.back(),
             child: Icon(Icons.arrow_back_ios_new_rounded)),
       ),
-      floatingActionButton: InkWell(
-          onTap: () {
-            print('andi');
-            _goToTheLake();
-          },
-          child: Bottumnar()),
+      // floatingActionButton: InkWell(
+      //     onTap: () {
+      //       print('andi');
+      //       _goToTheLake();
+      //     },
+      //     child: Bottumnar()),
       body: _buildBody(),
     );
   }
@@ -129,7 +137,7 @@ static final CameraPosition _chennaiPosition = CameraPosition(
   Widget _buildBody() {
     return _getMap();
   }
-
+bool isToggled = false;
   Widget _getMarker() {
     return Container(
       width: 40,
@@ -173,7 +181,9 @@ static final CameraPosition _chennaiPosition = CameraPosition(
           },
           polylines: {
             Polyline(
-                polylineId: PolylineId('route'), points: polylineCoordinates,)
+              polylineId: PolylineId('route'),
+              points: polylineCoordinates,
+            )
           },
           markers: {
             Marker(
@@ -186,8 +196,268 @@ static final CameraPosition _chennaiPosition = CameraPosition(
           },
         ),
         Positioned.fill(
-            child: Align(alignment: Alignment.center, child: _getMarker()))
+            child: Align(alignment: Alignment.center, child: _getMarker())),
+        Positioned(
+          bottom: 9,
+          left: 0,
+          right: 0,
+          child: InkWell(
+              onTap: () {
+                  setState(() {
+          isToggled = !isToggled;
+        });
+         
+              },
+              child: isToggled ? Expandedcontainer()
+                  : Bottumnar()),
+        )
       ],
+    );
+  }
+}
+
+class Expandedcontainer extends StatelessWidget {
+  Expandedcontainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: kwhite,
+          borderRadius: BorderRadius.circular(5),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 3,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+        width: 300.w,
+        height: 300.h,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              'KRML Kalaimagal BUS',
+              style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                  fontWeight: FontWeight.w600, fontSize: 16.sp, color: kblack),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        'Thambaram',
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12.sp,
+                                color: kblack),
+                      ),
+                      Icon(
+                        CupertinoIcons.arrow_up_arrow_down_circle_fill,
+                        color: kblack,
+                        size: 25.0,
+                      ),
+                      Text(
+                        'koyambedu',
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12.sp,
+                                color: kblack),
+                      )
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'The bus will arrive in',
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12.sp,
+                                color: kgrey),
+                      ),
+                      Text(
+                        '24 Min.',
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12.sp,
+                                color: kblack),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+            DottedLine(),
+            ksizedbox10,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Address',
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12.sp,
+                                color: kblack),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 17),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 1.2, // Adjust the width of the line
+                        height: 30, // Adjust the height of the line
+                        color:
+                            Colors.black, // Change the color of the line here
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Address',
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12.sp,
+                                color: kblack),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 17),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 1.2, // Adjust the width of the line
+                        height: 30, // Adjust the height of the line
+                        color:
+                            Colors.black, // Change the color of the line here
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Address',
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12.sp,
+                                color: kblack),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 17),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 1.2, // Adjust the width of the line
+                        height: 30, // Adjust the height of the line
+                        color:
+                            Colors.black, // Change the color of the line here
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Address',
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12.sp,
+                                color: kblack),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 17),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 1.2, // Adjust the width of the line
+                        height: 30, // Adjust the height of the line
+                        color:
+                            Colors.black, // Change the color of the line here
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        'All stops',
+                        style: Theme.of(context)
+                            .textTheme
+                            .displaySmall!
+                            .copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12.sp,
+                                color: Colors.blue),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
     );
   }
 }

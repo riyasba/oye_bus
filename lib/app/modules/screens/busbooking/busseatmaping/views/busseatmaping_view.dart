@@ -8,9 +8,13 @@ import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/picka
 import '../controllers/busseatmaping_controller.dart';
 
 class BusseatmapingView extends GetView<BusseatmapingController> {
-  const BusseatmapingView({Key? key}) : super(key: key);
+  BusseatmapingView({Key? key}) : super(key: key);
+//  List<bool> seats = List.generate(30, (_) => false);
   @override
   Widget build(BuildContext context) {
+    Get.put(
+      BusseatmapingController(),
+    );
     var size = MediaQuery.of(context).size;
     return Container(
       color: Colors.grey[200],
@@ -327,7 +331,67 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                             'assets/images/fi_1723544.png'),
                                       ],
                                     ),
-                                  )
+                                  ),
+
+ GetBuilder<BusseatmapingController>(
+                                    builder: (_) {
+                                      return Container(
+                                          width: size.width * 0.33,
+                                          height: size.height * 0.33,
+                                          child: GridView.builder(physics: NeverScrollableScrollPhysics(),
+                                            shrinkWrap: true,
+                                            padding: EdgeInsets.all(20.0),
+                                            gridDelegate:
+                                                SliverGridDelegateWithFixedCrossAxisCount(
+                                              mainAxisSpacing: 10.0,
+                                              crossAxisSpacing: 10.0,
+                                              crossAxisCount:
+                                                  3, // Number of seats per row
+                                            ),
+                                            itemCount:controller. seats.length,
+                                            itemBuilder:
+                                                (BuildContext context, int index) {
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  controller.seatSelection(index);
+                                                  controller.update();
+                                                },
+                                                child: AnimatedContainer(
+                                                  duration:
+                                                      Duration(milliseconds: 300),
+                                                  curve: Curves.easeInOut,
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  decoration: BoxDecoration(
+                                                    color:controller. seats[index]
+                                                        ? Colors.grey[300]
+                                                        : Colors.green,
+                                                    borderRadius:
+                                                        BorderRadius.circular(5.0),
+                                                    border: Border.all(
+                                                      color: Colors.grey.shade400,
+                                                      width: 1.0,
+                                                    ),
+                                                  ),
+                                                  child: Center(
+                                                    child: Icon(
+                                                  controller.    seats[index]
+                                                          ? Icons.event_seat
+                                                          : Icons.event_available,
+                                                      size: 19.0,
+                                                      color:controller. seats[index]
+                                                          ? Colors.red
+                                                          : Colors.black,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        );
+                                    }
+                                  ),
+
                                 ],
                               ),
                             )
@@ -378,7 +442,66 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                             'assets/images/fi_1723544.png'),
                                       ],
                                     ),
-                                  )
+                                  ),
+                                  GetBuilder<BusseatmapingController>(
+                                    builder: (_) {
+                                      return Container(
+                                          width: size.width * 0.33,
+                                          height: size.height * 0.33,
+                                          child: GridView.builder(physics: NeverScrollableScrollPhysics(),
+                                            shrinkWrap: true,
+                                            padding: EdgeInsets.all(20.0),
+                                            gridDelegate:
+                                                SliverGridDelegateWithFixedCrossAxisCount(
+                                              mainAxisSpacing: 10.0,
+                                              crossAxisSpacing: 10.0,
+                                              crossAxisCount:
+                                                  3, // Number of seats per row
+                                            ),
+                                            itemCount:controller. seats.length,
+                                            itemBuilder:
+                                                (BuildContext context, int index) {
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  controller.seatSelection(index);
+                                                  controller.update();
+                                                },
+                                                child: AnimatedContainer(
+                                                  duration:
+                                                      Duration(milliseconds: 300),
+                                                  curve: Curves.easeInOut,
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  decoration: BoxDecoration(
+                                                    color:controller. seats[index]
+                                                        ? Colors.grey[300]
+                                                        : Colors.green,
+                                                    borderRadius:
+                                                        BorderRadius.circular(5.0),
+                                                    border: Border.all(
+                                                      color: Colors.grey.shade400,
+                                                      width: 1.0,
+                                                    ),
+                                                  ),
+                                                  child: Center(
+                                                    child: Icon(
+                                                  controller.    seats[index]
+                                                          ? Icons.event_seat
+                                                          : Icons.event_available,
+                                                      size: 19.0,
+                                                      color:controller. seats[index]
+                                                          ? Colors.red
+                                                          : Colors.black,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        );
+                                    }
+                                  ),
+                                  
                                 ],
                               ),
                             )
@@ -406,8 +529,10 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(mainAxisAlignment: MainAxisAlignment.center,
-                          children: [ksizedbox10,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ksizedbox10,
                             Text(
                               '02 Seat | L6, L7',
                               style: Theme.of(context)
@@ -419,9 +544,10 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                     color: Colors.black,
                                   ),
                             ),
-                            InkWell(onTap: () {
-                        Get.to(MoreaboutbusView());
-                            },
+                            InkWell(
+                              onTap: () {
+                                Get.to(MoreaboutbusView());
+                              },
                               child: Text(
                                 'More about this bus',
                                 style: Theme.of(context)
@@ -440,11 +566,12 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                         ),
                         Text(
                           '₹4000',
-                          style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 17.sp,
-                                color: Colors.black,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 17.sp,
+                                    color: Colors.black,
+                                  ),
                         )
                       ],
                     ),
@@ -455,7 +582,9 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                     child: CustomElevatedButton(
                       height: 45.h,
                       width: 1.sw,
-                      onPressed:              (){Get.to(PickanddropView());},         
+                      onPressed: () {
+                        Get.to(PickanddropView());
+                      },
                       text: 'proceed',
                       color: kred,
                       textColor: kwhite,
