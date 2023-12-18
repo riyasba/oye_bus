@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
+import 'package:location/location.dart';
 
 class LocationpermissonController extends GetxController {
+    final Location location = Location();
+
+  PermissionStatus? permissionGranted;
   //TODO: Implement LocationpermissonController
 
   final count = 0.obs;
@@ -18,6 +22,18 @@ class LocationpermissonController extends GetxController {
   void onClose() {
     super.onClose();
   }
+  Future<void> requestPermission() async {
+    if (permissionGranted != PermissionStatus.granted) {
+      final permissionRequestedResult = await location.requestPermission();
+      
+        permissionGranted = permissionRequestedResult;
+    
+    }
+  }
+
+
+
+
 
   void increment() => count.value++;
 }

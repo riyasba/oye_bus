@@ -44,6 +44,9 @@ dependencies:
   fluttertoast: ^8.2.4
   google_maps_flutter: ^2.5.0
   location: ^5.0.3
+  flutter_polyline_points: ^2.0.0
+
+
 
    
   

@@ -18,6 +18,7 @@ class BustrackingController extends GetxController {
   void onClose() {
     super.onClose();
   }
+  final isontouch = true.obs;
 
   void increment() => count.value++;
 }

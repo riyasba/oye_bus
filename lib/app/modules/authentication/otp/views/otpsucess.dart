@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:gif/gif.dart';
 import 'package:oye_bus/app/components/const.dart';
-import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class SuccessfulScreen extends StatefulWidget {
@@ -25,7 +24,7 @@ class _SuccessfulScreenState extends State<SuccessfulScreen> {
         Gif(fps: 30,
                   autostart: Autostart.once,
            
-            fit: BoxFit.cover, image: AssetImage( 'assets/images/7efs.gif',),
+            fit: BoxFit.fill, image: AssetImage( 'assets/images/7efs.gif',),
           ),
           //   ksizedbox30,
           Text(
@@ -64,7 +63,7 @@ class _SuccessfulScreenState extends State<SuccessfulScreen> {
                 height: 50,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(31.r), color: kgreen),
+                    borderRadius: BorderRadius.circular(16.r), color: kred),
                 child: Center(
                     child: Text('DONE',
                         style: TextStyle(

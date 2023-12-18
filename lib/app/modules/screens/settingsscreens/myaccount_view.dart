@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
-
 import 'package:oye_bus/app/modules/screens/locationpermisson/views/locationpermisson_view.dart';
-
 import 'package:oye_bus/app/modules/screens/profile/views/widget/myaccountbutton_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
+
+
 
 class MyaccountView extends GetView {
   const MyaccountView({Key? key}) : super(key: key);

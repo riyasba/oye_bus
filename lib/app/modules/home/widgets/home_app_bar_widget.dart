@@ -55,7 +55,7 @@ class HomeAppBarWidget extends GetView<HomeController> {
                       style: smalbalckfont.copyWith(
                           fontSize: 17, fontWeight: FontWeight.w800),
                     ),
-                    InkWell(onTap: (){Get.to(MapSample());},
+                    InkWell(onTap: (){Get.to(Mapsybol());},
                       child: Row(
                         children: [
                           const Icon(
