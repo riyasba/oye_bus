@@ -3,18 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
+import 'package:oye_bus/app/modules/authentication/register/controllers/register_controller.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../controllers/otp_controller.dart';
+import '../../otp/controllers/otp_controller.dart';
 
-class OtpView extends GetView<OtpController> {
+class RegisterOtpView extends GetView<RegisterController> {
   String mobile;
-  OtpView({Key? key, required this.mobile})
+  RegisterOtpView({Key? key, required this.mobile})
       : super(
           key: key,
         );
 
-  final otpController = Get.find<OtpController>();
-  String _otpValue = "";
+  String otpValue = "";
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +107,7 @@ class OtpView extends GetView<OtpController> {
                     // setState(() {
                     //   currentText = value;
                     // });
-                    _otpValue = value;
+                    otpValue = value;
                   },
                   beforeTextPaste: (text) {
                     print("Allowing to paste $text");
@@ -144,7 +146,7 @@ class OtpView extends GetView<OtpController> {
         ),
       ),
       bottomNavigationBar: Obx(
-        () => otpController.isLoading == true
+        () => controller.isLoading == true
             ? Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Container(
@@ -166,7 +168,7 @@ class OtpView extends GetView<OtpController> {
                   height: 45.h,
                   width: 1.sw,
                   onPressed: () {
-                    otpController.loginVerify(mobile: mobile, otp: _otpValue);
+                    controller.RegisterOtpVerify(mobile: mobile, otp: otpValue);
                   },
                   text: 'CONTINUE',
                   color: kred,

@@ -6,6 +6,7 @@ import 'package:gif/gif.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/components/user_input_field.dart';
+import 'package:oye_bus/app/data/api_service/models/register_model.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 import '../controllers/register_controller.dart';
@@ -16,6 +17,7 @@ class RegisterView extends GetView<RegisterController> {
   Widget build(BuildContext context) {
     var nameController = TextEditingController();
     var phoneNumberController = TextEditingController();
+    var emailController = TextEditingController();
     return Scaffold(
       backgroundColor: kwhite,
       appBar: AppBar(
@@ -125,7 +127,7 @@ class RegisterView extends GetView<RegisterController> {
                         height: 5.h,
                       ),
                       TextFormField(
-                        //     controller: emailController,
+                        controller: emailController,
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
                               fontSize: 15.sp,
                               color: Colors.black,
@@ -330,9 +332,17 @@ class RegisterView extends GetView<RegisterController> {
                         height: 45.h,
                         width: 1.sw,
                         onPressed: () {
-                          Get.toNamed(
-                            Routes.OTP,
-                          );
+                          RegisterModel registerModel = RegisterModel(
+                              name: nameController.text,
+                              email: emailController.text,
+                              mobile: phoneNumberController.text,
+                              roleId: 2);
+
+                          controller.registerUser(
+                             registerModel
+                              );
+
+                       
                         },
                         text: 'GENERATE OTP',
                         color: kred,

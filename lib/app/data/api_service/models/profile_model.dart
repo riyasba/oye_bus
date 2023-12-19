@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-ProfileModel profileModelFromJson(String str) => ProfileModel.fromJson(json.decode(str));
 
+
+ProfileModel profileModelFromJson(String str) => ProfileModel.fromJson(json.decode(str));
 String profileModelToJson(ProfileModel data) => json.encode(data.toJson());
+
 
 class ProfileModel {
     bool status;
@@ -31,6 +33,8 @@ class ProfileModel {
         "data": data.toJson(),
     };
 }
+
+
 
 class ProfileData {
     int id;
