@@ -1,18 +1,18 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:oye_bus/app/data/api_service/config/config.dart';
+import 'package:oye_bus/app/data/api_service/models/register_model.dart';
 
 
 
-class LoginVerificationApiservice extends Config{
+class RegisterVerificationApiservice extends Config{
   
-  Future LoginVerifyApi({required String otp,
-  required String mobile,})async{
+  Future RegisterVerifyApi({required String mobile ,required String otp,})async{
 
     dynamic responseJson;
     try{
       var dio = Dio();
-      var response = await dio.post(loginverifyURL,
+      var response = await dio.post(registerverifyURL,
       options: Options(
         headers: {
           'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ class LoginVerificationApiservice extends Config{
           "role_id":2
       }
       );
-      print(':::::::Login Verify Api:::::::::<status code>:::::::$otp:');
+      print(':::::::resgister  Verify Api::${mobile}:::::::<status code>:::::::$otp:');
       print(response.data);
       print(response.statusCode);
       responseJson=response;

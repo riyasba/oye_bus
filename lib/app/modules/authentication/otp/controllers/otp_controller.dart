@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:dio/dio.dart'as dio;
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/auth_api_service/loginverify_api_service.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/auth_api_service/register_otp_verifiy_apisrvice.dart';
+import 'package:oye_bus/app/data/api_service/models/register_model.dart';
 import 'package:oye_bus/app/modules/authentication/otp/views/otpsucess.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -81,4 +83,9 @@ class OtpController extends GetxController {
             ));  
        } 
      }
+
+
+
+
+
 }

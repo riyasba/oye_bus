@@ -1,44 +1,40 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:oye_bus/app/data/api_service/config/config.dart';
+import 'package:oye_bus/app/data/api_service/models/register_model.dart';
 
-
-
-class LoginVerificationApiservice extends Config{
-  
-  Future LoginVerifyApi({required String otp,
-  required String mobile,})async{
-
+class RegistrationApiservice extends Config {
+  Future registrationApi(RegisterModel registerModel,
+      ) async {
     dynamic responseJson;
-    try{
+    try {
       var dio = Dio();
-      var response = await dio.post(loginverifyURL,
-      options: Options(
-        headers: {
-          'Content-Type': 'application/json'
+      var response = await dio.post(
+        registerURL,
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+          validateStatus: (status) {
+            return status! <= 500;
+          },
+        ),
+        data: {
+          "name": registerModel.name,
+          "email":registerModel. email,
+          "mobile":registerModel. mobile,
+          "role_id": 2,
         },
-        validateStatus: (status){
-          return status!<=500;
-        }
-      ),
-      data: {
-         "mobile":mobile,
-          "otp":otp,
-          "role_id":2
-      }
       );
-      print(':::::::Login Verify Api:::::::::<status code>:::::::$otp:');
+      print(':::::::rigister Verify Api:::::::::<status code>::${registerModel. mobile}::::::');
       print(response.data);
       print(response.statusCode);
-      responseJson=response;
-    }
-    on SocketException{
+      responseJson = response;
+    } on SocketException {
       print('no internet');
-     
     }
-     return responseJson;
+    return responseJson;
   }
-   dynamic returnResponse(Response<dynamic> response) {
+
+  dynamic returnResponse(Response<dynamic> response) {
     switch (response.statusCode) {
       case 200:
         dynamic responseJson = response.data;

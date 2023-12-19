@@ -12,8 +12,4 @@ class OffersModel{
   required this.title,
   required this.validity
  });
-
-
-
-
 }
