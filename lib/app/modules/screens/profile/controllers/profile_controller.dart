@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/profile_api_service/profile_api_service.dart';
-import 'package:oye_bus/app/data/api_service/models/profile_model.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/profile_api_service/update_profile_api_service.dart';
+import 'package:oye_bus/app/data/api_service/models/profile/profile_model.dart';
 import 'package:dio/dio.dart' as dio;
+import 'package:oye_bus/app/data/api_service/models/profile/profile_update_model.dart';
 
 class ProfileController extends GetxController {
   //TODO: Implement ProfileController
@@ -33,6 +36,8 @@ class ProfileController extends GetxController {
       setDefault()async{
  WidgetsBinding.instance.addPostFrameCallback((_) async{
    await getprofile();
+   print('profiledata');
+  print(profiledata.first.name);
   
     if(profiledata.isNotEmpty){
       nameController.text=profiledata.first.name;
@@ -51,7 +56,7 @@ class ProfileController extends GetxController {
   getprofile()async{
    isLoading(true);
    profiledata.clear();
-   dio.Response<dynamic>response = await pofileapiservice.GetProfileApi();
+   dio.Response<dynamic>response = await pofileapiservice.getProfileApi();
 
    isLoading(false);
    if(response.data['status']==true){
@@ -61,5 +66,25 @@ class ProfileController extends GetxController {
    }else{
     
    }
+  }
+  //profileupdate
+  
+  UpdateProfileApiservice updateProfileApiservice = 
+  UpdateProfileApiservice();
+
+  updateprofile({required ProfileUpdateModel profileUpdateModel})
+  async{
+     isLoading(true);
+     dio.Response<dynamic>response = await updateProfileApiservice.updateprofileApi(
+      profileUpdateModel: profileUpdateModel);
+      isLoading(false);
+        if(response.data['status']==true){ 
+         Get.rawSnackbar(
+          backgroundColor: Colors.green,
+          messageText: Text(
+            response.data['message'],
+            style: primaryFont.copyWith(color: Colors.white),
+          ));
+      }
   }
 }

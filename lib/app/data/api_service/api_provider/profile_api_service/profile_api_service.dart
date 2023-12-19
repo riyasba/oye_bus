@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileApiService extends Config{
   
-  Future GetProfileApi()async{
+  Future getProfileApi()async{
     dynamic responseJson;
     try{
       var dio = Dio();

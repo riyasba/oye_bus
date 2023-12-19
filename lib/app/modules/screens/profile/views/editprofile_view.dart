@@ -3,11 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
+import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/widget/formfield_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class EditprofileView extends GetView {
-  const EditprofileView({Key? key}) : super(key: key);
+   EditprofileView({Key? key}) : super(key: key);
+  final profileController = Get.find<ProfileController>();
   @override
   Widget build(BuildContext context) {
     return Container(color: kwhite,
@@ -32,84 +34,88 @@ class EditprofileView extends GetView {
               shrinkWrap: true,
               physics: BouncingScrollPhysics(),
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
+                GetBuilder<ProfileController>(
+                  builder: (context) {
+                    return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 1),
-                          child: Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50)),
-                            child: Image.asset(
-                              "assets/images/fi_2102647.png",
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 1),
+                              child: Container(
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50)),
+                                child: Image.asset(
+                                  "assets/images/fi_2102647.png",
+                                ),
+                        
+                                //  profileController.isLoading.isTrue
+                                //     ? const Center(
+                                //         child: CircularProgressIndicator(),
+                                //       )
+                                // : profileController
+                                //         .otherUserProfileData.isEmpty
+                                //     ? Container()
+                                //     : ClipRRect(
+                                //         borderRadius:
+                                //             BorderRadius.circular(50),
+                                //         child: profileController
+                                //                     .otherUserProfileData
+                                //                     .first
+                                //                     .user
+                                //                     .profilePicture ==
+                                //                 null
+                        
+                                //             ?
+                                //              Image.asset(
+                                //                 "assets/icons/profil_img.jpeg",
+                                //               )
+                        
+                                //             : Image.network(
+                                //                 profileController
+                                //                     .otherUserProfileData
+                                //                     .first
+                                //                     .user
+                                //                     .profilePicture,
+                                //               ),
+                                //       ),
+                              ),
                             ),
-    
-                            //  profileController.isLoading.isTrue
-                            //     ? const Center(
-                            //         child: CircularProgressIndicator(),
-                            //       )
-                            // : profileController
-                            //         .otherUserProfileData.isEmpty
-                            //     ? Container()
-                            //     : ClipRRect(
-                            //         borderRadius:
-                            //             BorderRadius.circular(50),
-                            //         child: profileController
-                            //                     .otherUserProfileData
-                            //                     .first
-                            //                     .user
-                            //                     .profilePicture ==
-                            //                 null
-    
-                            //             ?
-                            //              Image.asset(
-                            //                 "assets/icons/profil_img.jpeg",
-                            //               )
-    
-                            //             : Image.network(
-                            //                 profileController
-                            //                     .otherUserProfileData
-                            //                     .first
-                            //                     .user
-                            //                     .profilePicture,
-                            //               ),
-                            //       ),
-                          ),
+                          ],
+                        ),
+                        ksizedbox20,
+                        FormfieldView(
+                          text: profileController.nameController.text,
+                          labeltext: 'Name', 
+                          controller: profileController.nameController.text,
+                        ),
+                        FormfieldView(
+                          text: '23',
+                          labeltext: 'Age', 
+                          controller: '',
+                        ),
+                        FormfieldView(
+                          text: 'Male',
+                          labeltext: 'Gender', 
+                          controller: '',
+                        ),
+                        FormfieldView(
+                          text: profileController.mobileController.text,
+                          labeltext: 'Mobile Number', 
+                          controller: profileController.mobileController.text,
+                        ),
+                        FormfieldView(
+                          text: profileController.emailController.text,
+                          labeltext: 'Email ID', 
+                          controller: profileController.emailController.text,
                         ),
                       ],
-                    ),
-                    ksizedbox20,
-                    FormfieldView(
-                      text: 'Riyas',
-                      labeltext: 'Name', 
-                      controller: '',
-                    ),
-                    FormfieldView(
-                      text: '23',
-                      labeltext: 'Age', 
-                      controller: '',
-                    ),
-                    FormfieldView(
-                      text: 'Male',
-                      labeltext: 'Gender', 
-                      controller: '',
-                    ),
-                    FormfieldView(
-                      text: '9633749714',
-                      labeltext: 'Mobile Number', 
-                      controller: '',
-                    ),
-                    FormfieldView(
-                      text: 'riyasklb89@gmail.com',
-                      labeltext: 'Email ID', 
-                      controller: '',
-                    ),
-                  ],
+                    );
+                  }
                 ),
                 ksizedbox40,
                 ksizedbox40,
