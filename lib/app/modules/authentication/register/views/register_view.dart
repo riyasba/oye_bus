@@ -328,26 +328,39 @@ class RegisterView extends GetView<RegisterController> {
                         // },
                       ),
                       ksizedbox40,
-                      CustomElevatedButton(
-                        height: 45.h,
-                        width: 1.sw,
-                        onPressed: () {
-                          RegisterModel registerModel = RegisterModel(
-                              name: nameController.text,
-                              email: emailController.text,
-                              mobile: phoneNumberController.text,
-                              roleId: 2);
+                      Obx(() => controller.isLoading == true
+                          ? Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 20),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                height: 50,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  color: kred,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: const CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )
+                          : CustomElevatedButton(
+                              height: 45.h,
+                              width: 1.sw,
+                              onPressed: () {
+                                RegisterModel registerModel = RegisterModel(
+                                    name: nameController.text,
+                                    email: emailController.text,
+                                    mobile: phoneNumberController.text,
+                                    roleId: 2);
 
-                          controller.registerUser(
-                             registerModel
-                              );
-
-                       
-                        },
-                        text: 'GENERATE OTP',
-                        color: kred,
-                        textColor: kwhite,
-                      ),
+                                controller.registerUser(registerModel);
+                              },
+                              text: 'GENERATE OTP',
+                              color: kred,
+                              textColor: kwhite,
+                            )),
                       ksizedbox10,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

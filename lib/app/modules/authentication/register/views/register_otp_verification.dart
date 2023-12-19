@@ -16,8 +16,6 @@ class RegisterOtpView extends GetView<RegisterController> {
 
   String otpValue = "";
 
-
-
   @override
   Widget build(BuildContext context) {
     bool hasError = false;

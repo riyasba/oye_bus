@@ -9,6 +9,7 @@ import 'package:oye_bus/app/data/api_service/api_provider/auth_api_service/regis
 import 'package:oye_bus/app/data/api_service/api_provider/auth_api_service/register_otp_verifiy_apisrvice.dart';
 import 'package:oye_bus/app/data/api_service/models/register_model.dart';
 import 'package:oye_bus/app/modules/authentication/otp/views/otpsucess.dart';
+import 'package:oye_bus/app/modules/authentication/register/views/register_otp_verification.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -92,9 +93,7 @@ class RegisterController extends GetxController {
       // await prefs.setString("auth_token", response.data["token"]);
       //await prefs.setString("temp_auth_token", response.data["token"]);
       //await prefs.setString("verify", "false");
-      Get.toNamed(
-        Routes.OTP,
-      );
+     Get.to(RegisterOtpView(mobile: registerModel.mobile,));
       // Get.to(
       //   otp_page(
       //   phoneNumber: registerModel.mobile,

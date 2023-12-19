@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
-import 'package:oye_bus/app/modules/screens/locationpermisson/views/locationpermisson_view.dart';
+import 'package:oye_bus/app/modules/authentication/register/controllers/register_controller.dart';
+import 'package:oye_bus/app/modules/authentication/register/views/register_view.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/widget/myaccountbutton_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
@@ -13,8 +14,10 @@ import 'package:url_launcher/url_launcher.dart' as launcher;
 
 class MyaccountView extends GetView {
   const MyaccountView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+      Get.put(RegisterController());
     return Container(
       color: kwhite,
       child: SafeArea(
@@ -179,7 +182,7 @@ class MyaccountView extends GetView {
                                         InkWell(
                                           onTap: () {
                                             Get.to(
-                                              LocationpermissonView(),
+                                              RegisterView(),
                                             );
                                             // authController.logoutindex(1);
                                             // authController.update();
