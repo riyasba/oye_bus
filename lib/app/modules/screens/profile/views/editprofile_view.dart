@@ -3,12 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
+import 'package:oye_bus/app/data/api_service/models/profile/profile_update_model.dart';
 import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/widget/formfield_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class EditprofileView extends GetView {
-   EditprofileView({Key? key}) : super(key: key);
+    ProfileUpdateModel profileUpdateModel;
+   EditprofileView({Key? key,required this.profileUpdateModel}) : super(key: key);
   final profileController = Get.find<ProfileController>();
   @override
   Widget build(BuildContext context) {
@@ -89,29 +91,29 @@ class EditprofileView extends GetView {
                         ),
                         ksizedbox20,
                         FormfieldView(
-                          text: profileController.nameController.text,
+                          text: '',
                           labeltext: 'Name', 
-                          controller: profileController.nameController.text,
+                          controller: profileController.nameController,
                         ),
                         FormfieldView(
                           text: '23',
                           labeltext: 'Age', 
-                          controller: '',
+                          controller: profileController.ageController,
                         ),
                         FormfieldView(
                           text: 'Male',
                           labeltext: 'Gender', 
-                          controller: '',
+                          controller: profileController.genderController,
                         ),
                         FormfieldView(
-                          text: profileController.mobileController.text,
+                          text:'',
                           labeltext: 'Mobile Number', 
-                          controller: profileController.mobileController.text,
+                          controller: profileController.mobileController,
                         ),
                         FormfieldView(
-                          text: profileController.emailController.text,
+                          text: '',
                           labeltext: 'Email ID', 
-                          controller: profileController.emailController.text,
+                          controller: profileController.emailController,
                         ),
                       ],
                     );

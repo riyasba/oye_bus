@@ -12,12 +12,13 @@ class FormfieldView extends GetView {
   }) : super(key: key);
   final String text;
   final String labeltext;
-  final String controller;
+  TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: TextField(
+        controller: controller,
          autofocus: true,
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(

@@ -4,10 +4,12 @@ import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/widget/formfield_view.dart';
+import 'package:oye_bus/app/modules/screens/settingsscreens/copassengers/controllers/copassengers_controller.dart';
 
 
 class AddcopassengersView extends GetView {
-  const AddcopassengersView({Key? key}) : super(key: key);
+   AddcopassengersView({Key? key}) : super(key: key);
+ final  passengerController  = Get.find<CopassengersController>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,15 +37,18 @@ class AddcopassengersView extends GetView {
                 ksizedbox20,
                 FormfieldView(
                   text: 'Riyas',
-                  labeltext: 'Name', controller: '',
+                  labeltext: 'Name', 
+                  controller:passengerController.nameController,
                 ),
                 FormfieldView(
                   text: '23',
-                  labeltext: 'Age', controller: '',
+                  labeltext: 'Age', 
+                  controller: passengerController.ageController,
                 ),
                 FormfieldView(
                   text: 'Male',
-                  labeltext: 'Gender', controller: '',
+                  labeltext: 'Gender', 
+                  controller: passengerController.genderController,
                 ),
                 ksizedbox40,
                 ksizedbox40,

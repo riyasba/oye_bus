@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/data/api_service/models/profile/profile_update_model.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/editprofile_view.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/widget/formfield_view.dart';
 
@@ -26,18 +27,30 @@ class ProfileView extends GetView<ProfileController> {
               style: appbarfont,
             ),
             actions: [
-              InkWell(
-                onTap: () {
-                  Get.to(EditprofileView());
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Text(
-                    'Edit',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 17,
-                        color: Colors.blue),
+              Obx(()=>profileController.isLoading==true?   
+               Center(
+                         child: CircularProgressIndicator(
+                          color: kred,
+                         )
+                       ):
+                 InkWell(
+                  onTap: () {
+                    ProfileUpdateModel profileUpdateModel =
+                    ProfileUpdateModel( 
+                    email: profileController.emailController.text,  
+                    mobilenumber: profileController.mobileController.text, 
+                    name: profileController.nameController.text);
+                    Get.to(EditprofileView(profileUpdateModel: profileUpdateModel,));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      'Edit',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 17,
+                          color: Colors.blue),
+                    ),
                   ),
                 ),
               )
@@ -104,29 +117,29 @@ class ProfileView extends GetView<ProfileController> {
                         ),
                         ksizedbox20,
                         FormfieldView(
-                          text: profileController.nameController.text,
+                          text: '',
                           labeltext: 'Name', 
-                          controller: profileController.nameController.text,
+                          controller:profileController.nameController,
                         ),
                         FormfieldView(
                           text: '23',
                           labeltext: 'Age', 
-                          controller: '',
+                          controller: profileController.ageController,
                         ),
                         FormfieldView(
                           text: 'Male',
                           labeltext: 'Gender', 
-                          controller: '',
+                          controller: profileController.genderController,
                         ),
                         FormfieldView(
-                          text: profileController.mobileController.text,
+                          text: '',
                           labeltext: 'Mobile Number', 
-                          controller: profileController.mobileController.text,
+                          controller: profileController.mobileController,
                         ),
                         FormfieldView(
-                          text:profileController.emailController.text,
+                          text:'',
                           labeltext: 'Email ID', 
-                          controller: profileController.emailController.text,
+                          controller: profileController.emailController,
                         ),
                       ],
                     );

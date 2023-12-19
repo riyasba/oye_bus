@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class CopassengersController extends GetxController {
@@ -20,4 +21,9 @@ class CopassengersController extends GetxController {
   }
 
   void increment() => count.value++;
+  var nameController = TextEditingController();
+  var mobileController = TextEditingController();
+  var emailController = TextEditingController();
+  var ageController = TextEditingController();
+  var genderController = TextEditingController();
 }

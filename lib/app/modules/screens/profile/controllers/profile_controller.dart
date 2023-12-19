@@ -32,6 +32,8 @@ class ProfileController extends GetxController {
    var nameController = TextEditingController();
   var emailController = TextEditingController();
   var mobileController = TextEditingController();
+  var ageController = TextEditingController();
+  var genderController = TextEditingController();
     
       setDefault()async{
  WidgetsBinding.instance.addPostFrameCallback((_) async{
@@ -44,6 +46,7 @@ class ProfileController extends GetxController {
       emailController.text = profiledata.first.email;
       mobileController.text = profiledata.first.mobile;
       emailController.text = profiledata.first.email;
+      
     }
     update();
  });
