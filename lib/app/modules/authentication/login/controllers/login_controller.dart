@@ -1,12 +1,21 @@
 import 'package:country_picker/country_picker.dart';
+import 'package:dio/dio.dart'as dio;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/auth_api_service/login_api_service.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/auth_api_service/loginverify_api_service.dart';
+import 'package:oye_bus/app/modules/authentication/otp/views/otp_view.dart';
+import 'package:oye_bus/app/modules/authentication/otp/views/otpsucess.dart';
+import 'package:oye_bus/app/routes/app_pages.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
   //TODO: Implement LoginController
 
   final count = 0.obs;
+   RxBool isLoading = false.obs;
   @override
   void onInit() {
     super.onInit();
@@ -69,4 +78,30 @@ class LoginController extends GetxController {
     );
   }
   void increment() => count.value++;
+  
+  //Login
+   LoginApiService loginapiservice = LoginApiService();
+
+   getLoginUser({required String mobile})async{
+    isLoading(true);
+     dio.Response<dynamic>response = 
+     await loginapiservice.LoginApi(mobile: mobile);
+
+  isLoading(false);
+  print(response.data);
+  if(response.data['status']==true){
+    Get.to(OtpView(mobile: mobile,));
+  }
+   else{
+      Get.rawSnackbar(
+          backgroundColor: Colors.red,
+          messageText: Text(
+            response.data["message"],
+            style: primaryFont.copyWith(color: Colors.white),
+         )
+      );
+    }
+   }
+    
+
 }

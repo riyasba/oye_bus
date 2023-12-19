@@ -96,12 +96,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () => const LoginView(),
+      page: () =>  LoginView(),
       binding: LoginBinding(),
       children: [
         GetPage(
           name: _Paths.LOGIN,
-          page: () => const LoginView(),
+          page: () =>  LoginView(),
           binding: LoginBinding(),
         ),
       ],
@@ -133,7 +133,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.OTP,
-      page: () => const OtpView(),
+      page: () =>  OtpView(mobile: '',),
       binding: OtpBinding(),
     ),
     GetPage(
@@ -148,7 +148,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PROFILE,
-      page: () => const ProfileView(),
+      page: () =>  ProfileView(),
       binding: ProfileBinding(),
     ),
     GetPage(

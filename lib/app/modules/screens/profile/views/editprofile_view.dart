@@ -86,23 +86,28 @@ class EditprofileView extends GetView {
                     ksizedbox20,
                     FormfieldView(
                       text: 'Riyas',
-                      labeltext: 'Name',
+                      labeltext: 'Name', 
+                      controller: '',
                     ),
                     FormfieldView(
                       text: '23',
-                      labeltext: 'Age',
+                      labeltext: 'Age', 
+                      controller: '',
                     ),
                     FormfieldView(
                       text: 'Male',
-                      labeltext: 'Gender',
+                      labeltext: 'Gender', 
+                      controller: '',
                     ),
                     FormfieldView(
                       text: '9633749714',
-                      labeltext: 'Mobile Number',
+                      labeltext: 'Mobile Number', 
+                      controller: '',
                     ),
                     FormfieldView(
                       text: 'riyasklb89@gmail.com',
-                      labeltext: 'Email ID',
+                      labeltext: 'Email ID', 
+                      controller: '',
                     ),
                   ],
                 ),

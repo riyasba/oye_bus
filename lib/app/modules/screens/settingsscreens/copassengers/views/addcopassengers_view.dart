@@ -35,15 +35,15 @@ class AddcopassengersView extends GetView {
                 ksizedbox20,
                 FormfieldView(
                   text: 'Riyas',
-                  labeltext: 'Name',
+                  labeltext: 'Name', controller: '',
                 ),
                 FormfieldView(
                   text: '23',
-                  labeltext: 'Age',
+                  labeltext: 'Age', controller: '',
                 ),
                 FormfieldView(
                   text: 'Male',
-                  labeltext: 'Gender',
+                  labeltext: 'Gender', controller: '',
                 ),
                 ksizedbox40,
                 ksizedbox40,

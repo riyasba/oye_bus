@@ -1,16 +1,24 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
+import 'package:oye_bus/app/modules/authentication/login/controllers/login_controller.dart';
 import 'package:oye_bus/app/modules/authentication/otp/views/otpsucess.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../controllers/otp_controller.dart';
 
 class OtpView extends GetView<OtpController> {
-  const OtpView({Key? key}) : super(key: key);
+  String mobile;
+   OtpView({Key ?key,required this.mobile}) : super(key: key,);
+
+ final otpController = Get.find<OtpController>();
+ String _otpValue = "";
+
   @override
   Widget build(BuildContext context) {
     bool hasError = false;
@@ -95,6 +103,7 @@ class OtpView extends GetView<OtpController> {
                     // setState(() {
                     //   currentText = value;
                     // });
+                    _otpValue = value;
                   },
                   beforeTextPaste: (text) {
                     print("Allowing to paste $text");
@@ -115,6 +124,7 @@ class OtpView extends GetView<OtpController> {
                           fontWeight: FontWeight.w300,
                         ),
                   ),
+                  // otpController._isActive
                   Text(
                     ' Resend Code',
                     textAlign: TextAlign.center,
@@ -131,20 +141,36 @@ class OtpView extends GetView<OtpController> {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: CustomElevatedButton(
-          height: 45.h,
-          width: 1.sw,
-          onPressed: () {
-            Get.to(SuccessfulScreen());
-            // Get.toNamed(
-            //   Routes.OTP,
-            // );
-          },
-          text: 'CONTINUE',
-          color: kred,
-          textColor: kwhite,
+      bottomNavigationBar: Obx(()=>
+      otpController.isLoading==true?
+       Padding(
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width*0.8,
+                            height: 50,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                color:kred,
+                               borderRadius: BorderRadius.circular(8),
+                             
+                            ),
+                            child: const CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ):
+         Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CustomElevatedButton(
+            height: 45.h,
+            width: 1.sw,
+            onPressed: () {
+             otpController.loginVerify(mobile: mobile, otp: _otpValue);
+            },
+            text: 'CONTINUE',
+            color: kred,
+            textColor: kwhite,
+          ),
         ),
       ),
     );

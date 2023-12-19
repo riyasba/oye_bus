@@ -6,7 +6,8 @@ import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class SuccessfulScreen extends StatefulWidget {
-  const SuccessfulScreen({super.key});
+
+   SuccessfulScreen({super.key,});
 
   @override
   State<SuccessfulScreen> createState() => _SuccessfulScreenState();

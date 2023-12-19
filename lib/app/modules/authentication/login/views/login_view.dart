@@ -9,9 +9,12 @@ import 'package:oye_bus/app/routes/app_pages.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+   LoginView({Key? key}) : super(key: key);
+     final loginController = Get.find<LoginController>();
+     var phoneNumberController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
         backgroundColor: kwhite,
         appBar: AppBar(backgroundColor: kwhite,
@@ -85,7 +88,7 @@ class LoginView extends GetView<LoginController> {
                           height: 5.h,
                         ),
                         TextFormField(
-                       //   controller: phoneNumberController,
+                         controller: phoneNumberController,
                           style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                 fontSize: 15.sp,
                                 color: Colors.black,
@@ -135,6 +138,7 @@ class LoginView extends GetView<LoginController> {
                                 ],
                               ),
                             ),
+                            
                             border: OutlineInputBorder(
                               borderSide: const BorderSide(
                                 width: 1.5,
@@ -176,17 +180,49 @@ class LoginView extends GetView<LoginController> {
                             return null;
                           },
                         ),   ksizedbox30,   ksizedbox40,
-                      CustomElevatedButton(
-                        height: 45.h,
-                        width: 1.sw,
-                        onPressed: () {
-                          Get.toNamed(
-                            Routes.OTP,
-                          );
-                        },
-                        text: 'GENERATE OTP',
-                        color: kred,
-                        textColor: kwhite,
+                      Obx(()=>
+                      loginController.isLoading==true?
+                      Container(
+                            width: MediaQuery.of(context).size.width*0.65,
+                            height: 50,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                               color: kred,
+                              borderRadius: BorderRadius.circular(
+                                4,
+                              ),
+                              border: Border.all(color: const Color(0xffFFBF7E)),
+                              // boxShadow: const [
+                              //   BoxShadow(
+                              //     color: Color(0xFFFF5C29),
+                              //     blurRadius: 3.0,
+                              //   )
+                              // ],
+                              // gradient: const LinearGradient(
+                              //   begin: Alignment.centerLeft,
+                              //   end: Alignment.centerRight,
+                              //   colors: [
+                              //     Color(0xFFFF5C29),
+                              //     Color(0xFFFFCD38),
+                              //   ],
+                              // ),
+                            ),
+                            child: const CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          ):
+                         CustomElevatedButton(
+                          height: 45.h,
+                          width: 1.sw,
+                          onPressed: () {
+                           if(phoneNumberController.text.isNotEmpty){
+                            loginController.getLoginUser(mobile: phoneNumberController.text);
+                           }
+                          },
+                          text: 'GENERATE OTP',
+                          color: kred,
+                          textColor: kwhite,
+                        ),
                       ),
                    ksizedbox10, ],
           ),

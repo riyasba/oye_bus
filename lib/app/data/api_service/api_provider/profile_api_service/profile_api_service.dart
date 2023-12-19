@@ -12,6 +12,7 @@ class ProfileApiService extends Config{
       var dio = Dio();
       final prefs = await SharedPreferences.getInstance();
       String? authtoken = prefs.getString('auth_token');
+      print('profile_authtoken');
       print(authtoken);
       var response = await dio.get(
         getProfileURL,
@@ -28,6 +29,7 @@ class ProfileApiService extends Config{
       );
       print(':::::::::Get profile api::::::::::<status code>:::::::::');
       print(response.data);
+      print(authtoken);
       print(response.statusCode);
       responseJson = response;
     }

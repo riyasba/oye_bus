@@ -32,8 +32,10 @@ class LoginApiService extends Config{
    }
    on SocketException{
     print('no internet');
-    return responseJson;
+
    }
+
+    return responseJson;
   }
   //  dynamic returnResponse(Response<dynamic>response){
   //   switch(response.statusCode){

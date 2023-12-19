@@ -8,9 +8,11 @@ class FormfieldView extends GetView {
     Key? key,
     required this.text,
     required this.labeltext,
+    required this.controller
   }) : super(key: key);
   final String text;
   final String labeltext;
+  final String controller;
   @override
   Widget build(BuildContext context) {
     return Padding(

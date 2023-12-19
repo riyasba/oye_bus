@@ -47,6 +47,8 @@ dependencies:
   flutter_polyline_points: ^2.0.0
 
 
+  dio: ^5.4.0
+  shared_preferences: ^2.2.2
 
    
   
