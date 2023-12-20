@@ -5,7 +5,7 @@ import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/modules/authentication/register/controllers/register_controller.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../otp/controllers/otp_controller.dart';
+
 
 class RegisterOtpView extends GetView<RegisterController> {
   String mobile;

@@ -1,5 +1,3 @@
-
-
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,8 +13,6 @@ import 'package:dio/dio.dart' as dio;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterController extends GetxController {
-
-
   final count = 0.obs;
   @override
   void onInit() {
@@ -93,7 +89,11 @@ class RegisterController extends GetxController {
       // await prefs.setString("auth_token", response.data["token"]);
       //await prefs.setString("temp_auth_token", response.data["token"]);
       //await prefs.setString("verify", "false");
-     Get.to(RegisterOtpView(mobile: registerModel.mobile,));
+      Get.to(
+        RegisterOtpView(
+          mobile: registerModel.mobile,
+        ),
+      );
       // Get.to(
       //   otp_page(
       //   phoneNumber: registerModel.mobile,
@@ -110,38 +110,33 @@ class RegisterController extends GetxController {
     }
   }
 
-
-
-
-
-
-    RegisterVerificationApiservice registerVerificationApiservice =
-     RegisterVerificationApiservice();
-
+  RegisterVerificationApiservice registerVerificationApiservice =
+      RegisterVerificationApiservice();
 
 //RegisterModel registerModel=RegisterModel();
 
-  RegisterOtpVerify({required String mobile,
-     required String otp})async{
+  RegisterOtpVerify({required String mobile, required String otp}) async {
+    isLoading(true);
+    dio.Response<dynamic> response =
+        await registerVerificationApiservice.RegisterVerifyApi(
+            otp: otp, mobile: mobile);
 
-      isLoading(true);
-      dio.Response<dynamic>response = await registerVerificationApiservice.RegisterVerifyApi(
-        otp: otp,   mobile: mobile);
+    isLoading(false);
+    if (response.data['status'] == true) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString("auth_token", response.data['token'].toString());
+      Get.offAll(SuccessfulScreen());
+    } else {
+      Get.rawSnackbar(
+        backgroundColor: Colors.red,
+        messageText: Text(
+          response.data["message"],
+          style: primaryFont.copyWith(color: Colors.white),
+        ),
+      );
+    }
+  }
 
-        isLoading(false);
-        if(response.data['status']==true){
-          final prefs = await SharedPreferences.getInstance();
-          await prefs.setString("auth_token", response.data['token'].toString());
-          Get.offAll(SuccessfulScreen());
-        }
-           else {
-        Get.rawSnackbar(
-            backgroundColor: Colors.red,
-            messageText: Text(
-              response.data["message"],
-              style: primaryFont.copyWith(color: Colors.white),
-            ));  
-       } 
-     }
 
+    final isontouch = true.obs;
 }
