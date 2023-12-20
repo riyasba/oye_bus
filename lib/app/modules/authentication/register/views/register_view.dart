@@ -15,7 +15,9 @@ class RegisterView extends GetView<RegisterController> {
   const RegisterView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     var nameController = TextEditingController();
+    var referalController = TextEditingController();
     var phoneNumberController = TextEditingController();
     var emailController = TextEditingController();
     return Scaffold(
@@ -81,178 +83,65 @@ class RegisterView extends GetView<RegisterController> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'User name',
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14.sp,
-                              color: Colors.black,
-                            ),
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      UserInputField(
-                        controller: nameController,
-                        hintText: "Zoey Bennet",
-                        isNameField: true,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Name can't be empty";
-                          }
-                          return null;
-                        },
-                      ),
-                      ksizedbox10,
-                      Row(
-                        children: [
-                          kwidth5,
-                          Text(
-                            'Email Address',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14.sp,
-                                  color: Colors.black,
-                                ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      TextFormField(
-                        controller: emailController,
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              fontSize: 15.sp,
-                              color: Colors.black,
-                            ),
-                        autofocus: false,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              width: 1.5,
-                              color: Colors.black,
-                              style: BorderStyle.solid,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              60.r,
-                            ),
-                          ),
-                          contentPadding: const EdgeInsets.only(
-                            left: 20,
-                            right: 10,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              width: 1.2,
-                              color: Colors.black,
-                              style: BorderStyle.solid,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              60.r,
-                            ),
-                          ),
-                          filled: true,
-                          hintStyle:
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'User name',
+                          style:
                               Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    fontWeight: FontWeight.w400,
                                     fontSize: 14.sp,
-                                    color: Colors.grey[600],
+                                    color: Colors.black,
                                   ),
-                          hintText: "example@mail.com",
-                          fillColor: Colors.white,
                         ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Email can't be empty";
-                          } else if (!RegExp(
-                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                              .hasMatch(value)) {
-                            return "Enter correct email";
-                          }
-                          return null;
-                        },
-                      ),
-                      ksizedbox10,
-                      Row(
-                        children: [
-                          kwidth5,
-                          Text(
-                            'Phone Number',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14.sp,
-                                  color: Colors.black,
-                                ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Obx(
-                        () => TextFormField(
-                          controller: phoneNumberController,
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        UserInputField(
+                          controller: nameController,
+                          hintText: "Zoey Bennet",
+                          isNameField: true,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Name can't be empty";
+                            }
+                            return null;
+                          },
+                        ),
+                        ksizedbox10,
+                        Row(
+                          children: [
+                            kwidth5,
+                            Text(
+                              'Email Address',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14.sp,
+                                    color: Colors.black,
+                                  ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        TextFormField(
+                          controller: emailController,
                           style:
                               Theme.of(context).textTheme.titleLarge!.copyWith(
                                     fontSize: 15.sp,
                                     color: Colors.black,
                                   ),
                           autofocus: false,
-                          keyboardType: TextInputType.number,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
-                            isDense: true,
-                            prefixIcon: Container(
-                              width: 75.w,
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 8.w,
-                              ),
-                              alignment: Alignment.center,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      controller.phoneCode.isEmpty
-                                          ? '+1'
-                                          : '+${controller.phoneCode}',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium!
-                                          .copyWith(
-                                            fontSize: 13.sp,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                    ),
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      FocusManager.instance.primaryFocus
-                                          ?.unfocus();
-                                      controller.selectCountry(
-                                        context: context,
-                                      );
-                                    },
-                                    child: Icon(
-                                      Icons.keyboard_arrow_down,
-                                      size: 24.sp,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
                             border: OutlineInputBorder(
                               borderSide: const BorderSide(
                                 width: 1.5,
@@ -263,9 +152,9 @@ class RegisterView extends GetView<RegisterController> {
                                 60.r,
                               ),
                             ),
-                            contentPadding: EdgeInsets.only(
-                              left: 10.w,
-                              right: 10.w,
+                            contentPadding: const EdgeInsets.only(
+                              left: 20,
+                              right: 10,
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
@@ -277,131 +166,300 @@ class RegisterView extends GetView<RegisterController> {
                                 60.r,
                               ),
                             ),
-                            hintText: "5874536954",
+                            filled: true,
                             hintStyle: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
                                 .copyWith(
-                                  fontSize: 15.sp,
+                                  fontSize: 14.sp,
                                   color: Colors.grey[600],
-                                  fontWeight: FontWeight.w100,
                                 ),
+                            hintText: "example@mail.com",
                             fillColor: Colors.white,
-                            filled: true,
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Phone number is required";
+                              return "Email can't be empty";
+                            } else if (!RegExp(
+                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                .hasMatch(value)) {
+                              return "Enter correct email";
                             }
                             return null;
                           },
                         ),
-                      ),
-                      ksizedbox20,
-                      Row(
-                        children: [
-                          Text(
-                            'Have a Referral Code',
+                        ksizedbox10,
+                        Row(
+                          children: [
+                            kwidth5,
+                            Text(
+                              'Phone Number',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14.sp,
+                                    color: Colors.black,
+                                  ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Obx(
+                          () => TextFormField(
+                            controller: phoneNumberController,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
                                 .copyWith(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14.sp,
-                                  color: kred,
+                                  fontSize: 15.sp,
+                                  color: Colors.black,
                                 ),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      UserInputField(
-                        controller: nameController,
-                        hintText: "Enter referral code (optional)",
-                        isNameField: true,
-                        // validator: (value) {
-                        //   if (value!.isEmpty) {
-                        //     return "Name can't be empty";
-                        //   }
-                        //   return null;
-                        // },
-                      ),
-                      ksizedbox40,
-                      Obx(() => controller.isLoading == true
-                          ? Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 20, right: 20),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.8,
-                                height: 50,
+                            autofocus: false,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              isDense: true,
+                              prefixIcon: Container(
+                                width: 75.w,
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 8.w,
+                                ),
                                 alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: kred,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: const CircularProgressIndicator(
-                                  color: Colors.white,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        controller.phoneCode.isEmpty
+                                            ? '+1'
+                                            : '+${controller.phoneCode}',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayMedium!
+                                            .copyWith(
+                                              fontSize: 13.sp,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
+                                        controller.selectCountry(
+                                          context: context,
+                                        );
+                                      },
+                                      child: Icon(
+                                        Icons.keyboard_arrow_down,
+                                        size: 24.sp,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            )
-                          : CustomElevatedButton(
-                              height: 45.h,
-                              width: 1.sw,
-                              onPressed: () {
-                                RegisterModel registerModel = RegisterModel(
-                                    name: nameController.text,
-                                    email: emailController.text,
-                                    mobile: phoneNumberController.text,
-                                    roleId: 2);
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  width: 1.5,
+                                  color: Colors.black,
+                                  style: BorderStyle.solid,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  60.r,
+                                ),
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                left: 10.w,
+                                right: 10.w,
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  width: 1.2,
+                                  color: Colors.black,
+                                  style: BorderStyle.solid,
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                  60.r,
+                                ),
+                              ),
+                              hintText: "5874536954",
+                              hintStyle: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    fontSize: 15.sp,
+                                    color: Colors.grey[600],
+                                    fontWeight: FontWeight.w100,
+                                  ),
+                              fillColor: Colors.white,
+                              filled: true,
+                            ),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Phone number is required";
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                        ksizedbox20,
+                        Obx(
+                          ()=> GestureDetector(
+                               onTap: () {
+                              if (controller.isontouch.isTrue) {
+                                (controller.isontouch(false));
+                              } else {
+                                controller.isontouch(true);
+                              }
+                              controller.update();
+                            },
+                            child: Column(
+                              children: [controller.isontouch.isTrue?
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Have a Referral Code',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge!
+                                          .copyWith(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 14.sp,
+                                            color: kred,
+                                          ),
+                                    ),
+                                    kwidth5,
+                                    Icon(
+                                      Icons.arrow_drop_down_sharp,
+                                      color: kred,
+                                    )
+                                  ],
+                                ):
+                                Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Have a Referral Code',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge!
+                                              .copyWith(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 14.sp,
+                                                color: kred,
+                                              ),
+                                        ),
+                                        kwidth5,
+                                        Icon(
+                                          Icons.arrow_drop_up_sharp,
+                                          color: kred,
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    UserInputField(
+                                      controller: referalController,
+                                      hintText: "Enter referral code (optional)",
+                                      isNameField: true,
+                                      // validator: (value) {
+                                      //   if (value!.isEmpty) {
+                                      //     return "Name can't be empty";
+                                      //   }
+                                      //   return null;
+                                      // },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        ksizedbox40,
+                        Obx(
+                          () => controller.isLoading == true
+                              ? Container(
+                                  height: 45.h,
+                                  width: 1.sw,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    color: kred,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: const CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                )
+                              : CustomElevatedButton(
+                                  height: 45.h,
+                                  width: 1.sw,
+                                  onPressed: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      RegisterModel registerModel =
+                                          RegisterModel(
+                                              name: nameController.text,
+                                              email: emailController.text,
+                                              mobile:
+                                                  phoneNumberController.text,
+                                              roleId: 2);
 
-                                controller.registerUser(registerModel);
-                              },
-                              text: 'GENERATE OTP',
-                              color: kred,
-                              textColor: kwhite,
-                            )),
-                      ksizedbox10,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'By logging in, you agree to our',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            ' Terms and Conditions',
-                            style: TextStyle(
-                                color: Colors.blue,
+                                      controller.registerUser(registerModel);
+                                    }
+                                  },
+                                  text: 'GENERATE OTP',
+                                  color: kred,
+                                  textColor: kwhite,
+                                ),
+                        ),
+                        ksizedbox10,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'By logging in, you agree to our',
+                              style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                decoration: TextDecoration.underline,
-                                decorationColor: Colors.blue),
-                          )
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'and',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
-                          Text(
-                            ' Privacy Policy',
-                            style: TextStyle(
-                                color: Colors.blue,
+                            Text(
+                              ' Terms and Conditions',
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.w500,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: Colors.blue),
+                            )
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'and',
+                              style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                decoration: TextDecoration.underline,
-                                decorationColor: Colors.blue),
-                          )
-                        ],
-                      ),
-                      ksizedbox40,
-                    ],
+                              ),
+                            ),
+                            Text(
+                              ' Privacy Policy',
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.w500,
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: Colors.blue),
+                            )
+                          ],
+                        ),
+                        ksizedbox40,
+                      ],
+                    ),
                   ),
                 ),
               ],

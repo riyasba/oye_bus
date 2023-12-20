@@ -5,19 +5,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/authentication/register/controllers/register_controller.dart';
-import 'package:oye_bus/app/modules/authentication/register/views/register_view.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/widget/myaccountbutton_view.dart';
+import 'package:oye_bus/app/modules/screens/settingsscreens/settings/controllers/settings_controller.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
-
-
 
 class MyaccountView extends GetView {
   const MyaccountView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-      Get.put(RegisterController());
+    Get.lazyPut(()=>SettingsController());
+    Get.put(RegisterController());
     return Container(
       color: kwhite,
       child: SafeArea(
@@ -130,87 +129,89 @@ class MyaccountView extends GetView {
                       MyaccountbuttonView(
                         onPressed: () {
                           showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  backgroundColor: Colors.white,
-                                  title: Column(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                backgroundColor: Colors.white,
+                                title: Column(
+                                  children: [
+                                    Image.asset(
+                                        'assets/images/logoutimage.png'),
+                                    Text("Comeback Soon!",
+                                        style: TextStyle(
+                                            fontSize: 25.sp,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black)),
+                                  ],
+                                ),
+                                content: const Text(
+                                  "Are you sure want to logout?",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 17,
+                                  ),
+                                ),
+                                actions: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
                                     children: [
-                                      Image.asset(
-                                          'assets/images/logoutimage.png'),
-                                      Text("Comeback Soon!",
-                                          style: TextStyle(
-                                              fontSize: 25.sp,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black)),
-                                    ],
-                                  ),
-                                  content: const Text(
-                                    "Are you sure want to logout?",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 17,
-                                    ),
-                                  ),
-                                  actions: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        InkWell(
-                                          onTap: () {
-                                            Get.back();
-                                          },
-                                          child: Container(
-                                            height: 40,
-                                            width: 120,
-                                            decoration: BoxDecoration(
-                                                // ignore: unrelated_type_equality_checks
-                                                color: kwhite),
-                                            child: Center(
-                                                child: Text("Cancel",
-                                                    style: TextStyle(
-                                                        fontSize: 15,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color: kblack))),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            Get.to(
-                                              RegisterView(),
-                                            );
-                                            // authController.logoutindex(1);
-                                            // authController.update();
-                                            //  Get.find<AuthController>().logout();
-                                          },
-                                          child: Container(
-                                            height: 40,
-                                            width: 120,
-                                            decoration: BoxDecoration(
-                                                color: kred,
-                                                borderRadius:
-                                                    BorderRadius.circular(5)),
-                                            child: Center(
-                                              child: Text("Logout",
+                                      InkWell(
+                                        onTap: () {
+                                          Get.back();
+                                        },
+                                        child: Container(
+                                          height: 40,
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                              // ignore: unrelated_type_equality_checks
+                                              color: kwhite),
+                                          child: Center(
+                                              child: Text("Cancel",
                                                   style: TextStyle(
                                                       fontSize: 15,
                                                       fontWeight:
                                                           FontWeight.w600,
-                                                      color: kwhite)),
+                                                      color: kblack))),
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          Get.find<SettingsController>()
+                                              .logout();
+                                          // authController.logoutindex(1);
+                                          // authController.update();
+                                          //  Get.find<AuthController>().logout();
+                                        },
+                                        child: Container(
+                                          height: 40,
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                            color: kred,
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              "Logout",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: kwhite),
                                             ),
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                    ksizedbox10
-                                  ],
-                                );
-                              });
+                                      ),
+                                    ],
+                                  ),
+                                  ksizedbox10
+                                ],
+                              );
+                            },
+                          );
                         },
                         text: 'Logout',
                       ),
