@@ -5,12 +5,14 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:oye_bus/app/modules/authentication/login/controllers/login_controller.dart';
 import 'package:oye_bus/app/modules/authentication/otp/controllers/otp_controller.dart';
 import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
+import 'package:oye_bus/app/modules/screens/settingsscreens/settings/controllers/settings_controller.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 void main() {
   runApp(const MyApp());
   Get.put(LoginController());
   Get.put(OtpController());
   Get.put(ProfileController());
+  Get.put(SettingsController());
 }
 
 class MyApp extends StatelessWidget {

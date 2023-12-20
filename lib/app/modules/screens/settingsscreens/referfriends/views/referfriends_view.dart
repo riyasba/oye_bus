@@ -21,7 +21,7 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[300],
             leading: InkWell(
               onTap: () {
                 Get.back();
@@ -45,7 +45,7 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                   Text(
                     'When your friend completes his / her first trip with use',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
                   ),
                   ksizedbox20,
                   DottedBorder(
@@ -58,16 +58,19 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                       child: Row(
                         children: [
                           Text(
-                            'Your Code:',
+                            'Your Code :',
                             style: TextStyle(
                                 fontWeight: FontWeight.w600, fontSize: 20),
                           ),
-                          Text(
-                            'OYE32BUS',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20,
-                              color: kred,
+                          Padding(
+                            padding: const EdgeInsets.only(left:1),
+                            child: Text(
+                              'OYE32BUS',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20.sp,
+                                color: kred,
+                              ),
                             ),
                           ),
                           kwidth10,
@@ -75,7 +78,7 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                           Text(
                             'Copy',
                             style: TextStyle(
-                                fontSize: 19,
+                                fontSize: 19.sp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.blue),
                           ),
@@ -90,7 +93,7 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                                   timeInSecForIosWeb: 1,
                                   backgroundColor: kblue,
                                   textColor: Colors.white,
-                                  fontSize: 16.0
+                                  fontSize: 16.0.sp
                                   //),
                                   //print("code copied")
                                   );

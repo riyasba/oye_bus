@@ -1,5 +1,6 @@
 // Inside SettingsController
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
@@ -34,4 +35,7 @@ class SettingsController extends GetxController {
     final isdeletacount= true.obs;
 
   void increment() => count.value++;
+
+    var subjectController= TextEditingController();
+   var feedbackController= TextEditingController();
 }

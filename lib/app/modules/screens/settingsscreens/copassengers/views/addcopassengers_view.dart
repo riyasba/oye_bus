@@ -6,7 +6,6 @@ import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/widget/formfield_view.dart';
 import 'package:oye_bus/app/modules/screens/settingsscreens/copassengers/controllers/copassengers_controller.dart';
 
-
 class AddcopassengersView extends GetView {
    AddcopassengersView({Key? key}) : super(key: key);
  final  passengerController  = Get.find<CopassengersController>();
@@ -30,61 +29,65 @@ class AddcopassengersView extends GetView {
             ),
             centerTitle: true,
           ),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ksizedbox20,
-                FormfieldView(
-                  text: 'Riyas',
-                  labeltext: 'Name', 
-                  controller:passengerController.nameController,
+          body: ListView(
+            children: [
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ksizedbox20,
+                    FormfieldView(
+                      text: 'Riyas',
+                      labeltext: 'Name', 
+                      controller:passengerController.nameController,
+                    ),
+                    FormfieldView(
+                      text: '23',
+                      labeltext: 'Age', 
+                      controller: passengerController.ageController,
+                    ),
+                    FormfieldView(
+                      text: 'Male',
+                      labeltext: 'Gender', 
+                      controller: passengerController.genderController,
+                    ),
+                    ksizedbox40,
+                    ksizedbox40,
+                    ksizedbox40,
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
+                      child: CustomElevatedButton(
+                        height: 45.h,
+                        width: 1.sw,
+                        onPressed: () {
+                          // Get.toNamed(
+                          //   Routes.REGISTER,
+                          // );
+                        },
+                        text: 'SAVE',
+                        color: kred,
+                        textColor: kwhite,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
+                      child: CustomElevatedButton(
+                        height: 45.h,
+                        width: 1.sw,
+                        onPressed: () {
+                          // Get.toNamed(
+                          //   Routes.LOGIN,
+                          // );
+                        },
+                        text: 'Cancel',
+                        color: kwhite,
+                        textColor: kred,
+                      ),
+                    ),
+                  ],
                 ),
-                FormfieldView(
-                  text: '23',
-                  labeltext: 'Age', 
-                  controller: passengerController.ageController,
-                ),
-                FormfieldView(
-                  text: 'Male',
-                  labeltext: 'Gender', 
-                  controller: passengerController.genderController,
-                ),
-                ksizedbox40,
-                ksizedbox40,
-                ksizedbox40,
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
-                  child: CustomElevatedButton(
-                    height: 45.h,
-                    width: 1.sw,
-                    onPressed: () {
-                      // Get.toNamed(
-                      //   Routes.REGISTER,
-                      // );
-                    },
-                    text: 'SAVE',
-                    color: kred,
-                    textColor: kwhite,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
-                  child: CustomElevatedButton(
-                    height: 45.h,
-                    width: 1.sw,
-                    onPressed: () {
-                      // Get.toNamed(
-                      //   Routes.LOGIN,
-                      // );
-                    },
-                    text: 'Cancel',
-                    color: kwhite,
-                    textColor: kred,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

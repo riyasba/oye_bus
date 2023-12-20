@@ -145,7 +145,7 @@ class HomeView extends GetView<HomeController> {
                               width: size.width * 0.6.w,
                               color: const Color.fromRGBO(158, 158, 158, 1),
                             ),
-                            const SizedBox(
+                             SizedBox(
                               height: 5,
                             ),
                             Text(
@@ -198,11 +198,11 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
             ),
-            const SizedBox(
+             SizedBox(
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding:  EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 children: [
                   InkWell(
@@ -281,130 +281,133 @@ class HomeView extends GetView<HomeController> {
                   const SizedBox(
                     width: 10,
                   ),
-                  Container(
-                      height: 60,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: const Color(0xffEEEEEF)),
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(top: 7, left: 7, right: 7),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Seat Type (optional)",
-                              style: primaryFont.copyWith(fontSize: 10),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Obx(
-                              () => Row(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      controller.ontapindex(1);
-                                    },
-                                    child: Container(
-                                      height: 15,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                          color:
-                                              controller.currenttap.value == 1
-                                                  ? kblack
-                                                  : Color(0xffD9D9D9)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 5),
-                                        child: Center(
-                                          child: Text(
-                                            "Seater",
-                                            style: GoogleFonts.montserrat(
-                                                fontSize: 7,
-                                                color: controller
-                                                            .currenttap.value ==
-                                                        1
-                                                    ? kwhite
-                                                    : kblack),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      controller.ontapindex(2);
-                                    },
-                                    child: Container(
-                                      height: 15,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                          color: controller.currenttap == 2
-                                              ? kblack
-                                              : const Color(0xffD9D9D9)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 5),
-                                        child: Center(
-                                          child: Text(
-                                            "Sleeper",
-                                            style: GoogleFonts.montserrat(
-                                                fontSize: 7,
-                                                color: controller
-                                                            .currenttap.value ==
-                                                        2
-                                                    ? kwhite
-                                                    : kblack),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 3,
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      controller.ontapindex(3);
-                                    },
-                                    child: Container(
-                                      height: 15,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                          color: controller.currenttap == 3
-                                              ? kblack
-                                              : const Color(0xffD9D9D9)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 5),
-                                        child: Center(
-                                          child: Text(
-                                            "Semi-Sleeper",
-                                            style: GoogleFonts.montserrat(
-                                                fontSize: 7,
-                                                color: controller
-                                                            .currenttap.value ==
-                                                        3
-                                                    ? kwhite
-                                                    : kblack),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xffEEEEEF)),
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.only(top: 7, left: 7, right: 7),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Seat Type (optional)",
+                                style: primaryFont.copyWith(fontSize: 10),
                               ),
-                            ),
-                          ],
-                        ),
-                      )),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Obx(
+                                () => Row(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        controller.ontapindex(1);
+                                      },
+                                      child: Container(
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(30),
+                                            color:
+                                                controller.currenttap.value == 1
+                                                    ? kblack
+                                                    : Color(0xffD9D9D9)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 5),
+                                          child: Center(
+                                            child: Text(
+                                              "Seater",
+                                              style: GoogleFonts.montserrat(
+                                                  fontSize: 7,
+                                                  color: controller
+                                                              .currenttap.value ==
+                                                          1
+                                                      ? kwhite
+                                                      : kblack),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                     SizedBox(
+                                      width: 4.w,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        controller.ontapindex(2);
+                                      },
+                                      child: Container(
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(30),
+                                            color: controller.currenttap == 2
+                                                ? kblack
+                                                : const Color(0xffD9D9D9)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 5),
+                                          child: Center(
+                                            child: Text(
+                                              "Sleeper",
+                                              style: GoogleFonts.montserrat(
+                                                  fontSize: 7,
+                                                  color: controller
+                                                              .currenttap.value ==
+                                                          2
+                                                      ? kwhite
+                                                      : kblack),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 3,
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        controller.ontapindex(3);
+                                      },
+                                      child: Container(
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(30),
+                                            color: controller.currenttap == 3
+                                                ? kblack
+                                                : const Color(0xffD9D9D9)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 5),
+                                          child: Center(
+                                            child: Text(
+                                              "Semi-Sleeper",
+                                              style: GoogleFonts.montserrat(
+                                                  fontSize: 7,
+                                                  color: controller
+                                                              .currenttap.value ==
+                                                          3
+                                                      ? kwhite
+                                                      : kblack),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        )),
+                  ),
                 ],
               ),
             ),

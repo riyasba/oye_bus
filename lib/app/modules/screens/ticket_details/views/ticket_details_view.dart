@@ -138,25 +138,21 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                                   children: [
                                          pdfLib.Text('Chennai \nAirport (Meenambakkam Metro)'),
-                             
-                              pdfLib.Text('Bangalore \nBommasandra')
+                                         pdfLib.Text('Bangalore \nBommasandra')
                                   ],
                                 ),
-                              )
-                            
+                              )  
                             ],
                           ),
                         )
                       ],
                     ),
                   ),
-                  
                   pdfLib.Padding(
                     padding:pdfLib.EdgeInsets.only(top: 10),
                     child: pdfLib.Container(
                       width: 374,
                       decoration: pdfLib.BoxDecoration(
-                        
                       ),
                       child: pdfLib.Text('-----------------------------------------------------------------------------------',
                       style: pdfLib.TextStyle(
@@ -164,22 +160,19 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       ),),
                     ),
                   ),
-             
                  pdfLib. Padding(
                     padding:pdfLib.EdgeInsets.only(left: 10,top: 10),
                     child: pdfLib.Text('21:50 PM - 06:15AM',
-                    style: pdfLib.TextStyle(
+                    style: pdfLib.TextStyle( 
                       fontSize: 15,
-                   
                     ),),
-                  ),
+                  ), 
                   pdfLib.Padding(
                     padding: pdfLib.EdgeInsets.only(top: 2,left: 10),
                     child: pdfLib.Text('10 Nov 2023, Saturday',
                     style: pdfLib.TextStyle(
                     ),),
                   ),
-                  
                   pdfLib.Padding(
                     padding:pdfLib.EdgeInsets.only(left: 10,right: 10,top: 10),
                     child: pdfLib.Row(
@@ -187,18 +180,14 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       children: [
                         pdfLib.Text('Seat Number : L19', 
                         style: pdfLib.TextStyle(
-                  
                         ),),
                         pdfLib.Row(
                           children: [
                             pdfLib.Text('Ticket ID : ',
                             style: pdfLib.TextStyle(
-                    
-                    
                             ),),
                             pdfLib.Text('LA345678',
-                            style: pdfLib.TextStyle(
-                         
+                            style: pdfLib.TextStyle(     
                             ),
                             )
                           ],
@@ -206,7 +195,6 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       ],
                     ),
                   ),
-                 
                   pdfLib.Padding(
                     padding: pdfLib.EdgeInsets.only(left: 10,top: 10,right: 10),
                     child: pdfLib.Row(
@@ -214,7 +202,6 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         pdfLib.Text('PHR : '),
                         pdfLib.Text('5565456679',
                         style: pdfLib.TextStyle(
-                   
                         ),)
                       ],
                     ),
@@ -225,19 +212,16 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       children: [
                         pdfLib.Text('Booking ID: '),
                         pdfLib.Text('86J8645JE75',
-                        style: pdfLib.TextStyle(
-                      
+                        style: pdfLib.TextStyle(  
                         ),)
                       ],
                     ),
                   ),
-               
                   pdfLib.Padding(
                     padding: pdfLib.EdgeInsets.only(top: 10),
                     child: pdfLib.Container(
                       width: 374,
                       decoration: pdfLib.BoxDecoration(
-                        
                       ),
                       child: pdfLib.Text('-----------------------------------------------------------------------------------',
                       style: pdfLib.TextStyle(
@@ -250,17 +234,14 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     child: pdfLib.Container(
                       width: 200,
                       child: pdfLib.Text('KMPL Kalaimakal Travels TN 01 BC 3432',
-                      style: pdfLib.TextStyle(
-                     
+                      style: pdfLib.TextStyle( 
                       ),)),
                   ),
-                    
                   pdfLib.Padding(
                     padding:pdfLib.EdgeInsets.only(top: 10),
                     child: pdfLib.Container(
                       width: 374,
                       decoration: pdfLib.BoxDecoration(
-                        
                       ),
                       child: pdfLib.Text('-----------------------------------------------------------------------------------',
                       style: pdfLib.TextStyle(
@@ -268,7 +249,6 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       ),),
                     ),
                   ),
-                  
                   pdfLib.Padding(
                     padding:pdfLib.EdgeInsets.only(left: 10,right: 10,top: 20),
                     child: pdfLib.Row(
@@ -276,11 +256,9 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       children: [
                         pdfLib.Text('TOTAL:',
                         style: pdfLib.TextStyle(
-                   
                         ),),
                         pdfLib.Text(' 4,558.00',
                         style: pdfLib.TextStyle(
-                    
                         ),)
                       ],
                     ),
@@ -297,7 +275,6 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
     )
         );
         Directory root = await getTemporaryDirectory(); 
-        
         final file= File('${root.path}/sharmi.pdf');
         await file.writeAsBytes(await pdf.save());
         print("------------------------>>");
@@ -326,15 +303,14 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
            child: pdfLib.Column(
             children: [
              pdfLib.Container(
-              height: 532,
-              width: 374,
+              height: 532.h,
+              width: 374.w,
               decoration: pdfLib.BoxDecoration(
                 color: PdfColors.yellow
               ),
               child: pdfLib.Column(
                 crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                 children: [
-                  
                   pdfLib.Padding(
                     padding: pdfLib. EdgeInsets.only(left: 10,top: 10),
                     child: pdfLib.Column(
@@ -342,9 +318,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       children: [
                         pdfLib.Text('KMRL Kalaimakal',
                         style: pdfLib.TextStyle(
-                          fontSize: 20,
-                          
-                        
+                          fontSize: 20.sp,
                         ),),
                         pdfLib.Text('A/C Seater / Sleepr (2+1) - 1 Seat')
                       ],
@@ -357,7 +331,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         pdfLib.Column(
                           children: [
                             pdfLib.Container(
-                              height: 130,
+                              height: 130.h,
                               child: pdfLib.Column(
                                 mainAxisAlignment: pdfLib.MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
@@ -367,20 +341,20 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                       pdfLib.Text('21:50'),
                                         pdfLib.Text('10 Nov',
                                   style: pdfLib.TextStyle(
-                                    fontSize: 10
+                                    fontSize: 10.sp
                                   ),)
                                     ],
                                   ),
                                    pdfLib.Text('7h 15m',
                                    style: pdfLib.TextStyle(
-                                    fontSize: 10
+                                    fontSize: 10.sp
                                    ),),
                                    pdfLib.Column(
                                     children: [
                                       pdfLib.Text('05:05'),
                                       pdfLib.Text('11 Nov',
                                       style: pdfLib.TextStyle(
-                                        fontSize: 10
+                                        fontSize: 10.sp
                                       ),)
                                     ],
                                    )
@@ -394,23 +368,23 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                           child: pdfLib.Column(
                             children: [
                               pdfLib.Container(
-                                height: 15,
-                                width: 20,
+                                height: 15.h,
+                                width: 20.w,
                                 decoration: pdfLib.BoxDecoration(
                                   color: PdfColors.black,
                                   shape: pdfLib.BoxShape.circle
                                 ),
                               ),
                               pdfLib.Container(
-                                height: 92,
-                                width: 5,
+                                height: 92.h,
+                                width: 5.w,
                                 decoration: pdfLib.BoxDecoration(
                                   color: PdfColors.black
                                 ),
                               ),
                                  pdfLib.Container(
-                                height: 15,
-                                width: 20,
+                                height: 15.h,
+                                width: 20.w,
                                 decoration: pdfLib.BoxDecoration(
                                   color: PdfColors.black,
                                   shape: pdfLib.BoxShape.circle
@@ -426,31 +400,27 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                             crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                             children: [
                               pdfLib.Container(
-                                height: 130,
+                                height: 130.h,
                                 child: pdfLib.Column(
                                   mainAxisAlignment: pdfLib.MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                                   children: [
-                                         pdfLib.Text('Chennai \nAirport (Meenambakkam Metro)'),
-                             
-                              pdfLib.Text('Bangalore \nBommasandra')
+                                    pdfLib.Text('Chennai \nAirport (Meenambakkam Metro)'),
+                                    pdfLib.Text('Bangalore \nBommasandra')
                                   ],
                                 ),
-                              )
-                            
+                              )        
                             ],
                           ),
                         )
                       ],
                     ),
                   ),
-                  
                   pdfLib.Padding(
                     padding:pdfLib.EdgeInsets.only(top: 10),
                     child: pdfLib.Container(
-                      width: 374,
+                      width: 374.w,
                       decoration: pdfLib.BoxDecoration(
-                        
                       ),
                       child: pdfLib.Text('-----------------------------------------------------------------------------------',
                       style: pdfLib.TextStyle(
@@ -458,13 +428,11 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       ),),
                     ),
                   ),
-             
                  pdfLib. Padding(
                     padding:pdfLib.EdgeInsets.only(left: 10,top: 10),
                     child: pdfLib.Text('21:50 PM - 06:15AM',
                     style: pdfLib.TextStyle(
-                      fontSize: 15,
-                   
+                      fontSize: 15.sp,
                     ),),
                   ),
                   pdfLib.Padding(
@@ -473,7 +441,6 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     style: pdfLib.TextStyle(
                     ),),
                   ),
-                  
                   pdfLib.Padding(
                     padding:pdfLib.EdgeInsets.only(left: 10,right: 10,top: 10),
                     child: pdfLib.Row(
@@ -481,18 +448,14 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       children: [
                         pdfLib.Text('Seat Number : L19', 
                         style: pdfLib.TextStyle(
-                  
                         ),),
                         pdfLib.Row(
                           children: [
                             pdfLib.Text('Ticket ID : ',
                             style: pdfLib.TextStyle(
-                    
-                    
                             ),),
                             pdfLib.Text('LA345678',
                             style: pdfLib.TextStyle(
-                         
                             ),
                             )
                           ],
@@ -500,7 +463,6 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       ],
                     ),
                   ),
-                 
                   pdfLib.Padding(
                     padding: pdfLib.EdgeInsets.only(left: 10,top: 10,right: 10),
                     child: pdfLib.Row(
@@ -508,7 +470,6 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         pdfLib.Text('PHR : '),
                         pdfLib.Text('5565456679',
                         style: pdfLib.TextStyle(
-                   
                         ),)
                       ],
                     ),
@@ -519,17 +480,15 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       children: [
                         pdfLib.Text('Booking ID: '),
                         pdfLib.Text('86J8645JE75',
-                        style: pdfLib.TextStyle(
-                      
+                        style: pdfLib.TextStyle(  
                         ),)
                       ],
                     ),
                   ),
-               
                   pdfLib.Padding(
                     padding: pdfLib.EdgeInsets.only(top: 10),
                     child: pdfLib.Container(
-                      width: 374,
+                      width: 374.w,
                       decoration: pdfLib.BoxDecoration(
                         
                       ),
@@ -545,16 +504,13 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       width: 200.w,
                       child: pdfLib.Text('KMPL Kalaimakal Travels TN 01 BC 3432',
                       style: pdfLib.TextStyle(
-                     
                       ),)),
                   ),
-                    
                   pdfLib.Padding(
                     padding:pdfLib.EdgeInsets.only(top: 10),
                     child: pdfLib.Container(
                       width: 374.w,
                       decoration: pdfLib.BoxDecoration(
-                        
                       ),
                       child: pdfLib.Text('-----------------------------------------------------------------------------------',
                       style: pdfLib.TextStyle(
@@ -562,19 +518,15 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       ),),
                     ),
                   ),
-                  
                   pdfLib.Padding(
                     padding:pdfLib.EdgeInsets.only(left: 10,right: 10,top: 20),
                     child: pdfLib.Row(
                       mainAxisAlignment: pdfLib.MainAxisAlignment.spaceBetween,
                       children: [
                         pdfLib.Text('TOTAL:',
-                        style: pdfLib.TextStyle(
-                   
-                        ),),
+                        style: pdfLib.TextStyle(),),
                         pdfLib.Text(' 4,558.00',
                         style: pdfLib.TextStyle(
-                    
                         ),)
                       ],
                     ),
@@ -737,12 +689,10 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                          Text('Chennai \nAirport (Meenambakkam Metro)'),
-                             
-                              Text('Bangalore \nBommasandra')
+                                         Text('Bangalore \nBommasandra')
                                   ],
                                 ),
                               )
-                            
                             ],
                           ),
                         )
@@ -753,7 +703,6 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                   Container(
                     width: 374.w,
                     decoration: BoxDecoration(
-                      
                     ),
                     child: Text('-----------------------------------------------------------------------------------',
                     style: TextStyle(
@@ -788,10 +737,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         Row(
                           children: [
                             Text('Ticket ID : ',
-                            style: TextStyle(
-                    
-                    
-                            ),),
+                            style: TextStyle(),),
                             Text('LA345678',
                             style: TextStyle(
                               fontWeight: FontWeight.w700
@@ -831,7 +777,6 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                   Container(
                     width: 374.w,
                     decoration: BoxDecoration(
-                      
                     ),
                     child: Text('-----------------------------------------------------------------------------------',
                     style: TextStyle(
@@ -850,8 +795,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                      ksizedbox10,
                   Container(
                     width: 374.w,
-                    decoration: BoxDecoration(
-                      
+                    decoration: BoxDecoration( 
                     ),
                     child: Text('-----------------------------------------------------------------------------------',
                     style: TextStyle(
@@ -887,8 +831,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                  style: TextStyle(
                   height: 1.5.h,
                   fontFamily: 'Proxima '
-                 ),),
-                 
+                 ),),   
                ],
              ),),
              ksizedbox20,
@@ -916,8 +859,8 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                 Text('Download'),
                 Text('Cancel')
               ],
-             )
-             
+             ),
+             ksizedbox10
             ],
            ),
          )

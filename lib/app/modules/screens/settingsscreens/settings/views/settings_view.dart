@@ -103,9 +103,9 @@ class SettingsView extends GetView<SettingsController> {
       },
     );
   }
-
   @override
   Widget build(BuildContext context) {
+    Get.put(SettingsController());
     return Container(
       color: kwhite,
       child: SafeArea(
@@ -430,7 +430,7 @@ class SettingsView extends GetView<SettingsController> {
                                     Container(
                                       decoration: BoxDecoration(
                                         border: Border.all(
-                                            color: kblack, width: 1.0),
+                                            color: kblack, width: 1.0.w),
                                         borderRadius:
                                             BorderRadius.circular(5.0),
                                       ),
@@ -441,7 +441,7 @@ class SettingsView extends GetView<SettingsController> {
                                         children: [
                                           Text('Hindi',
                                               style: GoogleFonts.montserrat(
-                                                  fontSize: 14,
+                                                  fontSize: 14.sp,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.black)),
                                           Icon(Icons.arrow_drop_up_outlined)
@@ -449,12 +449,12 @@ class SettingsView extends GetView<SettingsController> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 2,
+                                      height: 2.h,
                                     ),
                                     Container(
                                       decoration: BoxDecoration(
                                         border: Border.all(
-                                            color: kblack, width: 1.0),
+                                            color: kblack, width: 1.0.w),
                                         borderRadius:
                                             BorderRadius.circular(5.0),
                                       ),
@@ -474,11 +474,11 @@ class SettingsView extends GetView<SettingsController> {
                                             children: [
                                               Text(
                                                 language[index],
-                                                style: TextStyle(fontSize: 16),
+                                                style: TextStyle(fontSize: 16.sp),
                                               ),
                                               Container(
-                                                width: 50,
-                                                height: 50,
+                                                width: 50.w,
+                                                height: 50.h,
                                                 child: ValueListenableBuilder(
                                                   valueListenable:
                                                       selectedOption,
@@ -525,7 +525,7 @@ class SettingsView extends GetView<SettingsController> {
                           },
                           child: controller.isdeletacount.isTrue
                               ? Container(
-                                  height: 50,
+                                  height: 50.h,
                                   decoration: BoxDecoration(
                                     border:
                                         Border.all(color: kblack, width: 1.0),
@@ -538,7 +538,7 @@ class SettingsView extends GetView<SettingsController> {
                                     children: [
                                       Text('Delete your account',
                                           style: GoogleFonts.montserrat(
-                                              fontSize: 14,
+                                              fontSize: 14.sp,
                                               fontWeight: FontWeight.w500,
                                               color: Colors.black)),
                                       Icon(Icons.arrow_drop_down_outlined)
@@ -561,7 +561,7 @@ class SettingsView extends GetView<SettingsController> {
                                         children: [
                                           Text('Delete your account',
                                               style: GoogleFonts.montserrat(
-                                                  fontSize: 14,
+                                                  fontSize: 14.sp,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.black)),
                                           Icon(Icons.arrow_drop_up_outlined)
@@ -569,7 +569,7 @@ class SettingsView extends GetView<SettingsController> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 2,
+                                      height: 2.h,
                                     ),
                                     Container(
                                         decoration: BoxDecoration(
@@ -584,7 +584,7 @@ class SettingsView extends GetView<SettingsController> {
                                             Text(
                                               'This action will permanently delete your account and booking history information.',
                                               style: GoogleFonts.montserrat(
-                                                  fontSize: 14,
+                                                  fontSize: 14.sp,
                                                   fontWeight: FontWeight.w500,
                                                   color: Colors.black),
                                             ),
@@ -592,7 +592,7 @@ class SettingsView extends GetView<SettingsController> {
                                             Text(
                                                 'You can log in any time in the next 90 days to cancel the deletion of your account.',
                                                 style: GoogleFonts.montserrat(
-                                                    fontSize: 14,
+                                                    fontSize: 14.sp,
                                                     fontWeight: FontWeight.w500,
                                                     color: Colors.black)),
                                             Container(
@@ -634,7 +634,7 @@ class SettingsView extends GetView<SettingsController> {
                                                               'Share your thoughts here',
                                                           hintStyle: GoogleFonts
                                                               .montserrat(
-                                                                  fontSize: 16,
+                                                                  fontSize: 16.sp,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w400,
@@ -673,6 +673,7 @@ class SettingsView extends GetView<SettingsController> {
                               // );
                             },
                             text: 'Keep my account with oyeNus',
+                             
                             color: kred,
                             textColor: kwhite,
                           ),
@@ -684,9 +685,87 @@ class SettingsView extends GetView<SettingsController> {
                             height: 45.h,
                             width: 1.sw,
                             onPressed: () {
-                              // Get.toNamed(
-                              //   Routes.LOGIN,
-                              // );
+                               showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  backgroundColor: Colors.white,
+                                  title: Column(
+                                    children: [
+                                      Image.asset(
+                                          'assets/images/deleteaccountimage.png'),
+                                  
+                                    ],
+                                  ),
+                                  content: Container(
+                                    width: 150.w,
+                                    child: const Text(
+                                      "Are you sure want to delete your account?",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                      ),
+                                    ),
+                                  ),
+                                  actions: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            Get.back();
+                                          },
+                                          child: Container(
+                                            height: 38,
+                                            width: 105,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                    BorderRadius.circular(6),
+                                                // ignore: unrelated_type_equality_checks
+                                                color: kgrey),
+                                            child: Center(
+                                                child: Text("No",
+                                                    style: TextStyle(
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: kblack))),
+                                          ),
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                         
+                                            // authController.logoutindex(1);
+                                            // authController.update();
+                                            //  Get.find<AuthController>().logout();
+                                          },
+                                          child: Container(
+                                            height: 38,
+                                            width: 105,
+                                            decoration: BoxDecoration(
+                                                color: kred,
+                                                borderRadius:
+                                                    BorderRadius.circular(6)),
+                                            child: Center(
+                                              child: Text("yes ",
+                                                  style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: kwhite)),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    ksizedbox10
+                                  ],
+                                );
+                              });
                             },
                             text: 'Delete my account',
                             color: kwhite,

@@ -28,71 +28,79 @@ class CopassengersView extends GetView<CopassengersController> {
             ),
             centerTitle: true,
           ),
-          body: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 90,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.0),
-                      border: Border.all(
-                        color: Colors.black, // Border color
-                        width: 2.0, // Border width
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Name:Riyas',
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w600),
+          body: ListView(
+            children: [
+              ksizedbox30,
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 90.h,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.0),
+                          border: Border.all(
+                            color: Colors.black, // Border color
+                            width: 2.0.w, // Border width
                           ),
-                          Text('Age:23',
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w600)),
-                          Text('Gender:male',
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w600))
-                        ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Name:Riyas',
+                                style: TextStyle(
+                                    fontSize: 15.sp, 
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              Text('Age:23',
+                                  style: TextStyle(
+                                      fontSize: 15.sp, 
+                                      fontWeight: FontWeight.w600)),
+                              Text('Gender:male',
+                                  style: TextStyle(
+                                      fontSize: 15.sp, 
+                                      fontWeight: FontWeight.w600))
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
+                      ksizedbox40,
+                      ksizedbox40,
+                      Image.asset('assets/images/fi_1611631.png'),
+                      ksizedbox20,
+                      Text(
+                        'You have not added co-passengers yet',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: kgrey,
+                            fontSize: 18.sp),
+                      ),
+                      ksizedbox40,
+                      ksizedbox40,
+                      CustomElevatedButton(
+                        height: 45.h,
+                        width: 1.sw,
+                        onPressed: () {
+                          Get.to(
+                            AddcopassengersView(),
+                          );
+                        },
+                        text: 'Add Co-Paaengers',
+                        color: kred,
+                        textColor: kwhite,
+                      ),
+                    ],
                   ),
-                  ksizedbox40,
-                  ksizedbox40,
-                  Image.asset('assets/images/fi_1611631.png'),
-                  ksizedbox20,
-                  Text(
-                    'You have not added co-passengers yet',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: kgrey,
-                        fontSize: 18),
-                  ),
-                  ksizedbox40,
-                  ksizedbox40,
-                  CustomElevatedButton(
-                    height: 45.h,
-                    width: 1.sw,
-                    onPressed: () {
-                      Get.to(
-                        AddcopassengersView(),
-                      );
-                    },
-                    text: 'Add Co-Paaengers',
-                    color: kred,
-                    textColor: kwhite,
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ),

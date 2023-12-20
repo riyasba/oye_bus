@@ -8,11 +8,10 @@ import 'package:oye_bus/app/modules/screens/profile/views/widget/formfield_view.
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
+  
    ProfileView({Key? key}) : super(key: key);
 
   final profileController = Get.find<ProfileController>();
- 
-
   @override
   Widget build(BuildContext context) {
     return Container(

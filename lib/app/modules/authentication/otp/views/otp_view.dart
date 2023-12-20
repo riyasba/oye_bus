@@ -8,8 +8,7 @@ import '../controllers/otp_controller.dart';
 
 class OtpView extends GetView<OtpController> {
   String mobile;
-  OtpView({Key? key, required this.mobile})
-      : super(
+  OtpView({Key? key, required this.mobile}): super(
           key: key,
         );
 
