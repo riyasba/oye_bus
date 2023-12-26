@@ -83,7 +83,7 @@ class LoginController extends GetxController {
    LoginApiService loginapiservice = LoginApiService();
 
    getLoginUser({required String mobile})async{
-    isLoading(true);
+    isLoading(true); 
      dio.Response<dynamic>response = 
      await loginapiservice.LoginApi(mobile: mobile);
 

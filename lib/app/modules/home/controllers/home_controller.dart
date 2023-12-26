@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:oye_bus/app/models/offers_models.dart';
+import 'package:oye_bus/app/data/api_service/models/offers_models.dart';
 import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';
 
 class HomeController extends GetxController {

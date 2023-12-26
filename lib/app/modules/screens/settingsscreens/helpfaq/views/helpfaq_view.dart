@@ -8,7 +8,9 @@ import 'package:oye_bus/app/components/const.dart';
 import '../controllers/helpfaq_controller.dart';
 
 class HelpfaqView extends GetView<HelpfaqController> {
-  const HelpfaqView({Key? key}) : super(key: key);
+   HelpfaqView({Key? key}) : super(key: key);
+
+  final faqsController = Get.find<HelpfaqController>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,48 +38,30 @@ class HelpfaqView extends GetView<HelpfaqController> {
               Column(
                 children: [
                
-                  ExpansionTileGroup(children: [
-                    const ExpansionTileWithoutBorderItem(
-                      title: Text('Ticket Booking'),
-                      expendedBorderColor: Colors.grey,
-                      children: [
-                        Text(
-                            'Bus Reservation System is intended to automate the purchase of online tickets through an easy-to-use online bus booking system. Integrate our online bus ticket booking system into your website, and your customers will be able to book tickets for a variety of routes and destinations.'),
-                      ],
-                    ),
-                    ExpansionTileWithoutBorderItem(
-                      title: Text('Ticket Cancellation'),
-                      expendedBorderColor: Colors.grey,
-                      children: [
-                        Text(
-                            'The refund policy depends on an e-ticketing platform as well as the bus operator. The earlier you cancel your bus tickets, the higher the refund amount. Generally, a fee is deducted while refunding bus ticket amount as a 100% refund is not entertained.'),
-                      ],
-                    ),
-                    const ExpansionTileWithoutBorderItem(
-                      title: Text('Offer'),
-                      expendedBorderColor: Colors.grey,
-                      children: [
-                        Text(
-                            'Oye Bus Ticket Booking offer, you can get flat 20% Cashback upto Rs. 200 on first Bus Ticket Booking at OYE Bus. Get 10% upto Rs. 150 Cashback on second and third Order.'),
-                      ],
-                    ),
-                    const ExpansionTileWithoutBorderItem(
-                      title: Text('Payments & Refunds'),
-                      expendedBorderColor: Colors.grey,
-                      children: [
-                        Text(
-                            'The earlier you cancel your bus tickets, the higher the refund amount. Generally, a fee is deducted while refunding bus ticket amount as a 100% refund is not entertained. The refund amount is sent to the source (bank account, e-wallet, etc.) used to pay the bus ticket amount.'),
-                      ],
-                    ),
-                    const ExpansionTileWithoutBorderItem(
-                      title: Text('Bus Live Tracking'),
-                      expendedBorderColor: Colors.grey,
-                      children: [
-                        Text(
-                            '''A bus reservation system is a mobile or web software solution designed to provide customers with a personalized easy-to-utilize user experience for booking and purchasing tickets online. It stores customers' personal data records, scheduled routes, frequent trips, drop points, and other information.'''),
-                      ],
-                    ),
-                  ]),
+                  GetBuilder<HelpfaqController>(
+                    builder: (_) {
+                      return Container(
+                        height: 400,
+                        child: ListView.builder(
+                          itemCount: faqsController.faqsdata.length,
+                          shrinkWrap: true,
+                          itemBuilder: (context,index){
+                            return ExpansionTileGroup(children: [
+                             ExpansionTileWithoutBorderItem(
+                              title: Text(faqsController.faqsdata[index].title),
+                              expendedBorderColor: Colors.grey,
+                              children: [
+                                Text(
+                                faqsController.faqsdata[index].description),
+                              ],
+                            ),
+                          ]);
+                          },
+                          
+                        ),
+                      );
+                    }
+                  ),
                 ],
               ),
             ],

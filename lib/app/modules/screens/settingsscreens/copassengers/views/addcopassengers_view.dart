@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
+import 'package:oye_bus/app/data/api_service/models/passengers/add_copassengers_model.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/widget/formfield_view.dart';
 import 'package:oye_bus/app/modules/screens/settingsscreens/copassengers/controllers/copassengers_controller.dart';
 
 class AddcopassengersView extends GetView {
-   AddcopassengersView({Key? key}) : super(key: key);
+   AddcopassengersView({Key? key,}) : super(key: key);
  final  passengerController  = Get.find<CopassengersController>();
   @override
   Widget build(BuildContext context) {
@@ -32,59 +33,66 @@ class AddcopassengersView extends GetView {
           body: ListView(
             children: [
               Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ksizedbox20,
-                    FormfieldView(
-                      text: 'Riyas',
-                      labeltext: 'Name', 
-                      controller:passengerController.nameController,
-                    ),
-                    FormfieldView(
-                      text: '23',
-                      labeltext: 'Age', 
-                      controller: passengerController.ageController,
-                    ),
-                    FormfieldView(
-                      text: 'Male',
-                      labeltext: 'Gender', 
-                      controller: passengerController.genderController,
-                    ),
-                    ksizedbox40,
-                    ksizedbox40,
-                    ksizedbox40,
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
-                      child: CustomElevatedButton(
-                        height: 45.h,
-                        width: 1.sw,
-                        onPressed: () {
-                          // Get.toNamed(
-                          //   Routes.REGISTER,
-                          // );
-                        },
-                        text: 'SAVE',
-                        color: kred,
-                        textColor: kwhite,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
-                      child: CustomElevatedButton(
-                        height: 45.h,
-                        width: 1.sw,
-                        onPressed: () {
-                          // Get.toNamed(
-                          //   Routes.LOGIN,
-                          // );
-                        },
-                        text: 'Cancel',
-                        color: kwhite,
-                        textColor: kred,
-                      ),
-                    ),
-                  ],
+                child: GetBuilder<CopassengersController>(
+                  builder: (_) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ksizedbox20,
+                        FormfieldView(
+                          text: 'Riyas',
+                          labeltext: 'Name', 
+                          controller:passengerController.nameController,
+                        ),
+                        FormfieldView(
+                          text: '23',
+                          labeltext: 'Age', 
+                          controller: passengerController.ageController,
+                        ),
+                        FormfieldView(
+                          text: 'Male',
+                          labeltext: 'Gender', 
+                          controller: passengerController.genderController,
+                        ),
+                        ksizedbox40,
+                        ksizedbox40,
+                        ksizedbox40,
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
+                          child: CustomElevatedButton(
+                            height: 45.h,
+                            width: 1.sw,
+                            onPressed: () {
+                             AddCoPassangersModel addCoPassangersModel = 
+                                  AddCoPassangersModel(
+                                    age: passengerController.ageController.text, 
+                                    gender: passengerController.genderController.text, 
+                                    name: passengerController.nameController.text);
+                                    passengerController.addCopassangers(addCoPassangersModel: addCoPassangersModel);
+                                   passengerController.update();
+                               Get.back();
+                            },
+                            text: 'SAVE',
+                            color: kred,
+                            textColor: kwhite,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
+                          child: CustomElevatedButton(
+                            height: 45.h,
+                            width: 1.sw,
+                            onPressed: () {
+                            Get.back();
+                            },
+                            text: 'Cancel',
+                            color: kwhite,
+                            textColor: kred,
+                          ),
+                        ),
+                      ],
+                    );
+                  }
                 ),
               ),
             ],

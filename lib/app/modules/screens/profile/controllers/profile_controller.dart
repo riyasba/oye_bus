@@ -39,10 +39,10 @@ class ProfileController extends GetxController {
  WidgetsBinding.instance.addPostFrameCallback((_) async{
    await getprofile();
    print('profiledata');
-  print(profiledata.first.name);
+  // print(profiledata.first.name);
   
     if(profiledata.isNotEmpty){
-      nameController.text=profiledata.first.name;
+      nameController.text = profiledata.first.name;
       emailController.text = profiledata.first.email;
       mobileController.text = profiledata.first.mobile;
       emailController.text = profiledata.first.email;

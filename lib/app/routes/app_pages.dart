@@ -158,7 +158,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.COPASSENGERS,
-      page: () => const CopassengersView(),
+      page: () =>  CopassengersView(),
       binding: CopassengersBinding(),
     ),
     GetPage(
@@ -168,12 +168,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.HELPFAQ,
-      page: () => const HelpfaqView(),
+      page: () =>  HelpfaqView(),
       binding: HelpfaqBinding(),
     ),
     GetPage(
       name: _Paths.ABOUTUS,
-      page: () => const AboutusView(),
+      page: () =>  AboutusView(),
       binding: AboutusBinding(),
     ),
     GetPage(

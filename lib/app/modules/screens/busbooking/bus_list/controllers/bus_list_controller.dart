@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:oye_bus/app/models/bus_details_model.dart';
+import 'package:oye_bus/app/data/api_service/models/bus_details_model.dart';
 
 class BusListController extends GetxController {
   //TODO: Implement BusListController
