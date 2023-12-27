@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
+import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../controllers/otp_controller.dart';
 
@@ -13,6 +14,7 @@ class OtpView extends GetView<OtpController> {
         );
 
   final otpController = Get.find<OtpController>();
+  final profileController = Get.find<ProfileController>();
   String _otpValue = "";
 
   @override
@@ -44,7 +46,7 @@ class OtpView extends GetView<OtpController> {
               ),
               ksizedbox20,
               Text(
-                '''Check your SMS messages. We've sent you the PIN at +91 98765 4321000''',
+                '''Check your SMS messages. We've sent you the PIN at ${profileController.profiledata.first.mobile}''',
                 style: Theme.of(context).textTheme.displaySmall!.copyWith(
                       fontSize: 14.sp,
                       color: Colors.grey,

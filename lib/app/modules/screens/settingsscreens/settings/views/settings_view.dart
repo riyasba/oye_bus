@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
+import 'package:oye_bus/app/data/api_service/models/settings_models/country_models.dart';
 import '../controllers/settings_controller.dart';
 
 class SettingsView extends GetView<SettingsController> {
@@ -13,33 +14,11 @@ class SettingsView extends GetView<SettingsController> {
   String dropdowncurrency = 'INR';
   String dropdownlanguage = 'Hindi';
   String dropdownAccount = 'Delete your account';
-  List<String> language = [
-    'Language',
-    'Hindi',
-    'Telugu',
-    'Urdu',
-  ];
-
-  List<String> inr = [
-    'INR',
-    'NIFTY',
-    'BIT COIN',
-    'DOGE COIN',
-  ];
-
-  List<String> logos = [
-    'assets/images/Ellipse 1 (2).png',
-    'assets/images/Ellipse 3 (1).png',
-    'assets/images/Ellipse 5.png',
-    'assets/images/Ellipse 7.png',
-  ];
-  List<String> contries = [
-    'India',
-    'England',
-    'United States',
-    'Canada',
-  ];
+  
   final ValueNotifier<String> selectedOption = ValueNotifier<String>('');
+   final ValueNotifier<String> currencyOption = ValueNotifier<String>('');
+   final ValueNotifier<String> languageOption = ValueNotifier<String>('');
+  final settingController = Get.find<SettingsController>();
 
   back(BuildContext context) {
     showDialog(
@@ -165,10 +144,10 @@ class SettingsView extends GetView<SettingsController> {
                                   ),
                                   padding: EdgeInsets.all(12.0),
                                   child: Row(
-                                    mainAxisAlignment:
+                                    mainAxisAlignment: 
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text('India',
+                                      Text(selectedOption.value,
                                           style: GoogleFonts.montserrat(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500,
@@ -191,7 +170,7 @@ class SettingsView extends GetView<SettingsController> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text('India',
+                                          Text(selectedOption.value,
                                               style: GoogleFonts.montserrat(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w500,
@@ -215,48 +194,52 @@ class SettingsView extends GetView<SettingsController> {
 
 // ...
 
-                                          ListView.builder(
-                                        shrinkWrap: true,
-                                        physics: NeverScrollableScrollPhysics(),
-                                        itemCount: inr.length,
-                                        itemBuilder: (context, index) {
-                                          return Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
+                                         GetBuilder<SettingsController>(
+                                            builder: (_) {
+                                              return ListView.builder(
+                                                                                      shrinkWrap: true,
+                                                                                      physics: NeverScrollableScrollPhysics(),
+                                                                                      itemCount: settingController.countydata.length,
+                                                                                      itemBuilder: (context, index) {
+                                              return Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  Image.asset(logos[index]),
-                                                  SizedBox(width: 8),
-                                                  Text(
-                                                    contries[index],
-                                                    style:
-                                                        TextStyle(fontSize: 16),
+                                                  Row(
+                                                    children: [
+                                                    
+                                                      SizedBox(width: 8),
+                                                      Text(
+                                                        settingController.countydata[index].countries,
+                                                        style:
+                                                            TextStyle(fontSize: 16),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Container(
+                                                    width: 50,
+                                                    height: 50,
+                                                    child: ValueListenableBuilder(
+                                                      valueListenable:
+                                                          selectedOption,
+                                                      builder: (context, value, _) {
+                                                        return Radio(
+                                                          value: settingController.countydata[index].countries,
+                                                          groupValue: value,
+                                                          onChanged: ( newValue) {
+                                                            selectedOption.value =
+                                                                newValue.toString();
+                                                          },
+                                                        );
+                                                      },
+                                                    ),
                                                   ),
                                                 ],
-                                              ),
-                                              Container(
-                                                width: 50,
-                                                height: 50,
-                                                child: ValueListenableBuilder(
-                                                  valueListenable:
-                                                      selectedOption,
-                                                  builder: (context, value, _) {
-                                                    return Radio(
-                                                      value: 'Option ${index}',
-                                                      groupValue: value,
-                                                      onChanged: (newValue) {
-                                                        selectedOption.value =
-                                                            newValue!;
-                                                      },
-                                                    );
-                                                  },
-                                                ),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ),
+                                              );
+                                                                                      },
+                                                                                    );
+                                            }
+                                          ),
 
 // ...
                                     ),
@@ -295,7 +278,7 @@ class SettingsView extends GetView<SettingsController> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text('INR',
+                                      Text(currencyOption.value,
                                           style: GoogleFonts.montserrat(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500,
@@ -342,41 +325,45 @@ class SettingsView extends GetView<SettingsController> {
 
 // ...
 
-                                          ListView.builder(
-                                        shrinkWrap: true,
-                                        physics: NeverScrollableScrollPhysics(),
-                                        itemCount: inr.length,
-                                        itemBuilder: (context, index) {
-                                          return Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                inr[index],
-                                                style: TextStyle(fontSize: 16),
-                                              ),
-                                              Container(
-                                                width: 50,
-                                                height: 50,
-                                                child: ValueListenableBuilder(
-                                                  valueListenable:
-                                                      selectedOption,
-                                                  builder: (context, value, _) {
-                                                    return Radio(
-                                                      value: 'inda ${index}',
-                                                      groupValue: value,
-                                                      onChanged: (newValue) {
-                                                        selectedOption.value =
-                                                            newValue!;
+                                          GetBuilder<SettingsController>(
+                                            builder: (_) {
+                                              return ListView.builder(
+                                                   shrinkWrap: true,
+                                                    physics: NeverScrollableScrollPhysics(),
+                                                     itemCount: settingController.currencydata.length,
+                                                      itemBuilder: (context, index) {
+                                              return Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    settingController.currencydata[index].currency,
+                                                    style: TextStyle(fontSize: 16),
+                                                  ),
+                                                  Container(
+                                                    width: 50,
+                                                    height: 50,
+                                                    child: ValueListenableBuilder(
+                                                      valueListenable:
+                                                          currencyOption,
+                                                      builder: (context, value, _) {
+                                                        return Radio(
+                                                          value: settingController.currencydata[index].currency,
+                                                          groupValue: value,
+                                                          onChanged: (newValue) {
+                                                            currencyOption.value =
+                                                                newValue!;
+                                                          },
+                                                        );
                                                       },
-                                                    );
-                                                  },
-                                                ),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                                                                      },
+                                                                                    );
+                                            }
+                                          ),
 
 // ...
                                     ),
@@ -416,7 +403,7 @@ class SettingsView extends GetView<SettingsController> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text('Hindi',
+                                      Text(languageOption.value,
                                           style: GoogleFonts.montserrat(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500,
@@ -463,41 +450,45 @@ class SettingsView extends GetView<SettingsController> {
 
 // ...
 
-                                          ListView.builder(
-                                        shrinkWrap: true,
-                                        physics: NeverScrollableScrollPhysics(),
-                                        itemCount: language.length,
-                                        itemBuilder: (context, index) {
-                                          return Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                language[index],
-                                                style: TextStyle(fontSize: 16.sp),
-                                              ),
-                                              Container(
-                                                width: 50.w,
-                                                height: 50.h,
-                                                child: ValueListenableBuilder(
-                                                  valueListenable:
-                                                      selectedOption,
-                                                  builder: (context, value, _) {
-                                                    return Radio(
-                                                      value: '1 ${index}',
-                                                      groupValue: value,
-                                                      onChanged: (newValue) {
-                                                        selectedOption.value =
-                                                            newValue!;
+                                          GetBuilder<SettingsController>(
+                                            builder: (_) {
+                                              return ListView.builder(
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              itemCount: settingController.languagedata.length,
+                                               itemBuilder: (context, index) {
+                                              return Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    settingController.languagedata[index].languages,
+                                                    style: TextStyle(fontSize: 16.sp),
+                                                  ),
+                                                  Container(
+                                                    width: 50.w,
+                                                    height: 50.h,
+                                                    child: ValueListenableBuilder(
+                                                      valueListenable:
+                                                          languageOption,
+                                                      builder: (context, value, _) {
+                                                        return Radio(
+                                                          value: settingController.languagedata[index].languages,
+                                                          groupValue: value,
+                                                          onChanged: (newValue) {
+                                                            languageOption.value =
+                                                                newValue!;
+                                                          },
+                                                        );
                                                       },
-                                                    );
-                                                  },
-                                                ),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                                                                      },
+                                                                                    );
+                                            }
+                                          ),
 
 // ...
                                     ),
@@ -718,7 +709,7 @@ class SettingsView extends GetView<SettingsController> {
                                         InkWell(
                                           onTap: () {
                                             Get.back();
-                                          },
+                                      },
                                           child: Container(
                                             height: 38,
                                             width: 105,
@@ -736,27 +727,26 @@ class SettingsView extends GetView<SettingsController> {
                                                         color: kblack))),
                                           ),
                                         ),
-                                        InkWell(
-                                          onTap: () {
-                                         
-                                            // authController.logoutindex(1);
-                                            // authController.update();
-                                            //  Get.find<AuthController>().logout();
-                                          },
-                                          child: Container(
-                                            height: 38,
-                                            width: 105,
-                                            decoration: BoxDecoration(
-                                                color: kred,
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            child: Center(
-                                              child: Text("yes ",
-                                                  style: TextStyle(
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: kwhite)),
+                                        Obx(()=>
+                                           InkWell(
+                                            onTap: () {
+                                           settingController.deleteAccount();
+                                            },
+                                            child: Container(
+                                              height: 38,
+                                              width: 105,
+                                              decoration: BoxDecoration(
+                                                  color: kred,
+                                                  borderRadius:
+                                                      BorderRadius.circular(6)),
+                                              child: Center(
+                                                child: Text("yes ",
+                                                    style: TextStyle(
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: kwhite)),
+                                              ),
                                             ),
                                           ),
                                         ),

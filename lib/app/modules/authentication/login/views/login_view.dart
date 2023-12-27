@@ -163,7 +163,7 @@ class LoginView extends GetView<LoginController> {
                                 60.r,
                               ),
                             ),
-                            hintText: "5874536954",
+                            hintText: "",
                             hintStyle:
                                 Theme.of(context).textTheme.titleLarge!.copyWith(
                                       fontSize: 15.sp,

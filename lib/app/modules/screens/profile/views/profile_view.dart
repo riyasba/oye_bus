@@ -34,12 +34,7 @@ class ProfileView extends GetView<ProfileController> {
                        ):
                  InkWell(
                   onTap: () {
-                    ProfileUpdateModel profileUpdateModel =
-                    ProfileUpdateModel( 
-                    email: profileController.emailController.text,  
-                    mobilenumber: profileController.mobileController.text, 
-                    name: profileController.nameController.text);
-                    Get.to(EditprofileView(profileUpdateModel: profileUpdateModel,));
+                    Get.to(EditprofileView());
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 10),
@@ -62,7 +57,7 @@ class ProfileView extends GetView<ProfileController> {
               physics: BouncingScrollPhysics(),
               children: [
                 GetBuilder<ProfileController>(
-                  builder: (context) {
+                  builder: (_) {
                     return  Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

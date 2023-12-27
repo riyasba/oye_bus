@@ -9,8 +9,8 @@ import 'package:oye_bus/app/modules/screens/profile/views/widget/formfield_view.
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class EditprofileView extends GetView {
-    ProfileUpdateModel profileUpdateModel;
-   EditprofileView({Key? key,required this.profileUpdateModel}) : super(key: key);
+  
+   EditprofileView({Key? key,}) : super(key: key);
   final profileController = Get.find<ProfileController>();
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class EditprofileView extends GetView {
               physics: BouncingScrollPhysics(),
               children: [
                 GetBuilder<ProfileController>(
-                  builder: (context) {
+                  builder: (_) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -127,9 +127,14 @@ class EditprofileView extends GetView {
                     height: 45.h,
                     width: 1.sw,
                     onPressed: () {
-                      Get.toNamed(
-                        Routes.REGISTER,
-                      );
+                      ProfileUpdateModel profileUpdateModel =
+                    ProfileUpdateModel( 
+                    email: profileController.emailController.text,  
+                    mobilenumber: profileController.mobileController.text, 
+                    name: profileController.nameController.text);
+                    profileController.updateprofile(profileUpdateModel: profileUpdateModel);
+                    profileController.update();
+                    Get.back();
                     },
                     text: 'DONE',
                     color: kred,
