@@ -91,26 +91,32 @@ class EditprofileView extends GetView {
                         ),
                         ksizedbox20,
                         FormfieldView(
+
+                          readOnly: false,
                           text: '',
                           labeltext: 'Name', 
                           controller: profileController.nameController,
                         ),
                         FormfieldView(
+                          readOnly: false,
                           text: '23',
                           labeltext: 'Age', 
                           controller: profileController.ageController,
                         ),
                         FormfieldView(
+                          readOnly: false,
                           text: 'Male',
                           labeltext: 'Gender', 
                           controller: profileController.genderController,
                         ),
                         FormfieldView(
+                          readOnly: false,
                           text:'',
                           labeltext: 'Mobile Number', 
                           controller: profileController.mobileController,
                         ),
                         FormfieldView(
+                          readOnly: false,
                           text: '',
                           labeltext: 'Email ID', 
                           controller: profileController.emailController,

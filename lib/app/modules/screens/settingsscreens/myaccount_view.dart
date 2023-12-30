@@ -4,8 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/modules/authentication/login/controllers/login_controller.dart';
+import 'package:oye_bus/app/modules/authentication/login/views/login_view.dart';
 import 'package:oye_bus/app/modules/authentication/register/controllers/register_controller.dart';
 import 'package:oye_bus/app/modules/authentication/register/views/register_view.dart';
+import 'package:oye_bus/app/modules/onbording/controllers/onbording_controller.dart';
+import 'package:oye_bus/app/modules/onbording/views/onbording_view.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/widget/myaccountbutton_view.dart';
 import 'package:oye_bus/app/modules/screens/settingsscreens/settings/controllers/settings_controller.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
@@ -15,9 +19,11 @@ import 'package:url_launcher/url_launcher.dart' as launcher;
 class MyaccountView extends GetView<SettingsController> {
    MyaccountView({Key? key}) : super(key: key);
   final settingsController = Get.find<SettingsController>();
+ 
   @override
   Widget build(BuildContext context) {
       Get.put(RegisterController());
+     
     return Container(
       color: kwhite,
       child: SafeArea(
@@ -31,7 +37,7 @@ class MyaccountView extends GetView<SettingsController> {
                 child: Icon(
                   Icons.arrow_back,
                   color: kblack,
-                )),
+                )), 
             title: Text(
               'My Account',
               style: appbarfont,
@@ -181,9 +187,7 @@ class MyaccountView extends GetView<SettingsController> {
                                             ),
                                             InkWell(
                                               onTap: () {
-                                                Get.to(
-                                                  RegisterView(),
-                                                );
+                                              Get.find<LoginController>().logOut();
                                                 // authController.logoutindex(1);
                                                 // authController.update();
                                                 //  Get.find<AuthController>().logout();

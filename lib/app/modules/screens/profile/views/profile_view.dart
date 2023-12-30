@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/models/profile/profile_update_model.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/editprofile_view.dart';
@@ -110,31 +111,102 @@ class ProfileView extends GetView<ProfileController> {
                           ],
                         ),
                         ksizedbox20,
+                     Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: TextField(
+                        readOnly: true,
+                        controller: profileController.nameController,
+                              autofocus: true,
+                               decoration: InputDecoration(
+                                 focusedBorder: OutlineInputBorder(
+                                   borderRadius: BorderRadius.circular(10),
+                                   borderSide:
+                                       BorderSide(color: kblack, width: 2.0), // Border when focused
+                                 ),
+                                 enabledBorder: OutlineInputBorder(
+                                   borderRadius: BorderRadius.circular(10),
+                                   borderSide: BorderSide(
+                                       color: kblack, width: 2.0), // Border when not focused
+                                 ),
+                                
+                                 hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                 labelText: 'Name', // Changed label text
+                                 labelStyle: TextStyle(
+                                     color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                 // Text style for the label
+                               ),
+                       ),
+                     ),
+                        // FormfieldView(
+                        //   readOnly: true,
+                        //   text: '',
+                        //   labeltext: 'Name', 
+                        //   controller:profileController.nameController,
+                        // ),
                         FormfieldView(
-                          text: '',
-                          labeltext: 'Name', 
-                          controller:profileController.nameController,
-                        ),
-                        FormfieldView(
+                          readOnly: false,
                           text: '23',
                           labeltext: 'Age', 
                           controller: profileController.ageController,
                         ),
                         FormfieldView(
+                          readOnly: false,
                           text: 'Male',
                           labeltext: 'Gender', 
                           controller: profileController.genderController,
                         ),
-                        FormfieldView(
-                          text: '',
-                          labeltext: 'Mobile Number', 
-                          controller: profileController.mobileController,
-                        ),
-                        FormfieldView(
-                          text:'',
-                          labeltext: 'Email ID', 
-                          controller: profileController.emailController,
-                        ),
+                         Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: TextField(
+                        readOnly: true,
+                        controller: profileController.mobileController,
+                              autofocus: true,
+                               decoration: InputDecoration(
+                                 focusedBorder: OutlineInputBorder(
+                                   borderRadius: BorderRadius.circular(10),
+                                   borderSide:
+                                       BorderSide(color: kblack, width: 2.0), // Border when focused
+                                 ),
+                                 enabledBorder: OutlineInputBorder(
+                                   borderRadius: BorderRadius.circular(10),
+                                   borderSide: BorderSide(
+                                       color: kblack, width: 2.0), // Border when not focused
+                                 ),
+                                
+                                 hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                 labelText: 'Mobile Number', // Changed label text
+                                 labelStyle: TextStyle(
+                                     color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                 // Text style for the label
+                               ),
+                       ),
+                     ),
+                          Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: TextField(
+                        readOnly: true,
+                        controller: profileController.emailController,
+                              autofocus: true,
+                               decoration: InputDecoration(
+                                 focusedBorder: OutlineInputBorder(
+                                   borderRadius: BorderRadius.circular(10),
+                                   borderSide:
+                                       BorderSide(color: kblack, width: 2.0), // Border when focused
+                                 ),
+                                 enabledBorder: OutlineInputBorder(
+                                   borderRadius: BorderRadius.circular(10),
+                                   borderSide: BorderSide(
+                                       color: kblack, width: 2.0), // Border when not focused
+                                 ),
+                                
+                                 hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                 labelText: 'Email', // Changed label text
+                                 labelStyle: TextStyle(
+                                     color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                 // Text style for the label
+                               ),
+                       ),
+                     ),
                       ],
                     );
                   }

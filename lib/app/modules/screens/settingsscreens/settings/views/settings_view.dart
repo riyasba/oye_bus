@@ -727,7 +727,7 @@ class SettingsView extends GetView<SettingsController> {
                                                         color: kblack))),
                                           ),
                                         ),
-                                        Obx(()=>
+                                       
                                            InkWell(
                                             onTap: () {
                                            settingController.deleteAccount();
@@ -749,7 +749,7 @@ class SettingsView extends GetView<SettingsController> {
                                               ),
                                             ),
                                           ),
-                                        ),
+                                        
                                       ],
                                     ),
                                     ksizedbox10

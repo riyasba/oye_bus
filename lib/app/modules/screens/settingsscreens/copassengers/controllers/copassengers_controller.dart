@@ -14,8 +14,10 @@ class CopassengersController extends GetxController {
 
   final count = 0.obs;
   RxBool isLoading = false.obs;
+   var dropdownvalue;
   @override
   void onInit() {
+   chosenValue;
     setDefault();
     super.onInit();
   }
@@ -31,6 +33,9 @@ class CopassengersController extends GetxController {
   }
 
   void increment() => count.value++;
+  var chosenValue;
+
+  List<String> genderlist =['Male','Female'];
 
   setDefault()async{
    
@@ -46,6 +51,7 @@ class CopassengersController extends GetxController {
        }
        update();
     });
+   
   }
   var nameController = TextEditingController();
   var ageController = TextEditingController();

@@ -70,7 +70,7 @@ class ProfileController extends GetxController {
     
    }
   }
-  //profileupdate
+  //profileupdater
   
   UpdateProfileApiservice updateProfileApiservice = 
   UpdateProfileApiservice();
@@ -89,5 +89,6 @@ class ProfileController extends GetxController {
             style: primaryFont.copyWith(color: Colors.white),
           ));
       }
+      update();
   }
 }

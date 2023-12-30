@@ -8,6 +8,7 @@ import 'package:oye_bus/app/data/api_service/api_provider/auth_api_service/login
 import 'package:oye_bus/app/data/api_service/api_provider/auth_api_service/loginverify_api_service.dart';
 import 'package:oye_bus/app/modules/authentication/otp/views/otp_view.dart';
 import 'package:oye_bus/app/modules/authentication/otp/views/otpsucess.dart';
+import 'package:oye_bus/app/modules/onbording/views/onbording_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -102,6 +103,10 @@ class LoginController extends GetxController {
       );
     }
    }
-    
+    logOut()async{
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString('auth_token', 'null');
+      Get.offAll(OnbordingView());
+    }
 
 }

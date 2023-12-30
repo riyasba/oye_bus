@@ -8,16 +8,19 @@ class FormfieldView extends GetView {
     Key? key,
     required this.text,
     required this.labeltext,
-    required this.controller
+    required this.controller,
+    required this.readOnly,
   }) : super(key: key);
   final String text;
   final String labeltext;
+   bool readOnly = false;
   TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: TextField(
+        
         controller: controller,
          autofocus: true,
         decoration: InputDecoration(

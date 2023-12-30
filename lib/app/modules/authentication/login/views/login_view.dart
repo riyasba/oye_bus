@@ -26,205 +26,221 @@ class LoginView extends GetView<LoginController> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/images/Mask group (1).png'),
-              // ksizedbox20,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+          child: GetBuilder<LoginController>(
+            builder: (_) {
+              return ListView(
                 children: [
-                  Text(
-                    'Enter Your ',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                          fontSize: 19.sp,
-                          color: kred,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                  Text(
-                    'Phone Number',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                          fontSize: 19.sp,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  )
-                ],
-              ),
-              ksizedbox10,
-        
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'We will send you the 4 digit verification code',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                        fontSize: 14.sp,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w300,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('assets/images/Mask group (1).png'),
+                      // ksizedbox20,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Enter Your ',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                                  fontSize: 19.sp,
+                                  color: kred,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                          Text(
+                            'Phone Number',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                                  fontSize: 19.sp,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          )
+                        ],
                       ),
-                ),
-              ),ksizedbox30,
-            Row(
-                          children: [
-                            kwidth5,
-                            Text(
-                              'Phone Number',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14.sp,
-                                    color: Colors.black,
-                                  ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        TextFormField(
-                         controller: phoneNumberController,
-                          style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontSize: 15.sp,
-                                color: Colors.black,
+                      ksizedbox10,
+                          
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'We will send you the 4 digit verification code',
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                                fontSize: 14.sp,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w300,
                               ),
-                          autofocus: false,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            isDense: true,
-                            prefixIcon: Container(
-                              width: 75.w,
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 8.w,
-                              ),
-                              alignment: Alignment.center,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      controller.phoneCode.isEmpty
-                                          ? '+1'
-                                          : '+${controller.phoneCode}',
+                        ),
+                      ),ksizedbox30,
+                    Row(
+                                  children: [
+                                    kwidth5,
+                                    Text(
+                                      'Phone Number',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .displayMedium!
+                                          .titleLarge!
                                           .copyWith(
-                                            fontSize: 13.sp,
-                                            color: Colors.black,
                                             fontWeight: FontWeight.w400,
+                                            fontSize: 14.sp,
+                                            color: Colors.black,
                                           ),
                                     ),
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      FocusManager.instance.primaryFocus
-                                          ?.unfocus();
-                                      controller.selectCountry(
-                                        context: context,
-                                      );
-                                    },
-                                    child: Icon(
-                                      Icons.keyboard_arrow_down,
-                                      size: 24.sp,
-                                      color: Colors.black,
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                TextFormField(
+                                 controller: phoneNumberController,
+                                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                                        fontSize: 15.sp,
+                                        color: Colors.black,
+                                      ),
+                                  autofocus: false,
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                    isDense: true,
+                                    prefixIcon: Container(
+                                      width: 75.w,
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 8.w,
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 10),
+                                              child: Container(
+                                                width: 15,
+                                                child: Text(
+                                                  controller.phoneCode.isEmpty
+                                                      ? '+91'
+                                                      : '+${controller.phoneCode}',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .displayMedium!
+                                                      .copyWith(
+                                                        fontSize: 13.sp,
+                                                        color: Colors.black,
+                                                        fontWeight: FontWeight.w400,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              FocusManager.instance.primaryFocus
+                                                  ?.unfocus();
+                                              controller.selectCountry(
+                                                context: context,
+                                              );
+                                              controller.update();
+                                            },
+                                            child: Icon(
+                                              Icons.keyboard_arrow_down,
+                                              size: 24.sp,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            
-                            border: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                width: 1.5,
-                                color: Colors.black,
-                                style: BorderStyle.solid,
-                              ),
-                              borderRadius: BorderRadius.circular(
-                                60.r,
-                              ),
-                            ),
-                            contentPadding: EdgeInsets.only(
-                              left: 10.w,
-                              right: 10.w,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                width: 1.2,
-                                color: Colors.black,
-                                style: BorderStyle.solid,
-                              ),
-                              borderRadius: BorderRadius.circular(
-                                60.r,
-                              ),
-                            ),
-                            hintText: "",
-                            hintStyle:
-                                Theme.of(context).textTheme.titleLarge!.copyWith(
-                                      fontSize: 15.sp,
-                                      color: Colors.grey[600],
-                                      fontWeight: FontWeight.w100,
+                                    
+                                    border: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                        width: 1.5,
+                                        color: Colors.black,
+                                        style: BorderStyle.solid,
+                                      ),
+                                      borderRadius: BorderRadius.circular(
+                                        60.r,
+                                      ),
                                     ),
-                            fillColor: Colors.white,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Phone number is required";
-                            }
-                            return null;
-                          },
-                        ),   ksizedbox30,   ksizedbox40,
-                      Obx(()=>
-                      loginController.isLoading==true?
-                      Container(
-                            width: MediaQuery.of(context).size.width*0.65,
-                            height: 50,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                               color: kred,
-                              borderRadius: BorderRadius.circular(
-                                4,
+                                    contentPadding: EdgeInsets.only(
+                                      left: 10.w,
+                                      right: 10.w,
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                        width: 1.2,
+                                        color: Colors.black,
+                                        style: BorderStyle.solid,
+                                      ),
+                                      borderRadius: BorderRadius.circular(
+                                        60.r,
+                                      ),
+                                    ),
+                                    hintText: "",
+                                    hintStyle:
+                                        Theme.of(context).textTheme.titleLarge!.copyWith(
+                                              fontSize: 15.sp,
+                                              color: Colors.grey[600],
+                                              fontWeight: FontWeight.w100,
+                                            ),
+                                    fillColor: Colors.white,
+                                    filled: true,
+                                  ),
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return "Phone number is required";
+                                    }
+                                    return null;
+                                  },
+                                ),   ksizedbox30,   ksizedbox40,
+                              Obx(()=>
+                              loginController.isLoading==true?
+                              Container(
+                                    width: MediaQuery.of(context).size.width*0.65,
+                                    height: 50,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                       color: kred,
+                                      borderRadius: BorderRadius.circular(
+                                        4,
+                                      ),
+                                      border: Border.all(color: const Color(0xffFFBF7E)),
+                                      // boxShadow: const [
+                                      //   BoxShadow(
+                                      //     color: Color(0xFFFF5C29),
+                                      //     blurRadius: 3.0,
+                                      //   )
+                                      // ],
+                                      // gradient: const LinearGradient(
+                                      //   begin: Alignment.centerLeft,
+                                      //   end: Alignment.centerRight,
+                                      //   colors: [
+                                      //     Color(0xFFFF5C29),
+                                      //     Color(0xFFFFCD38),
+                                      //   ],
+                                      // ),
+                                    ),
+                                    child: const CircularProgressIndicator(
+                                      color: Colors.white,
+                                    ),
+                                  ):
+                                 CustomElevatedButton(
+                                  height: 45.h,
+                                  width: 1.sw,
+                                  onPressed: () {
+                                   if(phoneNumberController.text.isNotEmpty){
+                                    loginController.getLoginUser(mobile: phoneNumberController.text);
+                                    loginController.update();
+                                   }
+                                  },
+                                  text: 'GENERATE OTP',
+                                  color: kred,
+                                  textColor: kwhite,
+                                ),
                               ),
-                              border: Border.all(color: const Color(0xffFFBF7E)),
-                              // boxShadow: const [
-                              //   BoxShadow(
-                              //     color: Color(0xFFFF5C29),
-                              //     blurRadius: 3.0,
-                              //   )
-                              // ],
-                              // gradient: const LinearGradient(
-                              //   begin: Alignment.centerLeft,
-                              //   end: Alignment.centerRight,
-                              //   colors: [
-                              //     Color(0xFFFF5C29),
-                              //     Color(0xFFFFCD38),
-                              //   ],
-                              // ),
-                            ),
-                            child: const CircularProgressIndicator(
-                              color: Colors.white,
-                            ),
-                          ):
-                         CustomElevatedButton(
-                          height: 45.h,
-                          width: 1.sw,
-                          onPressed: () {
-                           if(phoneNumberController.text.isNotEmpty){
-                            loginController.getLoginUser(mobile: phoneNumberController.text);
-                           }
-                          },
-                          text: 'GENERATE OTP',
-                          color: kred,
-                          textColor: kwhite,
-                        ),
-                      ),
-                   ksizedbox10, ],
+                           ksizedbox10, ],
+                  ),
+                ],
+              );
+            }
           ),
         ));
   }
