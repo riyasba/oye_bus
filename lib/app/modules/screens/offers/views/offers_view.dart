@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
@@ -17,25 +18,8 @@ class OffersView extends GetView<OffersController> {
     'assets/offers_icon/offersimage7.png',
     'assets/offers_icon/offersimage8.png'
   ];
-  List title= [
-    'Save up to Rs 250 on bus tickets',
-    '10% instant discount up to Rs 100.',
-    'Save up to Rs 500 on bus tickets',
-    '10% instant discount up to Rs 100.',
-    'Save up to Rs 250 on bus tickets',
-    '10% instant discount up to Rs 100.',
-    'Save up to Rs 250 on bus tickets',
-    '10% instant discount up to Rs 100.'
-  ];
-  List buttonmsg=[
-    'ABCR34',
-    'FIRSTBUS',
-    'First',
-    'ABCD676',
-    '34SJ24',
-    'SUPERHIT',
-    'First',
-    'NOV2345'];
+
+    final offerscontroller = Get.find<OffersController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,88 +42,93 @@ class OffersView extends GetView<OffersController> {
               ksizedbox10,
               Padding(
                 padding: const EdgeInsets.only(left: 10,right: 10),
-                child: GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: offresimage.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 20,
-                    childAspectRatio: 5/6,
-                    crossAxisSpacing: 20), 
-                    itemBuilder:(context,index){
-                      return Container(
-                        height: 250,
-                        width: 250,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: kwhite,
-                          boxShadow: <BoxShadow>[
-                            BoxShadow(
-                              offset: const Offset(0.0, 0.75),
-                              color: kgrey,
-                              blurRadius: 5
-                            )
-                          ]
-                        ),
-                        child: Column(
-                          
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(offresimage[index],
-                              height: 100,
-                              fit: BoxFit.fitHeight,),
+                child: GetBuilder<OffersController>(
+                  builder: (_) {
+                    return GridView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: controller.offersdata.length,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 20,
+                        childAspectRatio: 5/6,
+                        crossAxisSpacing: 20), 
+                        itemBuilder:(context,index){
+                          return Container(
+                            width: 250.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: kwhite,
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                  offset: const Offset(0.0, 0.75),
+                                  color: kgrey,
+                                  blurRadius: 5
+                                )
+                              ]
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 5,top: 8),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(title[index],
-                                  style: TextStyle(
-                                     fontFamily: 'Proxima',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600
-                                  ),),
-                                     Padding(
-                              padding: const EdgeInsets.only(left: 0,top: 8),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text('Valid till: 30 Nov',
-                                  style: TextStyle(
-                                     fontFamily: 'Proxima',
-                                    fontSize: 12
+                            child: Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Container(
+                                     height: 130,
+                                     width: 250.w,
+                                    child: Image.network(offerscontroller.offersdata[index].image,
+                                    fit: BoxFit.fill,),
                                   ),
-                                  ),
-                                  Container(
-                                    height: 18,
-                                    width: 60,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xff263238),
-                                      borderRadius: BorderRadius.circular(5)
-                                    ),
-                                    child: Center(
-                                      child: Text(buttonmsg[index],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5,top: 8),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(offerscontroller.offersdata[index].offerId,
                                       style: TextStyle(
-                                        fontFamily: 'Proxima',
-                                        fontSize: 12,
-                                        color: kwhite
+                                         fontFamily: 'Proxima',
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600
                                       ),),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                                ],
-                              ),
+                                         Padding(
+                                  padding: const EdgeInsets.only(top: 8,right: 5),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(offerscontroller.offersdata[index].validTill,
+                                      style: TextStyle(
+                                         fontFamily: 'Proxima',
+                                        fontSize: 12
+                                      ),
+                                      ),
+                                      Container(
+                                        height: 18,
+                                        width: 60,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xff263238),
+                                          borderRadius: BorderRadius.circular(5)
+                                        ),
+                                        child: Center(
+                                          child: Text(offerscontroller.offersdata[index].couponCode,
+                                          style: TextStyle(
+                                            fontFamily: 'Proxima',
+                                            fontSize: 12,
+                                            color: kwhite
+                                          ),),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )
+                                    ],
+                                  ),
+                                ),
+                             
+                              ],
                             ),
-                         
-                          ],
-                        ),
-                      );
-                    }),
+                          );
+                        });
+                  }
+                ),
               )
             ],
            ),

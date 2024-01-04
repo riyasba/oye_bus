@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/data/api_service/models/offers_models.dart';
 import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';
+import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -11,6 +12,7 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     Get.put(NotificationController());
+    Get.find<ProfileController>().getprofile();
   }
 
   @override

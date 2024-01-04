@@ -49,7 +49,7 @@ class RegisterView extends GetView<RegisterController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Hello!',
+                      'Hello! ',
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.displaySmall!.copyWith(
                             fontSize: 19.sp,
@@ -102,7 +102,7 @@ class RegisterView extends GetView<RegisterController> {
                         ),
                         UserInputField(
                           controller: nameController,
-                          hintText: "Zoey Bennet",
+                          hintText: "Enter Name",
                           isNameField: true,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -174,7 +174,7 @@ class RegisterView extends GetView<RegisterController> {
                                   fontSize: 14.sp,
                                   color: Colors.grey[600],
                                 ),
-                            hintText: "example@mail.com",
+                            hintText: "Enter Email Id",
                             fillColor: Colors.white,
                           ),
                           validator: (value) {
@@ -234,7 +234,7 @@ class RegisterView extends GetView<RegisterController> {
                                     Expanded(
                                       child: Text(
                                         controller.phoneCode.isEmpty
-                                            ? '+1'
+                                            ? '+91'
                                             : '+${controller.phoneCode}',
                                         style: Theme.of(context)
                                             .textTheme
@@ -287,7 +287,7 @@ class RegisterView extends GetView<RegisterController> {
                                   60.r,
                                 ),
                               ),
-                              hintText: "5874536954",
+                              hintText: "Enter Number",
                               hintStyle: Theme.of(context)
                                   .textTheme
                                   .titleLarge!
@@ -409,7 +409,7 @@ class RegisterView extends GetView<RegisterController> {
                                               mobile:
                                                   phoneNumberController.text,
                                               roleId: 2);
-
+                                      
                                       controller.registerUser(registerModel);
                                     }
                                   },

@@ -12,10 +12,12 @@ class ProfileController extends GetxController {
 
   final count = 0.obs;
   RxBool isLoading = false.obs;
+  RxBool isEdited = false.obs;
+
   @override
   void onInit() {
-    setDefault();
     super.onInit();
+    setDefault();
   }
 
   @override
@@ -29,7 +31,7 @@ class ProfileController extends GetxController {
   }
 
   void increment() => count.value++;
-   var nameController = TextEditingController();
+  var nameController = TextEditingController();
   var emailController = TextEditingController();
   var mobileController = TextEditingController();
   var ageController = TextEditingController();
@@ -38,7 +40,10 @@ class ProfileController extends GetxController {
       setDefault()async{
  WidgetsBinding.instance.addPostFrameCallback((_) async{
    await getprofile();
-   print('profiledata');
+   print('profiledata-------------------------->>');
+   print('profiledata-------------------------->>');
+   print('profiledata-------------------------->>');
+   print('profiledata-------------------------->>');
   // print(profiledata.first.name);
   
     if(profiledata.isNotEmpty){
@@ -46,10 +51,10 @@ class ProfileController extends GetxController {
       emailController.text = profiledata.first.email;
       mobileController.text = profiledata.first.mobile;
       emailController.text = profiledata.first.email;
-      
     }
     update();
  });
+  update();
   }
 
   //getprofile

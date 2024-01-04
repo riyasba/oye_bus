@@ -230,6 +230,16 @@ class LoginView extends GetView<LoginController> {
                                     loginController.getLoginUser(mobile: phoneNumberController.text);
                                     loginController.update();
                                    }
+                                   else{
+                                     Get.rawSnackbar(
+                                  backgroundColor: Colors.red,
+                                  messageText: Text(
+                                    "Please Enter your number",
+                                    style:
+                                        primaryFont.copyWith(color: Colors.white),
+                                  ),
+                                );
+                                   }
                                   },
                                   text: 'GENERATE OTP',
                                   color: kred,

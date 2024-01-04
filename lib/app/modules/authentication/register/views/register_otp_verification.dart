@@ -45,7 +45,7 @@ class RegisterOtpView extends GetView<RegisterController> {
               ),
               ksizedbox20,
               Text(
-                '''Check your SMS messages. We've sent you the PIN at +91 98765 4321000''',
+                '''Check your SMS messages. We've sent you the PIN at $mobile ''',
                 style: Theme.of(context).textTheme.displaySmall!.copyWith(
                       fontSize: 14.sp,
                       color: Colors.grey,

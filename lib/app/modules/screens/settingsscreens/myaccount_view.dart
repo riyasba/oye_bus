@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/data/api_service/models/feedback_model.dart';
 import 'package:oye_bus/app/modules/authentication/login/controllers/login_controller.dart';
 import 'package:oye_bus/app/modules/authentication/login/views/login_view.dart';
 import 'package:oye_bus/app/modules/authentication/register/controllers/register_controller.dart';
@@ -232,87 +233,122 @@ class MyaccountView extends GetView<SettingsController> {
     );
   }
 }
-
+double ratingCount = 0.0;
 void _showAlertDialog(BuildContext context, String message) {
+  final settingsController = Get.find<SettingsController>();
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
         content: Container(
           width: 400.w, // Set a custom width
-          height: 450,
-          child: Column(
+          height: 500.h,
+          child: ListView(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Column(
                 children: [
-                  Text('Enjoying the OYEBUS app?'),
-                  InkWell(
-                      onTap: () {
-                        Get.back();
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Enjoying the OYEBUS app?'),
+                      InkWell(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: SvgPicture.asset('assets/images/fi_4347434.svg'))
+                    ],
+                  ),
+                  ksizedbox30,
+                  SvgPicture.asset('assets/images/fi_2977670.svg'),
+                  ksizedbox20,
+                  Text('Rate your experience'),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: RatingBar.builder(
+                      initialRating: 3,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemPadding: EdgeInsets.symmetric(horizontal: 3),
+                      itemBuilder: (context, _) => Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.star,
+                          size: 90,
+                          color: Colors.amber,
+                        ),
+                      ),
+                      onRatingUpdate: (rating) {
+                        print(rating);
+                        ratingCount = rating;
                       },
-                      child: SvgPicture.asset('assets/images/fi_4347434.svg'))
-                ],
-              ),
-              ksizedbox30,
-              SvgPicture.asset('assets/images/fi_2977670.svg'),
-              ksizedbox20,
-              Text('Rate your experience'),
-              Padding(
-                padding: const EdgeInsets.only(top: 15),
-                child: RatingBar.builder(
-                  initialRating: 3,
-                  minRating: 1,
-                  direction: Axis.horizontal,
-                  allowHalfRating: true,
-                  itemCount: 5,
-                  itemPadding: EdgeInsets.symmetric(horizontal: 3),
-                  itemBuilder: (context, _) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.star,
-                      size: 90,
-                      color: Colors.amber,
                     ),
                   ),
-                  onRatingUpdate: (rating) {
-                    print(rating);
-                  },
-                ),
-              ),
-              ksizedbox20,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text('Not at all'), Text('Loved it!')],
-              ),
-              ksizedbox20,
-              Container(
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText:  'subject',
-                    border: OutlineInputBorder()
+                  ksizedbox20,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [Text('Not at all'), Text('Loved it!')],
                   ),
-                ),
-              ),
-              ksizedbox10,
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade300
-                ),
-                child: TextField(
-                  maxLines: 2,
-                 // maxLength: 5,
-                  decoration: InputDecoration(
-                    hintText:'Type your Feedback...',
-                    border: OutlineInputBorder(
-                    )
+                  ksizedbox20,
+                  Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300
+                    ),
+                    child: TextField(
+                      controller: settingsController.subjectController,
+                      decoration: InputDecoration(
+                        hintText:  'subject',
+                        border: OutlineInputBorder()
+                      ),
+                    ),
                   ),
-                ),
-              )
+                  ksizedbox20,
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300
+                    ),
+                    child: TextField(
+                      controller: settingsController.feedbackController,
+                      maxLines: 2,
+                     // maxLength: 5,
+                      decoration: InputDecoration(
+                        hintText:'Type your Feedback...',
+                        border: OutlineInputBorder(
+                        )
+                      ),
+                    ),
+                  ),
+                  ksizedbox40,
+                  InkWell(
+                    onTap: (){
+                      FeedbackModel feedbackModel = FeedbackModel(
+                        feedback:settingsController.feedbackController.text, 
+                        rating: ratingCount,  
+                        subject: settingsController.subjectController.text);
+                      settingsController.getfeedback(feedbackModel: feedbackModel);
+           
+                      Get.back();
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 400,
+                      decoration: BoxDecoration(
+                        color: kred,
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      child: Center(
+                        child: Text('Submit',
+                        style: TextStyle(
+                          fontSize: 17.sp,
+                          color: kwhite
+                        ),),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
         ),

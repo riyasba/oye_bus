@@ -12,8 +12,37 @@ class EditprofileView extends GetView {
   
    EditprofileView({Key? key,}) : super(key: key);
   final profileController = Get.find<ProfileController>();
+
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var mobileController = TextEditingController();
+  var ageController = TextEditingController();
+  var genderController = TextEditingController();
+
+
+  getprofileData() async{
+    WidgetsBinding.instance.addPostFrameCallback((_) async{
+      if(nameController.text.isEmpty){
+
+       await profileController.getprofile();
+
+       if(profileController.profiledata.isNotEmpty){
+      nameController.text = profileController.profiledata.first.name;
+      emailController.text = profileController.profiledata.first.email;
+      mobileController.text = profileController.profiledata.first.mobile;
+      emailController.text = profileController.profiledata.first.email;
+
+      
+       }
+      
+
+    }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    getprofileData();
     return Container(color: kwhite,
       child: SafeArea(
         child: Scaffold(
@@ -95,31 +124,31 @@ class EditprofileView extends GetView {
                           readOnly: false,
                           text: '',
                           labeltext: 'Name', 
-                          controller: profileController.nameController,
+                          controller: nameController,
                         ),
                         FormfieldView(
                           readOnly: false,
                           text: '23',
                           labeltext: 'Age', 
-                          controller: profileController.ageController,
+                          controller: ageController,
                         ),
                         FormfieldView(
                           readOnly: false,
                           text: 'Male',
                           labeltext: 'Gender', 
-                          controller: profileController.genderController,
+                          controller: genderController,
                         ),
                         FormfieldView(
                           readOnly: false,
                           text:'',
                           labeltext: 'Mobile Number', 
-                          controller: profileController.mobileController,
+                          controller: mobileController,
                         ),
                         FormfieldView(
                           readOnly: false,
                           text: '',
                           labeltext: 'Email ID', 
-                          controller: profileController.emailController,
+                          controller: emailController,
                         ),
                       ],
                     );
@@ -135,10 +164,11 @@ class EditprofileView extends GetView {
                     onPressed: () {
                       ProfileUpdateModel profileUpdateModel =
                     ProfileUpdateModel( 
-                    email: profileController.emailController.text,  
-                    mobilenumber: profileController.mobileController.text, 
-                    name: profileController.nameController.text);
+                    email: emailController.text,  
+                    mobilenumber: mobileController.text, 
+                    name: nameController.text);
                     profileController.updateprofile(profileUpdateModel: profileUpdateModel);
+                    profileController.isEdited(true);
                     profileController.update();
                     Get.back();
                     },

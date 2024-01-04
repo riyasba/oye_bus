@@ -38,6 +38,16 @@ abstract class Config{
   final String currencuURL = 'https://oye.batechnology.in/api/currency';
   final String languageURL = 'https://oye.batechnology.in/api/language';
   final String deleteaccountURL = 'https://oye.batechnology.in/api/auth/delete_account';
+
+  //bus city search
+  final String buscitySearchURL = 'https://oye.batechnology.in/api/searchCities';
+
+  //bus get offers
+   final String busoffersURL = 'https://oye.batechnology.in/api/getOffers';
+
+   //feedback
+   final String feedbackURL = 'https://oye.batechnology.in/api/auth/feedback';
+  
   
 }
  

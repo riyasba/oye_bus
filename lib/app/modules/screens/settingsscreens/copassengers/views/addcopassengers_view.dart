@@ -179,11 +179,23 @@ class AddcopassengersView extends GetView<CopassengersController> {
                              AddCoPassangersModel addCoPassangersModel = 
                                   AddCoPassangersModel(
                                     age: passengerController.ageController.text, 
-                                    gender: passengerController.genderController.text, 
+                                    gender: controller.chosenValue, 
                                     name: passengerController.nameController.text);
-                                    passengerController.addCopassangers(addCoPassangersModel: addCoPassangersModel);
+                                    if (passengerController.isLoading.isFalse) {
+                                      passengerController.addCopassangers(addCoPassangersModel: addCoPassangersModel);
                                    passengerController.update();
                                Get.back();
+                                    }else{
+                                       Get.rawSnackbar(
+                                  backgroundColor: Colors.red,
+                                  messageText: Text(
+                                    "Please Enter Passengers Details",
+                                    style:
+                                        primaryFont.copyWith(color: Colors.white),
+                                  ),
+                                );
+                                    }
+                                    
                             },
                             text: 'SAVE', 
                             color: kred,

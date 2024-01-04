@@ -4,10 +4,12 @@ import 'package:get/get.dart';
 import 'package:dio/dio.dart'as dio;
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/feedback_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/settings_api_service/country_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/settings_api_service/currency_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/settings_api_service/deleteaccount_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/settings_api_service/language_api_service.dart';
+import 'package:oye_bus/app/data/api_service/models/feedback_model.dart';
 import 'package:oye_bus/app/data/api_service/models/settings_models/country_models.dart';
 import 'package:oye_bus/app/data/api_service/models/settings_models/currency_model.dart';
 import 'package:oye_bus/app/data/api_service/models/settings_models/language_model.dart';
@@ -15,8 +17,10 @@ import 'package:oye_bus/app/modules/authentication/login/views/login_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsController extends GetxController {
+
   final count = 0.obs;
   RxBool isLoading = false.obs;
+    RxString feedbackdata = "".obs; 
 
   final index = Rx<int?>(null);
   int? get selectedIndex => index.value;
@@ -50,6 +54,7 @@ class SettingsController extends GetxController {
 
   void increment() => count.value++;
 
+   
     var subjectController= TextEditingController();
    var feedbackController= TextEditingController();
   logout() async {
@@ -157,4 +162,34 @@ class SettingsController extends GetxController {
           ));
        }
       }
+      //feedback
+
+      FeedbackApiService feedbackApiService = FeedbackApiService();
+
+       getfeedback({required FeedbackModel feedbackModel})
+       async{
+        isLoading(true);
+        dio.Response<dynamic>response = await feedbackApiService.feedbackapi(
+          feedbackModel: feedbackModel);
+          
+          isLoading(false);
+          if(response.data['status']==true){
+            Get.back();
+          Get.rawSnackbar(
+          backgroundColor: Colors.green,
+          messageText: Text(
+            response.data['message'],
+            style: primaryFont.copyWith(color: Colors.white),
+          ));
+          update();
+          }else{
+            Get.rawSnackbar(
+        messageText: Text(
+          response.data['message'],
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.red,
+      );
+          }
+       }
       }

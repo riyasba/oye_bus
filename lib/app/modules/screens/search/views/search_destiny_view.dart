@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
@@ -16,7 +17,7 @@ class SearchDestinyView extends GetView<BusSearchController> {
      Get.lazyPut<BusSearchController>(
       () => BusSearchController(),
     );
-  
+   final searchcityController = Get.find<BusSearchController>();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(55),
@@ -51,114 +52,131 @@ class SearchDestinyView extends GetView<BusSearchController> {
           ),
         )
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
-          SizedBox(
-            height: 25.h,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Container(
-              height: 55.h,
-              child: TextField(
-                style: primaryFont.copyWith(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w500
-                ),
-                  decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                  color:  Color.fromARGB(255, 200, 200, 200)
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                  color:  Color.fromARGB(255, 200, 200, 200)
-                  ),
-                ),
-                hintText: "Search",
-                suffixIcon: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: SvgPicture.asset("assets/home_page/search-location_icon.svg",height: 30,),
-                )
-                ),
-                      
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 25.h,
               ),
-            ),
-          ),
-           SizedBox(
-            height: 20.h,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ListView.builder(
-              itemCount: controller.placesList.length,
-              shrinkWrap: true,
-              itemBuilder: (context,index){
-              return InkWell(
-                onTap: (){
-                  Get.find<HomeController>().toPlaceTxtController.text = controller.placesList[index];
-                  Get.back();
-                },
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(controller.placesList[index],style: primaryFont.copyWith(
-                      fontSize: 18.sp,
-                    ),),
-                  if(index != controller.placesList.length -1)  Divider()
-                        
-                  ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: GetBuilder<BusSearchController>(
+                  builder: (_) {
+                    return Container(
+                      height: 55.h,
+                      child: TextField(
+                        controller:searchcityController.searchtoController ,
+                        style: primaryFont.copyWith(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w500
+                        ),
+                          decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                          color:  Color.fromARGB(255, 200, 200, 200)
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: const BorderSide(
+                          color:  Color.fromARGB(255, 200, 200, 200)
+                          ),
+                        ),
+                        hintText: "Search",
+                        suffixIcon: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: SvgPicture.asset("assets/home_page/search-location_icon.svg",height: 30,),
+                        )
+                        ),
+                              
+                      ),
+                    );
+                  }
                 ),
-              );
-            }),
-          ),
-           SizedBox(
-            height: 20.h,
-          ),
-          Container(
-              height: 40.h,
-              decoration: BoxDecoration(
-                color: klightGrey.withOpacity(0.5)
               ),
-              child: Padding(
+               SizedBox(
+                height: 20.h,
+              ),
+            
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: GetBuilder<BusSearchController>(
+                  builder: (_) {
+                    return searchcityController.citydata.isEmpty?
+                       Lottie.asset("assets/images/citysearchlottie.json")
+                      :ListView.builder(
+                      itemCount: searchcityController.citydata.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context,index){
+                      return InkWell(
+                        onTap: (){
+                          Get.find<HomeController>().toPlaceTxtController.text = searchcityController.citydata[index].city;
+                          Get.back();
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(searchcityController.citydata[index].city,style: primaryFont.copyWith(
+                              fontSize: 18.sp,
+                            ),),
+                          if(index != searchcityController.citydata.length -1)  Divider()
+                                
+                          ],
+                        ),
+                      );
+                    });
+                  }
+                ),
+              ),
+               SizedBox(
+                height: 20.h,
+              ),
+              searchcityController.citydata.isNotEmpty?
+              Container(
+                  height: 40.h,
+                  decoration: BoxDecoration(
+                    color: klightGrey.withOpacity(0.5)
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Recent Searches",style: smalbalckfont.copyWith(
+                          fontSize: 16.sp
+                        ),),
+                        Text("Routes",style: primaryFont.copyWith(
+                          fontSize: 12.sp
+                        ),),
+                      ],
+                    ),
+                  ),
+                ):Text(''),
+                 SizedBox(
+                height: 20.h,
+              ),
+          searchcityController.citydata.isNotEmpty?
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Recent Searches",style: smalbalckfont.copyWith(
-                      fontSize: 16.sp
-                    ),),
-                    Text("Routes",style: primaryFont.copyWith(
-                      fontSize: 12.sp
-                    ),),
+                    RecentChip(
+                      places: "Chennai - Salem",
+                    ),
+                     SizedBox(
+                      width: 15.w,
+                    ),
+                    RecentChip(
+                      places: "Chennai - Erode",
+                    ),
                   ],
                 ),
-              ),
-            ),
-             SizedBox(
-            height: 20.h,
+              ):Text('')
+            ],
           ),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Row(
-              children: [
-                RecentChip(
-                  places: "Chennai - Salem",
-                ),
-                 SizedBox(
-                  width: 15.w,
-                ),
-                RecentChip(
-                  places: "Chennai - Erode",
-                ),
-              ],
-            ),
-          )
         ],
       ),
     );

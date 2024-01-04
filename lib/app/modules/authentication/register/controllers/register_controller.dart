@@ -84,11 +84,8 @@ class RegisterController extends GetxController {
         await registrationApiservice.registrationApi(registerModel);
     isLoading(false);
 
-    if (response.statusCode == 201) {
-      // final prefs = await SharedPreferences.getInstance();
-      // await prefs.setString("auth_token", response.data["token"]);
-      //await prefs.setString("temp_auth_token", response.data["token"]);
-      //await prefs.setString("verify", "false");
+    if (response.data['status']==true) {
+    ;
       Get.to(
         RegisterOtpView(
           mobile: registerModel.mobile,
@@ -99,10 +96,10 @@ class RegisterController extends GetxController {
       //   phoneNumber: registerModel.mobile,
       //   otp: response.data["user"]["otp"].toString(),
       // ));
-    } else if (response.statusCode == 422) {
+    } else  {
       Get.rawSnackbar(
         messageText: Text(
-          response.data["errors"].first,
+          response.data['message'],
           style: const TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.red,

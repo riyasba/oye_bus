@@ -13,8 +13,50 @@ class ProfileView extends GetView<ProfileController> {
    ProfileView({Key? key}) : super(key: key);
 
   final profileController = Get.find<ProfileController>();
+
+
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var mobileController = TextEditingController();
+  var ageController = TextEditingController();
+  var genderController = TextEditingController();
+
+
+  getprofileData() async{
+    if(nameController.text.isEmpty || profileController.isEdited.isTrue){
+
+       await profileController.getprofile();
+
+       if(profileController.profiledata.isNotEmpty){
+      nameController.text = profileController.profiledata.first.name;
+      emailController.text = profileController.profiledata.first.email;
+      mobileController.text = profileController.profiledata.first.mobile;
+      emailController.text = profileController.profiledata.first.email;
+      profileController.isEdited(false);
+       }
+        
+
+    }
+  }
+
+
+  getprofileDataRefresh() async{
+    await profileController.getprofile();
+
+       if(profileController.profiledata.isNotEmpty){
+      nameController.text = profileController.profiledata.first.name;
+      emailController.text = profileController.profiledata.first.email;
+      mobileController.text = profileController.profiledata.first.mobile;
+      emailController.text = profileController.profiledata.first.email;
+      profileController.isEdited(false);
+       }
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
+     getprofileData();
     return Container(
       color: kwhite,
       child: SafeArea(
@@ -115,7 +157,7 @@ class ProfileView extends GetView<ProfileController> {
                        padding: const EdgeInsets.all(10.0),
                        child: TextField(
                         readOnly: true,
-                        controller: profileController.nameController,
+                        controller: nameController,
                               autofocus: true,
                                decoration: InputDecoration(
                                  focusedBorder: OutlineInputBorder(
@@ -145,22 +187,22 @@ class ProfileView extends GetView<ProfileController> {
                         // ),
                         FormfieldView(
                           readOnly: false,
-                          text: '23',
+                          text: 'age',
                           labeltext: 'Age', 
-                          controller: profileController.ageController,
+                          controller: ageController,
                         ),
                         FormfieldView(
                           readOnly: false,
                           text: 'Male',
                           labeltext: 'Gender', 
-                          controller: profileController.genderController,
+                          controller: genderController,
                         ),
                          Padding(
                        padding: const EdgeInsets.all(10.0),
                        child: TextField(
                         readOnly: true,
-                        controller: profileController.mobileController,
-                              autofocus: true,
+                        controller: mobileController,
+                        autofocus: true,
                                decoration: InputDecoration(
                                  focusedBorder: OutlineInputBorder(
                                    borderRadius: BorderRadius.circular(10),
@@ -180,12 +222,12 @@ class ProfileView extends GetView<ProfileController> {
                                  // Text style for the label
                                ),
                        ),
-                     ),
+                     ), 
                           Padding(
                        padding: const EdgeInsets.all(10.0),
                        child: TextField(
                         readOnly: true,
-                        controller: profileController.emailController,
+                        controller: emailController,
                               autofocus: true,
                                decoration: InputDecoration(
                                  focusedBorder: OutlineInputBorder(

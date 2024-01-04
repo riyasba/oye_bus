@@ -49,6 +49,8 @@ dependencies:
 
   dio: ^5.4.0
   shared_preferences: ^2.2.2
+  lottie: ^2.7.0
+  five_pointed_star: ^1.0.3
 
    
   

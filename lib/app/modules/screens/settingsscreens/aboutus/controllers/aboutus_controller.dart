@@ -41,20 +41,20 @@ class AboutusController extends GetxController {
     if(response.data['status']==true){
     AboutUsModel aboutUsModel = AboutUsModel.fromJson(response.data);
      aboutdata(aboutUsModel.aboutUs);
-       Get.rawSnackbar(
-          backgroundColor: Colors.green,
-          messageText: Text(
-            response.data["message"],
-            style: primaryFont.copyWith(color: Colors.white),
-          ));
+      //  Get.rawSnackbar(
+      //     backgroundColor: Colors.green,
+      //     messageText: Text(
+      //       response.data["message"],
+      //       style: primaryFont.copyWith(color: Colors.white),
+      //     ));
     }
     else{
-      Get.rawSnackbar(
-          backgroundColor: Colors.red,
-          messageText: Text(
-            "Something went wrong",
-            style: primaryFont.copyWith(color: Colors.white),
-          ));
+      // Get.rawSnackbar(
+      //     backgroundColor: Colors.red,
+      //     messageText: Text(
+      //       "Something went wrong",
+      //       style: primaryFont.copyWith(color: Colors.white),
+      //     ));
     }
   }
 }
