@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:dio/dio.dart'as dio;
+import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/bus_api_service/bus_list_api_service.dart';
 import 'package:oye_bus/app/data/api_service/models/offers_models.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/bus_list/views/bus_list_view.dart';
 import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';
 import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
-
+ RxBool isLoading = false.obs;
+ RxInt fromcityId = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -29,6 +34,7 @@ class HomeController extends GetxController {
   var toPlaceTxtController = TextEditingController();
 
   RxBool isAcBusOnly = false.obs;
+ 
 
   List<OffersModel> offersList = [
     OffersModel(
@@ -77,9 +83,42 @@ class HomeController extends GetxController {
 
     update();
   }
+int fromcityid=0;
+int tocityid=0;
 
+var cityid=0;
   RxInt currenttap = 1.obs;
   void ontapindex(int currentontouchindex) {
     currenttap(currentontouchindex);
   }
+
+  BusListApiService buslistapiservice = BusListApiService();
+
+  getbuslist({
+    required String boardingid,
+    required String destinationid,
+    required String date})async{  
+
+      isLoading(true);
+      dio.Response<dynamic>response = await buslistapiservice.buslistapi(
+        boardingId: boardingid, 
+        destinationId: destinationid, 
+        date: date);
+          print('bus city data');
+      print(response.data);
+       update();
+        isLoading(false);
+         if(response.data['status']==true){ 
+         Get.rawSnackbar(
+          backgroundColor: Colors.green,
+          messageText: Text(
+            response.data['message'],
+            style: primaryFont.copyWith(color: Colors.white),
+          ));
+           Get.to(() => BusListView());
+          update();
+      }
+    
+    }
+  
 }

@@ -1,3 +1,4 @@
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,7 @@ class SettingsView extends GetView<SettingsController> {
    final ValueNotifier<String> currencyOption = ValueNotifier<String>('');
    final ValueNotifier<String> languageOption = ValueNotifier<String>('');
   final settingController = Get.find<SettingsController>();
-
+  var itemSelected;
   back(BuildContext context) {
     showDialog(
       context: context,
@@ -134,117 +135,155 @@ class SettingsView extends GetView<SettingsController> {
                             }
                             controller.update();
                           },
-                          child: controller.isontouch.isTrue
-                              ? Container(
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    border:
-                                        Border.all(color: kblack, width: 1.0),
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                  padding: EdgeInsets.all(12.0),
-                                  child: Row(
-                                    mainAxisAlignment: 
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(selectedOption.value,
-                                          style: GoogleFonts.montserrat(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.black)),
-                                      Icon(Icons.arrow_drop_down_outlined)
-                                    ],
-                                  ),
-                                )
-                              : Column(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: kblack, width: 1.0),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      padding: EdgeInsets.all(12.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(selectedOption.value,
-                                              style: GoogleFonts.montserrat(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.black)),
-                                          Icon(Icons.arrow_drop_up_outlined)
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 2,
-                                    ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: kblack, width: 1.0),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      padding: EdgeInsets.all(12.0),
-                                      child: // Inside your build method in SettingsView
+                          child: DropdownSearch<CountryData>(
+        items: controller.countydata,
+        popupProps: PopupProps.menu(
+          showSearchBox: true,
+          itemBuilder: (context,data,val){
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(data.countries,
+                         
+                 style: GoogleFonts.montserrat(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black)
+              ),
+            );
 
-// ...
+          }
+        ),
+        dropdownButtonProps: DropdownButtonProps(color:kblack,
+        padding: EdgeInsets.only(top: 10,left: 10)),
+        
+        dropdownDecoratorProps: DropDownDecoratorProps(
+          
+          textAlignVertical: TextAlignVertical.center,
+          dropdownSearchDecoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: kblack,width: 2),
+            borderRadius: BorderRadius.circular(5.0),
+          )),
+        ),
+        onChanged: (value) {
+         
+            itemSelected = value;
+      
+        },
+        selectedItem: itemSelected,
+        itemAsString: (data)=> data.countries,
+      ),
+//                           child: controller.isontouch.isTrue
+//                               ? Container(
+//                                   height: 50,
+//                                   decoration: BoxDecoration(
+//                                     border:
+//                                         Border.all(color: kblack, width: 1.0),
+//                                     borderRadius: BorderRadius.circular(5.0),
+//                                   ),
+//                                   padding: EdgeInsets.all(12.0),
+//                                   child: Row(
+//                                     mainAxisAlignment: 
+//                                         MainAxisAlignment.spaceBetween,
+//                                     children: [
+//                                       Text(selectedOption.value,
+//                                           style: GoogleFonts.montserrat(
+//                                               fontSize: 14,
+//                                               fontWeight: FontWeight.w500,
+//                                               color: Colors.black)),
+//                                       Icon(Icons.arrow_drop_down_outlined)
+//                                     ],
+//                                   ),
+//                                 )
+//                               : Column(
+//                                   children: [
+//                                     Container(
+//                                       decoration: BoxDecoration(
+//                                         border: Border.all(
+//                                             color: kblack, width: 1.0),
+//                                         borderRadius:
+//                                             BorderRadius.circular(5.0),
+//                                       ),
+//                                       padding: EdgeInsets.all(12.0),
+//                                       child: Row(
+//                                         mainAxisAlignment:
+//                                             MainAxisAlignment.spaceBetween,
+//                                         children: [
+//                                           Text(selectedOption.value,
+//                                               style: GoogleFonts.montserrat(
+//                                                   fontSize: 14,
+//                                                   fontWeight: FontWeight.w500,
+//                                                   color: Colors.black)),
+//                                           Icon(Icons.arrow_drop_up_outlined)
+//                                         ],
+//                                       ),
+//                                     ),
+//                                     SizedBox(
+//                                       height: 2,
+//                                     ),
+//                                     Container(
+//                                       decoration: BoxDecoration(
+//                                         border: Border.all(
+//                                             color: kblack, width: 1.0),
+//                                         borderRadius:
+//                                             BorderRadius.circular(5.0),
+//                                       ),
+//                                       padding: EdgeInsets.all(12.0),
+//                                       child: // Inside your build method in SettingsView
 
-                                         GetBuilder<SettingsController>(
-                                            builder: (_) {
-                                              return ListView.builder(
-                                                                                      shrinkWrap: true,
-                                                                                      physics: NeverScrollableScrollPhysics(),
-                                                                                      itemCount: settingController.countydata.length,
-                                                                                      itemBuilder: (context, index) {
-                                              return Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  Row(
-                                                    children: [
+// // ...
+
+//                                          GetBuilder<SettingsController>(
+//                                             builder: (_) {
+//                                               return ListView.builder(
+//                                                                                       shrinkWrap: true,
+//                                                                                       physics: NeverScrollableScrollPhysics(),
+//                                                                                       itemCount: settingController.countydata.length,
+//                                                                                       itemBuilder: (context, index) {
+//                                               return Row(
+//                                                 mainAxisAlignment:
+//                                                     MainAxisAlignment.spaceBetween,
+//                                                 children: [
+//                                                   Row(
+//                                                     children: [
                                                     
-                                                      SizedBox(width: 8),
-                                                      Text(
-                                                        settingController.countydata[index].countries,
-                                                        style:
-                                                            TextStyle(fontSize: 16),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Container(
-                                                    width: 50,
-                                                    height: 50,
-                                                    child: ValueListenableBuilder(
-                                                      valueListenable:
-                                                          selectedOption,
-                                                      builder: (context, value, _) {
-                                                        return Radio(
-                                                          value: settingController.countydata[index].countries,
-                                                          groupValue: value,
-                                                          onChanged: ( newValue) {
-                                                            selectedOption.value =
-                                                                newValue.toString();
-                                                          },
-                                                        );
-                                                      },
-                                                    ),
-                                                  ),
-                                                ],
-                                              );
-                                                                                      },
-                                                                                    );
-                                            }
-                                          ),
+//                                                       SizedBox(width: 8),
+//                                                       Text(
+//                                                         settingController.countydata[index].countries,
+//                                                         style:
+//                                                             TextStyle(fontSize: 16),
+//                                                       ),
+//                                                     ],
+//                                                   ),
+//                                                   Container(
+//                                                     width: 50,
+//                                                     height: 50,
+//                                                     child: ValueListenableBuilder(
+//                                                       valueListenable:
+//                                                           selectedOption,
+//                                                       builder: (context, value, _) {
+//                                                         return Radio(
+//                                                           value: settingController.countydata[index].countries,
+//                                                           groupValue: value,
+//                                                           onChanged: ( newValue) {
+//                                                             selectedOption.value =
+//                                                                 newValue.toString();
+//                                                           },
+//                                                         );
+//                                                       },
+//                                                     ),
+//                                                   ),
+//                                                 ],
+//                                               );
+//                                                                                       },
+//                                                                                     );
+//                                             }
+//                                           ),
 
-// ...
-                                    ),
-                                  ],
-                                ),
+// // ...
+//                                     ),
+//                                   ],
+//                                 ),
                         ),
                         ksizedbox30,
                         Row(
@@ -267,7 +306,7 @@ class SettingsView extends GetView<SettingsController> {
                           },
                           child: controller.isontouchcurrency.isTrue
                               ? Container(
-                                  height: 50,
+                                  height: 57,
                                   decoration: BoxDecoration(
                                     border:
                                         Border.all(color: kblack, width: 1.0),
@@ -392,7 +431,7 @@ class SettingsView extends GetView<SettingsController> {
                           },
                           child: controller.islanguage.isTrue
                               ? Container(
-                                  height: 50,
+                                  height: 57,
                                   decoration: BoxDecoration(
                                     border:
                                         Border.all(color: kblack, width: 1.0),
@@ -505,6 +544,7 @@ class SettingsView extends GetView<SettingsController> {
                           ],
                         ),
                         //
+                        ksizedbox10,
                         InkWell(
                           onTap: () {
                             if (controller.isdeletacount.isTrue) {

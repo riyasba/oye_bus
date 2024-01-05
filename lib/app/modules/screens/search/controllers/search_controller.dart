@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart'as dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oye_bus/app/data/api_service/api_provider/bus_city_search_api_service.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/bus_api_service/bus_city_search_api_service.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_city_search_model.dart';
 
 class BusSearchController extends GetxController {

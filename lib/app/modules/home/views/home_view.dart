@@ -1,3 +1,4 @@
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,13 +7,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/views/bus_list_view.dart';
 import 'package:oye_bus/app/modules/home/widgets/home_app_bar_widget.dart';
+import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
 import 'package:oye_bus/app/modules/screens/search/views/search_destiny_view.dart';
 import 'package:oye_bus/app/modules/screens/search/views/search_view.dart';
 
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  HomeView({Key? key}) : super(key: key);
+  HomeView({Key? key,
+ }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +24,12 @@ class HomeView extends GetView<HomeController> {
     Get.lazyPut<HomeController>(
       () => HomeController(),
     );
+    Get.lazyPut<BusSearchController>(
+      () => BusSearchController());
+      
+final homeController = Get.find<HomeController>();
+final searchcityController = Get .find<BusSearchController>();
+
 
     return Scaffold(
         appBar: const PreferredSize(
@@ -442,26 +451,37 @@ class HomeView extends GetView<HomeController> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: GestureDetector(
-                onTap: () {
-                  Get.to(() => BusListView());
-                },
-                child: Container(
-                  height: 55,
-                  width: size.width,
-                  decoration: BoxDecoration(
-                      color: const Color(0xffFF0000),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: Text(
-                      "Search Buses".toUpperCase(),
-                      style: smalbalckfont.copyWith(
-                        color: Colors.white,
-                        fontSize: 20,
+              child: GetBuilder<HomeController>(
+                builder: (_) {
+                  return GestureDetector(
+                    onTap: () {
+                      
+                    homeController.getbuslist(
+                      boardingid:homeController.fromcityid.toString(), 
+                      destinationid: homeController.tocityid.toString(), 
+                      date: formatDate(homeController.selectedDate, [yyyy,'-',mm,'-',dd]));
+                      print('bus list................');
+                      print(homeController.fromcityid.toString());
+                      print(homeController.tocityid.toString());
+                    },
+                    child: Container(
+                      height: 55,
+                      width: size.width,
+                      decoration: BoxDecoration(
+                          color: const Color(0xffFF0000),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                        child: Text(
+                          "Search Buses".toUpperCase(),
+                          style: smalbalckfont.copyWith(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
+                  );
+                }
               ),
             ),
             const SizedBox(

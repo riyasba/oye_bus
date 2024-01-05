@@ -48,6 +48,9 @@ abstract class Config{
    //feedback
    final String feedbackURL = 'https://oye.batechnology.in/api/auth/feedback';
   
+  //bus
+  final String buslistURL = "https://oye.batechnology.in/api/auth/getBusList";
+
   
 }
  
