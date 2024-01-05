@@ -204,6 +204,7 @@ class HomeView extends GetView<HomeController> {
             Padding(
               padding:  EdgeInsets.symmetric(horizontal: 10),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
                     onTap: () {
@@ -211,7 +212,7 @@ class HomeView extends GetView<HomeController> {
                     },
                     child: GetBuilder<HomeController>(builder: (context) {
                       return Container(
-                        height: 60,
+                        height: 55.h,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: const Color(0xffEEEEEF)),
@@ -222,7 +223,7 @@ class HomeView extends GetView<HomeController> {
                                 borderRadius: BorderRadius.circular(35),
                                 child: Image.asset(
                                   "assets/home_page/calendar_gif.gif",
-                                  height: 40,
+                                  height: 30.h,
                                 )),
                             Padding(
                               padding: const EdgeInsets.only(top: 8),
@@ -230,7 +231,7 @@ class HomeView extends GetView<HomeController> {
                                 children: [
                                   Text(
                                     "Departure date",
-                                    style: primaryFont.copyWith(fontSize: 10),
+                                    style: primaryFont.copyWith(fontSize: 9.sp),
                                   ),
                                   const SizedBox(
                                     height: 7,
@@ -239,7 +240,7 @@ class HomeView extends GetView<HomeController> {
                                     '${controller.selectedDate.toLocal()}'
                                         .split(' ')[0], // Display selected date
                                     style: primaryFont.copyWith(
-                                        fontSize: 12,
+                                        fontSize: 11.sp,
                                         fontWeight: FontWeight.w900),
                                   ),
                                 ],
@@ -250,11 +251,11 @@ class HomeView extends GetView<HomeController> {
                       );
                     }),
                   ),
-                  const SizedBox(
-                    width: 10,
+                   SizedBox(
+                    width: 6.w,
                   ),
                   Container(
-                      height: 60,
+                      height: 55.h,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: const Color(0xffEEEEEF)),
@@ -265,41 +266,41 @@ class HomeView extends GetView<HomeController> {
                           children: [
                             Text(
                               "Traveller",
-                              style: primaryFont.copyWith(fontSize: 10),
+                              style: primaryFont.copyWith(fontSize: 9.sp),
                             ),
-                            const SizedBox(
-                              height: 7,
+                             SizedBox(
+                              height: 7.h,
                             ),
                             Text(
                               "01",
                               style: primaryFont.copyWith(
-                                  fontSize: 12, fontWeight: FontWeight.w900),
+                                  fontSize: 11.sp, fontWeight: FontWeight.w900),
                             )
                           ],
                         ),
                       )),
-                  const SizedBox(
-                    width: 10,
+                   SizedBox(
+                    width: 6.w,
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Container(
-                        height: 60,
+                        height: 55.h,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: const Color(0xffEEEEEF)),
                         child: Padding(
                           padding:
-                              const EdgeInsets.only(top: 7, left: 7, right: 7),
+                              const EdgeInsets.only(top: 7, left: 7, right: 5),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 "Seat Type (optional)",
-                                style: primaryFont.copyWith(fontSize: 10),
+                                style: primaryFont.copyWith(fontSize: 9.sp),
                               ),
-                              const SizedBox(
-                                height: 10,
+                               SizedBox(
+                                height: 10.h,
                               ),
                               Obx(
                                 () => Row(
@@ -309,7 +310,7 @@ class HomeView extends GetView<HomeController> {
                                         controller.ontapindex(1);
                                       },
                                       child: Container(
-                                        height: 10,
+                                        height: 10.h,
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(30),
@@ -324,7 +325,7 @@ class HomeView extends GetView<HomeController> {
                                             child: Text(
                                               "Seater",
                                               style: GoogleFonts.montserrat(
-                                                  fontSize: 7,
+                                                  fontSize: 7.sp,
                                                   color: controller
                                                               .currenttap.value ==
                                                           1
@@ -336,14 +337,14 @@ class HomeView extends GetView<HomeController> {
                                       ),
                                     ),
                                      SizedBox(
-                                      width: 4.w,
+                                      width: 3.w,
                                     ),
                                     InkWell(
                                       onTap: () {
                                         controller.ontapindex(2);
                                       },
                                       child: Container(
-                                        height: 10,
+                                        height: 10.h,
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(30),
@@ -357,7 +358,7 @@ class HomeView extends GetView<HomeController> {
                                             child: Text(
                                               "Sleeper",
                                               style: GoogleFonts.montserrat(
-                                                  fontSize: 7,
+                                                  fontSize: 7.sp,
                                                   color: controller
                                                               .currenttap.value ==
                                                           2
@@ -376,7 +377,7 @@ class HomeView extends GetView<HomeController> {
                                         controller.ontapindex(3);
                                       },
                                       child: Container(
-                                        height: 10,
+                                        height: 10.h,
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(30),
@@ -390,7 +391,7 @@ class HomeView extends GetView<HomeController> {
                                             child: Text(
                                               "Semi-Sleeper",
                                               style: GoogleFonts.montserrat(
-                                                  fontSize: 7,
+                                                  fontSize: 7.sp,
                                                   color: controller
                                                               .currenttap.value ==
                                                           3

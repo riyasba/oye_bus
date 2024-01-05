@@ -51,7 +51,7 @@ class OffersView extends GetView<OffersController> {
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 20,
-                        childAspectRatio: 5/6,
+                        childAspectRatio: 0.7,
                         crossAxisSpacing: 20), 
                         itemBuilder:(context,index){
                           return Container(
@@ -72,7 +72,7 @@ class OffersView extends GetView<OffersController> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8),
                                   child: Container(
-                                     height: 130,
+                                     height: 110.h,
                                      width: 250.w,
                                     child: Image.network(offerscontroller.offersdata[index].image,
                                     fit: BoxFit.fill,),
@@ -86,7 +86,7 @@ class OffersView extends GetView<OffersController> {
                                       Text(offerscontroller.offersdata[index].offerId,
                                       style: TextStyle(
                                          fontFamily: 'Proxima',
-                                        fontSize: 15,
+                                        fontSize: 15.sp,
                                         fontWeight: FontWeight.w600
                                       ),),
                                          Padding(
@@ -97,12 +97,12 @@ class OffersView extends GetView<OffersController> {
                                       Text(offerscontroller.offersdata[index].validTill,
                                       style: TextStyle(
                                          fontFamily: 'Proxima',
-                                        fontSize: 12
+                                        fontSize: 12.sp
                                       ),
                                       ),
                                       Container(
-                                        height: 18,
-                                        width: 60,
+                                        height: 18.h,
+                                        width: 60.w,
                                         decoration: BoxDecoration(
                                           color: Color(0xff263238),
                                           borderRadius: BorderRadius.circular(5)
@@ -111,7 +111,7 @@ class OffersView extends GetView<OffersController> {
                                           child: Text(offerscontroller.offersdata[index].couponCode,
                                           style: TextStyle(
                                             fontFamily: 'Proxima',
-                                            fontSize: 12,
+                                            fontSize: 12.sp,
                                             color: kwhite
                                           ),),
                                         ),
