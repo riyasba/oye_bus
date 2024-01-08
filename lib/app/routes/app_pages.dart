@@ -218,7 +218,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BUS_LIST,
-      page: () => const BusListView(),
+      page: () =>  BusListView(),
       binding: BusListBinding(),
     ),
     GetPage(

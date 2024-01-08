@@ -4,11 +4,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
 
 
 
 class WhybookbussView extends GetView {
-  const WhybookbussView({Key? key}) : super(key: key);
+   WhybookbussView({Key? key}) : super(key: key);
+
+final whybookingbusController = Get.find<BusseatmapingController>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,7 +48,7 @@ class WhybookbussView extends GetView {
                     Container(
                       width: 270.w,
                       child: Text(
-                        'Primo makes extra efforts to ensure the safer travel experience',
+                        whybookingbusController.aboutbusdata!.safety,
                         style:
                             Theme.of(context).textTheme.displaySmall!.copyWith(
                                   fontSize: 14.sp,
@@ -83,7 +86,7 @@ class WhybookbussView extends GetView {
                     Container(
                       width: 270.w,
                       child: Text(
-                        'Every Primo bus has a proven track record of regulary being on time.',
+                        whybookingbusController.aboutbusdata!.onTime,
                         style:
                             Theme.of(context).textTheme.displaySmall!.copyWith(
                                   fontSize: 14.sp,
@@ -121,7 +124,7 @@ class WhybookbussView extends GetView {
                     Container(
                       width: 270.w,
                       child: Text(
-                        'Primo stands for comfort and best - in - class service experience.',
+                      whybookingbusController.aboutbusdata!.comfortable,
                         style:
                             Theme.of(context).textTheme.displaySmall!.copyWith(
                                   fontSize: 14.sp,
@@ -166,7 +169,7 @@ class WhybookbussView extends GetView {
                     Container(
                       width: 270.w,
                       child: Text(
-                        'You can now track your bus and plan your commute to the boarding point! family members and friends can also your safety.',
+                        whybookingbusController.aboutbusdata!.liveTracking,
                         style:
                             Theme.of(context).textTheme.displaySmall!.copyWith(
                                   fontSize: 14.sp,
@@ -205,7 +208,7 @@ class WhybookbussView extends GetView {
                     Container(
                       width: 270.w,
                       child: Text(
-                        'Change your travel date for free up to 8 hours before the depature. Get min 50% refund if you can tickets 12 hours before deoarture.',
+                            whybookingbusController.aboutbusdata!.flexiTicket,
                         style:
                             Theme.of(context).textTheme.displaySmall!.copyWith(
                                   fontSize: 14.sp,

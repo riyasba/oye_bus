@@ -455,14 +455,24 @@ final searchcityController = Get .find<BusSearchController>();
                 builder: (_) {
                   return GestureDetector(
                     onTap: () {
-                      
-                    homeController.getbuslist(
+                      if (controller.cityid!=0||controller.fromcityid!=0) {
+                            homeController.getbuslist(
                       boardingid:homeController.fromcityid.toString(), 
                       destinationid: homeController.tocityid.toString(), 
                       date: formatDate(homeController.selectedDate, [yyyy,'-',mm,'-',dd]));
+                       
                       print('bus list................');
                       print(homeController.fromcityid.toString());
                       print(homeController.tocityid.toString());
+                      }else{
+                        Get.rawSnackbar(
+          backgroundColor: Colors.red,
+          messageText: Text(
+            "Please Enter your details",
+            style: primaryFont.copyWith(color: Colors.white),
+          ));
+                      }
+                
                     },
                     child: Container(
                       height: 55,

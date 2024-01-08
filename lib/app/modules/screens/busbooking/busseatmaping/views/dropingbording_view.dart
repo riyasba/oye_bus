@@ -9,7 +9,8 @@ import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers
 import 'package:timeline_tile/timeline_tile.dart';
 
 class DropingbordingView extends GetView<BusseatmapingController> {
-  const DropingbordingView({Key? key}) : super(key: key);
+   DropingbordingView({Key? key}) : super(key: key);
+  final boadingdroppingController = Get.find<BusseatmapingController>();
   @override
   Widget build(BuildContext context) {
     Get.lazyPut<BusseatmapingController>(
@@ -73,7 +74,7 @@ class DropingbordingView extends GetView<BusseatmapingController> {
           ),
           ListView.builder(
             shrinkWrap: true,
-            itemCount: 5,
+            itemCount: boadingdroppingController.boadroppointdata.length,
             itemBuilder: (BuildContext context, int index) {
               final example = 9;
 
@@ -92,7 +93,7 @@ class DropingbordingView extends GetView<BusseatmapingController> {
                   color: Color.fromARGB(255, 22, 3, 3).withOpacity(0.2),
                 ),
                 endChild: GestureDetector(
-                  child: _RowExample(example: 'Location ${index + 1}'),
+                  child: _RowExample(example: 'Location ${boadingdroppingController.boadroppointdata[index].location}'),
                   onTap: () {
                     // Navigator.push(
                     //   context,

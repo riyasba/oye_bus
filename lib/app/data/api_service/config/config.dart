@@ -50,6 +50,7 @@ abstract class Config{
   
   //bus
   final String buslistURL = "https://oye.batechnology.in/api/auth/getBusList";
+  final String busdetailsURL = "https://oye.batechnology.in/api/auth/getbusDetails"; 
 
   
 }

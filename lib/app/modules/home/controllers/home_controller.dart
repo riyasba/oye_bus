@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:dio/dio.dart'as dio;
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/bus_api_service/bus_list_api_service.dart';
+import 'package:oye_bus/app/data/api_service/models/bus_model/buslist_model.dart';
 import 'package:oye_bus/app/data/api_service/models/offers_models.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/views/bus_list_view.dart';
 import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';
@@ -93,6 +94,7 @@ var cityid=0;
   }
 
   BusListApiService buslistapiservice = BusListApiService();
+  List<BusData>busdata=[];
 
   getbuslist({
     required String boardingid,
@@ -104,19 +106,21 @@ var cityid=0;
         boardingId: boardingid, 
         destinationId: destinationid, 
         date: date);
-          print('bus city data');
-      print(response.data);
-       update();
+         print('statuscode::::::::::::::');
+         print(response.statusCode);
+         print('datas::::::::::::::::::');
+         print(response.data["status"].runtimeType);
         isLoading(false);
-         if(response.data['status']==true){ 
-         Get.rawSnackbar(
-          backgroundColor: Colors.green,
-          messageText: Text(
-            response.data['message'],
-            style: primaryFont.copyWith(color: Colors.white),
-          ));
-           Get.to(() => BusListView());
+         if(response.data['status'] == "true"){ 
+          print("----------->> here");
+          BuslistModel buslistModel = BuslistModel.fromJson(response.data);
+          busdata=buslistModel.data;
           update();
+        Get.to(() => BusListView());
+         
+      
+      }else{
+        print("------------>>>> Error ");
       }
     
     }

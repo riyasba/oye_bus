@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/bus_api_service/bus_details_api_service.dart';
+import 'package:oye_bus/app/data/api_service/models/bus_model/bus_details_model.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/paymentsuccesfull_view.dart';
 import 'package:oye_bus/app/services/ease_buzz_payment_api_services.dart';
+import 'package:dio/dio.dart'as dio;
 
 class BusseatmapingController extends GetxController {
 
@@ -10,6 +13,7 @@ class BusseatmapingController extends GetxController {
   final count = 0.obs;
   @override
   void onInit() {
+    getBusdetails();
     super.onInit();
   }
 
@@ -103,5 +107,37 @@ List<bool> seats = List.generate(30, (_) => false);
           backgroundColor: Colors.red,
           snackPosition: SnackPosition.BOTTOM);
     }
+  }
+
+
+
+  BusDetailsApiService busdetailsapiservice = BusDetailsApiService();
+
+   AboutBus? aboutbusdata;
+   List<Ing>boadroppointdata=[];
+   List<RestStop>reststopdata=[];
+   List<Amenity>amenitydata=[];
+   Policies?policiesdata;
+   List<String>busimages=[];
+
+
+  getBusdetails()async{
+    isLoading(true);
+   dio.Response<dynamic>response = await busdetailsapiservice.busdetailsapi();
+
+   isLoading(false);
+   if(response.data['status']==true){
+    BusdetailsModel busdetailsmodel = BusdetailsModel.fromJson(response.data);
+    aboutbusdata=busdetailsmodel.aboutBus;
+    boadroppointdata=busdetailsmodel.boarding;
+    boadroppointdata = busdetailsmodel.dropping;
+    reststopdata = busdetailsmodel.restStop;
+    amenitydata = busdetailsmodel.amenities;
+    policiesdata = busdetailsmodel.policies;
+    busimages = busdetailsmodel.busImages;
+    update();
+   }else{
+    
+   }
   }
 }

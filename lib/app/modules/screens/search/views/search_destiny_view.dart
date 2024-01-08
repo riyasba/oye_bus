@@ -65,7 +65,7 @@ class SearchDestinyView extends GetView<BusSearchController> {
                 child: GetBuilder<BusSearchController>(
                   builder: (_) {
                     return Container(
-                      height: 55.h,
+                      height: 50.h,
                       child: TextField(
                         controller:searchcityController.searchtoController ,
                         style: primaryFont.copyWith(
@@ -86,9 +86,13 @@ class SearchDestinyView extends GetView<BusSearchController> {
                           ),
                         ),
                         hintText: "Search",
+                        hintStyle: TextStyle(
+                          fontSize: 19
+                        ),
                         suffixIcon: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: SvgPicture.asset("assets/home_page/search-location_icon.svg",height: 30,),
+                          child: SvgPicture.asset("assets/home_page/search-location_icon.svg",
+                          height: 25,),
                         )
                         ),
                               
@@ -106,8 +110,24 @@ class SearchDestinyView extends GetView<BusSearchController> {
                 child: GetBuilder<BusSearchController>(
                   builder: (_) {
                     return searchcityController.citydata.isEmpty?
-                       Lottie.asset("assets/images/citysearchlottie.json")
-                      :ListView.builder(
+                       Container(
+                        child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children:[
+                          ksizedbox40,
+                          ksizedbox40,
+                          ksizedbox40,
+                          ksizedbox10,
+                           Center(
+                             child: Lottie.asset('assets/home_page/searchbuslottie.json',
+                             height: 300,fit: BoxFit.fitHeight)
+                           )
+                           ])):
+                    // searchcityController.citydata.isEmpty?
+                    //    Lottie.asset("assets/images/citysearchlottie.json")
+                    //   :
+                      ListView.builder(
                       itemCount: searchcityController.citydata.length,
                       shrinkWrap: true,
                       itemBuilder: (context,index){
