@@ -170,6 +170,16 @@ class AddcopassengersView extends GetView<CopassengersController> {
                         ksizedbox40,
                         ksizedbox40,
                         ksizedbox40,
+                        controller.isLoading.isTrue?
+                        Container(
+                      child:  Center(
+                          child: CircularProgressIndicator(
+                        color: Colors.white,
+                      )),
+                      //      width: double.infinity, 
+                      height: 55,
+                      color: korange,
+                    ):
                         Padding(
                           padding: EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
                           child: CustomElevatedButton(

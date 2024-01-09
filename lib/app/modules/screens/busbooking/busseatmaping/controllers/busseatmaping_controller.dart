@@ -11,6 +11,7 @@ class BusseatmapingController extends GetxController {
 
   RxBool isLoading = false.obs;
   final count = 0.obs;
+  RxInt dropingIndex =0.obs;
   @override
   void onInit() {
     getBusdetails();
@@ -27,9 +28,9 @@ class BusseatmapingController extends GetxController {
     current(currentIndex);
   }
 
-  void dropingIndex(int currentbordingindex) {
-    currentbording(currentbordingindex);
-  }
+  // void dropingIndex(int currentbordingindex) {
+  //   currentbording(currentbordingindex);
+  // }
 List<bool> seats = List.generate(30, (_) => false);
 
    void seatSelection(int index) {
@@ -114,11 +115,12 @@ List<bool> seats = List.generate(30, (_) => false);
   BusDetailsApiService busdetailsapiservice = BusDetailsApiService();
 
    AboutBus? aboutbusdata;
-   List<Ing>boadroppointdata=[];
+   List<Ing>droppointdata=[];
    List<RestStop>reststopdata=[];
    List<Amenity>amenitydata=[];
    Policies?policiesdata;
    List<String>busimages=[];
+   List<Ing> boardingpointdata=[];
 
 
   getBusdetails()async{
@@ -129,12 +131,13 @@ List<bool> seats = List.generate(30, (_) => false);
    if(response.data['status']==true){
     BusdetailsModel busdetailsmodel = BusdetailsModel.fromJson(response.data);
     aboutbusdata=busdetailsmodel.aboutBus;
-    boadroppointdata=busdetailsmodel.boarding;
-    boadroppointdata = busdetailsmodel.dropping;
+    droppointdata=busdetailsmodel.boarding;
+    droppointdata = busdetailsmodel.dropping;
     reststopdata = busdetailsmodel.restStop;
     amenitydata = busdetailsmodel.amenities;
     policiesdata = busdetailsmodel.policies;
     busimages = busdetailsmodel.busImages;
+    boardingpointdata = busdetailsmodel.boarding;
     update();
    }else{
     

@@ -16,100 +16,156 @@ class DropingbordingView extends GetView<BusseatmapingController> {
     Get.lazyPut<BusseatmapingController>(
       () => BusseatmapingController(),
     );
-    return Container(
-        child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Boarding / Dropping Points',
-            style: bussmidfont,
-          ),
-          ksizedbox20,
-          Obx(
-            () => Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                InkWell(
-                  onTap: () {
-                    controller.dropingIndex(1);
-                  },
-                  child: Text(
-                    'Boarding Point',
-                    style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                          fontSize: 14.sp,
-                          color: controller.currentbording.value == 1
-                              ? kred
-                              : kblack,
-                          fontWeight: FontWeight.w600,
-                          decoration: TextDecoration.underline,
-                          decorationColor: controller.currentbording.value == 1
-                              ? kred
-                              : kwhite,
-                        ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    controller.dropingIndex(2);
-                  },
-                  child: Text(
-                    'Dropping Point',
-                    style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                          fontSize: 14.sp,
-                          color: controller.currentbording.value == 2
-                              ? kred
-                              : kblack,
-                          fontWeight: FontWeight.w600,
-                          decoration: TextDecoration.underline,
-                          decorationColor: controller.currentbording.value == 2
-                              ? kred
-                              : kwhite,
-                        ),
-                  ),
-                )
-              ],
+    return Obx(()=>
+      Container(
+          child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Boarding / Dropping Points',
+              style: bussmidfont,
             ),
-          ),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: boadingdroppingController.boadroppointdata.length,
-            itemBuilder: (BuildContext context, int index) {
-              final example = 9;
-
-              return TimelineTile(
-                alignment: TimelineAlign.center,
-                lineXY: 0.4,
-                isFirst: index == 0,
-                isLast: index == 8 - 1,
-                indicatorStyle: IndicatorStyle(
-                  width: 10,
-                  height: 10,
-                  indicator: _IndicatorExample(number: '${index + 1}'),
-                  drawGap: true,
-                ),
-                beforeLineStyle: LineStyle(
-                  color: Color.fromARGB(255, 22, 3, 3).withOpacity(0.2),
-                ),
-                endChild: GestureDetector(
-                  child: _RowExample(example: 'Location ${boadingdroppingController.boadroppointdata[index].location}'),
-                  onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute<ShowcaseTimeline>(
-                    //     builder: (_) =>
-                    //         ShowcaseTimeline(example: example),
-                    //   ),
-                    // );
-                  },
-                ),
-              );
-            },
-          ),
-        ],
-      ),
-    ));
+            ksizedbox20,
+          Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      controller.dropingIndex(0);
+                      controller.update();
+                    },
+                    child: Text(
+                      'Boarding Point',
+                      style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                            fontSize: 14.sp,
+                            color: controller.dropingIndex.value == 0
+                                ? kred
+                                : kblack,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.underline,
+                            decorationColor: controller.dropingIndex.value == 0
+                                ? kred
+                                : kwhite,
+                          ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      controller.dropingIndex(1);
+                      controller.update();
+                    },
+                    child: Text(
+                      'Dropping Point',
+                      style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                            fontSize: 14.sp,
+                            color: controller.dropingIndex.value == 1
+                                ? kred
+                                : kblack,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.underline,
+                            decorationColor: controller.dropingIndex.value == 1
+                                ? kred
+                                : kwhite,
+                          ),
+                    ),
+                  )
+                ],
+              ),
+              if(controller.dropingIndex.value==0)
+            Container(
+            
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: boadingdroppingController.boardingpointdata.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final example = 9;
+              
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 0,left: 5),
+                    child: TimelineTile(
+                      
+                      alignment: TimelineAlign.center,
+                      lineXY: 0.4,
+                      isFirst: index == 0,
+                      isLast: index == 8 - 1,
+                      indicatorStyle: IndicatorStyle(
+                        color: kred,
+                        width: 10,
+                        height: 10,
+                        indicator: _IndicatorExample(number: '${index + 1}'),
+                        drawGap: true,
+                      ),
+                      beforeLineStyle: LineStyle(
+                        color: Color.fromARGB(255, 22, 3, 3).withOpacity(0.2),
+                      ),
+                      endChild: GestureDetector(
+                        child: _RowExample(
+                          example: 'Location ${boadingdroppingController.boardingpointdata[index].location}'),
+                        onTap: () {
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute<ShowcaseTimeline>(
+                          //     builder: (_) =>
+                          //         ShowcaseTimeline(example: example),
+                          //   ),
+                          // );
+                        },
+                      ),
+                    ),
+                  );
+                },
+              ),
+            
+            ),
+            if(controller.dropingIndex.value==1)
+            Container(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: boadingdroppingController.droppointdata.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final example = 9;
+              
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 4,left: 0),
+                    child: TimelineTile(
+                      alignment: TimelineAlign.center,
+                      lineXY: 0.4,
+                      isFirst: index == 0,
+                      isLast: index == 8 - 1,
+                      indicatorStyle: IndicatorStyle(
+                        width: 10,
+                        height: 10,
+                        indicator: _IndicatorExample(number: '${index + 1}'),
+                        drawGap: true,
+                      ),
+                      beforeLineStyle: LineStyle(
+                        color: Color.fromARGB(255, 22, 3, 3).withOpacity(0.2),
+                      ),
+                      endChild: GestureDetector(
+                        child: _RowExample(example: 'Location ${boadingdroppingController.droppointdata[index].location}'),
+                        onTap: () {
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute<ShowcaseTimeline>(
+                          //     builder: (_) =>
+                          //         ShowcaseTimeline(example: example),
+                          //   ),
+                          // );
+                        },
+                      ),
+                    ),
+                  );
+                },
+              ),
+            
+            )
+          ]
+        ),
+      )
+      )
+    );
   }
 }
 

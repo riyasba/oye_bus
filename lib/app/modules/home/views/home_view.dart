@@ -449,6 +449,12 @@ final searchcityController = Get .find<BusSearchController>();
             const SizedBox(
               height: 15,
             ),
+            controller.isLoading.isTrue?
+             Container(
+              child:  Center(
+              child: CircularProgressIndicator(
+              color: Colors.white,
+              ))):
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: GetBuilder<HomeController>(

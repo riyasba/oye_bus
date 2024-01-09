@@ -709,6 +709,12 @@ class SettingsView extends GetView<SettingsController> {
                             textColor: kwhite,
                           ),
                         ),
+                        controller.isLoading.isTrue?
+                         Container(
+                      child:  Center(
+                          child: CircularProgressIndicator(
+                        color: Colors.white,
+                      ))):
                         Padding(
                           padding:
                               EdgeInsets.only(bottom: 10.h, left: 8, right: 8),
