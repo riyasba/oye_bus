@@ -170,7 +170,7 @@ class EditprofileView extends GetView {
                     profileController.updateprofile(profileUpdateModel: profileUpdateModel);
                     profileController.isEdited(true);
                     profileController.update();
-                    Get.back();
+                    // Get.back();
                     },
                     text: 'DONE',
                     color: kred,

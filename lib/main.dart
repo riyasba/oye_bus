@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:oye_bus/app/modules/authentication/login/controllers/login_controller.dart';
 import 'package:oye_bus/app/modules/authentication/otp/controllers/otp_controller.dart';
+import 'package:oye_bus/app/modules/bottumnavigation/controllers/bottumnavigation_controller.dart';
+import 'package:oye_bus/app/modules/bottumnavigation/views/bottumnavigation_view.dart';
 import 'package:oye_bus/app/modules/onbording/controllers/onbording_controller.dart';
 import 'package:oye_bus/app/modules/screens/offers/controllers/offers_controller.dart';
 import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
@@ -17,6 +19,7 @@ void main() {
   Get.put(SettingsController());
    Get.put(OnbordingController());
    Get.put(OffersController());
+   Get.put(BottumnavigationController());
   // runApp(DevicePreview(
   //   builder: (context) => MyApp(), // Wrap your app
   // ));

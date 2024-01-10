@@ -1,3 +1,4 @@
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -51,7 +52,8 @@ class HomeAppBarWidget extends GetView<HomeController> {
                 child: Column(
                   children: [
                     Text(
-                      "Monday, 06 Nov 2024",
+                      formatDate(controller.selectedDate,[DD,',',dd,' ',M,' ',yyyy]),
+                     // "Monday, 06 Nov 2024",
                       style: smalbalckfont.copyWith(
                           fontSize: 17, fontWeight: FontWeight.w800),
                     ),

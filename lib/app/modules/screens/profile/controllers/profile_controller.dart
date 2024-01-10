@@ -6,6 +6,7 @@ import 'package:oye_bus/app/data/api_service/api_provider/profile_api_service/up
 import 'package:oye_bus/app/data/api_service/models/profile/profile_model.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:oye_bus/app/data/api_service/models/profile/profile_update_model.dart';
+import 'package:oye_bus/app/modules/bottumnavigation/controllers/bottumnavigation_controller.dart';
 
 class ProfileController extends GetxController {
   //TODO: Implement ProfileController
@@ -87,6 +88,7 @@ class ProfileController extends GetxController {
       profileUpdateModel: profileUpdateModel);
       isLoading(false);
         if(response.data['status']==true){ 
+      
          Get.rawSnackbar(
           backgroundColor: Colors.green,
           messageText: Text(

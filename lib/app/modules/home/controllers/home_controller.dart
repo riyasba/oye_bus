@@ -63,8 +63,8 @@ class HomeController extends GetxController {
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(2000), // Set the starting date for the picker
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(), // Set the starting date for the picker
       lastDate: DateTime(2101), // Set the ending date for the picker
     );
     if (picked != null && picked != selectedDate) {
@@ -109,7 +109,7 @@ var cityid=0;
          print('statuscode::::::::::::::');
          print(response.statusCode);
          print('datas::::::::::::::::::');
-         print(response.data["status"].runtimeType);
+         print(response.data["status"]==true);
         isLoading(false);
          if(response.data['status'] == "true"){ 
           print("----------->> here");
@@ -120,7 +120,12 @@ var cityid=0;
          
       
       }else{
-        print("------------>>>> Error ");
+        Get.rawSnackbar(
+          backgroundColor: Colors.red,
+          messageText: Text(
+            response.data["message"],
+            style: primaryFont.copyWith(color: Colors.white),
+          ));
       }
     
     }

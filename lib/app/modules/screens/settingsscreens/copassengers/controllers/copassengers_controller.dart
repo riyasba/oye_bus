@@ -63,6 +63,7 @@ class CopassengersController extends GetxController {
   List<PassangersData> passengersdata=[];
 
   copassangers()async{
+    
     isLoading(true);
     passengersdata.clear();
     dio.Response<dynamic> response= await copassengersApiService.copassengersApi();

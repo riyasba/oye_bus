@@ -192,8 +192,13 @@ class AddcopassengersView extends GetView<CopassengersController> {
                                     gender: controller.chosenValue, 
                                     name: passengerController.nameController.text);
                                     if (passengerController.isLoading.isFalse) {
-                                      passengerController.addCopassangers(addCoPassangersModel: addCoPassangersModel);
+                                      passengerController.addCopassangers(
+                                        addCoPassangersModel: addCoPassangersModel);
+                                      passengerController.ageController.clear();
+                                      passengerController.nameController.clear();
                                    passengerController.update();
+                                    
+                                   
                                Get.back();
                                     }else{
                                        Get.rawSnackbar(
