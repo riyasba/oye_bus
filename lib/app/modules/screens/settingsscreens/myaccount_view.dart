@@ -60,7 +60,7 @@ class MyaccountView extends GetView<SettingsController> {
                           MyaccountbuttonView(
                             onPressed: () {
                               Get.toNamed(
-                                Routes.BOTTUMNAVIGATION,
+                                Routes.BOOKINGHISTORY,
                               );
                             },
                             text: 'My Booking',
@@ -82,7 +82,7 @@ class MyaccountView extends GetView<SettingsController> {
                                 Routes.COPASSENGERS,
                               );
                             },
-                            text: 'Co-Passengers(Bus)',
+                            text: 'Passengers List',
                           ),
                           ksizedbox20,
                           MyaccountbuttonView(

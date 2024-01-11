@@ -66,18 +66,19 @@ class BusListView extends GetView<BusListController> {
                           Expanded(
                             child: Container(
                               height: 55 ,
+                            
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: kYellow
                               ),
-                              
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12),
+                                padding: const EdgeInsets.symmetric(horizontal: 2),
                                 child: Row(
                                   children: [
                                       ClipRRect(
                                       borderRadius: BorderRadius.circular(35),
-                                      child: Image.asset("assets/home_page/calendar_gif.gif",height: 40,)),
+                                      child: Image.asset("assets/home_page/calendar_gif.gif",
+                                      height: 40,)),
                                    const   SizedBox(
                                         width: 5,
                                       ),
