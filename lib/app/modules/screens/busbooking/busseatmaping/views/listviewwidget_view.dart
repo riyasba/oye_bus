@@ -73,6 +73,7 @@ towards chrompet''',
         
               checkColor: Color(0xffFFC107),
               onChanged: (newValue) {
+                   item.isSelected = newValue ?? false;
                 // Handle onChanged event
                 // For example: setState(() { item.isSelected = newValue; });
               },

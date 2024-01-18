@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart'as dio;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,18 +13,35 @@ class BusSearchController extends GetxController {
   RxBool isLoading =false.obs;
    
 
+  // Define a debouncer
+  Timer? _debounce;
+
+  // Function to debounce city search
+  void debounceCitySearch(String city) async {
+    
+
+    await Future.delayed(Duration(microseconds: 100));
+      buscitysearch(city: city);
+    
+  }  
+
   @override
   void onInit() {
     super.onInit();
-    searchfromcontroller.addListener(triggerFunction);
+    
+    searchfromcontroller.addListener(triggerFunction2);
     searchtoController.addListener(triggerFunction);
      
   }
 
 
+
   triggerFunction(){
-    buscitysearch(city: searchfromcontroller.text);
-    buscitysearch(city: searchtoController.text);
+    debounceCitySearch( searchtoController.text);
+  }
+
+  triggerFunction2(){
+    debounceCitySearch( searchfromcontroller.text);
   }
 
 

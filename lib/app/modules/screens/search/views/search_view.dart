@@ -66,7 +66,10 @@ class SearchView extends GetView<BusSearchController> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
                       height: 50.h,
-                      child: TextField(
+                      child: TextField(onChanged:  (value) {
+    searchcityController.triggerFunction();
+  },
+                        
                         controller: searchcityController.searchfromcontroller,
                         style: primaryFont.copyWith(
                           fontSize: 18.sp,
