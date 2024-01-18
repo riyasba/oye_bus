@@ -58,9 +58,9 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                     height: 19.h,
                                     width: 50.w,
                                     decoration: BoxDecoration(
-                                        color: Color.fromARGB(195, 8, 167, 17),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
+                                      color: Color.fromARGB(195, 8, 167, 17),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
@@ -284,7 +284,7 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                     ),
                     ksizedbox20,
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -319,8 +319,8 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                   ],
                                   borderRadius: BorderRadius.circular(16),
                                   color: kwhite),
-                              width: size.width * 0.4,
-                              height: size.height * 0.4,
+                              width: size.width * 0.45,
+                              height: size.height * 0.5,
                               child: Column(
                                 children: [
                                   Padding(
@@ -332,66 +332,156 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                       ],
                                     ),
                                   ),
+                                  GetBuilder<BusseatmapingController>(
+                                      builder: (_) {
+                                    return Container(
+                                     // width: size.width,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
 
- GetBuilder<BusseatmapingController>(
-                                    builder: (_) {
-                                      return Container(
-                                          width: size.width * 0.33,
-                                          height: size.height * 0.33,
-                                          child: GridView.builder(physics: NeverScrollableScrollPhysics(),
-                                            shrinkWrap: true,
-                                            padding: EdgeInsets.all(20.0),
-                                            gridDelegate:
-                                                SliverGridDelegateWithFixedCrossAxisCount(
-                                              mainAxisSpacing: 10.0,
-                                              crossAxisSpacing: 10.0,
-                                              crossAxisCount:
-                                                  3, // Number of seats per row
+                                          Container(
+                                            width: size.width * 0.13,
+                                            height: size.height * 0.45,
+                                            child: GridView.builder(
+                                              physics:
+                                                  NeverScrollableScrollPhysics(),
+                                              shrinkWrap: true,
+                                              padding: EdgeInsets.all(1.0),
+                                              gridDelegate:
+                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                mainAxisSpacing: 10.0,
+                                                //  crossAxisSpacing: 10.0,
+                                                crossAxisCount:
+                                                    1, // Number of seats per row
+                                              ),
+                                              itemCount:
+                                                  controller.seats3.length,
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                return GestureDetector(
+                                                    onTap: () {
+                                                      controller
+                                                          .seatSelection3(index);
+                                                      controller.update();
+                                                    },
+                                                    child:
+                                                        //  AnimatedContainer(
+                                                        //     duration:
+                                                        //         Duration(milliseconds: 300),
+                                                        //     curve: Curves.easeInOut,
+                                                        //     width: 50.0,
+                                                        //     height: 50.0,
+                                                        //     decoration: BoxDecoration(
+                                                        //       color: controller.seats[index]
+                                                        //           ? Colors.grey[300]
+                                                        //           : Colors.green,
+                                                        //       borderRadius:
+                                                        //           BorderRadius.circular(
+                                                        //               5.0),
+                                                        //       border: Border.all(
+                                                        //         color: Colors.grey.shade400,
+                                                        //         width: 1.0,
+                                                        //       ),
+                                                        //     ),
+                                                        //   child:
+                                                        controller.seats3[index]
+                                                            ? Image.asset(
+                                                                'assets/images/Group 60.png')
+                                                            : Image.asset(
+                                                                'assets/images/Group 63.png')
+
+                                                    //  Center(
+                                                    //   child: Icon(
+                                                    // controller.    seats[index]
+                                                    //         ? Icons.event_seat
+                                                    //         : Icons.event_available,
+                                                    //     size: 19.0,
+                                                    //     color:controller. seats[index]
+                                                    //         ? Colors.red
+                                                    //         : Colors.black,
+                                                    //   ),
+                                                    // ),
+                                                    //     ),
+                                                    );
+                                              },
                                             ),
-                                            itemCount:controller. seats.length,
-                                            itemBuilder:
-                                                (BuildContext context, int index) {
-                                              return GestureDetector(
-                                                onTap: () {
-                                                  controller.seatSelection(index);
-                                                  controller.update();
-                                                },
-                                                child: AnimatedContainer(
-                                                  duration:
-                                                      Duration(milliseconds: 300),
-                                                  curve: Curves.easeInOut,
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  decoration: BoxDecoration(
-                                                    color:controller. seats[index]
-                                                        ? Colors.grey[300]
-                                                        : Colors.green,
-                                                    borderRadius:
-                                                        BorderRadius.circular(5.0),
-                                                    border: Border.all(
-                                                      color: Colors.grey.shade400,
-                                                      width: 1.0,
-                                                    ),
-                                                  ),
-                                                  child: Center(
-                                                    child: Icon(
-                                                  controller.    seats[index]
-                                                          ? Icons.event_seat
-                                                          : Icons.event_available,
-                                                      size: 19.0,
-                                                      color:controller. seats[index]
-                                                          ? Colors.red
-                                                          : Colors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            },
                                           ),
-                                        );
-                                    }
-                                  ),
+                                     
+                                          Container(
+                                            width: size.width * 0.2,
+                                            height: size.height * 0.45,
+                                            child: GridView.builder(
+                                              physics:
+                                                  NeverScrollableScrollPhysics(),
+                                              shrinkWrap: true,
+                                              padding: EdgeInsets.all(1.0),
+                                              gridDelegate:
+                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                mainAxisSpacing: 10.0,
+                                                //  crossAxisSpacing: 10.0,
+                                                crossAxisCount:
+                                                    2, // Number of seats per row
+                                              ),
+                                              itemCount:
+                                                  controller.seats.length,
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                return GestureDetector(
+                                                    onTap: () {
+                                                      controller
+                                                          .seatSelection(index);
+                                                      controller.update();
+                                                    },
+                                                    child:
+                                                        //  AnimatedContainer(
+                                                        //     duration:
+                                                        //         Duration(milliseconds: 300),
+                                                        //     curve: Curves.easeInOut,
+                                                        //     width: 50.0,
+                                                        //     height: 50.0,
+                                                        //     decoration: BoxDecoration(
+                                                        //       color: controller.seats[index]
+                                                        //           ? Colors.grey[300]
+                                                        //           : Colors.green,
+                                                        //       borderRadius:
+                                                        //           BorderRadius.circular(
+                                                        //               5.0),
+                                                        //       border: Border.all(
+                                                        //         color: Colors.grey.shade400,
+                                                        //         width: 1.0,
+                                                        //       ),
+                                                        //     ),
+                                                        //   child:
+                                                        controller.seats[index]
+                                                            ? Image.asset(
+                                                                'assets/images/fi_686648.png')
+                                                            : Image.asset(
+                                                                'assets/images/fi_686648-1.png')
 
+                                                    //  Center(
+                                                    //   child: Icon(
+                                                    // controller.    seats[index]
+                                                    //         ? Icons.event_seat
+                                                    //         : Icons.event_available,
+                                                    //     size: 19.0,
+                                                    //     color:controller. seats[index]
+                                                    //         ? Colors.red
+                                                    //         : Colors.black,
+                                                    //   ),
+                                                    // ),
+                                                    //     ),
+                                                    );
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
                                 ],
                               ),
                             )
@@ -416,7 +506,7 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                               ],
                             ),
                             ksizedbox10,
-                            Container(
+                               Container(
                               decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
@@ -430,8 +520,8 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                   ],
                                   borderRadius: BorderRadius.circular(16),
                                   color: kwhite),
-                              width: size.width * 0.4,
-                              height: size.height * 0.4,
+                              width: size.width * 0.45,
+                              height: size.height * 0.5,
                               child: Column(
                                 children: [
                                   Padding(
@@ -444,64 +534,155 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                     ),
                                   ),
                                   GetBuilder<BusseatmapingController>(
-                                    builder: (_) {
-                                      return Container(
-                                          width: size.width * 0.33,
-                                          height: size.height * 0.33,
-                                          child: GridView.builder(physics: NeverScrollableScrollPhysics(),
-                                            shrinkWrap: true,
-                                            padding: EdgeInsets.all(20.0),
-                                            gridDelegate:
-                                                SliverGridDelegateWithFixedCrossAxisCount(
-                                              mainAxisSpacing: 10.0,
-                                              crossAxisSpacing: 10.0,
-                                              crossAxisCount:
-                                                  3, // Number of seats per row
+                                      builder: (_) {
+                                    return Container(
+                                      width: size.width,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+
+                                          Container(
+                                            width: size.width * 0.13,
+                                            height: size.height * 0.45,
+                                            child: GridView.builder(
+                                              physics:
+                                                  NeverScrollableScrollPhysics(),
+                                              shrinkWrap: true,
+                                              padding: EdgeInsets.all(1.0),
+                                              gridDelegate:
+                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                mainAxisSpacing: 10.0,
+                                                //  crossAxisSpacing: 10.0,
+                                                crossAxisCount:
+                                                    1, // Number of seats per row
+                                              ),
+                                              itemCount:
+                                                  controller.seats1.length,
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index1) {
+                                                return GestureDetector(
+                                                    onTap: () {
+                                                      controller
+                                                          .seatSelection1(index1);
+                                                      controller.update();
+                                                    },
+                                                    child:
+                                                        //  AnimatedContainer(
+                                                        //     duration:
+                                                        //         Duration(milliseconds: 300),
+                                                        //     curve: Curves.easeInOut,
+                                                        //     width: 50.0,
+                                                        //     height: 50.0,
+                                                        //     decoration: BoxDecoration(
+                                                        //       color: controller.seats[index]
+                                                        //           ? Colors.grey[300]
+                                                        //           : Colors.green,
+                                                        //       borderRadius:
+                                                        //           BorderRadius.circular(
+                                                        //               5.0),
+                                                        //       border: Border.all(
+                                                        //         color: Colors.grey.shade400,
+                                                        //         width: 1.0,
+                                                        //       ),
+                                                        //     ),
+                                                        //   child:
+                                                        controller.seats1[index1]
+                                                            ? Image.asset(
+                                                                'assets/images/Group 60.png')
+                                                            : Image.asset(
+                                                                'assets/images/Group 63.png')
+
+                                                    //  Center(
+                                                    //   child: Icon(
+                                                    // controller.    seats[index]
+                                                    //         ? Icons.event_seat
+                                                    //         : Icons.event_available,
+                                                    //     size: 19.0,
+                                                    //     color:controller. seats[index]
+                                                    //         ? Colors.red
+                                                    //         : Colors.black,
+                                                    //   ),
+                                                    // ),
+                                                    //     ),
+                                                    );
+                                              },
                                             ),
-                                            itemCount:controller. seats.length,
-                                            itemBuilder:
-                                                (BuildContext context, int index) {
-                                              return GestureDetector(
-                                                onTap: () {
-                                                  controller.seatSelection(index);
-                                                  controller.update();
-                                                },
-                                                child: AnimatedContainer(
-                                                  duration:
-                                                      Duration(milliseconds: 300),
-                                                  curve: Curves.easeInOut,
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  decoration: BoxDecoration(
-                                                    color:controller. seats[index]
-                                                        ? Colors.grey[300]
-                                                        : Colors.green,
-                                                    borderRadius:
-                                                        BorderRadius.circular(5.0),
-                                                    border: Border.all(
-                                                      color: Colors.grey.shade400,
-                                                      width: 1.0,
-                                                    ),
-                                                  ),
-                                                  child: Center(
-                                                    child: Icon(
-                                                  controller.    seats[index]
-                                                          ? Icons.event_seat
-                                                          : Icons.event_available,
-                                                      size: 19.0,
-                                                      color:controller. seats[index]
-                                                          ? Colors.red
-                                                          : Colors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            },
                                           ),
-                                        );
-                                    }
-                                  ),
-                                  
+                                     
+                                          Container(
+                                            width: size.width * 0.2,
+                                            height: size.height * 0.45,
+                                            child: GridView.builder(
+                                              physics:
+                                                  NeverScrollableScrollPhysics(),
+                                              shrinkWrap: true,
+                                              padding: EdgeInsets.all(1.0),
+                                              gridDelegate:
+                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                mainAxisSpacing: 10.0,
+                                                //  crossAxisSpacing: 10.0,
+                                                crossAxisCount:
+                                                    2, // Number of seats per row
+                                              ),
+                                              itemCount:
+                                                  controller.seats2.length,
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                return GestureDetector(
+                                                    onTap: () {
+                                                      controller
+                                                          .seatSelection2(index);
+                                                      controller.update();
+                                                    },
+                                                    child:
+                                                        //  AnimatedContainer(
+                                                        //     duration:
+                                                        //         Duration(milliseconds: 300),
+                                                        //     curve: Curves.easeInOut,
+                                                        //     width: 50.0,
+                                                        //     height: 50.0,
+                                                        //     decoration: BoxDecoration(
+                                                        //       color: controller.seats[index]
+                                                        //           ? Colors.grey[300]
+                                                        //           : Colors.green,
+                                                        //       borderRadius:
+                                                        //           BorderRadius.circular(
+                                                        //               5.0),
+                                                        //       border: Border.all(
+                                                        //         color: Colors.grey.shade400,
+                                                        //         width: 1.0,
+                                                        //       ),
+                                                        //     ),
+                                                        //   child:
+                                                        controller.seats2[index]
+                                                            ? Image.asset(
+                                                                'assets/images/Group 60.png')
+                                                            : Image.asset(
+                                                                'assets/images/Group 63.png')
+
+                                                    //  Center(
+                                                    //   child: Icon(
+                                                    // controller.    seats[index]
+                                                    //         ? Icons.event_seat
+                                                    //         : Icons.event_available,
+                                                    //     size: 19.0,
+                                                    //     color:controller. seats[index]
+                                                    //         ? Colors.red
+                                                    //         : Colors.black,
+                                                    //   ),
+                                                    // ),
+                                                    //     ),
+                                                    );
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }),
                                 ],
                               ),
                             )

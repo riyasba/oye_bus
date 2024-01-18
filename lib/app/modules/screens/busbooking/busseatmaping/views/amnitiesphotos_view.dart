@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oye_bus/app/components/const.dart';
@@ -17,7 +16,7 @@ class AmnitiesphotosView extends GetView {
     return Container(height: 1000,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 17),
-        child: ListView(
+        child: ListView(physics: NeverScrollableScrollPhysics(),
       
           children: [
              Text( 

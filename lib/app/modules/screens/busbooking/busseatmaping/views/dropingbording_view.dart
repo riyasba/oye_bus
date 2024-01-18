@@ -86,7 +86,7 @@ class DropingbordingView extends GetView<BusseatmapingController> {
                     padding: const EdgeInsets.only(right: 0,left: 5),
                     child: TimelineTile(
                       
-                      alignment: TimelineAlign.center,
+                      alignment: TimelineAlign.manual,
                       lineXY: 0.4,
                       isFirst: index == 0,
                       isLast: index == 8 - 1,
@@ -130,7 +130,7 @@ class DropingbordingView extends GetView<BusseatmapingController> {
                   return Padding(
                     padding: const EdgeInsets.only(right: 4,left: 0),
                     child: TimelineTile(
-                      alignment: TimelineAlign.center,
+                      alignment: TimelineAlign.manual,
                       lineXY: 0.4,
                       isFirst: index == 0,
                       isLast: index == 8 - 1,

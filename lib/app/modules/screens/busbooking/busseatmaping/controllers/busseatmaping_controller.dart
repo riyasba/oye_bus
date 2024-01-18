@@ -32,9 +32,26 @@ class BusseatmapingController extends GetxController {
   //   currentbording(currentbordingindex);
   // }
 List<bool> seats = List.generate(30, (_) => false);
+List<bool> seats1 = List.generate(30, (_) => false);
+List<bool> seats2 = List.generate(30, (_) => false);
+List<bool> seats3 = List.generate(30, (_) => false);
 
    void seatSelection(int index) {
     seats[index] = !seats[index];
+    // Perform other operations related to seat selection here
+  }
+
+ void seatSelection1(int index1) {
+    seats1[index1] = !seats1[index1];
+    // Perform other operations related to seat selection here
+  }
+ void seatSelection2(int index) {
+    seats2[index] = !seats2[index];
+    // Perform other operations related to seat selection here
+  }
+
+ void seatSelection3(int index) {
+    seats3[index] = !seats3[index];
     // Perform other operations related to seat selection here
   }
 
