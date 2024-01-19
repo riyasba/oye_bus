@@ -223,7 +223,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PASSENGER_INFO,
-      page: () => const PassengerInfoView(),
+      page: () => PassengerInfoView(),
       binding: PassengerInfoBinding(),
     ),
     GetPage(
