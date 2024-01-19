@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
 
 class ListviewwidgetView extends GetView {
   ListviewwidgetView({Key? key}) : super(key: key);
@@ -66,47 +68,50 @@ towards chrompet''',
       itemBuilder: (context, index) {
         ListItemModel item = dummyData[index];
 
-        return Card(
-          child: ListTile(
-            leading: Checkbox(
-              value: item.isSelected,
-        
-              checkColor: Color(0xffFFC107),
-              onChanged: (newValue) {
-                   item.isSelected = newValue ?? false;
-                // Handle onChanged event
-                // For example: setState(() { item.isSelected = newValue; });
-              },
-              shape: CircleBorder(
-                
-              ),
+        return GetBuilder<BusseatmapingController>(
+          builder: (_) {
+            return Card(
+              child: ListTile(
+            leading:Checkbox(
+                    value: item.isSelected,
+                    checkColor: Color(0xffFFC107),
+                    onChanged: (newValue) {
+                      // Update the isSelected property of the corresponding item
+                      // when the checkbox value changes
+                      
+                       controller.updateCheckbox(item, newValue);
+                      
+                    },
+                  
             ),
-            title: Text(
-              item.title,
-              style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                  fontWeight: FontWeight.w600, fontSize: 14.sp, color: kblack),
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  item.subtitle,
+                title: Text(
+                  item.title,
                   style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                      fontWeight: FontWeight.w300,
-                      fontSize: 11.sp,
-                      color: kblack),
+                      fontWeight: FontWeight.w600, fontSize: 14.sp, color: kblack),
                 ),
-              ],
-            ),
-            trailing: Text(
-              item.time,
-              style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                  fontWeight: FontWeight.w300, fontSize: 9.sp, color: kgrey),
-            ),
-            onTap: () {
-              // Handle onTap event
-            },
-          ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.subtitle,
+                      style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 11.sp,
+                          color: kblack),
+                    ),
+                  ],
+                ),
+                trailing: Text(
+                  item.time,
+                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                      fontWeight: FontWeight.w300, fontSize: 9.sp, color: kgrey),
+                ),
+                onTap: () {
+                  // Handle onTap event
+                },
+              ),
+            );
+          }
         );
       },
     );

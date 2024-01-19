@@ -20,6 +20,7 @@ void main() {
    Get.put(OffersController());
    Get.put(BottumnavigationController());
    Get.put(CopassengersController());
+  // Get.put(dynamic());
   // runApp(DevicePreview(
   //   builder: (context) => MyApp(), // Wrap your app
   // ));

@@ -7,6 +7,7 @@ import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/boardingselection_view.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/dropingselection_view.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/listview.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/reviewbookingdetails_view.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
 
@@ -41,7 +42,7 @@ class PickanddropView extends GetView {
           padding: const EdgeInsets.only(top: 8,bottom: 8),
           child: TabBarView(
             children: [
-              BoardingselectionView(),
+              CheckboxListView(),
               DropingselectionView(),
               ksizedbox10
             ],
