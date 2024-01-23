@@ -6,6 +6,8 @@ import 'package:oye_bus/app/modules/authentication/login/controllers/login_contr
 import 'package:oye_bus/app/modules/authentication/otp/controllers/otp_controller.dart';
 import 'package:oye_bus/app/modules/bottumnavigation/controllers/bottumnavigation_controller.dart';
 import 'package:oye_bus/app/modules/onbording/controllers/onbording_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/bus_filter/controllers/bus_filter_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/bus_filter/views/bus_filter_view.dart';
 import 'package:oye_bus/app/modules/screens/offers/controllers/offers_controller.dart';
 import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
 import 'package:oye_bus/app/modules/screens/settingsscreens/copassengers/controllers/copassengers_controller.dart';
@@ -20,6 +22,7 @@ void main() {
    Get.put(OffersController());
    Get.put(BottumnavigationController());
    Get.put(CopassengersController());
+   Get.put(BusFilterController());
   // Get.put(dynamic());
   // runApp(DevicePreview(
   //   builder: (context) => MyApp(), // Wrap your app
@@ -42,8 +45,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
         ),
-        initialRoute: AppPages.INITIAL,
-        getPages: AppPages.routes,
+        home: BusFilterView(),
+        // initialRoute: AppPages.INITIAL,
+        // getPages: AppPages.routes,
       ),
     );
   }

@@ -66,8 +66,8 @@ class BusDroppingwidget extends GetView<BusFilterController>  {
                                           controller.update();
                                           },
                                           child: Container(
-                                            height: 25.h,
-                                            width: 25.w,
+                                            height: 20.h,
+                                            width: 20.w,
                                             decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               color:controller.dropcheckindex==index?Color(0xffFF0000)

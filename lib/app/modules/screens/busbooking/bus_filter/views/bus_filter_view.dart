@@ -21,17 +21,19 @@ class BusFilterView extends GetView<BusFilterController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-    appBar: AppBar(
+    return Scaffold(backgroundColor: kwhite,
+    appBar: AppBar(backgroundColor: kwhite,
       centerTitle: true,
       title:  Text('Filter Buses',
                       style: appbarfont),
-            actions: [
-                 Padding(
-                   padding: const EdgeInsets.only(right: 10),
-                   child: Image.asset('assets/offers_icon/filtercancelicon.png'),
-                 )
-            ],
+
+                      leading: Icon(Icons.arrow_back_ios),
+            // actions: [
+            //      Padding(
+            //        padding: const EdgeInsets.only(right: 10),
+            //        child: Image.asset('assets/offers_icon/filtercancelicon.png'),
+            //      )
+            // ],
                  
     ),
       body:ListView(
@@ -52,25 +54,32 @@ class BusFilterView extends GetView<BusFilterController> {
                              Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                              children: [Container(
+                                  height: 1.h,
+                                  width: 150.w,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[300]
+                                  ),
+                                ),
                                 GestureDetector(
                                   onTap: (){
                                     controller.colorindex(0);
                                     controller.update();
                                   },
                                   child: Container(
-                                    height: 70.h,
-                                    width: 165.w,
+                                    height: 35.h,
+                                    width: 150.w,
                                     decoration: BoxDecoration(
                                                          
-                                      color:controller.colorindex.value==0? Color(0xffFF0000):
-                                      Color(0xffFFEDED)
+                                      color:controller.colorindex.value==0? Colors.white:
+                                        Colors.grey[200]
+                                      
                                     ),
                                     child: Center(
                                       child: Text('Sort by',
                                       style: TextStyle(
-                                        color: controller.colorindex.value==0?kwhite:Colors.black,
-                                        fontSize: 16.sp,
+                                        color: controller.colorindex.value==0?kred:kblack,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima '
                                       ),),
@@ -79,9 +88,9 @@ class BusFilterView extends GetView<BusFilterController> {
                                 ),
                                   Container(
                                   height: 1.h,
-                                  width: 165.w,
+                                  width: 150.w,
                                   decoration: BoxDecoration(
-                                    color: Colors.black
+                                    color: Colors.grey[300]
                                   ),
                                 ),
                                  GestureDetector(
@@ -90,31 +99,31 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70.h,
-                                    width: 165.w,
+                                    height: 40.h,
+                                    width: 150.w,
                                     decoration: BoxDecoration(
                                                           
-                                       color:controller.colorindex.value==1? Color(0xffFF0000):
-                                        Color(0xffFFEDED)
+                                       color:controller.colorindex.value==1? kwhite:
+                                        Colors.grey[200]
                                     ),
                                      child: Center(
-                                      child: Text('Bus departure time from',
+                                      child: Text('Bus departure ',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==1?kwhite:Colors.black
+                                        color: controller.colorindex.value==1?kred:Colors.black
                                       ),),
                                     ),
                                    ),
                                  ),
                                   Container(
                                   height: 1.h,
-                                  width: 165.w,
+                                  width: 150.w,
                                   decoration: BoxDecoration(
-                                    color: Colors.black
+                                    color: Colors.grey[300]
                                   ),
                                 ),
                                  GestureDetector(
@@ -123,31 +132,31 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70.h,
-                                    width: 165.w,
+                                    height: 40.h,
+                                    width: 150.w,
                                     decoration: BoxDecoration(
                                                           
-                                     color:controller.colorindex.value==2? Color(0xffFF0000):
-                                        Color(0xffFFEDED)
+                                     color:controller.colorindex.value==2? kwhite:
+                                        Colors.grey[200]
                                     ),
                                      child: Center(
                                       child: Text('Bus Type',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==2?kwhite:Colors.black
+                                        color: controller.colorindex.value==2?kred:Colors.black
                                       ),),
                                     ),
                                  ),
                                  ),
                                   Container(
                                   height: 1.h,
-                                  width: 165.w,
+                                  width: 150.w,
                                   decoration: BoxDecoration(
-                                    color: Colors.black
+                                    color: Colors.grey[300]
                                   ),
                                 ),
                                  GestureDetector(
@@ -156,30 +165,30 @@ class BusFilterView extends GetView<BusFilterController> {
                                      controller.update();
                                   },
                                    child: Container(
-                                    height: 70.h,
-                                    width: 165.w,
+                                    height: 40.h,
+                                    width: 150.w,
                                     decoration: BoxDecoration(
-                                    color:controller.colorindex.value==3? Color(0xffFF0000):
-                                        Color(0xffFFEDED)
+                                    color:controller.colorindex.value==3? kwhite:
+                                        Colors.grey[200]
                                     ),
                                      child: Center(
                                       child: Text('Single Window Sleeper/Seater',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==3?kwhite:Colors.black
+                                        color: controller.colorindex.value==3?kred:Colors.black
                                       ),),
                                     ),
                                    ),
                                  ),
                                 Container(
                                   height: 1.h,
-                                  width: 165.w,
+                                  width: 150.w,
                                   decoration: BoxDecoration(
-                                    color: Colors.black
+                                    color: Colors.grey[300]
                                   ),
                                 ),
                                  GestureDetector(
@@ -188,30 +197,30 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70.h,
-                                    width: 165.w,
+                                    height: 40.h,
+                                    width: 150.w,
                                     decoration: BoxDecoration(
-                                      color:controller.colorindex.value==4? Color(0xffFF0000):
-                                        Color(0xffFFEDED)
+                                      color:controller.colorindex.value==4? kwhite:
+                                        Colors.grey[200]
                                     ),
                                             child: Center(
                                       child: Text('Boarding Point',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==4?kwhite:Colors.black
+                                        color: controller.colorindex.value==4?kred:Colors.black
                                       ),),
                                     ),
                                    ),
                                  ),
                                   Container(
                                   height: 1.h,
-                                  width: 165.w,
+                                  width: 150.w,
                                   decoration: BoxDecoration(
-                                    color: Colors.black
+                                    color: Colors.grey[300]
                                   ),
                                 ),
                                  GestureDetector(
@@ -220,29 +229,29 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70.h,
-                                    width: 165.w,
+                                    height: 40.h,
+                                    width: 150.w,
                                     decoration: BoxDecoration(
-                                      color:controller.colorindex.value==5? Color(0xffFF0000):
-                                        Color(0xffFFEDED)
+                                      color:controller.colorindex.value==5? kwhite:
+                                        Colors.grey[200]
                                     ),
                                        child: Center(
                                       child: Text('Dropping Point',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==5?kwhite:Colors.black
+                                        color: controller.colorindex.value==5?kred:Colors.black
                                       ),),
                                     ),
                                     ),
                                  ),  Container(
                                   height: 1.h,
-                                  width: 165.w,
+                                  width: 150.w,
                                   decoration: BoxDecoration(
-                                    color: Colors.black
+                                    color: Colors.grey[300]
                                   ),
                                 ),
                                  GestureDetector(
@@ -251,30 +260,30 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70.h,
-                                    width: 165.w,
+                                    height: 40.h,
+                                    width: 150.w,
                                     decoration: BoxDecoration(
-                                         color:controller.colorindex.value==6? Color(0xffFF0000):
-                                        Color(0xffFFEDED)
+                                         color:controller.colorindex.value==6? kwhite:
+                                        Colors.grey[200]
                                     ),
                                      child: Center(
                                       child: Text('Bus Operator',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==6?kwhite:Colors.black
+                                        color: controller.colorindex.value==6?kred:Colors.black
                                       ),),
                                     ),
                                    ),
                                  ),
                                  Container(
                                   height: 1.h,
-                                  width: 165.w,
+                                  width: 150.w,
                                   decoration: BoxDecoration(
-                                    color: Colors.black
+                                    color: Colors.grey[300]
                                   ),
                                 ),
                                  GestureDetector(
@@ -283,30 +292,30 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70.h,
-                                    width: 165.w,
+                                    height: 40.h,
+                                    width: 150.w,
                                     decoration: BoxDecoration(
-                                         color:controller.colorindex.value==7? Color(0xffFF0000):
-                                        Color(0xffFFEDED)
+                                         color:controller.colorindex.value==7? kwhite:
+                                        Colors.grey[200]
                                     ),
                                     child: Center(
                                       child: Text('Bus Facilities',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==7?kwhite:Colors.black
+                                        color: controller.colorindex.value==7?kred:Colors.black
                                       ),),
                                     ),
                                    ),
                                  ),
                                    Container(
                                   height: 1.h,
-                                  width: 165.w,
+                                  width: 150.w,
                                   decoration: BoxDecoration(
-                                    color: Colors.black
+                                    color: Colors.grey[300]
                                   ),
                                 ),
                                  GestureDetector(
@@ -315,30 +324,30 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70.h,
-                                    width: 165.w,
+                                    height: 40.h,
+                                    width: 150.w,
                                     decoration: BoxDecoration(
-                                         color:controller.colorindex.value==8? Color(0xffFF0000):
-                                        Color(0xffFFEDED)
+                                         color:controller.colorindex.value==8? kwhite:
+                                        Colors.grey[200]
                                     ),
                                          child: Center(
                                       child: Text('Bus Features',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==8?kwhite:Colors.black
+                                        color: controller.colorindex.value==8?kred:Colors.black
                                       ),),
                                     ),
                                    ),
                                  ),
                                    Container(
                                   height: 1.h,
-                                  width: 165.w,
+                                  width: 150.w,
                                   decoration: BoxDecoration(
-                                    color: Colors.black
+                                    color: Colors.grey[300]
                                   ),
                                 ),
                                  GestureDetector(
@@ -347,25 +356,31 @@ class BusFilterView extends GetView<BusFilterController> {
                                     controller.update();
                                   },
                                    child: Container(
-                                    height: 70.h,
-                                    width: 165.w,
+                                    height: 40.h,
+                                    width: 150.w,
                                     decoration: BoxDecoration(
-                                         color:controller.colorindex.value==9? Color(0xffFF0000):
-                                        Color(0xffFFEDED)
+                                         color:controller.colorindex.value==9? kwhite:
+                                        Colors.grey[200]
                                     ),
                                        child: Center(
                                       child: Text('Bus arrival time at destination',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         
-                                        fontSize: 16.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==9?kwhite:Colors.black
+                                        color: controller.colorindex.value==9?kred:Colors.black
                                       ),),
                                     ),
                                    ),
-                                 )
+                                 ),   Container(
+                                  height: 1.h,
+                                  width: 150.w,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[300]
+                                  ),
+                                ),
                               ],
                             ),
                         
@@ -382,7 +397,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     Container(
                                       width: 120.w,
                                       child: Text('Relevance')),
-                                    Checkbox( 
+                                   Checkbox( activeColor: kred,
+                                    
                                       shape: CircleBorder(),
                                       value: controller.checkbox1.value, 
                                     onChanged:(value){
@@ -396,7 +412,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     Container(
                                       width: 120.w,
                                       child: Text('Price - Low to High')),
-                                     Checkbox( 
+                                    Checkbox( 
+                                      activeColor: kred,
                                       shape: CircleBorder(),
                                       value: controller.checkbox2.value, 
                                     onChanged:(value){
@@ -410,7 +427,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     Container(
                                       width: 120.w,
                                       child: Text('Best rated first')),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.checkbox3.value, 
                                     onChanged:(value){
@@ -424,7 +442,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     Container(
                                       width: 120.w,
                                       child: Text('Early departure')),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.checkbox4.value, 
                                     onChanged:(value){
@@ -438,7 +457,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                     Container(
                                       width: 120.w,
                                       child: Text('Late departure')),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.checkbox5.value, 
                                     onChanged:(value){
@@ -480,7 +500,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                         ],
                                       ),
                                     ),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.depatcheck1.value, 
                                     onChanged:(value){
@@ -514,7 +535,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                         ],
                                       ),
                                     ),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.depatcheck2.value, 
                                     onChanged:(value){
@@ -551,7 +573,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                         ],
                                       ),
                                     ),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.depatcheck3.value, 
                                     onChanged:(value){
@@ -585,7 +608,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                         ],
                                       ),
                                     ),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.depatcheck4.value, 
                                     onChanged:(value){
@@ -617,7 +641,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                           
                                         
                                     ),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.bustypecheck1.value, 
                                     onChanged:(value){
@@ -641,7 +666,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                          
                                         
                                     ),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.bustypecheck2.value, 
                                     onChanged:(value){
@@ -667,7 +693,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                             child: Text('AC')),
                                         
                                     ),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.bustypecheck3.value, 
                                     onChanged:(value){
@@ -690,7 +717,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                             child: Text('Non - Ac')),
                                         
                                     ),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.bustypecheck4.value, 
                                     onChanged:(value){
@@ -722,7 +750,8 @@ class BusFilterView extends GetView<BusFilterController> {
                                           
                                         
                                     ),
-                                     Checkbox( 
+                                    Checkbox( activeColor: kred,
+                                      
                                       shape: CircleBorder(),
                                       value: controller.singlewindcheck.value, 
                                     onChanged:(value){
@@ -764,35 +793,35 @@ class BusFilterView extends GetView<BusFilterController> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          height: 51.h,
-                          width: 155.w,
-                          decoration: BoxDecoration(
-                             borderRadius: BorderRadius.circular(7),
-                            color: Colors.grey.shade300
+                          height: 35.h,
+                          width: 120.w,
+                          decoration: BoxDecoration(border:Border.all(),
+                             borderRadius: BorderRadius.circular(26),
+                          //  color: Colors.grey.shade300
                           ),
                           child: Center(
                             child: Text('CLEAR',
                             style: TextStyle(
                               fontFamily: 'Proxima ',
-                              fontSize: 17.sp,
-                              fontWeight: FontWeight.w700
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600
                             ),),
                           ),
                         ),
                         Container(
-                        height: 51.h,
-                          width: 155.w,
+                        height: 35.h,
+                          width: 200.w,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            color:Color(0xffFF0000)
+                            borderRadius: BorderRadius.circular(26),
+                            color:kred
                           ),
                           child: Center(
                             child: Text('APPLY',
                             style: TextStyle(
-                              fontFamily: 'Proxima ',
-                              fontSize: 17.sp,
-                              fontWeight: FontWeight.w700,
-                              color: kwhite
+                             // fontFamily: 'Proxima ',
+                             fontFamily: 'Proxima ',
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,color: kwhite
                             )),
                           ),
                         )
