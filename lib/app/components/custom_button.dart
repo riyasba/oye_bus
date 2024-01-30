@@ -37,7 +37,8 @@ class CustomElevatedButton extends StatelessWidget {
           decoration: BoxDecoration(
               color: color,
               borderRadius: BorderRadius.circular(  10.r,),
-              border: Border.all(width: 1.5, color: kred )),
+            //  border: Border.all(width: 1.5, color: kred )),
+          ),
           child: Text(text
              
                   ,style: smalbalckfont.copyWith(
