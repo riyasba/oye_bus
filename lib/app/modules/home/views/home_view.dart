@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/views/bus_list_view.dart';
 import 'package:oye_bus/app/modules/home/widgets/home_app_bar_widget.dart';
+import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
 import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
 import 'package:oye_bus/app/modules/screens/search/views/search_destiny_view.dart';
 import 'package:oye_bus/app/modules/screens/search/views/search_view.dart';
@@ -263,31 +264,36 @@ final searchcityController = Get .find<BusSearchController>();
                    SizedBox(
                     width: 6.w,
                   ),
-                  Container(
-                      height: 55.h,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: const Color(0xffEEEEEF)),
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(top: 7, left: 7, right: 7),
-                        child: Column(
-                          children: [
-                            Text(
-                              "Traveller",
-                              style: primaryFont.copyWith(fontSize: 9.sp),
-                            ),
-                             SizedBox(
-                              height: 7.h,
-                            ),
-                            Text(
-                              "01",
-                              style: primaryFont.copyWith(
-                                  fontSize: 11.sp, fontWeight: FontWeight.w900),
-                            )
-                          ],
-                        ),
-                      )),
+                  InkWell(
+                    onTap: (){
+                           Get.to(() => PassengerInfoView());
+                    },
+                    child: Container(
+                        height: 55.h,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xffEEEEEF)),
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.only(top: 7, left: 7, right: 7),
+                          child: Column(
+                            children: [
+                              Text(
+                                "Traveller",
+                                style: primaryFont.copyWith(fontSize: 9.sp),
+                              ),
+                               SizedBox(
+                                height: 7.h,
+                              ),
+                              Text(
+                                "01",
+                                style: primaryFont.copyWith(
+                                    fontSize: 11.sp, fontWeight: FontWeight.w900),
+                              )
+                            ],
+                          ),
+                        )),
+                  ),
                    SizedBox(
                     width: 6.w,
                   ),

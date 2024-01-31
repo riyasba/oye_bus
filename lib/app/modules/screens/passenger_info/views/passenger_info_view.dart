@@ -29,7 +29,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
             padding: const EdgeInsets.all(15.0),
             child: Container(
               width: size.width,
-            
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -69,10 +68,9 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                             children: [
                               Container(
                                 width: 110.w,
-                                child: Text("Tambaram valacherry",maxLines: 1, overflow: TextOverflow.ellipsis,style: primaryFont.copyWith(
+                                child: Text("Tambaram velachery",maxLines: 2, overflow: TextOverflow.ellipsis,style: primaryFont.copyWith(
                                   fontSize: 14.sp
                                 ),)),
-                        
                               Container(
                                 width: 110.w,
                                   child: Text("Chennai",style: primaryFont.copyWith(
@@ -99,7 +97,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                                     ),
                                       )
                                     ]
-                                    
                                     ),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
@@ -114,10 +111,9 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                           children: [
                             Container(
                               width: 110.w,
-                              child: Text("Attibele toll plaza",maxLines: 1, overflow: TextOverflow.ellipsis,style: primaryFont.copyWith(
+                              child: Text("Attibele toll plaza",maxLines: 2, overflow: TextOverflow.ellipsis,style: primaryFont.copyWith(
                                 fontSize: 14.sp
                               ),)),
-
                             Container(
                               width: 110.w,
                                 child: Text("bangalore",style: primaryFont.copyWith(
@@ -144,7 +140,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                                   ),
                                     )
                                   ]
-                                  
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -164,7 +159,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Container(
-              
                 width: size.width,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -209,7 +203,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            
                           ),
                           hintText:"Enter your email id",
                           labelText: "Email ID",
@@ -227,7 +220,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            
                           ),
                           hintText:"Enter your phone",
                           labelText: "Phone",
@@ -251,8 +243,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                                   },
                                 ),
                         ),
-                          ),
-
+                        ),
                           Text("Send Booking details and Trip updates on Whatsapp",style: primaryFont.copyWith(fontSize: 10),)
                       ],
                     )
@@ -312,7 +303,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                             children: [
                               Text("Passenger 01",style: smalbalckfont.copyWith(
                                 fontSize: 16,
-                              
                               ),),
                               Text("Seat No: U10, Upper Deck",style: primaryFont.copyWith(
                                 fontSize: 11
@@ -338,7 +328,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            
                           ),
                           hintText:"Enter name",
                           labelText: "Name",
@@ -356,7 +345,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            
                           ),
                           hintText:"Enter age",
                           labelText: "Age",
@@ -374,7 +362,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            
                           ),
                           hintText:"Enter gender",
                           labelText: "Gender",
@@ -421,6 +408,109 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
             ),
           ),
           const SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child:  Container(
+                height: 150,
+                 width: size.width,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 3,
+                          color: Colors.grey.withOpacity(0.6)
+                        )
+                      ]
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Text('Passenger Details',
+                                                   style: smalbalckfont.copyWith(
+                                        fontSize: 18
+                                      )
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Text('0/1 selected'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Divider(),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15,top: 5),
+                            child: GetBuilder<CopassengersController>(
+                              builder: (_) {
+                                return Container( 
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: copassangersController.passengersdata.length,
+                                    itemBuilder: (context,index){
+                                      return  Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            CircleAvatar(
+                                              radius: 23,
+                                              backgroundColor: Colors.pink.shade100,
+                                              child: Center(
+                                                child: Icon(Icons.person)),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(left: 10),
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                 children: [
+                                                 copassangersController.passengersdata.isNotEmpty? Text(copassangersController.passengersdata[index].name,
+                                                  style: TextStyle(
+                                                    fontSize: 17,
+                                                    fontWeight: FontWeight.w600
+                                                  ),):Text(''),
+                                                  Row(
+                                                    children: [
+                                                      copassangersController.passengersdata.isNotEmpty?
+                                                      Text(copassangersController.passengersdata[index].gender):
+                                                      Text(''),
+                                                      Text(' ,'),
+                                                      Text('${copassangersController.passengersdata[index].age} years')
+                                                    ],
+                                                  )
+                                                 ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        Obx(()=>
+                                           Checkbox(
+                                            value: controller.ischeckvalue.value, 
+                                            onChanged: (value){
+                                             controller.ischeckvalue.value=value!;
+                                            }),
+                                        )
+                                      ],
+                                      );
+                                    },
+                                  ),
+                                );
+                              }
+                            ),
+                          )
+                        ],
+                      ),
+                    ),             
+              ),
+          ),
+              const SizedBox(
             height: 15,
           ),
           Padding(
@@ -555,11 +645,11 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                       ),
                   
                                         
-                   if(controller.iHaveGstNumber.isTrue)       Padding(
+                   if(controller.iHaveGstNumber.isTrue)       
+                   Padding(
                      padding: const EdgeInsets.symmetric(horizontal: 10),
                      child: Column(
-                          children: [
-                                          
+                          children: [          
                              const SizedBox(
                             height: 10,
                           ),
@@ -571,7 +661,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                
                               ),
                               hintText:"Enter GSTIN",
                               labelText: "GSTIN",
@@ -589,7 +678,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                
                               ),
                               hintText:"Enter Business Name",
                               labelText: "Business Name",
@@ -607,7 +695,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                
                               ),
                               hintText:"Enter Business Address",
                               labelText: "Business Address",
@@ -625,15 +712,12 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
-                                
                               ),
                               hintText:"Enter Business Address",
                               labelText: "Business Email",
                               contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8)
                             ),
-                          ),
-                                          
-                                          
+                          ),             
                           ],
                         ),
                    ),
@@ -649,10 +733,6 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                     const SizedBox(
                     height: 10,
                    ),
-
-
-
-
                         ],
                       ),
                     ),
@@ -680,9 +760,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         fontSize: 12,
                         decoration: TextDecoration.underline
                       ),
-                    
                       children: [
-
                     TextSpan(
                       text: " & ",
                       style: primaryFont.copyWith(
@@ -698,17 +776,12 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         decoration: TextDecoration.underline
                       ),
                      )
-
                       ]
                      ))
                    ),
                     const SizedBox(
                     height: 10,
                     ),
-
-
-
-
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
@@ -749,12 +822,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                       ),
                     ),
                   ),
-
-
-
-
-
-Center(
+                    Center(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
@@ -880,19 +948,18 @@ Center(
                                   ],
                                 );
                               });
-                                                  
-                                                },
-                                                 child: Container(
-                                                  height: 28,
-                                                  width: 28,
-                                                  decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    color: Colors.grey[200],
-                                                  ),
-                                                  child: Center(
-                                                    child: Icon(Icons.clear,
-                                                    color: kred,))),
-                                               ),
+                               },
+                               child: Container(
+                               height: 28,
+                               width: 28,
+                               decoration: BoxDecoration(
+                               shape: BoxShape.circle,
+                               color: Colors.grey[200],
+                               ),
+                               child: Center(
+                               child: Icon(Icons.clear,
+                               color: kred,))),
+                                 ),
                                             ],
                                           ):Text(''),
                                           Text('Age:${copassangersController.passengersdata[index].age}',
@@ -907,18 +974,12 @@ Center(
                                       ),
                                     ),
                                   ),
-                                
-                           
                                   ksizedbox20,
-                                
                                 ],
                               );
                                },
-                            
                             ),
                           ),
-                           
-                              
                               ksizedbox40,
                         ],
                       ),
@@ -930,7 +991,10 @@ Center(
                     )
         ],
       ),
-      bottomNavigationBar: InkWell(onTap: (){               Get.to(ReviewbookingdetailsView());},
+      bottomNavigationBar: InkWell(
+        onTap: (){               
+          Get.to(ReviewbookingdetailsView());
+          },
         child: Container(
           height: 55,
           decoration: BoxDecoration(

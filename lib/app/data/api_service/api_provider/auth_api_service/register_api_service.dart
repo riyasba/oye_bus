@@ -4,7 +4,9 @@ import 'package:oye_bus/app/data/api_service/config/config.dart';
 import 'package:oye_bus/app/data/api_service/models/register_model.dart';
 
 class RegistrationApiservice extends Config {
-  Future registrationApi(RegisterModel registerModel,
+
+  Future registrationApi(
+    RegisterModel registerModel,
       ) async {
     dynamic responseJson;
     try {

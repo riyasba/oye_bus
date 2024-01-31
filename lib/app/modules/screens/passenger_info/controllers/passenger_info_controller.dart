@@ -4,6 +4,7 @@ class PassengerInfoController extends GetxController {
   //TODO: Implement PassengerInfoController
 
   final count = 0.obs;
+  RxBool ischeckvalue = false.obs;
   @override
   void onInit() {
     super.onInit();

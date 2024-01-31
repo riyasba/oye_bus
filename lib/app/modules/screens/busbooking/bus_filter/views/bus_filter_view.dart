@@ -27,7 +27,11 @@ class BusFilterView extends GetView<BusFilterController> {
       title:  Text('Filter Buses',
                       style: appbarfont),
 
-                      leading: Icon(Icons.arrow_back_ios),
+                      leading: GestureDetector(
+                        onTap: (){
+                          Get.back();
+                        },
+                        child: Icon(Icons.arrow_back_ios)),
             // actions: [
             //      Padding(
             //        padding: const EdgeInsets.only(right: 10),
@@ -40,7 +44,7 @@ class BusFilterView extends GetView<BusFilterController> {
         children: [
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.only(left: 10,right: 10),
+              padding: const EdgeInsets.only(left: 10,right: 10,top: 30),
               child: Column(
                 children: [
                 

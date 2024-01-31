@@ -16,15 +16,15 @@ class LoginVerificationApiservice extends Config{
       options: Options(
         headers: {
           'Content-Type': 'application/json'
-        },
+        }, 
         validateStatus: (status){
           return status!<=500;
         }
       ),
-      data: {
+      data: { 
          "mobile":mobile,
           "otp":otp,
-          "role_id":3
+          "role_id":2
       }
       );
       print(':::::::Login Verify Api:::::::::<status code>:::::::$otp:');
