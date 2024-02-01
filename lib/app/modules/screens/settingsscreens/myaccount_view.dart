@@ -75,6 +75,15 @@ class MyaccountView extends GetView<SettingsController> {
                             },
                             text: 'Cards',
                           ),
+                            ksizedbox20,
+                          MyaccountbuttonView(
+                            onPressed: () {
+                              Get.toNamed(
+                                Routes.MYWALLET_SCREEN,
+                              );
+                            },
+                            text: 'My Wallet',
+                          ),
                           ksizedbox20,
                           MyaccountbuttonView(
                             onPressed: () {

@@ -28,7 +28,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: Container(
-              width: size.width,
+              width: size.width,  
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),

@@ -12,6 +12,8 @@ import '../modules/bustracking/bindings/bustracking_binding.dart';
 import '../modules/bustracking/views/bustracking_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/mywallet_screen/bindings/mywallet_screen_binding.dart';
+import '../modules/mywallet_screen/views/mywallet_screen_view.dart';
 import '../modules/onbording/bindings/onbording_binding.dart';
 import '../modules/onbording/location/bindings/location_binding.dart';
 import '../modules/onbording/location/views/location_view.dart';
@@ -96,12 +98,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LOGIN,
-      page: () =>  LoginView(),
+      page: () => LoginView(),
       binding: LoginBinding(),
       children: [
         GetPage(
           name: _Paths.LOGIN,
-          page: () =>  LoginView(),
+          page: () => LoginView(),
           binding: LoginBinding(),
         ),
       ],
@@ -133,7 +135,9 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.OTP,
-      page: () =>  OtpView(mobile: '',),
+      page: () => OtpView(
+        mobile: '',
+      ),
       binding: OtpBinding(),
     ),
     GetPage(
@@ -148,7 +152,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PROFILE,
-      page: () =>  ProfileView(),
+      page: () => ProfileView(),
       binding: ProfileBinding(),
     ),
     GetPage(
@@ -158,7 +162,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.COPASSENGERS,
-      page: () =>  CopassengersView(),
+      page: () => CopassengersView(),
       binding: CopassengersBinding(),
     ),
     GetPage(
@@ -168,12 +172,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.HELPFAQ,
-      page: () =>  HelpfaqView(),
+      page: () => HelpfaqView(),
       binding: HelpfaqBinding(),
     ),
     GetPage(
       name: _Paths.ABOUTUS,
-      page: () =>  AboutusView(),
+      page: () => AboutusView(),
       binding: AboutusBinding(),
     ),
     GetPage(
@@ -208,7 +212,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BUSSEATMAPING,
-      page: () =>  BusseatmapingView(),
+      page: () => BusseatmapingView(),
       binding: BusseatmapingBinding(),
     ),
     GetPage(
@@ -218,7 +222,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BUS_LIST,
-      page: () =>  BusListView(),
+      page: () => BusListView(),
       binding: BusListBinding(),
     ),
     GetPage(
@@ -240,6 +244,11 @@ class AppPages {
       name: _Paths.BUSTRACKING,
       page: () => BustrackingView(),
       binding: BustrackingBinding(),
+    ),
+    GetPage(
+      name: _Paths.MYWALLET_SCREEN,
+      page: () =>  MywalletScreenView(),
+      binding: MywalletScreenBinding(),
     ),
   ];
 }
