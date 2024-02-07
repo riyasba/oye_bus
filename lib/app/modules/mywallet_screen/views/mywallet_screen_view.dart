@@ -100,7 +100,7 @@ class MywalletScreenView extends GetView<MywalletScreenController> {
                             Column(
                               children: [
                                 Container(
-                                  width: 210,
+                                  width: 220,
                                   child: Text('New refer Join this app in OYE. So get 100 rupees for your wallets.'))
                               ],
                             ),
@@ -109,11 +109,17 @@ class MywalletScreenView extends GetView<MywalletScreenController> {
                               children: [
                                 Text('₹100',
                                 style: TextStyle(
-                                  fontSize: 17,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 17.5,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.green
                                 ),),
-                                Text('21,Jan,2024')
+                                Text('21,Jan,2024',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Lexend'
+                                ),)
                               ],
                             )
                           ],

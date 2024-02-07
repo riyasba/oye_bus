@@ -132,11 +132,11 @@ class SearchView extends GetView<BusSearchController> {
                           itemBuilder: (context,index){
                           return InkWell(
                               onTap: (){
-                               Get.find<HomeController>().fromcityid = searchcityController.citydata[index].cityId;
+                               Get.find<HomeController>().fromcityid = searchcityController.citydata[index].city;
                               Get.find<HomeController>().fromPlaceTxtController.text = searchcityController.citydata[index].city;
                               Get.back();
                               print('formid........');
-                              print(searchcityController.citydata[index].cityId);
+                              print(searchcityController.citydata[index].city);
                             },
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

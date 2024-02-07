@@ -220,11 +220,11 @@ class AppPages {
       page: () => const SearchView(),
       binding: SearchBinding(),
     ),
-    GetPage(
-      name: _Paths.BUS_LIST,
-      page: () => BusListView(),
-      binding: BusListBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.BUS_LIST,
+    //   page: () => BusListView(),
+    //   binding: BusListBinding(),
+    // ),
     GetPage(
       name: _Paths.PASSENGER_INFO,
       page: () => PassengerInfoView(),

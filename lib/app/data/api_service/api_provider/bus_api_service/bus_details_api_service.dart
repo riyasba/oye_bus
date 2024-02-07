@@ -24,7 +24,7 @@ class BusDetailsApiService extends Config{
         },
       ),
       data: {
-        "bus_id":1
+       "trip_id":1
       }
       );
       print('::::::::::::Bus details api:::::::::::<status code>::::::::::');

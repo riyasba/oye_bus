@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/add_booking_api_service.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/bus_seat_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/bus_api_service/bus_details_api_service.dart';
+import 'package:oye_bus/app/data/api_service/models/booking_model/add_booking_model.dart';
+import 'package:oye_bus/app/data/api_service/models/booking_model/bus_seats_model.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_model/bus_details_model.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/paymentsuccesfull_view.dart';
 import 'package:oye_bus/app/services/ease_buzz_payment_api_services.dart';
@@ -10,11 +15,13 @@ import 'package:dio/dio.dart'as dio;
 class BusseatmapingController extends GetxController {
 
   RxBool isLoading = false.obs;
+  RxBool ischeck =false.obs;
   final count = 0.obs;
   RxInt dropingIndex =0.obs;
   @override
   void onInit() {
     getBusdetails();
+    busseats();
     super.onInit();
   }
 
@@ -127,11 +134,28 @@ List<bool> seats3 = List.generate(30, (_) => false);
     }
   }
 
+BusSeatApiService busseatapiservice = 
+BusSeatApiService();
 
+List<BusSeatData> busseatdata=[];
+
+busseats()async{
+  isLoading(true);
+  dio.Response<dynamic>response = await busseatapiservice.busSeatapi();
+  
+  isLoading(false);
+  if(response.data['status']==true){
+    BusSeatsModel busSeatsModel = BusSeatsModel.fromJson(response.data);
+    busseatdata=busSeatsModel.data;
+    update();
+  }
+}
 
   BusDetailsApiService busdetailsapiservice = BusDetailsApiService();
-
+   RouteData? routedata;
    AboutBus? aboutbusdata;
+   BusDetails ? busDetailsdata;
+   Trip?tripdata;
    List<Ing>droppointdata=[];
    List<RestStop>reststopdata=[];
    List<Amenity>amenitydata=[];
@@ -146,18 +170,21 @@ List<bool> seats3 = List.generate(30, (_) => false);
 
    isLoading(false);
    if(response.data['status']==true){
-    BusdetailsModel busdetailsmodel = BusdetailsModel.fromJson(response.data);
+    BusDetailsModel busdetailsmodel = BusDetailsModel.fromJson(response.data);
     aboutbusdata=busdetailsmodel.aboutBus;
-    droppointdata=busdetailsmodel.boarding;
     droppointdata = busdetailsmodel.dropping;
     reststopdata = busdetailsmodel.restStop;
     amenitydata = busdetailsmodel.amenities;
     policiesdata = busdetailsmodel.policies;
     busimages = busdetailsmodel.busImages;
     boardingpointdata = busdetailsmodel.boarding;
+    busDetailsdata = busdetailsmodel.busDetails;
+    routedata = busdetailsmodel.route;
+    tripdata = busdetailsmodel.trip;
     update();
    }else{
     
    }
   }
+    
 }

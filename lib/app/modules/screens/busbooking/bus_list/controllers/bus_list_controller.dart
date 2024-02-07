@@ -5,6 +5,7 @@ class BusListController extends GetxController {
   //TODO: Implement BusListController
 
   final count = 0.obs;
+  RxBool isHover = false.obs;
   @override
   void onInit() {
     super.onInit();

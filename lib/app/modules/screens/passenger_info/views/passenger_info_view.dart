@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/data/api_service/models/booking_model/add_booking_model.dart';
+import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/reviewbookingdetails_view.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/widgets/dotted_line_small.dart';
 import 'package:oye_bus/app/modules/screens/settingsscreens/copassengers/controllers/copassengers_controller.dart';
@@ -13,6 +16,9 @@ import '../controllers/passenger_info_controller.dart';
 class PassengerInfoView extends GetView<PassengerInfoController> {
    PassengerInfoView({Key? key}) : super(key: key);
   final copassangersController = Get.find<CopassengersController>();
+      final boadingdroppingController = Get.find<BusseatmapingController>();
+      final passengerController = Get.find<PassengerInfoController>();
+      final homeController = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => 
@@ -68,9 +74,9 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                             children: [
                               Container(
                                 width: 110.w,
-                                child: Text("Tambaram velachery",maxLines: 2, overflow: TextOverflow.ellipsis,style: primaryFont.copyWith(
+                                child:boadingdroppingController.boardingpointdata.isNotEmpty? Text(boadingdroppingController.boardingpointdata.first.location,maxLines: 2, overflow: TextOverflow.ellipsis,style: primaryFont.copyWith(
                                   fontSize: 14.sp
-                                ),)),
+                                ),):Text('')),
                               Container(
                                 width: 110.w,
                                   child: Text("Chennai",style: primaryFont.copyWith(
@@ -196,6 +202,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         height: 15,
                       ),
                       TextField(
+                        controller: controller.emailController,
                         style: smalbalckfont.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w600
@@ -213,6 +220,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         height: 10,
                       ),
                         TextField(
+                          controller: controller.mobileController,
                         style: smalbalckfont.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w600
@@ -321,6 +329,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         height: 15,
                       ),
                       TextField(
+                        controller: controller.nameController,
                         style: smalbalckfont.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w600
@@ -338,6 +347,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         height: 10,
                       ),
                         TextField(
+                          controller:controller.ageController ,
                         style: smalbalckfont.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w600
@@ -355,6 +365,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         height: 10,
                       ),
                         TextField(
+                          controller: controller.genderController,
                         style: smalbalckfont.copyWith(
                           fontSize: 14,
                           fontWeight: FontWeight.w600
@@ -992,8 +1003,33 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
         ],
       ),
       bottomNavigationBar: InkWell(
-        onTap: (){               
-          Get.to(ReviewbookingdetailsView());
+        onTap: (){
+          print('booking number');
+          print(controller.mobileController);
+          AddBookingModel addBookingModel = 
+          AddBookingModel(
+            age:controller.ageController.text, 
+            boardingPoint: boadingdroppingController.boardingpointdata.first.location, 
+            date: homeController.selectedBookingDate.value, 
+            droppingPoint: boadingdroppingController.droppointdata.first.location, 
+            emailId: controller.emailController.text, 
+            gender: controller.genderController.text, 
+            mobile: controller.mobileController.text, 
+            passengerName: controller.nameController.text, 
+            perticketPrice: boadingdroppingController.routedata!.price, 
+            primaryCustomerName: controller.nameController.text, 
+            busid: boadingdroppingController.tripdata!.busId, 
+            routeid: boadingdroppingController.tripdata!.routeId, 
+            seatid: boadingdroppingController.busseatdata.isNotEmpty?
+            boadingdroppingController.busseatdata.first.seatNo:'', 
+            seatmapid: boadingdroppingController.busseatdata.isNotEmpty?
+            boadingdroppingController.busseatdata.first.id.toString():'', 
+            tripid: boadingdroppingController.tripdata!.id.toString(), 
+            vendorid:boadingdroppingController.busDetailsdata!.vendorId, 
+            iswomenseat:boadingdroppingController.busseatdata.isNotEmpty?
+             boadingdroppingController.busseatdata.first.ladiesSeat:'') ;
+            passengerController.addbooking(addBookingModel: addBookingModel);              
+          //Get.to(ReviewbookingdetailsView());
           },
         child: Container(
           height: 55,

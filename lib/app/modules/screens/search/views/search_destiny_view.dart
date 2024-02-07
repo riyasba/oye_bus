@@ -129,7 +129,7 @@ class SearchDestinyView extends GetView<BusSearchController> {
                             return InkWell(
                               onTap: () {
                                 Get.find<HomeController>().tocityid =
-                                    searchcityController.citydata[index].cityId;
+                                    searchcityController.citydata[index].city;
                                 Get.find<HomeController>()
                                         .toPlaceTxtController
                                         .text =
@@ -137,7 +137,7 @@ class SearchDestinyView extends GetView<BusSearchController> {
                                 Get.back();
                                 print('search city id');
                                 print(searchcityController
-                                    .citydata[index].cityId);
+                                    .citydata[index].city);
                               },
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,

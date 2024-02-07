@@ -74,92 +74,126 @@ class DropingbordingView extends GetView<BusseatmapingController> {
                 ],
               ),
               if(controller.dropingIndex.value==0)
-            Container(
-            
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: boadingdroppingController.boardingpointdata.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final example = 9;
-              
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 0,left: 5),
-                    child: TimelineTile(
+            Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Container(
                       
-                      alignment: TimelineAlign.manual,
-                      lineXY: 0.4,
-                      isFirst: index == 0,
-                      isLast: index == 8 - 1,
-                      indicatorStyle: IndicatorStyle(
-                        color: kred,
-                        width: 10,
-                        height: 10,
-                        indicator: _IndicatorExample(number: '${index + 1}'),
-                        drawGap: true,
-                      ),
-                      beforeLineStyle: LineStyle(
-                        color: Color.fromARGB(255, 22, 3, 3).withOpacity(0.2),
-                      ),
-                      endChild: GestureDetector(
-                        child: _RowExample(
-                          example: 'Location ${boadingdroppingController.boardingpointdata[index].location}'),
-                        onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute<ShowcaseTimeline>(
-                          //     builder: (_) =>
-                          //         ShowcaseTimeline(example: example),
-                          //   ),
-                          // );
-                        },
-                      ),
-                    ),
-                  );
-                },
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: boadingdroppingController.boardingpointdata.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final example = 9;
+                
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 80,
+                          child: TimelineTile(
+                            
+                            alignment: TimelineAlign.manual,
+                            lineXY: 0.4,
+                            isFirst: index == 0,
+                            isLast: index == 8 - 1,
+                            indicatorStyle: IndicatorStyle(
+                              color: kred,
+                              width: 10,
+                              height: 10,
+                              indicator: _IndicatorExample(number: '${index + 1}'),
+                              drawGap: true,
+                            ),
+                            startChild: Padding(
+                              padding: const EdgeInsets.only(right: 20),
+                              child: Text(  boadingdroppingController.boardingpointdata[index].time,
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                   fontSize: 15,
+                                  fontFamily: 'Proxima Nova',
+                                  fontWeight: FontWeight.w400
+                                ),
+                              ),),
+                            
+                            beforeLineStyle: LineStyle(
+                              color: Color.fromARGB(255, 22, 3, 3).withOpacity(0.2),
+                            ),
+                            endChild: Padding(
+                              padding: const EdgeInsets.only(left: 25),
+                              child: Text(
+                                boadingdroppingController.boardingpointdata[index].location,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'Proxima Nova',
+                                  fontWeight: FontWeight.w400
+                                ),),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              
               ),
-            
             ),
             if(controller.dropingIndex.value==1)
-            Container(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: boadingdroppingController.droppointdata.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final example = 9;
+            Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Container(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: boadingdroppingController.droppointdata.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final example = 9;
+                
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                                          
+                          height: 80,
+                          child: TimelineTile(
+                            alignment: TimelineAlign.manual,
+                            lineXY: 0.4,
+                            isFirst: index == 0,
+                            isLast: index == 8 - 1,
+                            indicatorStyle: IndicatorStyle(
+                              width: 10,
+                              height: 10,
+                              indicator: _IndicatorExample(number: '${index + 1}'),
+                              drawGap: true,
+                            ),
+                            startChild: Padding(
+                              padding: const EdgeInsets.only(right: 30),
+                              child: Text(boadingdroppingController.droppointdata[index].time,
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                   fontSize: 15,
+                                  fontFamily: 'Proxima Nova',
+                                  fontWeight: FontWeight.w400
+                                
+                              ),),
+                            ),
+                            beforeLineStyle: LineStyle(
+                              color: Color.fromARGB(255, 22, 3, 3).withOpacity(0.2),
+                            ),
+                            endChild: Padding(
+                              padding: const EdgeInsets.only(left: 25),
+                              child: Text(boadingdroppingController.droppointdata[index].location,
+                              style: TextStyle(
+                                   fontSize: 15,
+                                  fontFamily: 'Proxima Nova',
+                                  fontWeight: FontWeight.w400
+                                
+                              ),),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
               
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 4,left: 0),
-                    child: TimelineTile(
-                      alignment: TimelineAlign.manual,
-                      lineXY: 0.4,
-                      isFirst: index == 0,
-                      isLast: index == 8 - 1,
-                      indicatorStyle: IndicatorStyle(
-                        width: 10,
-                        height: 10,
-                        indicator: _IndicatorExample(number: '${index + 1}'),
-                        drawGap: true,
-                      ),
-                      beforeLineStyle: LineStyle(
-                        color: Color.fromARGB(255, 22, 3, 3).withOpacity(0.2),
-                      ),
-                      endChild: GestureDetector(
-                        child: _RowExample(example: 'Location ${boadingdroppingController.droppointdata[index].location}'),
-                        onTap: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute<ShowcaseTimeline>(
-                          //     builder: (_) =>
-                          //         ShowcaseTimeline(example: example),
-                          //   ),
-                          // );
-                        },
-                      ),
-                    ),
-                  );
-                },
               ),
-            
             )
           ]
         ),

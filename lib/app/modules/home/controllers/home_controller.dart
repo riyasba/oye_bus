@@ -84,8 +84,8 @@ class HomeController extends GetxController {
 
     update();
   }
-int fromcityid=0;
-int tocityid=0;
+dynamic fromcityid=0;
+dynamic tocityid=0;
 
 var cityid=0;
   RxInt currenttap = 1.obs;
@@ -95,25 +95,26 @@ var cityid=0;
 
   BusListApiService buslistapiservice = BusListApiService();
   List<BusData>busdata=[];
-
+   
+RxString selectedBookingDate="".obs;
   getbuslist({
-    required String boardingid,
-    required String destinationid,
+    required String boardingname,
+    required String destinationname,
     required String date})async{  
-
+     selectedBookingDate(date);
       isLoading(true);
       dio.Response<dynamic>response = await buslistapiservice.buslistapi(
-        boardingId: boardingid, 
-        destinationId: destinationid, 
+        boardingname: boardingname, 
+        destinationname: destinationname, 
         date: date);
          print('statuscode::::::::::::::');
          print(response.statusCode);
          print('datas::::::::::::::::::');
          print(response.data["status"]==true);
         isLoading(false);
-         if(response.data['status'] == "true"){ 
+         if(response.data['status'] == true){ 
           print("----------->> here");
-          BuslistModel buslistModel = BuslistModel.fromJson(response.data);
+          BusListModel buslistModel = BusListModel.fromJson(response.data);
           busdata=buslistModel.data;
           update();
         Get.to(() => BusListView());

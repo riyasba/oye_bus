@@ -3,13 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
+import 'package:oye_bus/app/data/api_service/models/booking_model/bus_seat_blocked_model.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/moreaboutbus_view.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/pickanddrop_view.dart';
+import 'package:oye_bus/app/modules/screens/passenger_info/controllers/passenger_info_controller.dart';
+import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
 import '../controllers/busseatmaping_controller.dart';
 
 class BusseatmapingView extends GetView<BusseatmapingController> {
-  BusseatmapingView({Key? key}) : super(key: key);
+
+  BusseatmapingView({Key? key,}) : super(key: key);
 //  List<bool> seats = List.generate(30, (_) => false);
+   final busseatController = Get.find<PassengerInfoController>();
+   final busdeatilsController = Get.find<BusseatmapingController>();
+   final profileController = Get.find<ProfileController>();
   @override
   Widget build(BuildContext context) {
     Get.put(
@@ -727,6 +734,7 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                             ),
                             InkWell(
                               onTap: () {
+                             
                                 Get.to(MoreaboutbusView());
                               },
                               child: Text(
@@ -764,7 +772,18 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                       height: 45.h,
                       width: 1.sw,
                       onPressed: () {
-                        Get.to(PickanddropView());
+                        SeatBlockedData busSeatBlockedModel = SeatBlockedData(
+                          busId: int.parse(busdeatilsController.tripdata!.busId), 
+                          userId: profileController.profiledata.first.id, 
+                          tripId: busdeatilsController.tripdata!.id, 
+                          routeId:int.parse(busdeatilsController.tripdata!.routeId), 
+                          vendorId: int.parse(busdeatilsController.routedata!.vendorId), 
+                          seatId: '1', 
+                          seatCount: 2, 
+                         );
+                        busseatController.seatblock(busSeatBlockedModel: busSeatBlockedModel);
+                        Get.to(
+                          PickanddropView());
                       },
                       text: 'proceed',
                       color: kred,

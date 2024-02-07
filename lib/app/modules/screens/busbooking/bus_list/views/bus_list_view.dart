@@ -15,9 +15,10 @@ import '../../bus_filter/views/bus_filter_view.dart';
 import '../controllers/bus_list_controller.dart';
 
 class BusListView extends GetView<BusListController> {
-   BusListView({Key? key}) : super(key: key);
+ 
+   BusListView({Key? key,}) : super(key: key);
   @override
-  final buslistController = Get.find<HomeController>();
+   final buslistController = Get.find<HomeController>();
   List image = [
     'assets/images/destinationoffers2.jpg',
     'assets/images/destinationoffers.jpg',
@@ -66,7 +67,7 @@ class BusListView extends GetView<BusListController> {
                   ],
                 ),
                 Container( 
-                  height: 150,
+                  height: 110,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
@@ -74,10 +75,14 @@ class BusListView extends GetView<BusListController> {
                     itemBuilder: (context,index){
                       return Padding(
                         padding: const EdgeInsets.only(left: 20),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.asset(image[index],
-                                                  )),
+                        child: Container(
+                          height: 50,
+                          width: 120,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(image[index],
+                                                    fit: BoxFit.fill,)),
+                        ),
                       );
                     }),
                 )
@@ -153,7 +158,8 @@ class BusListView extends GetView<BusListController> {
       body: GetBuilder<HomeController>(
         builder: (_) {
           return Padding(
-            padding: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 0),
+          
             child: ListView.builder(
               physics: BouncingScrollPhysics(),
               shrinkWrap: true,
@@ -196,11 +202,11 @@ class BusListView extends GetView<BusListController> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         buslistController.busdata.isNotEmpty?
-                                        Text(buslistController.busdata[index].busName,style: smalbalckfont.copyWith(
+                                        Text(buslistController.busdata[index].route.busDetails.busName,style: smalbalckfont.copyWith(
                                           fontSize: 14
                                         ),):Text('no data'),
                       
-                                        Text(buslistController.busdata[index].seatType,style: primaryFont.copyWith(
+                                        Text(buslistController.busdata[index].route.busDetails.busType,style: primaryFont.copyWith(
                                           fontSize: 11
                                         ),)
                                       ],
@@ -233,10 +239,10 @@ class BusListView extends GetView<BusListController> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(buslistController.busdata[index].boardingTime,style: smalbalckfont.copyWith(
+                                    Text(buslistController.busdata[index].route.arrivalTime,style: smalbalckfont.copyWith(
                                       fontSize: 14,
                                     ),),
-                                     Text(buslistController.busdata[index].boardingPlace,style: primaryFont.copyWith(
+                                     Text(buslistController.busdata[index].route.sourceLocation,style: primaryFont.copyWith(
                                       fontSize: 11,
                                       color: Colors.black45
                                     ),)
@@ -245,7 +251,7 @@ class BusListView extends GetView<BusListController> {
                                
                                 Column(
                                   children: [
-                                    Text(buslistController.busdata[index].totalHours,style: primaryFont.copyWith(
+                                    Text(buslistController.busdata[index].route.totalHours,style: primaryFont.copyWith(
                                       fontSize: 10,
                                       color: Colors.black54
                                     ),),
@@ -291,10 +297,10 @@ class BusListView extends GetView<BusListController> {
                                  Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Text(buslistController.busdata[index].droppingTime,style: smalbalckfont.copyWith(
+                                    Text(buslistController.busdata[index].route.departureTime,style: smalbalckfont.copyWith(
                                       fontSize: 14,
                                     ),),
-                                     Text(buslistController.busdata[index].droppingPlace,style: primaryFont.copyWith(
+                                     Text(buslistController.busdata[index].route.destinationLocation,style: primaryFont.copyWith(
                                       fontSize: 11,
                                       color: Colors.black45
                                     ),)
@@ -312,7 +318,7 @@ class BusListView extends GetView<BusListController> {
                            const SizedBox(
                               height: 10,
                             ),
-                            Row(
+                            Row(  
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
@@ -331,7 +337,7 @@ class BusListView extends GetView<BusListController> {
                                     ),)
                                   ],
                                 ),
-                                Text("₹${buslistController.busdata[index].singleSeatPrice}",style: smalbalckfont.copyWith(
+                                Text("₹${buslistController.busdata[index].route.price}",style: smalbalckfont.copyWith(
                                   fontSize: 15,
                   
                                 ),)
@@ -352,3 +358,24 @@ class BusListView extends GetView<BusListController> {
     );
   }
 }
+//hovering container
+
+// AnimatedContainer(
+        
+//           duration: Duration(seconds: 2),
+//           curve: Curves.easeIn,
+//           child: Material(
+
+//             color: Colors.yellow,
+//             child: InkWell(
+//               onTap:(){},
+//                 onHover: (value) {
+//                   print(value);
+                
+//                  controller isHover = value;
+              
+//               },
+//               child: Text('sharmila ur the busyest girl in this office'),
+//             ),
+//           ),
+//             )

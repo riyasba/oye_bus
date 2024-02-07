@@ -469,8 +469,8 @@ final searchcityController = Get .find<BusSearchController>();
                     onTap: () {
                       if (controller.cityid!=0||controller.fromcityid!=0) {
                             homeController.getbuslist(
-                      boardingid:homeController.fromcityid.toString(), 
-                      destinationid: homeController.tocityid.toString(), 
+                      boardingname:homeController.fromcityid.toString(), 
+                      destinationname: homeController.tocityid.toString(), 
                       date: formatDate(homeController.selectedDate, [yyyy,'-',mm,'-',dd]));
                        
                       print('bus list................');
