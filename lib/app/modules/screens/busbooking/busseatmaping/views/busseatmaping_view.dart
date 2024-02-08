@@ -774,7 +774,8 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                       onPressed: () {
                         SeatBlockedData busSeatBlockedModel = SeatBlockedData(
                           busId: int.parse(busdeatilsController.tripdata!.busId), 
-                          userId: profileController.profiledata.first.id, 
+                          userId:profileController.profiledata.isNotEmpty? 
+                          profileController.profiledata.first.id:0, 
                           tripId: busdeatilsController.tripdata!.id, 
                           routeId:int.parse(busdeatilsController.tripdata!.routeId), 
                           vendorId: int.parse(busdeatilsController.routedata!.vendorId), 
