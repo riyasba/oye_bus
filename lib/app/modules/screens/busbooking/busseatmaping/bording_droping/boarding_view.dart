@@ -92,8 +92,10 @@ class _BoardingListViewState extends State<BoardingListView> {
                                     value: boadingdroppingController.boardingpointdata[index].id,
                                     groupValue: val,
                                     onChanged: (value) {
+                                     
                                       setState(() {
                                       val = value!;
+                                      boadingdroppingController.boardinglocationvalue.value=value.toString();
                                       });
                                     },
                                     activeColor:kred,

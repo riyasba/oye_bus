@@ -18,6 +18,8 @@ class BusseatmapingController extends GetxController {
   RxBool ischeck =false.obs;
   final count = 0.obs;
   RxInt dropingIndex =0.obs;
+  RxString boardinglocationvalue=''.obs;
+  RxString destinationlocationvalue=''.obs;
   @override
   void onInit() {
     getBusdetails();

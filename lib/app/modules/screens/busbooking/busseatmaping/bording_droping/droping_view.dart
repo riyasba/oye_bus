@@ -93,6 +93,7 @@ class _DroppingListViewState extends State<DroppingListView> {
                                     onChanged: (value) {
                                       setState(() {
                                       val = value!;
+                                      boadingdroppingController.destinationlocationvalue.value=value.toString();
                                       });
                                     },
                                     activeColor:kred,

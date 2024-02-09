@@ -58,8 +58,17 @@ class PickanddropView extends GetView {
             width: 1.sw,
             onPressed: () {
             
-            
-               Get.to(PassengerInfoView());
+              if (boadingdroppingController.boardinglocationvalue.isEmpty||
+              boadingdroppingController.destinationlocationvalue.isEmpty) {
+        Get.rawSnackbar(
+          title: 'Information',
+          message: 'please Enter Your Details',
+          backgroundColor: Colors.red 
+        );
+              }else{
+                 Get.to(PassengerInfoView());
+              }
+              
               //    Get.toNamed(
               // Routes.BUSLOADINGSPLASH,
               //  );

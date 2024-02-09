@@ -239,7 +239,7 @@ class BusListView extends GetView<BusListController> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(buslistController.busdata[index].route.arrivalTime,style: smalbalckfont.copyWith(
+                                    Text(buslistController.busdata[index].route.arrivalTime.toString(),style: smalbalckfont.copyWith(
                                       fontSize: 14,
                                     ),),
                                      Text(buslistController.busdata[index].route.sourceLocation,style: primaryFont.copyWith(
