@@ -96,12 +96,13 @@ var cityid=0;
   BusListApiService buslistapiservice = BusListApiService();
   List<BusData>busdata=[];
    
-RxString selectedBookingDate="".obs;
+   RxString selectedBookingDate="".obs;
   getbuslist({
     required String boardingname,
     required String destinationname,
     required String date})async{  
      selectedBookingDate(date);
+     Get.to(() => BusListView());
       isLoading(true);
       dio.Response<dynamic>response = await buslistapiservice.buslistapi(
         boardingname: boardingname, 
@@ -117,7 +118,7 @@ RxString selectedBookingDate="".obs;
           BusListModel buslistModel = BusListModel.fromJson(response.data);
           busdata=buslistModel.data;
           update();
-        Get.to(() => BusListView());
+        
          
       
       }else{
