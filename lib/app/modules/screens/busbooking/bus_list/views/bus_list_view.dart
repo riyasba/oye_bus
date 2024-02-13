@@ -1,5 +1,6 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ import 'package:oye_bus/app/modules/screens/busbooking/bus_list/widgets/seperato
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/busseatmaping_view.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../bus_filter/views/bus_filter_view.dart';
 import '../controllers/bus_list_controller.dart';
@@ -29,6 +31,7 @@ class BusListView extends GetView<BusListController> {
      'assets/images/destinationoffers2.jpg',
   
   ];
+  
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
@@ -157,12 +160,11 @@ class BusListView extends GetView<BusListController> {
           }
         ),
       ),
-      body: GetBuilder<HomeController>(
-        builder: (_) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 0),
-          
-            child: ListView.builder(
+      body: Obx(()=>
+       buslistController.isLoading.isFalse
+        ? GetBuilder<HomeController>(
+          builder: (_) {
+            return ListView.builder(
               physics: BouncingScrollPhysics(),
               shrinkWrap: true,
               itemCount: buslistController.busdata.length,
@@ -355,10 +357,271 @@ class BusListView extends GetView<BusListController> {
                   
                 );
             
-            }),
-          );
-        }
+            });
+          }
+        ):getShimmerLoading(),
       )
+    );
+  }
+  getShimmerLoading(){
+    return Padding(
+      padding: const EdgeInsets.only(left: 15,right: 15,top: 15),
+      child: ListView.builder(
+           shrinkWrap: true,
+            itemCount: 3,
+         itemBuilder:(context,index){
+          return Padding(
+            padding: const EdgeInsets.only(top: 15),
+            child: Container(
+                        height: 135.h,
+                        decoration: BoxDecoration(
+                          color:Colors.grey.shade100,
+                          borderRadius: BorderRadius.circular(8),
+                         
+                        
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 8,left: 8,right: 8),
+                          child: Column(
+                            
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                              Shimmer.fromColors(
+                            
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                                        child: Container(
+                                          height: 31,
+                                          width: 31,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.white
+                                          ),
+                                        ),
+                                      ),
+                                  
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 20,),
+                                        child: Shimmer.fromColors(
+                                        
+                                        baseColor: Colors.grey[300]!,
+                                        highlightColor: Colors.grey[100]!,child: Container(
+                                          width: 120,
+                                           height: 14,
+                                           decoration: BoxDecoration(
+                                             color: Colors.white,
+                                             borderRadius: BorderRadius.circular(5)
+                                           ),
+                                          ),
+                                        ),
+                                      ),
+                                             
+                                      
+                                    ],
+                                  ),
+                              Shimmer.fromColors(
+                            
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                                    child: Container(
+                                      height: 14,
+                                      width: 60,
+                                      decoration: BoxDecoration(
+                                        color: kwhite,
+                                        borderRadius: BorderRadius.circular(7),
+                                      
+                                      ),
+                                     
+                                    ),
+                                  )
+                                ],
+                              ),
+                             const SizedBox(
+                                height: 20,
+                              ),
+                              //time row
+                                            
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                    Shimmer.fromColors(
+                                      
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,child: Container(
+                                        height: 13,
+                                        width: 80,
+                                       
+                                        decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                                color: Colors.white,
+                                        ),
+                                       ),
+                                     ),
+                                     ksizedbox10,
+                                     Shimmer.fromColors(
+                                      
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,child: Container(
+                                        height: 13,
+                                        width: 95,
+                                    
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(3),
+                                                    color: Colors.white,
+                                        ),
+                                       ),
+                                     )
+                                    ],
+                                  ),
+                                 
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                     Shimmer.fromColors(
+                                      
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,
+                                      child:Container(
+                                          height: 14,
+                                          width: 80,
+                                          decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(5)
+                                          ),
+                                      
+                                        ),
+                                      ),
+                                      ksizedbox10,
+                                      Row(
+                                        children: [
+                                         Shimmer.fromColors(
+                                      
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,
+                                      child:Container(
+                                              height: 14,
+                                              width: 100,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                borderRadius: BorderRadius.circular(5)
+                                              ),
+                                           
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                   Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                   Shimmer.fromColors(
+                                      
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,
+                                      child: Container(
+                                        height: 14,
+                                        width: 65,
+                                        decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius: BorderRadius.circular(3)
+                                        ),
+                                       ),
+                                     ),
+                                     ksizedbox10,
+                                          Shimmer.fromColors(
+                                      
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,
+                                      child: Container(
+                                        height: 14,
+                                        width: 65,
+                                      
+                                        decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius: BorderRadius.circular(3)
+                                        ),
+                                       ),
+                                     ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            const  SizedBox(
+                                height: 20,
+                              ),
+                              //Amount row
+                              const MySeparator(
+                                color: Colors.grey,
+                              ),
+                             const SizedBox(
+                                height: 15,
+                              ),
+                              Row(  
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                               Shimmer.fromColors(
+                                      
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,
+                                      child: Container(
+                                  height: 14,
+                                  width: 80,
+                             
+                                  decoration: BoxDecoration(
+                                         color: Colors.white,
+                                    borderRadius: BorderRadius.circular(4)
+                                  ),
+                                 ),
+                               )
+                                     
+                                    ],
+                                  ),
+                                   Shimmer.fromColors(
+                                   
+                                   baseColor: Colors.grey[300]!,
+                                   highlightColor: Colors.grey[100]!,child: Container(
+                                       height: 14,
+                                       width: 80,
+                                     
+                                       decoration: BoxDecoration(
+                                           color: Colors.white,
+                                           borderRadius: BorderRadius.circular(4)
+                                       ),
+                                     ),
+                                   ),
+                                Shimmer.fromColors(
+                                      
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,child: Container(
+                                    height: 14,
+                                    width: 80,
+                                    color: Colors.white,
+                                    
+                                  ),
+                                )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+          );
+         }
+           
+          
+      
+      
+      ),
     );
   }
 }
