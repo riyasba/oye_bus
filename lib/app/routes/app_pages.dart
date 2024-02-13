@@ -210,11 +210,11 @@ class AppPages {
       page: () => const TicketCancellationView(),
       binding: TicketCancellationBinding(),
     ),
-    GetPage(
-      name: _Paths.BUSSEATMAPING,
-      page: () => BusseatmapingView(),
-      binding: BusseatmapingBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.BUSSEATMAPING,
+    //   page: () => BusseatmapingView(),
+    //   binding: BusseatmapingBinding(),
+    // ),
     GetPage(
       name: _Paths.SEARCH,
       page: () => const SearchView(),

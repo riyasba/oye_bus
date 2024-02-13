@@ -5,6 +5,8 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/data/api_service/models/bus_seat_model.dart';
+import 'package:oye_bus/app/data/local_data/bus_seat_data.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_filter/views/bus_filter_view.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/widgets/seperator_widgets.dart';
@@ -171,8 +173,10 @@ class BusListView extends GetView<BusListController> {
                   padding: const EdgeInsets.fromLTRB(15,5,15,5),
                   child: InkWell(
                     onTap: (){
+                      BusModel  busModel = BusModel.fromJson(busSeatData);
+                      
             
-                      Get.to(BusseatmapingView());
+                      Get.to(BusseatmapingView(busModel: busModel,));
                      // Get.to(PassengerInfoView());
                     },
                     child: Container(
