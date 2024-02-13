@@ -74,7 +74,7 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                               child: SvgPicture.asset("assets/icons/sleeper.svg",height: 45,color:widget.nonAcLowerSeats[i][j].isSelected ? Colors.red : Colors.grey ,),
                                           )),
                                          ) :  widget.nonAcLowerSeats[i][j].width == 2 ? Container(
-                                          child: w2sleeper,
+                                          child: w2sleeper, 
                                          ) : Container()
                                     ],
                                   )
