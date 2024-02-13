@@ -81,6 +81,7 @@ flutter:
     - assets/bottom_nav_icons/
     - assets/offers_icon/
     - assets/home_page/
+    - assets/icons/
  
 
 flutter_icons:

@@ -13,18 +13,19 @@ import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controll
 import 'package:oye_bus/app/modules/screens/settingsscreens/copassengers/controllers/copassengers_controller.dart';
 import 'package:oye_bus/app/modules/screens/settingsscreens/settings/controllers/settings_controller.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
+
+
 void main() {
-  Get.put(LoginController());
-  Get.put(OtpController());
-     Get.put(BusseatmapingController());
-  Get.put(ProfileController());
-  Get.put(SettingsController());
+   Get.put(LoginController());
+   Get.put(OtpController());
+   Get.put(BusseatmapingController());
+   Get.put(ProfileController());
+   Get.put(SettingsController());
    Get.put(OnbordingController());
    Get.put(OffersController());
    Get.put(BottumnavigationController());
    Get.put(CopassengersController());
    Get.put(PassengerInfoController());
-
   // Get.put(dynamic());
   // runApp(DevicePreview(
   //   builder: (context) => MyApp(), // Wrap your app
