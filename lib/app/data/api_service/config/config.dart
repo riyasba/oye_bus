@@ -56,6 +56,7 @@ abstract class Config{
   final String addbookingURL = 'https://oye.batechnology.in/api/auth/addBooking';
   final String busSeatesURL = 'https://oye.batechnology.in/api/auth/get-seats';
   final String blockseatURL = "https://oye.batechnology.in/api/auth/blockSeat";
+  final String bookinghistoryURL = 'https://oye.batechnology.in/api/auth/getBookingDetails';
 }
  
 

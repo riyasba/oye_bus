@@ -19,6 +19,7 @@ BusModel busModel;
    final busseatController = Get.find<PassengerInfoController>();
    final busdeatilsController = Get.find<BusseatmapingController>();
    final profileController = Get.find<ProfileController>();
+ 
   @override
   Widget build(BuildContext context) {
     Get.put(
@@ -336,7 +337,7 @@ BusModel busModel;
                           children: [
                             ksizedbox10,
                             Text(
-                              '02 Seat | L6, L7',
+                              '02 Seat |${busdeatilsController.seatname}, L7',
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge!
@@ -351,8 +352,8 @@ BusModel busModel;
                              
                                 Get.to(MoreaboutbusView());
                               },
-                              child: Text(
-                                'More about this bus',
+                              child: Text(   
+                                'More about this bus' ,
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge!
@@ -361,7 +362,7 @@ BusModel busModel;
                                       decorationColor: Colors.blue,
                                       fontWeight: FontWeight.w300,
                                       fontSize: 10.sp,
-                                      color: Colors.blue,
+                                      color: Colors.blue,  
                                     ),
                               ),
                             ),

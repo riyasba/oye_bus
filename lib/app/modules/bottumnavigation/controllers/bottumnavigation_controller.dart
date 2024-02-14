@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/booking_history_api_service.dart';
+import 'package:oye_bus/app/data/api_service/models/booking_model/booking_history_model.dart';
 import 'package:oye_bus/app/modules/screens/profile/views/profile_view.dart';
 
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/views/bookinghistory_view.dart';
@@ -12,6 +14,7 @@ class BottumnavigationController extends GetxController {
 
 
   final _currrentIndex = 0.obs;
+  
   final _screens = Rx<List<Widget>>([
     // BusseatmapingView(),
       HomeView(),
@@ -39,6 +42,8 @@ class BottumnavigationController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
+
     Get.put(NotificationController());
   }
 
@@ -55,4 +60,6 @@ class BottumnavigationController extends GetxController {
   void setIndex(int index) {
     _currrentIndex.value = index;
   }
+
+  
 }

@@ -20,7 +20,7 @@ class  AddBookingApiService extends Config{
          "trip_id":addBookingModel.tripid,
          "route_id":addBookingModel.routeid,
          "bus_id":addBookingModel.busid,
-          "seat_id[0]":1,
+          "seat_id[0]":2,
           "per_ticket_price":addBookingModel.perticketPrice,
           "is_woman_seat":addBookingModel.iswomenseat,
           "boarding_point":addBookingModel.boardingPoint,
