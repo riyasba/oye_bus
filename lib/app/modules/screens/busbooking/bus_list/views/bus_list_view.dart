@@ -4,12 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_seat_model.dart';
 import 'package:oye_bus/app/data/local_data/bus_seat_data.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_filter/views/bus_filter_view.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/widgets/seperator_widgets.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/busseatmaping_view.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
@@ -31,6 +33,16 @@ class BusListView extends GetView<BusListController> {
      'assets/images/destinationoffers2.jpg',
   
   ];
+
+  String  getActualTime(String time){
+    var tempTime = time.split(":");
+  
+   String actualTime = "${tempTime[0]}:${tempTime[1]}";
+  
+  
+  return actualTime;  }
+
+  final seatmappingController = Get.find<BusseatmapingController>();
   
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -164,19 +176,23 @@ class BusListView extends GetView<BusListController> {
        buslistController.isLoading.isFalse
         ? GetBuilder<HomeController>(
           builder: (_) {
-            return ListView.builder(
+            return buslistController.busdata.isNotEmpty? ListView.builder(
               physics: BouncingScrollPhysics(),
               shrinkWrap: true,
               itemCount: buslistController.busdata.length,
               itemBuilder: (context,index){
-                return Padding(
+                return  Padding(
                   padding: const EdgeInsets.fromLTRB(15,5,15,5),
                   child: InkWell(
                     onTap: (){
                       BusModel  busModel = BusModel.fromJson(busSeatData);
+                      int busId = buslistController.busdata[index].route.busDetails.id;
+                      int tripId = buslistController.busdata[index].route.trip.where((element) => element.busId == busId.toString()).first.id;
                       
-            
-                      Get.to(BusseatmapingView(busModel: busModel,));
+            seatmappingController.getBusdetails(
+              tripId: tripId.toString(),
+              busId:busId.toString());
+                      Get.to(BusseatmapingView(busModel: busModel,busDetails: buslistController.busdata[index].route.busDetails,));
                      // Get.to(PassengerInfoView());
                     },
                     child: Container(
@@ -207,10 +223,10 @@ class BusListView extends GetView<BusListController> {
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        buslistController.busdata.isNotEmpty?
+                                     
                                         Text(buslistController.busdata[index].route.busDetails.busName,style: smalbalckfont.copyWith(
                                           fontSize: 14
-                                        ),):Text('no data'),
+                                        ),),
                       
                                         Text(buslistController.busdata[index].route.busDetails.busType,style: primaryFont.copyWith(
                                           fontSize: 11
@@ -245,7 +261,8 @@ class BusListView extends GetView<BusListController> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(buslistController.busdata[index].route.arrivalTime.toString(),style: smalbalckfont.copyWith(
+                                    Text(getActualTime(
+                                      buslistController.busdata[index].route.arrivalTime),style: smalbalckfont.copyWith(
                                       fontSize: 14,
                                     ),),
                                      Text(buslistController.busdata[index].route.sourceLocation,style: primaryFont.copyWith(
@@ -303,7 +320,7 @@ class BusListView extends GetView<BusListController> {
                                  Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Text(buslistController.busdata[index].route.departureTime,style: smalbalckfont.copyWith(
+                                    Text( getActualTime( buslistController.busdata[index].route.departureTime),style: smalbalckfont.copyWith(
                                       fontSize: 14,
                                     ),),
                                      Text(buslistController.busdata[index].route.destinationLocation,style: primaryFont.copyWith(
@@ -354,10 +371,13 @@ class BusListView extends GetView<BusListController> {
                       ),
                     ),
                   ),
-                  
                 );
             
-            });
+            }) :        
+                      Lottie.asset('assets/images/buslistnodata.json',
+                        
+                reverse: true, 
+                animate: true,);
           }
         ):getShimmerLoading(),
       )

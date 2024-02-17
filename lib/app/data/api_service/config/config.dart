@@ -48,15 +48,16 @@ abstract class Config{
    //feedback
    final String feedbackURL = 'https://oye.batechnology.in/api/auth/feedback';
   
-  //bus
+  //bus 
   final String buslistURL = "https://oye.batechnology.in/api/searchtrips";
-  final String busdetailsURL = "https://oye.batechnology.in/api/tripDetails"; 
+  final String busdetailsURL = "https://oye.batechnology.in/api/auth/getbusDetails"; 
 
   //booking
   final String addbookingURL = 'https://oye.batechnology.in/api/auth/addBooking';
   final String busSeatesURL = 'https://oye.batechnology.in/api/auth/get-seats';
   final String blockseatURL = "https://oye.batechnology.in/api/auth/blockSeat";
   final String bookinghistoryURL = 'https://oye.batechnology.in/api/auth/getBookingDetails';
+  final String bookingCancelURl = "https://oye.batechnology.in/api/auth/cancelBooking";
 }
  
 

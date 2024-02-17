@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/bording_droping/droping_view.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
 
 
@@ -60,7 +61,7 @@ class _BoardingListViewState extends State<BoardingListView> {
                          children: [
                            Text(boadingdroppingController.boardingpointdata[index].time,
                            style: TextStyle(
-                            fontSize: 16.8,
+                            fontSize: 16.5,
                             fontWeight: FontWeight.w500
                            ),),
                            Text(
@@ -72,32 +73,38 @@ class _BoardingListViewState extends State<BoardingListView> {
                         ),),
                          ],
                        ),
-                                       Column(
-                                         children: [
-                                           Container(
-                                                                             
-                                                                width: 190,
-                                                                 child: Text(boadingdroppingController.boardingpointdata[index].location,
-                                                                 style: TextStyle(
-                                                                  fontSize: 18.5,
-                                                                  fontWeight: FontWeight.w600,
-                                                                   fontFamily: 'Proxima Nova' 
-                                                                 ),),
-                                                               ),
-                                                                Text(''),
-                                         ],
+                                       Padding(
+                                         padding: const EdgeInsets.only(left: 11),
+                                         child: Column(
+                                           children: [
+                                             Container(
+                                                                               
+                                                                  width: 180,
+                                                                   child: Text(boadingdroppingController.boardingpointdata[index].location,
+                                                                   style: TextStyle(
+                                                                    fontSize: 16.5,
+                                                                    fontWeight: FontWeight.w600,
+                                                                     fontFamily: 'Proxima Nova' 
+                                                                   ),),
+                                                                 ),
+                                                                  Text(''),
+                                           ],
+                                         ),
                                        ),
                                                           
-                        Radio(
+                         Radio(
                                     value: boadingdroppingController.boardingpointdata[index].id,
                                     groupValue: val,
                                     onChanged: (value) {
-                                     
+                                    //  DefaultTabController.of(context).animateTo(1);
                                       setState(() {
                                       val = value!;
                                       boadingdroppingController.boardinglocationvalue.value=value.toString();
+                                              
                                       });
+                                    //  DefaultTabController.of(context).animateTo(1);
                                     },
+                                    
                                     activeColor:kred,
                                      
                                   ),

@@ -10,7 +10,6 @@ String busDetailsModelToJson(BusDetailsModel data) => json.encode(data.toJson())
 
 class BusDetailsModel {
     bool status;
-    bool isSelected;
     String message;
     Trip trip;
     BusDetails busDetails;
@@ -19,8 +18,8 @@ class BusDetailsModel {
     List<String> busImages;
     AboutBus aboutBus;
     RouteData route;
-    List<Ing> boarding;
-    List<Ing> dropping;
+    List<dynamic> boarding;
+    List<dynamic> dropping;
     List<RestStop> restStop;
 
     BusDetailsModel({
@@ -36,39 +35,36 @@ class BusDetailsModel {
         required this.boarding,
         required this.dropping,
         required this.restStop,
-        required this.isSelected,
     });
 
     factory BusDetailsModel.fromJson(Map<String, dynamic> json) => BusDetailsModel(
         status: json["status"],
         message: json["message"],
-        trip: Trip.fromJson(json["trip"]),
+        trip: json["trip"],
         busDetails: BusDetails.fromJson(json["bus_details"]),
         amenities: List<Amenity>.from(json["amenities"].map((x) => Amenity.fromJson(x))),
         policies: Policies.fromJson(json["policies"]),
         busImages: List<String>.from(json["bus_images"].map((x) => x)),
         aboutBus: AboutBus.fromJson(json["AboutBus"]),
         route: RouteData.fromJson(json["Route"]),
-        boarding: List<Ing>.from(json["boarding"].map((x) => Ing.fromJson(x))),
-        dropping: List<Ing>.from(json["dropping"].map((x) => Ing.fromJson(x))),
+        boarding: List<dynamic>.from(json["boarding"].map((x) => x)),
+        dropping: List<dynamic>.from(json["dropping"].map((x) => x)),
         restStop: List<RestStop>.from(json["restStop"].map((x) => RestStop.fromJson(x))),
-         isSelected: false,
     );
-
+//json['id'] != null ? (json['id'] as num?)?.toInt() : null
     Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        "trip": trip.toJson(),
+        "trip": trip??trip,
         "bus_details": busDetails.toJson(),
         "amenities": List<dynamic>.from(amenities.map((x) => x.toJson())),
         "policies": policies.toJson(),
         "bus_images": List<dynamic>.from(busImages.map((x) => x)),
         "AboutBus": aboutBus.toJson(),
         "Route": route.toJson(),
-        "boarding": List<dynamic>.from(boarding.map((x) => x.toJson())),
-        "dropping": List<dynamic>.from(dropping.map((x) => x.toJson())),
+        "boarding": List<dynamic>.from(boarding.map((x) => x)),
+        "dropping": List<dynamic>.from(dropping.map((x) => x)),
         "restStop": List<dynamic>.from(restStop.map((x) => x.toJson())),
-        "isSelected":isSelected
     };
 }
 
@@ -128,34 +124,6 @@ class Amenity {
     };
 }
 
-class Ing {
-  bool isSelected;
-    int id;
-    String location;
-    String time;
-
-    Ing({
-      required this.isSelected,
-        required this.id,
-        required this.location,
-        required this.time,
-    });
-
-    factory Ing.fromJson(Map<String, dynamic> json) => Ing(
-        id: json["id"],
-        location: json["location"],
-        time: json["time"]??"", 
-        isSelected: false,
-    );
-
-    Map<String, dynamic> toJson() => {
-        "id": id,
-        "location": location,
-        "time": time,
-        "isSelected":isSelected
-    };
-}
-
 class BusDetails {
     int id;
     String vendorId;
@@ -181,7 +149,10 @@ class BusDetails {
     String upperSeatCount;
     String lowerSeatCount;
     String acOrNonAc;
-    dynamic ccPermitDate;
+    DateTime ccPermitDate;
+    dynamic roadTax;
+    dynamic permit;
+    dynamic rcBook;
     DateTime createdAt;
     DateTime updatedAt;
     String isDeleted;
@@ -212,6 +183,9 @@ class BusDetails {
         required this.lowerSeatCount,
         required this.acOrNonAc,
         required this.ccPermitDate,
+        required this.roadTax,
+        required this.permit,
+        required this.rcBook,
         required this.createdAt,
         required this.updatedAt,
         required this.isDeleted,
@@ -242,7 +216,10 @@ class BusDetails {
         upperSeatCount: json["upper_seat_count"],
         lowerSeatCount: json["lower_seat_count"],
         acOrNonAc: json["ac_or_non_ac"],
-        ccPermitDate: json["cc_permit_date"],
+        ccPermitDate: DateTime.parse(json["cc_permit_date"]),
+        roadTax: json["road_tax"],
+        permit: json["permit"],
+        rcBook: json["rc_book"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
         isDeleted: json["is_deleted"],
@@ -273,7 +250,10 @@ class BusDetails {
         "upper_seat_count": upperSeatCount,
         "lower_seat_count": lowerSeatCount,
         "ac_or_non_ac": acOrNonAc,
-        "cc_permit_date": ccPermitDate,
+        "cc_permit_date": "${ccPermitDate.year.toString().padLeft(4, '0')}-${ccPermitDate.month.toString().padLeft(2, '0')}-${ccPermitDate.day.toString().padLeft(2, '0')}",
+        "road_tax": roadTax,
+        "permit": permit,
+        "rc_book": rcBook,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
         "is_deleted": isDeleted,

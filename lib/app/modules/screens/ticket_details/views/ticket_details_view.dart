@@ -7,6 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/booking_cancellation/controllers/booking_cancellation_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pdfLib;
@@ -289,6 +291,8 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
   
 }
+
+
   Future<Uint8List?> sharePdfgeneration() async {
   final pdfLib.Document pdf = pdfLib.Document();
   pdf.addPage(
@@ -542,6 +546,8 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
         )
     )
         );
+
+
         Directory root = await getTemporaryDirectory(); 
         
         final file= File('${root.path}/sharmi.pdf');
@@ -556,8 +562,12 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
   
 }
+
+
   @override
   Widget build(BuildContext context) {
+    
+         final bookingHistoryController = Get.find<BookinghistoryController>();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -848,9 +858,16 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     generatePDF();
                   },
                   child: Image.asset('assets/offers_icon/downloadicon.png')),
-                Image.asset('assets/offers_icon/cancelicon.png')
+                GestureDetector(
+                  onTap: (){
+                     final bookingcancelController = Get.find<TicketDetailsController>().
+                     bookingCancellation(bookingid:bookingHistoryController.bookinghistorydata.isNotEmpty?
+                      bookingHistoryController.bookinghistorydata.first.bookingData.bookingId.toString():'');
+                      final bookinghistoryController = Get.find<BookinghistoryController>().bookinghistory(); 
+                  },
+                  child: Image.asset('assets/offers_icon/cancelicon.png'))
               ],
-             ),
+             ), 
              ksizedbox10,
              Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -59,7 +59,7 @@ class _DroppingListViewState extends State<DroppingListView> {
                          children: [
                            Text(boadingdroppingController.droppointdata[index].time,
                            style: TextStyle(
-                            fontSize: 16.8,
+                            fontSize: 16.5,
                             fontWeight: FontWeight.w500
                            ),),
                            Text(
@@ -71,20 +71,23 @@ class _DroppingListViewState extends State<DroppingListView> {
                         ),),
                          ],
                        ),
-                                       Column(
-                                         children: [
-                                           Container(
-                                                                             
-                                                                width: 190,
-                                                                 child: Text(boadingdroppingController.droppointdata[index].location,
-                                                                 style: TextStyle(
-                                                                  fontSize: 18.5,
-                                                                  fontWeight: FontWeight.w600,
-                                                                   fontFamily: 'Proxima Nova' 
-                                                                 ),),
-                                                               ),
-                                                                Text(''),
-                                         ],
+                                       Padding(
+                                         padding: const EdgeInsets.only(left: 11),
+                                         child: Column(
+                                           children: [
+                                             Container(
+                                                                               
+                                                                  width: 180,
+                                                                   child: Text(boadingdroppingController.droppointdata[index].location,
+                                                                   style: TextStyle(
+                                                                    fontSize: 16.5,
+                                                                    fontWeight: FontWeight.w600,
+                                                                     fontFamily: 'Proxima Nova' 
+                                                                   ),),
+                                                                 ),
+                                                                  Text(''),
+                                           ],
+                                         ),
                                        ),
                                                           
                         Radio(

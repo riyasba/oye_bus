@@ -1,6 +1,7 @@
 
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
@@ -136,10 +137,28 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                             ),
                                           );
                                         }),
-                                  ):Container(
-                                  
-                                    child: Center(
-                                      child: SvgPicture.asset('assets/bottom_nav_icons/nobookinghistoryimage.svg')));
+                                  ):Center(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                     SizedBox(
+                      height: 200,
+                     ),
+                        Image.asset(
+                          'assets/images/nodatabookingimage.jpg',
+                          height: 220,
+                          fit: BoxFit.fitHeight,
+                        ),
+                        ksizedbox20,
+                        Text(
+                          'No Bookings ',
+                          style: TextStyle(
+                             
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.sp),
+                        )
+                      ]),
+                );
               }
             ),
             ksizedbox20,

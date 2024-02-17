@@ -26,7 +26,7 @@ class BusseatmapingController extends GetxController {
 List seatname=[];
   @override
   void onInit() {
-    getBusdetails();
+    
     busseats();
     super.onInit();
   }
@@ -169,18 +169,20 @@ busseats()async{
    AboutBus? aboutbusdata;
    BusDetails ? busDetailsdata;
    Trip?tripdata;
-   List<Ing>droppointdata=[];
+   List<dynamic>droppointdata=[];
    List<RestStop>reststopdata=[];
    List<Amenity>amenitydata=[];
    Policies?policiesdata;
    List<String>busimages=[];
-   List<Ing> boardingpointdata=[];
+   List<dynamic> boardingpointdata=[];
+   RxString boardingtime = ''.obs;
+   RxString destinationtime = ''.obs;
 
-
-  getBusdetails()async{
+  getBusdetails({required String busId,required String tripId })async{
     isLoading(true);
-   dio.Response<dynamic>response = await busdetailsapiservice.busdetailsapi();
-
+   dio.Response<dynamic>response = await busdetailsapiservice.busdetailsapi(busId: busId, 
+   tripId: tripId);
+    
    isLoading(false);
    if(response.data['status']==true){
     BusDetailsModel busdetailsmodel = BusDetailsModel.fromJson(response.data);

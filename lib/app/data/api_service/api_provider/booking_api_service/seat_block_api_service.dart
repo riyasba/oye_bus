@@ -31,7 +31,7 @@ class SeatBlockApiService extends Config{
           "trip_id":seatBlockedData.tripId,
           "route_id":seatBlockedData.routeId,
           "vendor_id":seatBlockedData.vendorId,
-          "seat_id":seatBlockedData.seatId,
+          "seat_id[0]":seatBlockedData.seatId,
           "seat_count":seatBlockedData.seatCount
         }
         );

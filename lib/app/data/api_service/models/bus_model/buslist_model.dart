@@ -62,6 +62,7 @@ class Route {
     DateTime updatedAt;
     BusDetails busDetails;
     List<Amenity> amenities;
+    List<Trip> trip;
 
     Route({
         required this.id,
@@ -77,6 +78,7 @@ class Route {
         required this.updatedAt,
         required this.busDetails,
         required this.amenities,
+        required this.trip,
     });
 
     factory Route.fromJson(Map<String, dynamic> json) => Route(
@@ -93,6 +95,7 @@ class Route {
         updatedAt: DateTime.parse(json["updated_at"]),
         busDetails: BusDetails.fromJson(json["bus_details"]),
         amenities: List<Amenity>.from(json["amenities"].map((x) => Amenity.fromJson(x))),
+        trip: List<Trip>.from(json["trip"].map((x) => Trip.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -109,6 +112,7 @@ class Route {
         "updated_at": updatedAt.toIso8601String(),
         "bus_details": busDetails.toJson(),
         "amenities": List<dynamic>.from(amenities.map((x) => x.toJson())),
+        "trip": List<dynamic>.from(trip.map((x) => x.toJson())),
     };
 }
 
@@ -161,7 +165,10 @@ class BusDetails {
     String upperSeatCount;
     String lowerSeatCount;
     String acOrNonAc;
-    dynamic ccPermitDate;
+    DateTime ccPermitDate;
+    dynamic roadTax;
+    dynamic permit;
+    dynamic rcBook;
     DateTime createdAt;
     DateTime updatedAt;
     String isDeleted;
@@ -192,6 +199,9 @@ class BusDetails {
         required this.lowerSeatCount,
         required this.acOrNonAc,
         required this.ccPermitDate,
+        required this.roadTax,
+        required this.permit,
+        required this.rcBook,
         required this.createdAt,
         required this.updatedAt,
         required this.isDeleted,
@@ -222,7 +232,10 @@ class BusDetails {
         upperSeatCount: json["upper_seat_count"],
         lowerSeatCount: json["lower_seat_count"],
         acOrNonAc: json["ac_or_non_ac"],
-        ccPermitDate: json["cc_permit_date"],
+        ccPermitDate: DateTime.parse(json["cc_permit_date"]),
+        roadTax: json["road_tax"],
+        permit: json["permit"],
+        rcBook: json["rc_book"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
         isDeleted: json["is_deleted"],
@@ -253,9 +266,84 @@ class BusDetails {
         "upper_seat_count": upperSeatCount,
         "lower_seat_count": lowerSeatCount,
         "ac_or_non_ac": acOrNonAc,
-        "cc_permit_date": ccPermitDate,
+        "cc_permit_date": "${ccPermitDate.year.toString().padLeft(4, '0')}-${ccPermitDate.month.toString().padLeft(2, '0')}-${ccPermitDate.day.toString().padLeft(2, '0')}",
+        "road_tax": roadTax,
+        "permit": permit,
+        "rc_book": rcBook,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
         "is_deleted": isDeleted,
     };
+}
+
+class Trip {
+    int id;
+    String busId;
+    String driverId;
+    String routeId;
+    String conductorId;
+    DateTime startTime;
+    DateTime endTime;
+    DayOff dayOff;
+    DateTime createdAt;
+    DateTime updatedAt;
+
+    Trip({
+        required this.id,
+        required this.busId,
+        required this.driverId,
+        required this.routeId,
+        required this.conductorId,
+        required this.startTime,
+        required this.endTime,
+        required this.dayOff,
+        required this.createdAt,
+        required this.updatedAt,
+    });
+
+    factory Trip.fromJson(Map<String, dynamic> json) => Trip(
+        id: json["id"],
+        busId: json["bus_id"],
+        driverId: json["driver_id"],
+        routeId: json["route_id"],
+        conductorId: json["conductor_id"],
+        startTime: DateTime.parse(json["start_time"]),
+        endTime: DateTime.parse(json["end_time"]),
+        dayOff: dayOffValues.map[json["day_off"]]!,
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "bus_id": busId,
+        "driver_id": driverId,
+        "route_id": routeId,
+        "conductor_id": conductorId,
+        "start_time": startTime.toIso8601String(),
+        "end_time": endTime.toIso8601String(),
+        "day_off": dayOffValues.reverse[dayOff],
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+    };
+}
+
+enum DayOff {
+    THE_01234
+}
+
+final dayOffValues = EnumValues({
+    "[\"0\",\"1\",\"2\",\"3\",\"4\"]": DayOff.THE_01234
+});
+
+class EnumValues<T> {
+    Map<String, T> map;
+    late Map<T, String> reverseMap;
+
+    EnumValues(this.map);
+
+    Map<T, String> get reverse {
+        reverseMap = map.map((k, v) => MapEntry(v, k));
+        return reverseMap;
+    }
 }
