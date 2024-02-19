@@ -15,6 +15,19 @@ class SeatBlockApiService extends Config{
         final prefs = await SharedPreferences.getInstance();
         String? authtoken = prefs.getString('auth_token');
 
+        var formdata = FormData.fromMap({
+         "bus_id":seatBlockedData.busId,
+          "trip_id":seatBlockedData.tripId,
+          "route_id":seatBlockedData.routeId,
+          "vendor_id":seatBlockedData.vendorId,
+          for(int i =0;i<seatBlockedData.seatId.length;i++)
+          "seat_id[$i]":seatBlockedData.seatId[i].id,
+          "seat_count":seatBlockedData.seatCount
+        });
+
+        print("-------Seat blocking api------");
+        print(formdata.fields);
+
         var response = await dio.post(blockseatURL,
         options: Options(
           headers: {
@@ -26,14 +39,7 @@ class SeatBlockApiService extends Config{
             return status!<=500;
           } 
         ),
-        data: {
-         "bus_id":seatBlockedData.busId,
-          "trip_id":seatBlockedData.tripId,
-          "route_id":seatBlockedData.routeId,
-          "vendor_id":seatBlockedData.vendorId,
-          "seat_id[0]":seatBlockedData.seatId,
-          "seat_count":seatBlockedData.seatCount
-        }
+        data: formdata
         );
         print('::::::::seat_block_api_service::::::::<status code>:::::::');
         print(response.data);

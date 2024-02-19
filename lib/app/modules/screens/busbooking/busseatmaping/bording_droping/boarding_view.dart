@@ -36,89 +36,92 @@ class _BoardingListViewState extends State<BoardingListView> {
         color: kwhite,
         boxShadow: <BoxShadow>[
           BoxShadow(
-            offset: Offset(0.0, 0.75),
+            offset: const Offset(0.0, 0.75),
             blurRadius: 1,
             color: kgrey
           )
         ]
       ),
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: boadingdroppingController.boardingpointdata.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.only(top: 30,left: 10,right: 10),
-              child: Column(
-          
-                children: [
-               
-               
-                 Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                   children: [
-                       Column(
-                       crossAxisAlignment: CrossAxisAlignment.start,
-                         children: [
-                           Text(boadingdroppingController.boardingpointdata[index].time,
-                           style: TextStyle(
-                            fontSize: 16.5,
-                            fontWeight: FontWeight.w500
-                           ),),
-                           Text(
-                          formatDate(DateTime.parse(homeController.selectedBookingDate.value), [d," ",M],
-                        ),textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 14.8,
-                          color: Colors.grey.shade600
-                        ),),
-                         ],
-                       ),
-                                       Padding(
-                                         padding: const EdgeInsets.only(left: 11),
-                                         child: Column(
-                                           children: [
-                                             Container(
-                                                                               
-                                                                  width: 180,
-                                                                   child: Text(boadingdroppingController.boardingpointdata[index].location,
-                                                                   style: TextStyle(
-                                                                    fontSize: 16.5,
-                                                                    fontWeight: FontWeight.w600,
-                                                                     fontFamily: 'Proxima Nova' 
-                                                                   ),),
-                                                                 ),
-                                                                  Text(''),
-                                           ],
-                                         ),
-                                       ),
-                                                          
-                         Radio(
-                                    value: boadingdroppingController.boardingpointdata[index].id,
-                                    groupValue: val,
-                                    onChanged: (value) {
-                                    //  DefaultTabController.of(context).animateTo(1);
-                                      setState(() {
-                                      val = value!;
-                                      boadingdroppingController.boardinglocationvalue.value=value.toString();
-                                              
-                                      });
-                                    //  DefaultTabController.of(context).animateTo(1);
-                                    },
-                                    
-                                    activeColor:kred,
-                                     
-                                  ),
-                      
-                   ],
-                 ),
-                 
-                    Divider(),
-                
-                 
-                ],
-              ),
+        child: GetBuilder<BusseatmapingController >(
+          builder: (_) {
+            return boadingdroppingController.boardingpointdata.isEmpty ? const Center(
+              child: Text("No data Found"),
+            ) : ListView.builder(
+              shrinkWrap: true,
+              itemCount: boadingdroppingController.boardingpointdata.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(top: 30,left: 10,right: 10),
+                  child: Column(
+                    children: [
+                     Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                       children: [
+                           Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               Text(boadingdroppingController.boardingpointdata[index].time,
+                               style: const TextStyle(
+                                fontSize: 16.5,
+                                fontWeight: FontWeight.w500
+                               ),),
+                               Text(
+                              formatDate(DateTime.parse(homeController.selectedBookingDate.value), [d," ",M],
+                            ),textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: 14.8,
+                              color: Colors.grey.shade600
+                            ),),
+                             ],
+                           ),
+                             Padding(
+                                             padding: const EdgeInsets.only(left: 11),
+                                             child: Column(
+                                               children: [
+                                                 Container(
+                                                                                   
+                                                                      width: 180,
+                                                                       child: Text(boadingdroppingController.boardingpointdata[index].location,
+                                                                       style: const TextStyle(
+                                                                        fontSize: 16.5,
+                                                                        fontWeight: FontWeight.w600,
+                                                                         fontFamily: 'Proxima Nova' 
+                                                                       ),),
+                                                                     ),
+                                                                      Text(''),
+                                               ],
+                                             ),
+                                           ),
+                                                              
+                             Radio(
+                                        value: boadingdroppingController.boardingpointdata[index].id,
+                                        groupValue: val,
+                                        onChanged: (value) {
+                                        //  DefaultTabController.of(context).animateTo(1);
+                                          setState(() {
+                                          val = value!;
+                                          boadingdroppingController.boardinglocationvalue.value=value.toString();
+                                                  
+                                          });
+                                        //  DefaultTabController.of(context).animateTo(1);
+                                        },
+                                        
+                                        activeColor:kred,
+                                         
+                                      ),
+                          
+                       ],
+                     ),
+                     
+                        Divider(),
+                    
+                     
+                    ],
+                  ),
+                );
+              },
             );
-          },
+          }
         ),
       ),
     );

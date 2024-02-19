@@ -197,11 +197,13 @@ class BusListView extends GetView<BusListController> {
                                       .first
                                       .id;
 
+                               print("seat length --->>-->>-->>-->>-->>");       print(busModel!.seatMap.length);
+
                                   seatmappingController.getBusdetails(
                                       tripId: tripId.toString(),
                                       busId: busId.toString());
                                   Get.to(BusseatmapingView(
-                                    busModel: busModel!,
+                                    busModel: busModel,
                                     busDetails: buslistController
                                         .busdata[index].route.busDetails,
                                   ));

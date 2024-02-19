@@ -35,15 +35,18 @@ class CitySearchModel {
 class CityData {
     int cityId;
     String city;
+    String points;
 
     CityData({
         required this.cityId,
         required this.city,
+        required this.points,
     });
 
     factory CityData.fromJson(Map<String, dynamic> json) => CityData(
         cityId: json["city_id"],
         city: json["city"],
+        points: json["points"] ?? "",
     );
 
     Map<String, dynamic> toJson() => {

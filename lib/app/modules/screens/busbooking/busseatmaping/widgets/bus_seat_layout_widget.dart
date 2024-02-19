@@ -13,7 +13,7 @@ import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers
 class BusSeatLayoutWidget extends StatefulWidget {
   List<List<Seat>> nonAcLowerSeats;
   List<List<Seat>> nonAcUpperSeats;
-   BusSeatLayoutWidget({super.key,required this.nonAcLowerSeats,required this.nonAcUpperSeats});
+  BusSeatLayoutWidget({super.key,required this.nonAcLowerSeats,required this.nonAcUpperSeats});
 
   @override
   State<BusSeatLayoutWidget> createState() => _BenzeMultiAxleState();
@@ -24,6 +24,8 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
 
  var seatvalue='';
     final busDetailsController = Get.find<BusseatmapingController>();
+ 
+
   @override
   Widget build(BuildContext context) {
     return  GetBuilder<BusseatmapingController>(
@@ -53,87 +55,6 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                               for (int i = 0;
                                   i < widget.nonAcLowerSeats.length;
                                   i++)
-                                //  widget.nonAcLowerSeats[i].length == 8 ? Row(
-                                //   children: [
-                                //      Padding(
-                                //       padding: const EdgeInsets
-                                //                                               .symmetric(
-                                //                                               horizontal:
-                                //                                                   3,
-                                //                                               vertical:
-                                //                                                   5),
-                                //                                           child: SvgPicture
-                                //                                               .asset(
-                                //                                             "assets/icons/sleeper.svg",
-                                //                                             height:
-                                //                                                 45,
-                                //                                             color: widget
-                                //                                                     .nonAcLowerSeats[i][
-                                //                                                         0]
-                                //                                                     .isSelected
-                                //                                                 ? Colors
-                                //                                                     .red
-                                //                                                 : Colors
-                                //                                                     .grey,
-                                //                                           ),
-                                //                                         ),
-                                //                                         empty,
-                                //                                         empty,
-                                //                                         empty,
-                                //                                         Container(
-                                //                                 child: Padding(
-                                //                                   padding:
-                                //                                       const EdgeInsets
-                                //                                           .symmetric(
-                                //                                           vertical:
-                                //                                               2),
-                                //                                   child: Column(
-                                //                                     children: [
-                                //                                       SvgPicture
-                                //                                           .asset(
-                                //                                         "assets/icons/seater.svg",
-                                //                                         height: 22,
-                                //                                       ),
-                                //                                       const SizedBox(
-                                //                                         height: 6,
-                                //                                       ),
-                                //                                       SvgPicture
-                                //                                           .asset(
-                                //                                         "assets/icons/seater.svg",
-                                //                                         height: 22,
-                                //                                       ),
-                                //                                     ],
-                                //                                   ),
-                                //                                 ),
-                                //                               ),Container(
-                                //                                 child: Padding(
-                                //                                   padding:
-                                //                                       const EdgeInsets
-                                //                                           .symmetric(
-                                //                                           vertical:
-                                //                                               2),
-                                //                                   child: Column(
-                                //                                     children: [
-                                //                                       SvgPicture
-                                //                                           .asset(
-                                //                                         "assets/icons/seater.svg",
-                                //                                         height: 22,
-                                //                                       ),
-                                //                                       const SizedBox(
-                                //                                         height: 6,
-                                //                                       ),
-                                //                                       SvgPicture
-                                //                                           .asset(
-                                //                                         "assets/icons/seater.svg",
-                                //                                         height: 22,
-                                //                                       ),
-                                //                                     ],
-                                //                                   ),
-                                //                                 ),
-                                //                               )
-
-                                //   ],
-                                //  ) :
                                 Row(
                                   children: [
                                     for (int j = 0;
@@ -145,21 +66,21 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                           : widget.nonAcLowerSeats[i][j].position ==
                                                   "Driver"
                                               ? driver
-                                              : widget.nonAcLowerSeats[i][j].length == 1 &&
+                                              : widget.nonAcLowerSeats[i][j].length == "1" &&
                                                       widget.nonAcLowerSeats[i][j].width ==
-                                                          1 &&
+                                                          "1" &&
                                                       widget
                                                               .nonAcLowerSeats[i]
                                                                   [j]
                                                               .layout ==
                                                           "11"
                                                   ? singleSeater
-                                                  : widget.nonAcLowerSeats[i][j].length == 1 &&
+                                                  : widget.nonAcLowerSeats[i][j].length == "1" &&
                                                           widget
                                                                   .nonAcLowerSeats[i]
                                                                       [j]
                                                                   .width ==
-                                                              1 &&
+                                                              "1" &&
                                                           widget
                                                                   .nonAcLowerSeats[i]
                                                                       [j]
@@ -185,6 +106,7 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                               j]
                                                                           .isSelected;
                                                                     });
+                                                                    busDetailsController.update();
                                                                   },
                                                                   child: Stack(
                                                                     children: [
@@ -234,14 +156,15 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                               j + 1]
                                                                           .isSelected;
                                                                     });
+                                                                    busDetailsController.update();
                                                                   },
-                                                                  child: widget.nonAcUpperSeats[i][j].isSelected == false?  SvgPicture
+                                                                  child:  SvgPicture
                                                                     .asset(
-                                                                  "assets/icons/sleeper.svg",
+                                                                  "assets/icons/seater.svg",
                                                                   height:
                                                                       45,
-                                                                 
-                                                                ) : SvgPicture.asset('assets/icons/busseatgreen.svg', height: 45,),
+                                                                 color: widget.nonAcUpperSeats[i][j].isSelected ? Colors.green : Colors.grey[400],
+                                                                )
                                                                 ),
                                                               ],
                                                             ),
@@ -249,8 +172,8 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                         )
                                                       : widget.nonAcLowerSeats[i][j]
                                                                       .length ==
-                                                                  1 &&
-                                                              widget.nonAcLowerSeats[i][j].width == 1 &&
+                                                                  "1" &&
+                                                              widget.nonAcLowerSeats[i][j].width == "1" &&
                                                               widget.nonAcLowerSeats[i][j].layout == "1"
                                                           ? Container(
                                                               child: Padding(
@@ -270,6 +193,7 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                               .nonAcLowerSeats[i][j]
                                                                               .isSelected = !widget.nonAcLowerSeats[i][j].isSelected;
                                                                         });
+                                                                        busDetailsController.update();
                                                                       },
                                                                       child:
                                                                           Stack(
@@ -308,6 +232,7 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                               .nonAcLowerSeats[i][j + 1]
                                                                               .isSelected = !widget.nonAcLowerSeats[i][j + 1].isSelected;
                                                                         });
+                                                                        busDetailsController.update();
                                                                       },
                                                                       child:
                                                                           Stack(
@@ -338,7 +263,7 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                 ),
                                                               ),
                                                             )
-                                                          : widget.nonAcLowerSeats[i][j].length == 2 && widget.nonAcLowerSeats[i][j].width == 1
+                                                          : widget.nonAcLowerSeats[i][j].length == "2" && widget.nonAcLowerSeats[i][j].width == "1"
                                                               ? Container(
                                                                   child: InkWell(
                                                                       onTap: () {
@@ -348,6 +273,7 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                               .nonAcLowerSeats[i][j]
                                                                               .isSelected = !widget.nonAcLowerSeats[i][j].isSelected;
                                                                         });
+                                                                        busDetailsController.update();
                                                                       },
                                                                       child: Padding(
                                                                         padding: const EdgeInsets
@@ -357,25 +283,16 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                             vertical:
                                                                                 5),
                                                                         child:
-                                                                            Stack(
-                                                                          children: [
-                                                                            SvgPicture.asset(
-                                                                              "assets/icons/sleeper.svg",
-                                                                              height: 45,
-                                                                              color: widget.nonAcLowerSeats[i][j].isSelected == false && widget.nonAcLowerSeats[i][j].isBookable == "0"
-                                                                                  ? Color.fromARGB(255, 230, 87, 36)
-                                                                                  : widget.nonAcLowerSeats[i][j].isSelected
-                                                                                      ? Colors.green
-                                                                                      : Colors.grey[300],
-                                                                            ),
-                                                                            // if (widget.nonAcLowerSeats[i][j].amount !=
-                                                                            //     "")
-                                                                            //   const Positioned(left: 0, right: 0, top: 0, bottom: 0, child: Icon(Icons.check, size: 20, color: Colors.white))
-                                                                          ],
-                                                                        ),
+                                                                            widget.nonAcLowerSeats[i][j].isSelected == false?  SvgPicture
+                                                                    .asset(
+                                                                  "assets/icons/sleeper.svg",
+                                                                  height:
+                                                                      45,
+                                                                 
+                                                                ) : SvgPicture.asset('assets/icons/busseatgreen.svg', height: 45,),
                                                                       )),
                                                                 )
-                                                              : widget.nonAcLowerSeats[i][j].width == 2
+                                                              : widget.nonAcLowerSeats[i][j].width == "2"
                                                                   ? InkWell(
                                                                       onTap:
                                                                           () {
@@ -385,6 +302,7 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                               .nonAcLowerSeats[i][j]
                                                                               .isSelected = !widget.nonAcLowerSeats[i][j].isSelected;
                                                                         });
+                                                                        busDetailsController.update();
                                                                       },
                                                                       child:
                                                                           Container(
@@ -401,7 +319,7 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                                 "assets/icons/w2SleeperSeats.svg",
                                                                                 height: 25,
                                                                                 color: widget.nonAcLowerSeats[i][j].isSelected == false && widget.nonAcLowerSeats[i][j].isBookable == "0"
-                                                                                    ? Color.fromARGB(255, 230, 87, 36)
+                                                                                    ? const Color.fromARGB(255, 230, 87, 36)
                                                                                     : widget.nonAcLowerSeats[i][j].isSelected
                                                                                         ? Colors.green
                                                                                         : Colors.grey[300],
@@ -453,19 +371,19 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                           : widget.nonAcUpperSeats[i][j].length == 1 &&
                                                   widget.nonAcUpperSeats[i][j]
                                                           .width ==
-                                                      1 &&
+                                                      "1" &&
                                                   widget.nonAcUpperSeats[i][j]
                                                           .layout ==
                                                       "11"
                                               ? singleSeater
                                               : widget.nonAcUpperSeats[i][j]
                                                               .length ==
-                                                          1 &&
+                                                         "1" &&
                                                       widget
                                                               .nonAcUpperSeats[i]
                                                                   [j]
                                                               .width ==
-                                                          1
+                                                          "1"
                                                   ? Container(
                                                       child: Padding(
                                                         padding:
@@ -491,10 +409,10 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                     )
                                                   : widget.nonAcUpperSeats[i][j]
                                                                   .length ==
-                                                              2 &&
+                                                              "2" &&
                                                           widget.nonAcUpperSeats[i][j]
                                                                   .width ==
-                                                              1
+                                                              "1"
                                                       ? Container(
                                                           child: InkWell(
                                                               onTap: () {
@@ -510,6 +428,7 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                               j]
                                                                           .isSelected;
                                                                 });
+                                                                busDetailsController.update();
                                                               },
                                                               child: Padding(
                                                                 padding: const EdgeInsets
@@ -527,7 +446,7 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                 ) : SvgPicture.asset('assets/icons/busseatgreen.svg', height: 45,),
                                                               )),
                                                         )
-                                                      : widget.nonAcUpperSeats[i][j].width == 2
+                                                      : widget.nonAcUpperSeats[i][j].width == "2"
                                                           ? Container(
                                                               child: w2sleeper,
                                                             )

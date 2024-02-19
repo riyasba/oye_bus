@@ -15,14 +15,35 @@ import '../../../../../data/api_service/models/get_bus_seat_layout_model.dart';
 import '../controllers/busseatmaping_controller.dart';
 
 class BusseatmapingView extends GetView<BusseatmapingController> {
-BusModel busModel;
-BusDetails  busDetails;
-  BusseatmapingView({Key? key,required this.busModel,required this.busDetails}) : super(key: key);
+  BusModel busModel;
+  BusDetails busDetails;
+  BusseatmapingView(
+      {Key? key, required this.busModel, required this.busDetails})
+      : super(key: key);
 //  List<bool> seats = List.generate(30, (_) => false);
-   final busseatController = Get.find<PassengerInfoController>();
-   final busdeatilsController = Get.find<BusseatmapingController>();
-   final profileController = Get.find<ProfileController>();
- 
+  final busseatController = Get.find<PassengerInfoController>();
+  final busdeatilsController = Get.find<BusseatmapingController>();
+  final profileController = Get.find<ProfileController>();
+
+  String getSelectedSeatNames(List<Seat> seatsList) {
+    String selectedSeats = "";
+    for (var i = 0; i < seatsList.length; i++) {
+      selectedSeats += "${seatsList[i].seatNo},";
+    }
+    //  WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   busdeatilsController.update();
+    //  });
+    return selectedSeats;
+  }
+
+  String getSelectedSeatTotalAmount(List<Seat> seatsList) {
+    double totalAmount = 0.00;
+    for (var i = 0; i < seatsList.length; i++) {
+      totalAmount = totalAmount + double.parse(seatsList[i].seatPrice);
+    }
+    return totalAmount.toStringAsFixed(2);
+  }
+
   @override
   Widget build(BuildContext context) {
     Get.put(
@@ -71,7 +92,8 @@ BusDetails  busDetails;
                                     height: 19.h,
                                     width: 50.w,
                                     decoration: BoxDecoration(
-                                      color:const Color.fromARGB(195, 8, 167, 17),
+                                      color:
+                                          const Color.fromARGB(195, 8, 167, 17),
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: Row(
@@ -122,6 +144,22 @@ BusDetails  busDetails;
                               Padding(
                                 padding: const EdgeInsets.all(3),
                                 child: Container(
+                                  width: double.infinity,
+                                  height: 50.h,
+                                  decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: const Color.fromARGB(
+                                                  103, 181, 172, 172)
+                                              .withOpacity(0.5), // Shadow color
+                                          spreadRadius: 5, // Spread radius
+                                          blurRadius: 7, // Blur radius
+                                          offset: const Offset(0,
+                                              3), // Changes position of shadow
+                                        ),
+                                      ],
+                                      color: kwhite,
+                                      borderRadius: BorderRadius.circular(16)),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
@@ -201,22 +239,6 @@ BusDetails  busDetails;
                                       ),
                                     ],
                                   ),
-                                  width: double.infinity,
-                                  height: 50.h,
-                                  decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color.fromARGB(
-                                                  103, 181, 172, 172)
-                                              .withOpacity(0.5), // Shadow color
-                                          spreadRadius: 5, // Spread radius
-                                          blurRadius: 7, // Blur radius
-                                          offset: Offset(0,
-                                              3), // Changes position of shadow
-                                        ),
-                                      ],
-                                      color: kwhite,
-                                      borderRadius: BorderRadius.circular(16)),
                                 ),
                               ),
                             ],
@@ -296,25 +318,26 @@ BusDetails  busDetails;
                     //   ],
                     // ),
                     ksizedbox20,
-                   GetBuilder<BusseatmapingController>(
-                                      builder: (_) {
-                                    return Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
-                                          color: Colors.white
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
-                                          child: BusSeatLayoutWidget(
-                                             nonAcLowerSeats:busdeatilsController.generateSeatLayoutLower(busModel),
-                                              nonAcUpperSeats:busdeatilsController.generateSeatLayoutUpper(busModel),
-                                            ),
-                                        ),
-                                      ),
-                                    );
-                                  }),
+                    GetBuilder<BusseatmapingController>(builder: (_) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 10),
+                            child: BusSeatLayoutWidget(
+                              nonAcLowerSeats: busdeatilsController
+                                  .generateSeatLayoutLower(busModel),
+                              nonAcUpperSeats: busdeatilsController
+                                  .generateSeatLayoutUpper(busModel),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
                     ksizedbox30,
                   ],
                 ),
@@ -323,95 +346,118 @@ BusDetails  busDetails;
           ),
           bottomNavigationBar: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              width: size.width,
-              height: 110.h,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(7), color: kwhite),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ksizedbox10,
-                            Text(
-                              '02 Seat |${busdeatilsController.seatname}, L7',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14.sp,
-                                    color: Colors.black,
-                                  ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                             
-                                Get.to(MoreaboutbusView());
-                              },
-                              child: Text(   
-                                'More about this bus' ,
+            child: GetBuilder<BusseatmapingController>(builder: (_) {
+              return Container(
+                width: size.width,
+                height: 110.h,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7), color: kwhite),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ksizedbox10,
+                              Text(
+                                '${busdeatilsController.getSelectedSeats(busModel).length} Seat | ${getSelectedSeatNames(busdeatilsController.getSelectedSeats(busModel))}',
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleLarge!
                                     .copyWith(
-                                      decoration: TextDecoration.underline,
-                                      decorationColor: Colors.blue,
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 10.sp,
-                                      color: Colors.blue,  
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14.sp,
+                                      color: Colors.black,
                                     ),
                               ),
+                              InkWell(
+                                onTap: () {
+                                  Get.to(MoreaboutbusView());
+                                },
+                                child: Text(
+                                  'More about this bus',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(
+                                        decoration: TextDecoration.underline,
+                                        decorationColor: Colors.blue,
+                                        fontWeight: FontWeight.w300,
+                                        fontSize: 10.sp,
+                                        color: Colors.blue,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            '₹${getSelectedSeatTotalAmount(busdeatilsController.getSelectedSeats(busModel))}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17.sp,
+                                  color: Colors.black,
+                                ),
+                          )
+                        ],
+                      ),
+                    ),
+                    ksizedbox10,
+                    Obx(
+                      () => busseatController.isLoading.isTrue
+                          ? CircularProgressIndicator()
+                          : Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: CustomElevatedButton(
+                                height: 45.h,
+                                width: 1.sw,
+                                onPressed: () {
+                                  SeatBlockedData busSeatBlockedModel =
+                                      SeatBlockedData(
+                                    busId: busDetails.id,
+                                    userId: profileController
+                                            .profiledata.isNotEmpty
+                                        ? profileController.profiledata.first.id
+                                        : 0,
+                                    tripId:
+                                        busdeatilsController.tripdata == null
+                                            ? 0
+                                            : busdeatilsController.tripdata!.id,
+                                    routeId:
+                                        busdeatilsController.tripdata == null
+                                            ? 0
+                                            : int.parse(busdeatilsController
+                                                .tripdata!.routeId),
+                                    vendorId:
+                                        busdeatilsController.tripdata == null
+                                            ? 0
+                                            : int.parse(busdeatilsController
+                                                .routedata!.vendorId),
+                                    seatId: busdeatilsController
+                                        .getSelectedSeats(busModel),
+                                    seatCount: busdeatilsController
+                                        .getSelectedSeats(busModel)
+                                        .length,
+                                  );
+                                  busseatController.seatblock(
+                                      busSeatBlockedModel: busSeatBlockedModel);
+                                },
+                                text: 'proceed',
+                                color: kred,
+                                textColor: kwhite,
+                              ),
                             ),
-                          ],
-                        ),
-                        Text(
-                          '₹4000',
-                          style:
-                              Theme.of(context).textTheme.titleLarge!.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 17.sp,
-                                    color: Colors.black,
-                                  ),
-                        )
-                      ],
                     ),
-                  ),
-                  ksizedbox10,
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CustomElevatedButton(
-                      height: 45.h,
-                      width: 1.sw,
-                      onPressed: () {
-                        SeatBlockedData busSeatBlockedModel = SeatBlockedData(
-                          busId: busDetails.id, 
-                          userId:profileController.profiledata.isNotEmpty? 
-                          profileController.profiledata.first.id:0, 
-                          tripId:busdeatilsController.tripdata==null?0: busdeatilsController.tripdata!.id, 
-                          routeId:busdeatilsController.tripdata==null?0:int.parse(busdeatilsController.tripdata!.routeId), 
-                          vendorId:busdeatilsController.tripdata==null?0: int.parse(busdeatilsController.routedata!.vendorId), 
-                          seatId: '1', 
-                          seatCount: 1, 
-                         );
-                        busseatController.seatblock(busSeatBlockedModel: busSeatBlockedModel);
-                        Get.to(
-                          PickanddropView());
-                      },
-                      text: 'proceed',
-                      color: kred,
-                      textColor: kwhite,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                  ],
+                ),
+              );
+            }),
           ),
         ),
       ),

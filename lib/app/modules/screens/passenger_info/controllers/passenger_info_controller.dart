@@ -6,6 +6,7 @@ import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/ad
 import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/seat_block_api_service.dart';
 import 'package:oye_bus/app/data/api_service/models/booking_model/add_booking_model.dart';
 import 'package:oye_bus/app/data/api_service/models/booking_model/bus_seat_blocked_model.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/pickanddrop_view.dart';
 
 class PassengerInfoController extends GetxController {
   //TODO: Implement PassengerInfoController
@@ -76,12 +77,13 @@ class PassengerInfoController extends GetxController {
 
       isLoading(false);
       if(response.data['status']==true){
-        Get.rawSnackbar(
-          backgroundColor: Colors.green,
-          messageText: Text(
-            response.data['message'],
-            style: primaryFont.copyWith(color: Colors.white),
-          ));
+             Get.to(PickanddropView());
+        // Get.rawSnackbar(
+        //   backgroundColor: Colors.green,
+        //   messageText: Text(
+        //     response.data['message'],
+        //     style: primaryFont.copyWith(color: Colors.white),
+        //   ));
       }
    }
 

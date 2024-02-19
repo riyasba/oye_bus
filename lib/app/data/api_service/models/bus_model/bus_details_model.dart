@@ -17,7 +17,7 @@ class BusDetailsModel {
     Policies policies;
     List<String> busImages;
     AboutBus aboutBus;
-    RouteData route;
+    RouteData? route;
     List<dynamic> boarding;
     List<dynamic> dropping;
     List<RestStop> restStop;
@@ -46,10 +46,11 @@ class BusDetailsModel {
         policies: Policies.fromJson(json["policies"]),
         busImages: List<String>.from(json["bus_images"].map((x) => x)),
         aboutBus: AboutBus.fromJson(json["AboutBus"]),
-        route: RouteData.fromJson(json["Route"]),
+        route: json["Route"] == null ? null : RouteData.fromJson(json["Route"]),
         boarding: List<dynamic>.from(json["boarding"].map((x) => x)),
         dropping: List<dynamic>.from(json["dropping"].map((x) => x)),
-        restStop: List<RestStop>.from(json["restStop"].map((x) => RestStop.fromJson(x))),
+        restStop:json["restStop"] == null ? [] :  List<RestStop>.from(json["restStop"].map((x) => RestStop.fromJson(x))
+        ),
     );
 //json['id'] != null ? (json['id'] as num?)?.toInt() : null
     Map<String, dynamic> toJson() => {
@@ -61,7 +62,7 @@ class BusDetailsModel {
         "policies": policies.toJson(),
         "bus_images": List<dynamic>.from(busImages.map((x) => x)),
         "AboutBus": aboutBus.toJson(),
-        "Route": route.toJson(),
+        "Route": route!.toJson(),
         "boarding": List<dynamic>.from(boarding.map((x) => x)),
         "dropping": List<dynamic>.from(dropping.map((x) => x)),
         "restStop": List<dynamic>.from(restStop.map((x) => x.toJson())),
