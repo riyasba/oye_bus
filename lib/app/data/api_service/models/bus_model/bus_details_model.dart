@@ -11,7 +11,7 @@ String busDetailsModelToJson(BusDetailsModel data) => json.encode(data.toJson())
 class BusDetailsModel {
     bool status;
     String message;
-    Trip trip;
+    // Trip trip;
     BusDetails busDetails;
     List<Amenity> amenities;
     Policies policies;
@@ -25,7 +25,7 @@ class BusDetailsModel {
     BusDetailsModel({
         required this.status,
         required this.message,
-        required this.trip,
+        // required this.trip,
         required this.busDetails,
         required this.amenities,
         required this.policies,
@@ -40,7 +40,7 @@ class BusDetailsModel {
     factory BusDetailsModel.fromJson(Map<String, dynamic> json) => BusDetailsModel(
         status: json["status"],
         message: json["message"],
-        trip: json["trip"],
+        // trip: json["trip"],
         busDetails: BusDetails.fromJson(json["bus_details"]),
         amenities: List<Amenity>.from(json["amenities"].map((x) => Amenity.fromJson(x))),
         policies: Policies.fromJson(json["policies"]),
@@ -55,7 +55,7 @@ class BusDetailsModel {
     Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        "trip": trip??trip,
+        // "trip": trip??trip,
         "bus_details": busDetails.toJson(),
         "amenities": List<dynamic>.from(amenities.map((x) => x.toJson())),
         "policies": policies.toJson(),

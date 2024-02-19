@@ -1072,14 +1072,12 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
             primaryCustomerName: controller.nameController.text, 
             busid: boadingdroppingController.tripdata!.busId, 
             routeid: boadingdroppingController.tripdata!.routeId, 
-            seatid: boadingdroppingController.busseatdata.isNotEmpty?
-            boadingdroppingController.busseatdata.first.seatNo:'', 
-            seatmapid: boadingdroppingController.busseatdata.isNotEmpty?
-            boadingdroppingController.busseatdata.first.id.toString():'', 
+            seatid: "seatId", 
+            seatmapid: "", 
             tripid: boadingdroppingController.tripdata!.id.toString(), 
             vendorid:boadingdroppingController.busDetailsdata!.vendorId, 
-            iswomenseat:boadingdroppingController.busseatdata.isNotEmpty?
-             boadingdroppingController.busseatdata.first.ladiesSeat:'') ;
+            iswomenseat: "",
+             ) ;
             passengerController.addbooking(addBookingModel: addBookingModel);              
           //Get.to(ReviewbookingdetailsView());
           },

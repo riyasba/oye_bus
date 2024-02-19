@@ -11,6 +11,7 @@ import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/picka
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/widgets/bus_seat_layout_widget.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/controllers/passenger_info_controller.dart';
 import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
+import '../../../../../data/api_service/models/get_bus_seat_layout_model.dart';
 import '../controllers/busseatmaping_controller.dart';
 
 class BusseatmapingView extends GetView<BusseatmapingController> {
@@ -224,76 +225,76 @@ BusDetails  busDetails;
                       ),
                     ),
                     ksizedbox10,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height: 20,
-                          width: 60,
-                          child: Center(
-                            child: Text(
-                              'All Price',
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                              color: kwhite,
-                              borderRadius: BorderRadius.circular(15)),
-                        ),
-                        Container(
-                          height: 20,
-                          width: 60,
-                          child: Center(
-                            child: Text(
-                              '₹1500',
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                              color: kwhite,
-                              borderRadius: BorderRadius.circular(15)),
-                        ),
-                        Container(
-                          height: 20,
-                          width: 60,
-                          child: Center(
-                            child: Text(
-                              '₹2000',
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                              color: kwhite,
-                              borderRadius: BorderRadius.circular(15)),
-                        ),
-                        Container(
-                          height: 20,
-                          width: 60,
-                          child: Center(
-                            child: Text(
-                              '₹3500',
-                              style: TextStyle(
-                                color: kwhite,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                              color: kgrey,
-                              borderRadius: BorderRadius.circular(15.r)),
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //   children: [
+                    //     Container(
+                    //       height: 20,
+                    //       width: 60,
+                    //       child: Center(
+                    //         child: Text(
+                    //           'All Price',
+                    //           style: TextStyle(
+                    //             fontSize: 10,
+                    //             fontWeight: FontWeight.w500,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       decoration: BoxDecoration(
+                    //           color: kwhite,
+                    //           borderRadius: BorderRadius.circular(15)),
+                    //     ),
+                    //     Container(
+                    //       height: 20,
+                    //       width: 60,
+                    //       child: Center(
+                    //         child: Text(
+                    //           '₹1500',
+                    //           style: TextStyle(
+                    //             fontSize: 10,
+                    //             fontWeight: FontWeight.w500,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       decoration: BoxDecoration(
+                    //           color: kwhite,
+                    //           borderRadius: BorderRadius.circular(15)),
+                    //     ),
+                    //     Container(
+                    //       height: 20,
+                    //       width: 60,
+                    //       child: Center(
+                    //         child: Text(
+                    //           '₹2000',
+                    //           style: TextStyle(
+                    //             fontSize: 10,
+                    //             fontWeight: FontWeight.w500,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       decoration: BoxDecoration(
+                    //           color: kwhite,
+                    //           borderRadius: BorderRadius.circular(15)),
+                    //     ),
+                    //     Container(
+                    //       height: 20,
+                    //       width: 60,
+                    //       child: Center(
+                    //         child: Text(
+                    //           '₹3500',
+                    //           style: TextStyle(
+                    //             color: kwhite,
+                    //             fontSize: 10,
+                    //             fontWeight: FontWeight.w500,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       decoration: BoxDecoration(
+                    //           color: kgrey,
+                    //           borderRadius: BorderRadius.circular(15.r)),
+                    //     ),
+                    //   ],
+                    // ),
                     ksizedbox20,
                    GetBuilder<BusseatmapingController>(
                                       builder: (_) {

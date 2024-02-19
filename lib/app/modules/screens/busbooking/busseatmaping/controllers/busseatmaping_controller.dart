@@ -9,6 +9,7 @@ import 'package:oye_bus/app/data/api_service/models/booking_model/add_booking_mo
 import 'package:oye_bus/app/data/api_service/models/booking_model/bus_seats_model.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_model/bus_details_model.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_seat_model.dart';
+import 'package:oye_bus/app/data/api_service/models/get_bus_seat_layout_model.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/paymentsuccesfull_view.dart';
 import 'package:oye_bus/app/services/ease_buzz_payment_api_services.dart';
 import 'package:dio/dio.dart'as dio;
@@ -27,7 +28,7 @@ List seatname=[];
   @override
   void onInit() {
     
-    busseats();
+    // busseats();
     super.onInit();
   }
 
@@ -87,10 +88,10 @@ List<bool> seats3 = List.generate(30, (_) => false);
    String?name;
 
 
-   Seat emptySeat = Seat(color: const Color.fromARGB(255, 224, 224, 224),column: 0,fareKey: "",isBookable: false,isWindowSeat: false,ladiesSeat: false,layout: "Empty",layoutId: 0,length: 0,position: "Empty",row: 0,seatId: "0",width: 0
+   Seat emptySeat = Seat(columnNo: "0",fareKey: "",isBookable: "",isWindowSeat: "",ladiesSeat: "",layout: "Empty",layoutId: "0",length: "0",position: "Empty",rowNo: "0",seatNo: "0",width: "0",busId: "",id: 0,seatPrice: ""
    );
 
-   Seat driverSeat = Seat(color: const Color.fromARGB(255, 224, 224, 224),column: 0,fareKey: "",isBookable: false,isWindowSeat: false,ladiesSeat: false,layout: "Driver",layoutId: 0,length: 0,position: "Driver",row: 0,seatId: "0",width: 0
+   Seat driverSeat = Seat(columnNo: "0",fareKey: "",isBookable: "",isWindowSeat: "",ladiesSeat: "",layout: "Driver",layoutId: "0",length: "0",position: "Driver",rowNo: "0",seatNo: "0",width: "0",busId: "",id: 0,seatPrice: ""
    );
 
    static MethodChannel _channel = MethodChannel('easebuzz');
@@ -150,18 +151,23 @@ List<bool> seats3 = List.generate(30, (_) => false);
 BusSeatApiService busseatapiservice = 
 BusSeatApiService();
 
-List<BusSeatData> busseatdata=[];
+// List<BusSeatData> busseatdata=[];
 
-busseats()async{
+
+Future<BusModel?> busseats(int busId)async{
+  BusModel? busModel;
   isLoading(true);
-  dio.Response<dynamic>response = await busseatapiservice.busSeatapi();
+  dio.Response<dynamic>response = await busseatapiservice.busSeatapi(busId);
   
   isLoading(false);
   if(response.data['status']==true){
-    BusSeatsModel busSeatsModel = BusSeatsModel.fromJson(response.data);
-    busseatdata=busSeatsModel.data;
+    BusModel busSeatsModel = BusModel.fromJson(response.data);
+    // busseatdata=busSeatsModel.data;
+    busModel = busSeatsModel;
     update();
   }
+
+  return busModel;
 }
 
   BusDetailsApiService busdetailsapiservice = BusDetailsApiService();
@@ -195,7 +201,7 @@ busseats()async{
     boardingpointdata = busdetailsmodel.boarding;
     busDetailsdata = busdetailsmodel.busDetails;
     routedata = busdetailsmodel.route;
-    tripdata = busdetailsmodel.trip;
+    // tripdata = busdetailsmodel.trip;
     update();
    }else{
     
@@ -392,7 +398,7 @@ if (rowDataList[i].width == 1) {
   List<Seat> rowData = [];
      
   for(int i = 0; i< seatList.length; i++){
-    if(seatList[i].row == rowNumber && seatList[i].position.trim().toLowerCase() == "lower".toLowerCase()){
+    if(int.parse(seatList[i].rowNo) == rowNumber && seatList[i].position.trim().toLowerCase() == "lower".toLowerCase()){
        rowData.add(seatList[i]);
     }
   }
@@ -409,7 +415,7 @@ if (rowDataList[i].width == 1) {
   List<Seat> rowData = [];
      
   for(int i = 0; i< seatList.length; i++){
-    if(seatList[i].row == rowNumber && seatList[i].position.toLowerCase() == "Upper".toLowerCase()){
+    if(int.parse(seatList[i].rowNo) == rowNumber && seatList[i].position.toLowerCase() == "Upper".toLowerCase()){
        rowData.add(seatList[i]);
     }
   }
