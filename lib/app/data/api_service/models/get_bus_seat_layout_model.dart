@@ -70,14 +70,14 @@ class Seat {
     });
 
     factory Seat.fromJson(Map<String, dynamic> json) => Seat(
-        id: json["id"],
-        busId: json["bus_id"],
-        seatNo: json["seat_no"],
-        seatPrice: json["seat_price"],
-        rowNo: json["row_no"],
-        columnNo: json["column_no"],
-        length: json["length"],
-        width: json["width"],
+        id: json["id"]??0,
+        busId: json["bus_id"]??"",
+        seatNo: json["seat_no"]??'',
+        seatPrice: json["seat_price"]??'',
+        rowNo: json["row_no"]??'',
+        columnNo: json["column_no"]??'',
+        length: json["length"]??'',
+        width: json["width"]??'',
         position: json["position"]!,
         layout: json["layout"],
         layoutId: json["layout_id"],

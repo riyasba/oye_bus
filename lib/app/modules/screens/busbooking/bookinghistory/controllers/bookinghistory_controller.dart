@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 import 'package:dio/dio.dart'as dio;
+import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/booking_cancel_api_service.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/booking_cancel_list_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/booking_history_api_service.dart';
+import 'package:oye_bus/app/data/api_service/models/booking_model/booking_canceled_list_model.dart';
 import 'package:oye_bus/app/data/api_service/models/booking_model/booking_history_model.dart';
 
 class BookinghistoryController extends GetxController {
@@ -12,6 +15,7 @@ class BookinghistoryController extends GetxController {
   @override
   void onInit() {
        bookinghistory();
+       bookingCancelledList();
     super.onInit();
   
   }
@@ -45,4 +49,23 @@ class BookinghistoryController extends GetxController {
     }
     update();
    }
+   BookingCancelledListApiService bookingcancelledlistapiservice = 
+   BookingCancelledListApiService();
+
+   List<BookingCancelledDetail> bookingcancelledlistdata = [];
+
+   bookingCancelledList()async{
+    isLoading(true);
+    dio.Response<dynamic> response = await bookingcancelledlistapiservice.bookingCanceledListApi();
+
+    isLoading(false);
+    if(response.data['status']==true){
+      BookingCancelledListModel bookingcancellistModel = 
+      BookingCancelledListModel.fromJson(response.data);
+    bookingcancelledlistdata =  bookingcancellistModel.bookingDetails;
+    }
+    update();
+   }
+
+
 }

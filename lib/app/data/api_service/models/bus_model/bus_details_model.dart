@@ -18,8 +18,9 @@ class BusDetailsModel {
     List<String> busImages;
     AboutBus aboutBus;
     RouteData? route;
-    List<dynamic> boarding;
-    List<dynamic> dropping;
+    List<BoardingPoint>boardingdata;
+    List<DroppingPoint>droppingdata;
+   
     List<RestStop> restStop;
 
     BusDetailsModel({
@@ -31,9 +32,9 @@ class BusDetailsModel {
         required this.policies,
         required this.busImages,
         required this.aboutBus,
-        required this.route,
-        required this.boarding,
-        required this.dropping,
+       required this.route,
+        required this.boardingdata,
+        required this.droppingdata,
         required this.restStop,
     });
 
@@ -47,10 +48,12 @@ class BusDetailsModel {
         busImages: List<String>.from(json["bus_images"].map((x) => x)),
         aboutBus: AboutBus.fromJson(json["AboutBus"]),
         route: json["Route"] == null ? null : RouteData.fromJson(json["Route"]),
-        boarding: List<dynamic>.from(json["boarding"].map((x) => x)),
-        dropping: List<dynamic>.from(json["dropping"].map((x) => x)),
+          
         restStop:json["restStop"] == null ? [] :  List<RestStop>.from(json["restStop"].map((x) => RestStop.fromJson(x))
-        ),
+        ), 
+        boardingdata:json["boarding_data"]==null?[]: List<BoardingPoint>.from(json["boarding_data"].map((x) => BoardingPoint.fromJson(x))), 
+        droppingdata:json["dropping_data"]==null?[]: List<DroppingPoint>.from(json["dropping_data"].map((x) => DroppingPoint.fromJson(x))),
+        
     );
 //json['id'] != null ? (json['id'] as num?)?.toInt() : null
     Map<String, dynamic> toJson() => {
@@ -63,8 +66,8 @@ class BusDetailsModel {
         "bus_images": List<dynamic>.from(busImages.map((x) => x)),
         "AboutBus": aboutBus.toJson(),
         "Route": route!.toJson(),
-        "boarding": List<dynamic>.from(boarding.map((x) => x)),
-        "dropping": List<dynamic>.from(dropping.map((x) => x)),
+         "boarding_data":List<dynamic>.from(boardingdata.map((x) =>x.toJson())),
+         "dropping_data":List<dynamic>.from(droppingdata.map((x) => x.toJson())),
         "restStop": List<dynamic>.from(restStop.map((x) => x.toJson())),
     };
 }
@@ -415,4 +418,55 @@ class Trip {
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
     };
+
+    
 }
+class BoardingPoint{
+      
+      int id;
+      String time;
+      String location;
+
+      BoardingPoint({
+        required this.id,
+        required this.location,
+        required this.time
+
+      });
+
+      factory BoardingPoint.fromJson(Map<String,dynamic> json)=>BoardingPoint(
+        id: json['id'], 
+        location: json["location"],
+        time: json["time"]);
+
+        Map<String,dynamic>toJson()=>{
+          "id":id,
+          "location":location,
+          "time":time
+        };
+    }
+
+class DroppingPoint{
+      
+      int id;
+      String time;
+      String location;
+
+      DroppingPoint({
+        required this.id,
+        required this.location,
+        required this.time
+
+      });
+
+      factory DroppingPoint.fromJson(Map<String,dynamic> json)=>DroppingPoint(
+        id: json['id'], 
+        location: json["location"],
+        time: json["time"]);
+
+        Map<String,dynamic>toJson()=>{
+          "id":id,
+          "location":location,
+          "time":time
+        };
+    }

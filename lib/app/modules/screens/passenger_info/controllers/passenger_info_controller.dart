@@ -76,8 +76,9 @@ class PassengerInfoController extends GetxController {
       seatBlockedData:busSeatBlockedModel );
 
       isLoading(false);
-      if(response.data['status']==true){
-             Get.to(PickanddropView());
+   
+      if(response.data['success']==true){
+                Get.to(PickanddropView());
         // Get.rawSnackbar(
         //   backgroundColor: Colors.green,
         //   messageText: Text(

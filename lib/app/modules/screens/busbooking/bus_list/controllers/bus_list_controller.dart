@@ -10,9 +10,6 @@ class BusListController extends GetxController {
    final buslistController = Get.find<HomeController>();
   @override
   void onInit() {
-    
-   
-  
     super.onInit();
   }
 

@@ -229,12 +229,12 @@ class BusseatmapingController extends GetxController {
     if (response.data['status'] == true) {
       BusDetailsModel busdetailsmodel = BusDetailsModel.fromJson(response.data);
       aboutbusdata = busdetailsmodel.aboutBus;
-      droppointdata = busdetailsmodel.dropping;
+      droppointdata = busdetailsmodel.droppingdata;
       reststopdata = busdetailsmodel.restStop;
       amenitydata = busdetailsmodel.amenities;
       policiesdata = busdetailsmodel.policies;
       busimages = busdetailsmodel.busImages;
-      boardingpointdata = busdetailsmodel.boarding;
+      boardingpointdata = busdetailsmodel.boardingdata;
       busDetailsdata = busdetailsmodel.busDetails;
       // routedata = busdetailsmodel.route;
       // tripdata = busdetailsmodel.trip;

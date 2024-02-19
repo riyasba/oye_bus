@@ -2,7 +2,6 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:oye_bus/app/components/const.dart';
@@ -17,7 +16,6 @@ import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/busse
 import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../../bus_filter/views/bus_filter_view.dart';
 import '../controllers/bus_list_controller.dart';
 
