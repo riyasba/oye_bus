@@ -8,15 +8,49 @@ import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
 import 'package:oye_bus/app/modules/screens/search/widgets/recent_chips.dart';
 
-class SearchView extends GetView<BusSearchController> {
+class SearchView extends StatefulWidget {
   const SearchView({Key? key}) : super(key: key);
+
+  @override
+  State<SearchView> createState() => _SearchViewState();
+}
+
+class _SearchViewState extends State<SearchView> {
+
+
+  var searchTextController = TextEditingController();
+
+
+ final searchcityController = Get.find<BusSearchController>();
+
+  // @override
+  // void initState() { 
+  //   super.initState();
+  //   searchTextController.addListener(searchBusCitys(searchTextController.text));
+  // }
+
+
+  @override
+  void initState() { 
+    super.initState();
+       searchTextController.addListener(searchBusCitys);
+  }
+
+
+
+  searchBusCitys() async{
+   await Future.delayed(const Duration(milliseconds: 300));
+
+    searchcityController.buscitysearch(city: searchTextController.text);
+  }
+
+
+
+ 
+
+
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut<BusSearchController>(
-      () => BusSearchController(),
-    );
-    final searchcityController = Get.find<BusSearchController>();
-
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(55),
@@ -66,10 +100,10 @@ class SearchView extends GetView<BusSearchController> {
                   child: Container(
                     height: 50.h,
                     child: TextField(
-                      onChanged: (value) {
-                        searchcityController.triggerFunction();
-                      },
-                      controller: searchcityController.searchfromcontroller,
+                      // onChanged: (value) {
+                      //   searchcityController.triggerFunction();
+                      // },
+                      controller: searchTextController,
                       style: primaryFont.copyWith(
                           fontSize: 18.sp, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
@@ -130,10 +164,12 @@ class SearchView extends GetView<BusSearchController> {
                                 onTap: () {
                                   Get.find<HomeController>().fromcityid =
                                       searchcityController.citydata[index].city;
+                                        Get.find<HomeController>().fromCity =
+                                      searchcityController.citydata[index].city;
                                   Get.find<HomeController>()
                                           .fromPlaceTxtController
                                           .text =
-                                      searchcityController.citydata[index].city;
+                                      "${searchcityController.citydata[index].city}, ${searchcityController.citydata[index].points}";
                                   Get.back();
                                   print('formid........');
                                   print(searchcityController

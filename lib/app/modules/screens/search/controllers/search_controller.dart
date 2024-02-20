@@ -19,8 +19,6 @@ class BusSearchController extends GetxController {
   // Function to debounce city search
   void debounceCitySearch(String city) async {
     
-
-    await Future.delayed(Duration(microseconds: 100));
       buscitysearch(city: city);
     
   }  
@@ -67,13 +65,16 @@ class BusSearchController extends GetxController {
  buscitysearch({required String city})async{
 
   isLoading(true);
-  dio.Response<dynamic>response = await busCitySearchApiService.
+  dio.Response<dynamic> response = await busCitySearchApiService.
   buscitySearchApi(city: city);
    
    isLoading(false);
-   if(response.data['status']==true){
+   if(response.data['status'] == true){
     CitySearchModel citySearchModel = CitySearchModel.fromJson(response.data);
-    citydata= citySearchModel.data;
+    citydata = citySearchModel.data;
+    update();
+   }else{
+    citydata.clear();
     update();
    }
  }

@@ -9,14 +9,48 @@ import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
 import 'package:oye_bus/app/modules/screens/search/widgets/recent_chips.dart';
 
-class SearchDestinyView extends GetView<BusSearchController> {
+class SearchDestinyView extends StatefulWidget {
   const SearchDestinyView({Key? key}) : super(key: key);
+
+  @override
+  State<SearchDestinyView> createState() => _SearchDestinyViewState();
+}
+
+class _SearchDestinyViewState extends State<SearchDestinyView> {
+  
+  var searchTextController = TextEditingController();
+
+
+ final searchcityController = Get.find<BusSearchController>();
+
+  // @override
+  // void initState() { 
+  //   super.initState();
+  //   searchTextController.addListener(searchBusCitys(searchTextController.text));
+  // }
+
+
+  @override
+  void initState() { 
+    super.initState();
+       searchTextController.addListener(searchBusCitys);
+  }
+
+
+
+  searchBusCitys() async{
+   await Future.delayed(const Duration(milliseconds: 500));
+    searchcityController.buscitysearch(city: searchTextController.text);
+  }
+
+
+
+ 
+
+
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut<BusSearchController>(
-      () => BusSearchController(),
-    );
-    final searchcityController = Get.find<BusSearchController>();
+    
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(55),
@@ -66,10 +100,8 @@ class SearchDestinyView extends GetView<BusSearchController> {
                   return Container(
                     height: 50.h,
                     child: TextField(
-                      onChanged: (value) {
-                        searchcityController.triggerFunction();
-                      },
-                      controller: searchcityController.searchtoController,
+                      
+                      controller: searchTextController,
                       style: primaryFont.copyWith(
                           fontSize: 18.sp, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(
@@ -84,7 +116,7 @@ class SearchDestinyView extends GetView<BusSearchController> {
                                 color: Color.fromARGB(255, 200, 200, 200)),
                           ),
                           hintText: "Search",
-                          hintStyle: TextStyle(fontSize: 19),
+                          hintStyle: const  TextStyle(fontSize: 19),
                           suffixIcon: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: SvgPicture.asset(
@@ -130,10 +162,12 @@ class SearchDestinyView extends GetView<BusSearchController> {
                               onTap: () {
                                 Get.find<HomeController>().tocityid =
                                     searchcityController.citydata[index].city;
+                                    Get.find<HomeController>().toCity =
+                                    searchcityController.citydata[index].city;
                                 Get.find<HomeController>()
                                         .toPlaceTxtController
                                         .text =
-                                    searchcityController.citydata[index].city;
+                                    "${searchcityController.citydata[index].city}, ${searchcityController.citydata[index].points}";
                                 Get.back();
                                 print('search city id');
                                 print(searchcityController
@@ -142,11 +176,21 @@ class SearchDestinyView extends GetView<BusSearchController> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    searchcityController.citydata[index].city,
-                                    style: primaryFont.copyWith(
-                                      fontSize: 18.sp,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        searchcityController.citydata[index].city,
+                                        style: primaryFont.copyWith(
+                                          fontSize: 18.sp,
+                                        ),
+                                      ),
+                                 if(searchcityController.citydata[index].points != "")  Text(
+                                        ", ${searchcityController.citydata[index].points}",
+                                        style: primaryFont.copyWith(
+                                          fontSize: 18.sp,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   if (index !=
                                       searchcityController.citydata.length - 1)

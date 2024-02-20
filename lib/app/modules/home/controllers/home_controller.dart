@@ -87,6 +87,9 @@ class HomeController extends GetxController {
 dynamic fromcityid=0;
 dynamic tocityid=0;
 
+String fromCity = "";
+String toCity = "";
+
 var cityid=0;
   RxInt currenttap = 1.obs;
   void ontapindex(int currentontouchindex) {
@@ -116,7 +119,7 @@ var cityid=0;
          print(response.statusCode);
          print('datas::::::::::::::::::');
          print(response.data["status"]==true);
-        isLoading(false);
+         isLoading(false);
          if(response.data['status'] == true){ 
           print("----------->> here");
           BusListModel buslistModel = BusListModel.fromJson(response.data);

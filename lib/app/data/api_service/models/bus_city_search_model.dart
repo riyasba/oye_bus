@@ -46,7 +46,7 @@ class CityData {
     factory CityData.fromJson(Map<String, dynamic> json) => CityData(
         cityId: json["city_id"],
         city: json["city"],
-        points: json["points"] ?? "",
+        points: json["point"] ?? "",
     );
 
     Map<String, dynamic> toJson() => {
