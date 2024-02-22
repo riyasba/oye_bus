@@ -38,6 +38,8 @@ class ProfileData {
     String name;
     String email;
     String mobile;
+    String gender;
+    int age;
     String referralCode;
     String status;
     DateTime createdAt;
@@ -48,6 +50,8 @@ class ProfileData {
         required this.name,
         required this.email,
         required this.mobile,
+        required this.age,
+        required this.gender,
         required this.referralCode,
         required this.status,
         required this.createdAt,
@@ -62,6 +66,8 @@ class ProfileData {
         referralCode: json["referral_code"],
         status: json["status"],
         createdAt: DateTime.parse(json["created_at"]),
+         age: json["age"], 
+         gender: json["gender"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -70,6 +76,8 @@ class ProfileData {
         "name": name,
         "email": email,
         "mobile": mobile,
+        "age":age,
+        "gender":gender,
         "referral_code": referralCode,
         "status": status,
         "created_at": createdAt.toIso8601String(),

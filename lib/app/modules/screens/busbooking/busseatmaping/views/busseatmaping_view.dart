@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
 import 'package:oye_bus/app/data/api_service/models/booking_model/bus_seat_blocked_model.dart';
+import 'package:oye_bus/app/data/api_service/models/bus_model/bus_details_model.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_model/buslist_model.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_seat_model.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
@@ -18,9 +19,9 @@ import '../controllers/busseatmaping_controller.dart';
 
 class BusseatmapingView extends GetView<BusseatmapingController> {
   BusModel busModel;
-  BusDetails busDetails;
+  BusData busdata;
   BusseatmapingView(
-      {Key? key, required this.busModel, required this.busDetails})
+      {Key? key, required this.busModel, required this.busdata})
       : super(key: key);
 //  List<bool> seats = List.generate(30, (_) => false);
   final busseatController = Get.find<PassengerInfoController>();
@@ -429,7 +430,7 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                 onPressed: () {
                                   SeatBlockedData busSeatBlockedModel =
                                       SeatBlockedData(
-                                    busId: busDetails.id,
+                                    busId: int.parse(busdata.id.toString()),
                                     userId: profileController
                                             .profiledata.isNotEmpty
                                         ? profileController.profiledata.first.id
@@ -439,15 +440,12 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                             ? 0
                                             : busdeatilsController.tripdata!.id,
                                     routeId:
-                                        busdeatilsController.tripdata == null
+                                        busdeatilsController.routedata == null
                                             ? 0
                                             : int.parse(busdeatilsController
-                                                .tripdata!.routeId),
+                                            .routedata!.id.toString()),
                                     vendorId:
-                                        busdeatilsController.tripdata == null
-                                            ? 0
-                                            : int.parse(busdeatilsController
-                                                .routedata!.vendorId),
+                                        int.parse(busdata.vendorId.toString()),
                                     seatId: busdeatilsController
                                         .getSelectedSeats(busModel),
                                     seatCount: busdeatilsController

@@ -35,7 +35,9 @@ class  AddBookingApiService extends Config{
            "seat_count": 1
 
       }
+      
      );
+     
       final prefs = await SharedPreferences.getInstance();
       String? authtoken = prefs.getString('auth_token');
 

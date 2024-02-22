@@ -29,7 +29,9 @@ class UpdateProfileApiservice extends Config{
       ),
       data: {
         "name":profileUpdateModel.name,
-        "email":profileUpdateModel.email
+        "email":profileUpdateModel.email,
+        "age":profileUpdateModel.age,
+        "gender":profileUpdateModel.gender
       }
       );
       print('::::::::updateprofile api::::::::<status code>::::::::');

@@ -28,9 +28,11 @@ class BusDetailsApiService extends Config{
       "trip_id":tripId
       }
       );
-      print('::::::::::::Bus details api:::::::::::<status code>:::::$busId:::::');
+      print('::::::::::::Bus details api:::::::::::<status code>:::::$busId:::$tripId::');
 
       print(busId);
+      print('bus details ');
+      print(response);
       print(response.data);
       print(response.statusCode);
       responseJson = response;

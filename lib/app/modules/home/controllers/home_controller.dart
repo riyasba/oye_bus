@@ -123,7 +123,7 @@ var cityid=0;
          if(response.data['status'] == true){ 
           print("----------->> here");
           BusListModel buslistModel = BusListModel.fromJson(response.data);
-          busdata=buslistModel.data;
+          busdata=buslistModel.data!;
           update();
         
          

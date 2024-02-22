@@ -79,12 +79,12 @@ class Seat {
         length: json["length"]??'',
         width: json["width"]??'',
         position: json["position"]!,
-        layout: json["layout"],
-        layoutId: json["layout_id"],
-        isWindowSeat: json["is_window_seat"],
-        ladiesSeat: json["ladies_seat"],
-        fareKey: json["fare_key"],
-        isBookable: json["is_bookable"],
+        layout: json["layout"]??'',
+        layoutId: json["layout_id"]??'',
+        isWindowSeat: json["is_window_seat"]??'',
+        ladiesSeat: json["ladies_seat"]??'',
+        fareKey: json["fare_key"]??'',
+        isBookable: json["is_bookable"]??'',
     );
 
     Map<String, dynamic> toJson() => {

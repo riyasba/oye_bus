@@ -20,6 +20,11 @@ class _DroppingListViewState extends State<DroppingListView> {
   int val = -1;
   final boadingdroppingController = Get.find<BusseatmapingController>();
   final homeController = Get.find<HomeController>();
+  String getActualTime(String time){
+    var tempTime = time.split(':');
+    String actualTime = '${tempTime[0]}:${tempTime[1]}';
+    return actualTime;
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -54,10 +59,10 @@ class _DroppingListViewState extends State<DroppingListView> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    boadingdroppingController
-                                        .droppointdata[index].time,
+                                    getActualTime(boadingdroppingController
+                                        .droppointdata[index].time),
                                     style: TextStyle(
-                                        fontSize: 16.5,
+                                        fontSize: 15,
                                         fontWeight: FontWeight.w500),
                                   ),
                                   Text(
@@ -68,7 +73,7 @@ class _DroppingListViewState extends State<DroppingListView> {
                                     ),
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
-                                        fontSize: 14.8,
+                                        fontSize: 14,
                                         color: Colors.grey.shade600),
                                   ),
                                 ],
@@ -83,7 +88,7 @@ class _DroppingListViewState extends State<DroppingListView> {
                                         boadingdroppingController
                                             .droppointdata[index].location,
                                         style: TextStyle(
-                                            fontSize: 16.5,
+                                            fontSize: 15,
                                             fontWeight: FontWeight.w600,
                                             fontFamily: 'Proxima Nova'),
                                       ),

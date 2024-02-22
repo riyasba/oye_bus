@@ -174,7 +174,8 @@ class _BenzeMultiAxleState extends State<BusSeatLayoutWidget> {
                                                                       .length ==
                                                                   "1" &&
                                                               widget.nonAcLowerSeats[i][j].width == "1" &&
-                                                              widget.nonAcLowerSeats[i][j].layout == "1"
+                                                              widget.nonAcLowerSeats[i][j].layout == "1"&&
+                                                              widget.nonAcLowerSeats[i][j].columnNo == "5"
                                                           ? Container(
                                                               child: Padding(
                                                                 padding:

@@ -211,12 +211,12 @@ class BusseatmapingController extends GetxController {
   AboutBus? aboutbusdata;
   BusDetails? busDetailsdata;
   Trip? tripdata;
-  List<dynamic> droppointdata = [];
+  List<DroppingPoint> droppointdata = [];
   List<RestStop> reststopdata = [];
   List<Amenity> amenitydata = [];
   Policies? policiesdata;
   List<String> busimages = [];
-  List<dynamic> boardingpointdata = [];
+  List<BoardingPoint> boardingpointdata = [];
   RxString boardingtime = ''.obs;
   RxString destinationtime = ''.obs;
 
@@ -224,7 +224,8 @@ class BusseatmapingController extends GetxController {
     isLoading(true);
     dio.Response<dynamic> response =
         await busdetailsapiservice.busdetailsapi(busId: busId, tripId: tripId);
-
+    print('bus details');
+    print(response.data);
     isLoading(false);
     if (response.data['status'] == true) {
       BusDetailsModel busdetailsmodel = BusDetailsModel.fromJson(response.data);
@@ -236,8 +237,8 @@ class BusseatmapingController extends GetxController {
       busimages = busdetailsmodel.busImages;
       boardingpointdata = busdetailsmodel.boardingdata;
       busDetailsdata = busdetailsmodel.busDetails;
-      // routedata = busdetailsmodel.route;
-      // tripdata = busdetailsmodel.trip;
+     routedata = busdetailsmodel.route;
+       tripdata = busdetailsmodel.trip;
       update();
     } else {}
   }
@@ -494,7 +495,7 @@ class BusseatmapingController extends GetxController {
   swapSeatList(List<Seat> test) {
     List<Seat> swapedList = [];
     for (int k = 0; k < test.length; k++) {
-      if (k == 4) {
+      if (k == 5) {
         swapedList.add(test[k + 1]);
         swapedList.add(test[k]);
         swapedList.add(test[k + 2]);

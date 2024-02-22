@@ -11,7 +11,7 @@ String busDetailsModelToJson(BusDetailsModel data) => json.encode(data.toJson())
 class BusDetailsModel {
     bool status;
     String message;
-    // Trip trip;
+    Trip trip;
     BusDetails busDetails;
     List<Amenity> amenities;
     Policies policies;
@@ -26,7 +26,7 @@ class BusDetailsModel {
     BusDetailsModel({
         required this.status,
         required this.message,
-        // required this.trip,
+         required this.trip,
         required this.busDetails,
         required this.amenities,
         required this.policies,
@@ -41,7 +41,7 @@ class BusDetailsModel {
     factory BusDetailsModel.fromJson(Map<String, dynamic> json) => BusDetailsModel(
         status: json["status"],
         message: json["message"],
-        // trip: json["trip"],
+         trip:Trip.fromJson(json["trip"]),
         busDetails: BusDetails.fromJson(json["bus_details"]),
         amenities: List<Amenity>.from(json["amenities"].map((x) => Amenity.fromJson(x))),
         policies: Policies.fromJson(json["policies"]),
@@ -51,23 +51,23 @@ class BusDetailsModel {
           
         restStop:json["restStop"] == null ? [] :  List<RestStop>.from(json["restStop"].map((x) => RestStop.fromJson(x))
         ), 
-        boardingdata:json["boarding_data"]==null?[]: List<BoardingPoint>.from(json["boarding_data"].map((x) => BoardingPoint.fromJson(x))), 
-        droppingdata:json["dropping_data"]==null?[]: List<DroppingPoint>.from(json["dropping_data"].map((x) => DroppingPoint.fromJson(x))),
+        boardingdata:json["boarding"]==null?[]: List<BoardingPoint>.from(json["boarding"].map((x) => BoardingPoint.fromJson(x))), 
+        droppingdata:json["dropping"]==null?[]: List<DroppingPoint>.from(json["dropping"].map((x) => DroppingPoint.fromJson(x))),
         
     );
 //json['id'] != null ? (json['id'] as num?)?.toInt() : null
     Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        // "trip": trip??trip,
+         "trip": trip.toJson(),
         "bus_details": busDetails.toJson(),
         "amenities": List<dynamic>.from(amenities.map((x) => x.toJson())),
         "policies": policies.toJson(),
         "bus_images": List<dynamic>.from(busImages.map((x) => x)),
         "AboutBus": aboutBus.toJson(),
         "Route": route!.toJson(),
-         "boarding_data":List<dynamic>.from(boardingdata.map((x) =>x.toJson())),
-         "dropping_data":List<dynamic>.from(droppingdata.map((x) => x.toJson())),
+         "boarding":List<dynamic>.from(boardingdata.map((x) =>x.toJson())),
+         "dropping":List<dynamic>.from(droppingdata.map((x) => x.toJson())),
         "restStop": List<dynamic>.from(restStop.map((x) => x.toJson())),
     };
 }
@@ -376,7 +376,7 @@ class Trip {
     String conductorId;
     DateTime startTime;
     DateTime endTime;
-    String dayOff;
+
     DateTime createdAt;
     DateTime updatedAt;
 
@@ -388,7 +388,7 @@ class Trip {
         required this.conductorId,
         required this.startTime,
         required this.endTime,
-        required this.dayOff,
+
         required this.createdAt,
         required this.updatedAt,
     });
@@ -401,7 +401,7 @@ class Trip {
         conductorId: json["conductor_id"],
         startTime: DateTime.parse(json["start_time"]),
         endTime: DateTime.parse(json["end_time"]),
-        dayOff: json["day_off"],
+    
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
     );
@@ -414,7 +414,7 @@ class Trip {
         "conductor_id": conductorId,
         "start_time": startTime.toIso8601String(),
         "end_time": endTime.toIso8601String(),
-        "day_off": dayOff,
+    
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
     };

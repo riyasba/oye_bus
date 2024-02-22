@@ -108,16 +108,16 @@ class ProfileView extends GetView<ProfileController> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(top: 1),
+                              padding: const EdgeInsets.only(top: 0),
                               child: Container(
-                                  height: 100,
-                                  width: 100,
+                                  height: 90,
+                                  width: 90,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50)),
                                   child: Image.asset(
                                     "assets/images/fi_2102647.png",
                                   )
-                    
+                                            
                                   //  profileController.isLoading.isTrue
                                   //     ? const Center(
                                   //         child: CircularProgressIndicator(),
@@ -134,12 +134,12 @@ class ProfileView extends GetView<ProfileController> {
                                   //                     .user
                                   //                     .profilePicture ==
                                   //                 null
-                    
+                                            
                                   //             ?
                                   //              Image.asset(
                                   //                 "assets/icons/profil_img.jpeg",
                                   //               )
-                    
+                                            
                                   //             : Image.network(
                                   //                 profileController
                                   //                     .otherUserProfileData
@@ -155,28 +155,31 @@ class ProfileView extends GetView<ProfileController> {
                         ksizedbox20,
                      Padding(
                        padding: const EdgeInsets.all(10.0),
-                       child: TextField(
-                        readOnly: true,
-                        controller: nameController,
-                              autofocus: true,
-                               decoration: InputDecoration(
-                                 focusedBorder: OutlineInputBorder(
-                                   borderRadius: BorderRadius.circular(10),
-                                   borderSide:
-                                       BorderSide(color: kblack, width: 2.0), // Border when focused
+                       child: Container(
+                        height: 54,
+                         child: TextField(
+                          readOnly: true,
+                          controller: nameController,
+                                autofocus: true,
+                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide:
+                                         BorderSide(color: kblack, width: 2.0), // Border when focused
+                                   ),
+                                   enabledBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide: BorderSide(
+                                         color: kblack, width: 2.0), // Border when not focused
+                                   ),
+                                  
+                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                   labelText: 'Name', // Changed label text
+                                   labelStyle: TextStyle(
+                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                   // Text style for the label
                                  ),
-                                 enabledBorder: OutlineInputBorder(
-                                   borderRadius: BorderRadius.circular(10),
-                                   borderSide: BorderSide(
-                                       color: kblack, width: 2.0), // Border when not focused
-                                 ),
-                                
-                                 hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
-                                 labelText: 'Name', // Changed label text
-                                 labelStyle: TextStyle(
-                                     color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
-                                 // Text style for the label
-                               ),
+                         ),
                        ),
                      ),
                         // FormfieldView(
@@ -185,68 +188,134 @@ class ProfileView extends GetView<ProfileController> {
                         //   labeltext: 'Name', 
                         //   controller:profileController.nameController,
                         // ),
-                        FormfieldView(
-                          readOnly: false,
-                          text: 'age',
-                          labeltext: 'Age', 
-                          controller: ageController,
+                        
+                        SizedBox(
+                          height: 10,
                         ),
-                        FormfieldView(
-                          readOnly: false,
-                          text: 'Male',
-                          labeltext: 'Gender', 
-                          controller: genderController,
+                       Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: Container(
+                        height: 54,
+                         child: TextField(
+                          readOnly: true,
+                          controller: ageController,
+                                autofocus: true,
+                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide:
+                                         BorderSide(color: kblack, width: 2.0), // Border when focused
+                                   ),
+                                   enabledBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide: BorderSide(
+                                         color: kblack, width: 2.0), // Border when not focused
+                                   ),
+                                  
+                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                   labelText: 'Age', // Changed label text
+                                   labelStyle: TextStyle(
+                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                   // Text style for the label
+                                 ),
+                         ),
+                       ),
+                     ),
+                     SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: Container(
+                        height: 54,
+                        
+                         child: TextField(
+                          readOnly: true,
+                          controller:genderController,
+                                autofocus: true,
+                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide:
+                                         BorderSide(color: kblack, width: 2.0), // Border when focused
+                                   ),
+                                   enabledBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide: BorderSide(
+                                         color: kblack, width: 2.0), // Border when not focused
+                                   ),
+                                  
+                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                   labelText: 'Gender', // Changed label text
+                                   labelStyle: TextStyle(
+                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                   // Text style for the label
+                                 ),
+                         ),
+                       ),
+                     ),
+                     SizedBox(
+                          height: 10,
                         ),
                          Padding(
                        padding: const EdgeInsets.all(10.0),
-                       child: TextField(
-                        readOnly: true,
-                        controller: mobileController,
-                        autofocus: true,
-                               decoration: InputDecoration(
-                                 focusedBorder: OutlineInputBorder(
-                                   borderRadius: BorderRadius.circular(10),
-                                   borderSide:
-                                       BorderSide(color: kblack, width: 2.0), // Border when focused
+                       child: Container(
+                        height: 53,
+                         child: TextField(
+                          readOnly: true,
+                          controller: mobileController,
+                          autofocus: true,
+                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide:
+                                         BorderSide(color: kblack, width: 2.0), // Border when focused
+                                   ),
+                                   enabledBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide: BorderSide(
+                                         color: kblack, width: 2.0), // Border when not focused
+                                   ),
+                                  
+                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                   labelText: 'Mobile Number', // Changed label text
+                                   labelStyle: TextStyle(
+                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                   // Text style for the label
                                  ),
-                                 enabledBorder: OutlineInputBorder(
-                                   borderRadius: BorderRadius.circular(10),
-                                   borderSide: BorderSide(
-                                       color: kblack, width: 2.0), // Border when not focused
-                                 ),
-                                
-                                 hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
-                                 labelText: 'Mobile Number', // Changed label text
-                                 labelStyle: TextStyle(
-                                     color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
-                                 // Text style for the label
-                               ),
+                         ),
                        ),
                      ), 
+                     SizedBox(
+                          height: 10,
+                        ),
                           Padding(
                        padding: const EdgeInsets.all(10.0),
-                       child: TextField(
-                        readOnly: true,
-                        controller: emailController,
-                              autofocus: true,
-                               decoration: InputDecoration(
-                                 focusedBorder: OutlineInputBorder(
-                                   borderRadius: BorderRadius.circular(10),
-                                   borderSide:
-                                       BorderSide(color: kblack, width: 2.0), // Border when focused
+                       child: Container(
+                        height: 54,
+                         child: TextField(
+                          readOnly: true,
+                          controller: emailController,
+                                autofocus: true,
+                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide:
+                                         BorderSide(color: kblack, width: 2.0), // Border when focused
+                                   ),
+                                   enabledBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide: BorderSide(
+                                         color: kblack, width: 2.0), // Border when not focused
+                                   ),
+                                  
+                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                   labelText: 'Email', // Changed label text
+                                   labelStyle: TextStyle(
+                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                   // Text style for the label
                                  ),
-                                 enabledBorder: OutlineInputBorder(
-                                   borderRadius: BorderRadius.circular(10),
-                                   borderSide: BorderSide(
-                                       color: kblack, width: 2.0), // Border when not focused
-                                 ),
-                                
-                                 hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
-                                 labelText: 'Email', // Changed label text
-                                 labelStyle: TextStyle(
-                                     color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
-                                 // Text style for the label
-                               ),
+                         ),
                        ),
                      ),
                       ],

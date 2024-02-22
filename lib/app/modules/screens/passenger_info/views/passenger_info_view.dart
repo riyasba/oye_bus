@@ -6,16 +6,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/models/booking_model/add_booking_model.dart';
+import 'package:oye_bus/app/data/api_service/models/booking_model/booking_history_model.dart';
+import 'package:oye_bus/app/data/api_service/models/get_bus_seat_layout_model.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
-import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/reviewbookingdetails_view.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/widgets/dotted_line_small.dart';
 import 'package:oye_bus/app/modules/screens/settingsscreens/copassengers/controllers/copassengers_controller.dart';
 
 import '../controllers/passenger_info_controller.dart';
 
 class PassengerInfoView extends GetView<PassengerInfoController> {
-   PassengerInfoView({Key? key}) : super(key: key);
+   
+   PassengerInfoView({Key? key,}) : super(key: key);
   final copassangersController = Get.find<CopassengersController>();
       final boadingdroppingController = Get.find<BusseatmapingController>();
       final passengerController = Get.find<PassengerInfoController>();
@@ -29,6 +31,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
         String actualTime = "${temptime[0]}:${temptime[1]}";
         return actualTime;
        }
+      
   Widget build(BuildContext context) {
     Get.lazyPut(() => 
     PassengerInfoController());
@@ -70,7 +73,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                             ),
                            buslistController.busdata.isNotEmpty? Container(
                           
-                             child: Text(buslistController.busdata.first.route.busDetails.busName,
+                             child: Text(buslistController.busdata.first.busName.toString(),
                              style: smalbalckfont.copyWith(
                                 fontSize: 16.sp
                               ),),
@@ -113,7 +116,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                                       width: 125.w,
                                         child: RichText(
                                           text: TextSpan(
-                                            text:getActualTime(buslistController.busdata.first.route.arrivalTime),
+                                            text:getActualTime(buslistController.busdata.first.route!.arrivalTime.toString()),
                                           style: primaryFont.copyWith(
                                             color: Colors.black45,
                                             fontSize: 14.sp),
@@ -167,7 +170,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                                         child: RichText(
                                           
                                           text: TextSpan(text: 
-                                          getActualTime(buslistController.busdata.first.route.departureTime),
+                                          getActualTime(buslistController.busdata.first.route!.departureTime.toString()),
                                           style: primaryFont.copyWith(
                                               color: Colors.black45,
                                               fontSize: 14.sp),
@@ -1057,25 +1060,42 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
       bottomNavigationBar: InkWell(
         onTap: (){
           print('booking number');
+          print(boadingdroppingController.boardingpointdata);
+          print(boadingdroppingController.droppointdata);
+          print(buslistController.selectedBookingDate);
+          print(controller.nameController);
+          // print(boadingdroppingController.routedata!.price);
+          print(boadingdroppingController.busDetailsdata!.id);
+          //print(boadingdroppingController.tripdata!.routeId);
+          print(boadingdroppingController.selectedSeats);
+          print(  boadingdroppingController.selectedSeats.first.id);
+        
+
           print(controller.mobileController);
           AddBookingModel addBookingModel = 
           AddBookingModel(
             age:controller.ageController.text, 
-            boardingPoint: boadingdroppingController.boardingpointdata.first.location, 
+            boardingPoint:boadingdroppingController.boardingpointdata.isEmpty?'': 
+            boadingdroppingController.boardingpointdata.first.location, 
             date: buslistController.selectedBookingDate.value, 
             droppingPoint: boadingdroppingController.droppointdata.first.location, 
             emailId: controller.emailController.text, 
             gender: controller.genderController.text, 
             mobile: controller.mobileController.text, 
             passengerName: controller.nameController.text, 
-            perticketPrice: boadingdroppingController.routedata!.price, 
+            perticketPrice: boadingdroppingController.selectedSeats.isEmpty?'':
+            boadingdroppingController.selectedSeats.first.seatPrice, 
             primaryCustomerName: controller.nameController.text, 
-            busid: boadingdroppingController.tripdata!.busId, 
-            routeid: boadingdroppingController.tripdata!.routeId, 
-            seatid: "seatId", 
-            seatmapid: "", 
-            tripid: boadingdroppingController.tripdata!.id.toString(), 
-            vendorid:boadingdroppingController.busDetailsdata!.vendorId, 
+            busid:boadingdroppingController.busDetailsdata==null?"": 
+            boadingdroppingController.busDetailsdata!.id.toString(), 
+            routeid:boadingdroppingController.routedata==null?'':
+            boadingdroppingController.routedata!.id.toString(), 
+            seatid: boadingdroppingController.selectedSeats, 
+            seatmapid:boadingdroppingController.selectedSeats.isEmpty?'':
+            boadingdroppingController.selectedSeats.first.id.toString(), 
+            tripid: boadingdroppingController.tripdata == null ? "": boadingdroppingController.tripdata!.id.toString(), 
+            vendorid: boadingdroppingController.busDetailsdata==null?"": 
+            boadingdroppingController.busDetailsdata!.vendorId, 
             iswomenseat: "",
              ) ;
             passengerController.addbooking(addBookingModel: addBookingModel);              

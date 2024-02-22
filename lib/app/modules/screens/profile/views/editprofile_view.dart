@@ -30,8 +30,10 @@ class EditprofileView extends GetView {
       nameController.text = profileController.profiledata.first.name;
       emailController.text = profileController.profiledata.first.email;
       mobileController.text = profileController.profiledata.first.mobile;
-      emailController.text = profileController.profiledata.first.email;
+      ageController.text = profileController.profiledata.first.age.toString();
+      genderController.text = profileController.profiledata.first.gender;
 
+      
       
        }
       
@@ -119,37 +121,163 @@ class EditprofileView extends GetView {
                           ],
                         ),
                         ksizedbox20,
-                        FormfieldView(
-
-                          readOnly: false,
-                          text: '',
-                          labeltext: 'Name', 
+                           Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: Container(
+                        height: 54,
+                         child: TextField(
+                          
                           controller: nameController,
-                        ),
-                        FormfieldView(
-                          readOnly: false,
-                          text: '23',
-                          labeltext: 'Age', 
+                                autofocus: true,
+                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide:
+                                         BorderSide(color: kblack, width: 2.0), // Border when focused
+                                   ),
+                                   enabledBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide: BorderSide(
+                                         color: kblack, width: 2.0), // Border when not focused
+                                   ),
+                                  
+                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                   labelText: 'Name', // Changed label text
+                                   labelStyle: TextStyle(
+                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                   // Text style for the label
+                                 ),
+                         ),
+                       ),
+                     ),
+                     SizedBox(
+                      height: 7,
+                     ),
+                          Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: Container(
+                        height: 54,
+                         child: TextField(
+                        
                           controller: ageController,
-                        ),
-                        FormfieldView(
-                          readOnly: false,
-                          text: 'Male',
-                          labeltext: 'Gender', 
+                                autofocus: true,
+                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide:
+                                         BorderSide(color: kblack, width: 2.0), // Border when focused
+                                   ),
+                                   enabledBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide: BorderSide(
+                                         color: kblack, width: 2.0), // Border when not focused
+                                   ),
+                                  
+                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                   labelText: 'Age', // Changed label text
+                                   labelStyle: TextStyle(
+                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                   // Text style for the label
+                                 ),
+                         ),
+                       ),
+                     ),
+                     SizedBox(
+                      height: 7,
+                     ),
+                           Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: Container(
+                        height: 54,
+                         child: TextField(
+                        
                           controller: genderController,
-                        ),
-                        FormfieldView(
-                          readOnly: false,
-                          text:'',
-                          labeltext: 'Mobile Number', 
+                                autofocus: true,
+                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide:
+                                         BorderSide(color: kblack, width: 2.0), // Border when focused
+                                   ),
+                                   enabledBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide: BorderSide(
+                                         color: kblack, width: 2.0), // Border when not focused
+                                   ),
+                                  
+                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                   labelText: 'Gender', // Changed label text
+                                   labelStyle: TextStyle(
+                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                   // Text style for the label
+                                 ),
+                         ),
+                       ),
+                     ),
+                     SizedBox(
+                      height: 7,
+                     ),
+                            Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: Container(
+                        height: 54,
+                         child: TextField(
+                        
                           controller: mobileController,
-                        ),
-                        FormfieldView(
-                          readOnly: false,
-                          text: '',
-                          labeltext: 'Email ID', 
+                                autofocus: true,
+                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide:
+                                         BorderSide(color: kblack, width: 2.0), // Border when focused
+                                   ),
+                                   enabledBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide: BorderSide(
+                                         color: kblack, width: 2.0), // Border when not focused
+                                   ),
+                                  
+                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                   labelText: 'Mobile Number', // Changed label text
+                                   labelStyle: TextStyle(
+                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                   // Text style for the label
+                                 ),
+                         ),
+                       ),
+                     ),
+                     SizedBox(
+                      height: 7,
+                     ),
+                            Padding(
+                       padding: const EdgeInsets.all(10.0),
+                       child: Container(
+                        height: 54,
+                         child: TextField(
+                          
                           controller: emailController,
-                        ),
+                                autofocus: true,
+                                 decoration: InputDecoration(
+                                   focusedBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide:
+                                         BorderSide(color: kblack, width: 2.0), // Border when focused
+                                   ),
+                                   enabledBorder: OutlineInputBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                     borderSide: BorderSide(
+                                         color: kblack, width: 2.0), // Border when not focused
+                                   ),
+                                  
+                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                                   labelText: 'Email', // Changed label text
+                                   labelStyle: TextStyle(
+                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                                   // Text style for the label
+                                 ),
+                         ),
+                       ),
+                     ),
                       ],
                     );
                   }
@@ -166,7 +294,9 @@ class EditprofileView extends GetView {
                     ProfileUpdateModel( 
                     email: emailController.text,  
                     mobilenumber: mobileController.text, 
-                    name: nameController.text);
+                    name: nameController.text,
+                     age: ageController.text, 
+                     gender: genderController.text);
                     profileController.updateprofile(profileUpdateModel: profileUpdateModel);
                     profileController.isEdited(true);
                     profileController.update();

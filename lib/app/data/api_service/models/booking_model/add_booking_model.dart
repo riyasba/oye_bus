@@ -15,7 +15,7 @@ class AddBookingModel{
   String tripid;
   String routeid;
   String busid;
-  String seatid; 
+  List seatid; 
   String iswomenseat; 
 
   AddBookingModel({

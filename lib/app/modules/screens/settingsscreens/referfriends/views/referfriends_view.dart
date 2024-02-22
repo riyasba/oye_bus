@@ -45,7 +45,7 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                   Text(
                     'When your friend completes his / her first trip with use',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 18.5.sp, fontWeight: FontWeight.w500),
                   ),
                   ksizedbox20,
                   DottedBorder(
@@ -60,15 +60,15 @@ class ReferfriendsView extends GetView<ReferfriendsController> {
                           Text(
                             'Your Code :',
                             style: TextStyle(
-                                fontWeight: FontWeight.w600, fontSize: 20),
+                                fontWeight: FontWeight.w600, fontSize: 18),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left:1),
+                            padding: const EdgeInsets.only(left:2),
                             child: Text(
                               'OYE32BUS',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 20.sp,
+                                fontSize: 18.sp,
                                 color: kred,
                               ),
                             ),
