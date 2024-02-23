@@ -64,7 +64,7 @@ class BusData {
     DateTime? createdAt;
     DateTime? updatedAt;
     String? isDeleted;
-    Trip? trip;
+    Trips? trip;
     Route? route;
 
     BusData({
@@ -135,7 +135,7 @@ class BusData {
         createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
         updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
         isDeleted: json["is_deleted"],
-        trip: json["trip"] == null ? null : Trip.fromJson(json["trip"]),
+        trip: json["trips"] == null ? null : Trips.fromJson(json["trips"]),
         route: json["route"] == null ? null : Route.fromJson(json["route"]),
     );
 
@@ -171,7 +171,7 @@ class BusData {
         "created_at": createdAt?.toIso8601String(),
         "updated_at": updatedAt?.toIso8601String(),
         "is_deleted": isDeleted,
-        "trip": trip?.toJson(),
+        "trips": trip?.toJson(),
         "route": route?.toJson(),
     };
 }
@@ -284,7 +284,7 @@ final seatLayoutValues = EnumValues({
     "5*10": SeatLayout.THE_510
 });
 
-class Trip {
+class Trips {
     int? id;
     String? busId;
     String? driverId;
@@ -296,7 +296,7 @@ class Trip {
     DateTime? createdAt;
     DateTime? updatedAt;
 
-    Trip({
+    Trips({
         this.id,
         this.busId,
         this.driverId,
@@ -309,7 +309,7 @@ class Trip {
         this.updatedAt,
     });
 
-    factory Trip.fromJson(Map<String, dynamic> json) => Trip(
+    factory Trips.fromJson(Map<String, dynamic> json) => Trips(
         id: json["id"],
         busId: json["bus_id"],
         driverId: json["driver_id"],

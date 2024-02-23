@@ -1083,7 +1083,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
             date: buslistController.selectedBookingDate.value, 
             droppingPoint: boadingdroppingController.droppointdata.first.location, 
             emailId: controller.emailController.text, 
-            gender: controller.genderController.text, 
+            gender: controller.gender.value, 
             mobile: controller.mobileController.text, 
             passengerName: controller.nameController.text, 
             perticketPrice: boadingdroppingController.selectedSeats.isEmpty?'':

@@ -109,9 +109,9 @@ final seatValues = EnumValues({
 });
 
 class BusData {
-    BusName busName;
-    BusRegisterNumber busRegisterNumber;
-    BusType busType;
+    String busName;
+    String busRegisterNumber;
+    String busType;
     String contactNumber;
 
     BusData({
@@ -122,9 +122,9 @@ class BusData {
     });
 
     factory BusData.fromJson(Map<String, dynamic> json) => BusData(
-        busName: busNameValues.map[json["bus_name"]]!,
-        busRegisterNumber: busRegisterNumberValues.map[json["bus_register_number"]]!,
-        busType: busTypeValues.map[json["bus_type"]]!,
+        busName:json["bus_name"],
+        busRegisterNumber: json["bus_register_number"],
+        busType:json["bus_type"],
         contactNumber: json["contact_number"],
     );
 
