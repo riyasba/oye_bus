@@ -372,11 +372,17 @@ class BusseatmapingController extends GetxController {
     String tempLayout = "";
     rowDataList.forEach((element) {
       tempLayout += element.layout;
-      // print(element.layout);
+      print("${element.seatNo} - ${element.layoutId}");
     });
     print(tempLayout);
 
-    if (tempLayout.length > 5) {
+   if(tempLayout == "11101100011"){
+  print("------------->> Seat Id ==> ");
+  // print(rowDataList[5].seatId);
+  var tempList = [rowDataList[0],emptySeat,rowDataList[1],rowDataList[2],rowDataList[4],rowDataList[3],rowDataList[5]];
+  _row = tempList;
+ } else if (tempLayout.length > 5) {
+    
       var tempList = [
         rowDataList[0],
         emptySeat,
@@ -387,7 +393,6 @@ class BusseatmapingController extends GetxController {
         rowDataList[3],
         rowDataList[4]
       ];
-
       _row = swapSeatList(tempList);
     } else {
       for (var i = 0; i < rowDataList.length; i++) {
@@ -469,7 +474,7 @@ class BusseatmapingController extends GetxController {
       }
     }
 
-    rowData.sort((a, b) => a.layoutId.compareTo(b.layoutId));
+    rowData.sort((a, b) => int.parse(a.layoutId).compareTo(int.parse(b.layoutId)));
 
     //  print("Lower--------------->>Row $rowNumber length ${rowData.length}");
 
@@ -487,7 +492,7 @@ class BusseatmapingController extends GetxController {
       }
     }
 
-    rowData.sort((a, b) => a.layoutId.compareTo(b.layoutId));
+    rowData.sort((a, b) => int.parse(a.layoutId).compareTo(int.parse(b.layoutId)));
 //  print("Upper--------------->>Row $rowNumber length ${rowData.length}");
     return rowData;
   }
