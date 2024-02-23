@@ -1,5 +1,6 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
@@ -30,8 +31,8 @@ class BookingCancelledWidget extends GetView<BookinghistoryController> {
                                     itemCount: bookingCancelledlistController.bookingcancelledlistdata.length,
                                     itemBuilder: (context, index) {
                                       print('booking date');
-                                      print(bookingCancelledlistController.bookinghistorydata[index].bookingData.date);
-                                      return Padding(
+                                      //print(bookingCancelledlistController.bookinghistorydata[index].bookingData.date);
+                                      return bookingCancelledlistController.bookingcancelledlistdata.isNotEmpty? Padding(
                                         padding: const EdgeInsets.only(
                                             top: 20, left: 10, right: 10),
                                         child: Container(
@@ -122,7 +123,28 @@ class BookingCancelledWidget extends GetView<BookinghistoryController> {
                                             ],
                                           ),
                                         ),
-                                      );
+                                      ):Center(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                     SizedBox(
+                      height: 200,
+                     ),
+                        Image.asset(
+                          'assets/images/nodatabookingimage.jpg',
+                          height: 220,
+                          fit: BoxFit.fitHeight,
+                        ),
+                        ksizedbox20,
+                        Text(
+                          'No Cancelled Booking ',
+                          style: TextStyle(
+                             
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.sp),
+                        )
+                      ]),
+                );;
                                     }),
                               );
           }

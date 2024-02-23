@@ -9,68 +9,82 @@ BookingHistoryModel bookingHistoryModelFromJson(String str) => BookingHistoryMod
 String bookingHistoryModelToJson(BookingHistoryModel data) => json.encode(data.toJson());
 
 class BookingHistoryModel {
-    bool status;
+    bool? status;
     List<BookingDetail> bookingDetails;
 
     BookingHistoryModel({
-        required this.status,
+        this.status,
         required this.bookingDetails,
     });
 
     factory BookingHistoryModel.fromJson(Map<String, dynamic> json) => BookingHistoryModel(
         status: json["status"],
-        bookingDetails: List<BookingDetail>.from(json["booking_details"].map((x) => BookingDetail.fromJson(x))),
+        bookingDetails: json["booking_details"] == null ? [] : List<BookingDetail>.from(json["booking_details"]!.map((x) => BookingDetail.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
         "status": status,
-        "booking_details": List<dynamic>.from(bookingDetails.map((x) => x.toJson())),
+        "booking_details": bookingDetails == null ? [] : List<dynamic>.from(bookingDetails!.map((x) => x.toJson())),
     };
 }
 
 class BookingDetail {
-    BookingData bookingData;
-    BusData busData;
-    BusRoute busRoute;
+    BookingData? bookingData;
+    BusData? busData;
+    BusRoute? busRoute;
 
     BookingDetail({
-        required this.bookingData,
-        required this.busData,
-        required this.busRoute,
+        this.bookingData,
+        this.busData,
+        this.busRoute,
     });
 
     factory BookingDetail.fromJson(Map<String, dynamic> json) => BookingDetail(
-        bookingData: BookingData.fromJson(json["booking_data"]),
-        busData: BusData.fromJson(json["bus_data"]),
-        busRoute: BusRoute.fromJson(json["bus_route"]),
+        bookingData: json["booking_data"] == null ? null : BookingData.fromJson(json["booking_data"]),
+        busData: json["bus_data"] == null ? null : BusData.fromJson(json["bus_data"]),
+        busRoute: json["bus_route"] == null ? null : BusRoute.fromJson(json["bus_route"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "booking_data": bookingData.toJson(),
-        "bus_data": busData.toJson(),
-        "bus_route": busRoute.toJson(),
+        "booking_data": bookingData?.toJson(),
+        "bus_data": busData?.toJson(),
+        "bus_route": busRoute?.toJson(),
     };
 }
 
 class BookingData {
-    int bookingId;
-    String perTicketPrice;
-    String totalPrice;
-    String date;
-    String transactionId;
-    String boarding;
-    String dropping;
-    List<Seat> seats;
+    int? bookingId;
+    String? perTicketPrice;
+    String? totalPrice;
+    String? date;
+    String? transactionId;
+    String? boarding;
+    String? dropping;
+    String boardingtime;
+    String droppingtime;
+    String boardingcityname;
+    String droppingcityname;
+    List<String>? seats;
+    List<Passenger>? passenger;
+    String? isCancelled;
+    dynamic cancellationCharges;
 
     BookingData({
-        required this.bookingId,
-        required this.perTicketPrice,
-        required this.totalPrice,
-        required this.date,
-        required this.transactionId,
-        required this.boarding,
-        required this.dropping,
-        required this.seats,
+        this.bookingId,
+        this.perTicketPrice,
+        this.totalPrice,
+        this.date,
+        this.transactionId,
+        this.boarding,
+        this.dropping,
+        this.seats,
+        this.passenger,
+        this.isCancelled,
+        this.cancellationCharges,
+        required this.boardingcityname,
+        required this.boardingtime,
+        required this.droppingcityname,
+        required this.droppingtime,
     });
 
     factory BookingData.fromJson(Map<String, dynamic> json) => BookingData(
@@ -81,7 +95,14 @@ class BookingData {
         transactionId: json["transaction_id"],
         boarding: json["boarding"],
         dropping: json["dropping"],
-        seats: List<Seat>.from(json["seats"].map((x) => seatValues.map[x]!)),
+        seats: json["seats"] == null ? [] : List<String>.from(json["seats"]!.map((x) => x)),
+        passenger: json["passenger"] == null ? [] : List<Passenger>.from(json["passenger"]!.map((x) => Passenger.fromJson(x))),
+        isCancelled: json["is_cancelled"],
+        cancellationCharges: json["cancellation_charges"], 
+        boardingcityname: json["boarding_city_name"], 
+        boardingtime: json["boarding_time"], 
+        droppingcityname: json["dropping_city_name"], 
+        droppingtime: json["dropping_time"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -92,96 +113,91 @@ class BookingData {
         "transaction_id": transactionId,
         "boarding": boarding,
         "dropping": dropping,
-        "seats": List<dynamic>.from(seats.map((x) => seatValues.reverse[x])),
+        "seats": seats == null ? [] : List<dynamic>.from(seats!.map((x) => x)),
+        "passenger": passenger == null ? [] : List<dynamic>.from(passenger!.map((x) => x.toJson())),
+        "is_cancelled": isCancelled,
+        "cancellation_charges": cancellationCharges, 
+        "boarding_city_name":boardingcityname, 
+        "boarding_time":boardingtime, 
+        "dropping_city_name":droppingcityname, 
+        "dropping_time":droppingtime,
     };
 }
 
+class Passenger {
+    String? name;
+    String? age;
+    String? gender;
 
+    Passenger({
+        this.name,
+        this.age,
+        this.gender,
+    });
 
-enum Seat {
-    A4,
-    B4
+    factory Passenger.fromJson(Map<String, dynamic> json) => Passenger(
+        name: json["name"],
+        age: json["age"],
+        gender: json["gender"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "name": name,
+        "age": age,
+        "gender": gender,
+    };
 }
 
-final seatValues = EnumValues({
-    "A4": Seat.A4,
-    "B4": Seat.B4
-});
-
 class BusData {
-    String busName;
-    String busRegisterNumber;
-    String busType;
-    String contactNumber;
+    String? busName;
+    String? busRegisterNumber;
+    String? busType;
+    String? contactNumber;
 
     BusData({
-        required this.busName,
-        required this.busRegisterNumber,
-        required this.busType,
-        required this.contactNumber,
+        this.busName,
+        this.busRegisterNumber,
+        this.busType,
+        this.contactNumber,
     });
 
     factory BusData.fromJson(Map<String, dynamic> json) => BusData(
-        busName:json["bus_name"],
+        busName: json["bus_name"],
         busRegisterNumber: json["bus_register_number"],
-        busType:json["bus_type"],
+        busType: json["bus_type"],
         contactNumber: json["contact_number"],
     );
 
     Map<String, dynamic> toJson() => {
-        "bus_name": busNameValues.reverse[busName],
-        "bus_register_number": busRegisterNumberValues.reverse[busRegisterNumber],
-        "bus_type": busTypeValues.reverse[busType],
+        "bus_name": busName,
+        "bus_register_number": busRegisterNumber,
+        "bus_type": busType,
         "contact_number": contactNumber,
     };
 }
 
-enum BusName {
-    BUS_1
-}
-
-final busNameValues = EnumValues({
-    "Bus 1": BusName.BUS_1
-});
-
-enum BusRegisterNumber {
-    REG001
-}
-
-final busRegisterNumberValues = EnumValues({
-    "REG001": BusRegisterNumber.REG001
-});
-
-enum BusType {
-    SEATER
-}
-
-final busTypeValues = EnumValues({
-    "Seater": BusType.SEATER
-});
-
 class BusRoute {
-    StartLocation startLocation;
-    EndLocation endLocation;
-    String departureTime;
-    String arrivalTime;
-    String price;
-    String totalKm;
-    String totalHours;
+    String? startLocation;
+    String? endLocation;
+    String? departureTime;
+    String? arrivalTime;
+    String? price;
+    String? totalKm;
+    String? totalHours;
 
     BusRoute({
-        required this.startLocation,
-        required this.endLocation,
-        required this.departureTime,
-        required this.arrivalTime,
-        required this.price,
-        required this.totalKm,
-        required this.totalHours,
+        this.startLocation,
+        this.endLocation,
+        this.departureTime,
+        this.arrivalTime,
+        this.price,
+        this.totalKm,
+        this.totalHours,
     });
 
     factory BusRoute.fromJson(Map<String, dynamic> json) => BusRoute(
-        startLocation: startLocationValues.map[json["start_location"]]!,
-        endLocation: endLocationValues.map[json["end_location"]]!,
+        startLocation: json["start_location"],
+        endLocation: json["end_location"],
         departureTime: json["departure_time"],
         arrivalTime: json["arrival_time"],
         price: json["price"],
@@ -190,40 +206,12 @@ class BusRoute {
     );
 
     Map<String, dynamic> toJson() => {
-        "start_location": startLocationValues.reverse[startLocation],
-        "end_location": endLocationValues.reverse[endLocation],
+        "start_location": startLocation,
+        "end_location": endLocation,
         "departure_time": departureTime,
         "arrival_time": arrivalTime,
         "price": price,
         "total_km": totalKm,
         "total_hours": totalHours,
     };
-}
-
-enum EndLocation {
-    TRICHY
-}
-
-final endLocationValues = EnumValues({
-    "trichy": EndLocation.TRICHY
-});
-
-enum StartLocation {
-    CHENNAI
-}
-
-final startLocationValues = EnumValues({
-    "chennai": StartLocation.CHENNAI
-});
-
-class EnumValues<T> {
-    Map<String, T> map;
-    late Map<T, String> reverseMap;
-
-    EnumValues(this.map);
-
-    Map<T, String> get reverse {
-        reverseMap = map.map((k, v) => MapEntry(v, k));
-        return reverseMap;
-    }
 }

@@ -185,11 +185,11 @@ class AppPages {
       page: () => SettingsView(),
       binding: SettingsBinding(),
     ),
-    GetPage(
-      name: _Paths.TICKET_DETAILS,
-      page: () => const TicketDetailsView(),
-      binding: TicketDetailsBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.TICKET_DETAILS,
+    //   page: () =>  TicketDetailsView(),
+    //   binding: TicketDetailsBinding(),
+    // ),
     GetPage(
       name: _Paths.BUSTRIP_REVIEWS,
       page: () => const BustripReviewsView(),

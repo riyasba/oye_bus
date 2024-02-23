@@ -6,6 +6,7 @@ import 'package:oye_bus/app/modules/authentication/login/controllers/login_contr
 import 'package:oye_bus/app/modules/authentication/otp/controllers/otp_controller.dart';
 import 'package:oye_bus/app/modules/bottumnavigation/controllers/bottumnavigation_controller.dart';
 import 'package:oye_bus/app/modules/onbording/controllers/onbording_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
 import 'package:oye_bus/app/modules/screens/offers/controllers/offers_controller.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/controllers/passenger_info_controller.dart';
@@ -28,6 +29,7 @@ void main() {
    Get.put(CopassengersController());
    Get.put(PassengerInfoController());
    Get.put(BusSearchController());
+   Get.put(BookinghistoryController());
   // Get.put(dynamic());
   // runApp(DevicePreview(
   //   builder: (context) => MyApp(), // Wrap your app

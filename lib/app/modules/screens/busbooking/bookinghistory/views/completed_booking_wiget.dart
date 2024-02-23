@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
+import 'package:oye_bus/app/modules/screens/ticket_details/views/ticket_details_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -37,7 +38,8 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                 top: 20, left: 10, right: 10),
                                             child: GestureDetector(
                                               onTap: () {
-                                                Get.toNamed(Routes.TICKET_DETAILS);
+                                                Get.to(TicketDetailsView(
+                                                  bookingDetail: bookinghistoryController.bookinghistorydata[index]));
                                               },
                                               child: Container(
                                                 height: 125,
@@ -62,13 +64,13 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                             MainAxisAlignment.spaceBetween,
                                                         children: [
                                                           Text(
-                                                            '${bookinghistoryController.bookinghistorydata[index].bookingData.boarding} → ${bookinghistoryController.bookinghistorydata[index].bookingData.dropping}',
+                                                            '${bookinghistoryController.bookinghistorydata[index].bookingData!.boarding} → ${bookinghistoryController.bookinghistorydata[index].bookingData!.dropping}',
                                                             style: TextStyle(
                                                               fontSize: 17,
                                                               fontWeight: FontWeight.w500,
                                                             ),
                                                           ),
-                                                          Text(bookinghistoryController.bookinghistorydata[index].bookingData.date)
+                                                          Text(bookinghistoryController.bookinghistorydata[index].bookingData!.date.toString())
                                                           //Text('10, Nov 2023')
                                                         ],
                                                       ),
@@ -95,7 +97,7 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                                 MainAxisAlignment
                                                                     .spaceBetween,
                                                             children: [
-                                                              Text('Booking ID: ${bookinghistoryController.bookinghistorydata[index].bookingData.bookingId}'),
+                                                              Text('Booking ID: ${bookinghistoryController.bookinghistorydata[index].bookingData!.bookingId}'),
                                                               Container(
                                                                 height: 27,
                                                                 width: 100,
