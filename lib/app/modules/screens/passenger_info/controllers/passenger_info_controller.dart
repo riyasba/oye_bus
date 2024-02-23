@@ -14,6 +14,8 @@ class PassengerInfoController extends GetxController {
   final count = 0.obs;
     RxBool isLoading = false.obs;
   RxBool ischeckvalue = false.obs;
+   RxString gender=''.obs;
+  
   
   @override
   void onInit() {
@@ -67,16 +69,19 @@ class PassengerInfoController extends GetxController {
       }
    }
 
+int blockedid =0;
    SeatBlockApiService seatblockapiservice = 
    SeatBlockApiService();
-
+    
    seatblock({required SeatBlockedData busSeatBlockedModel})async{
     isLoading(true);
+    
     dio.Response<dynamic> response = await seatblockapiservice.seatblockapi(
       seatBlockedData:busSeatBlockedModel );
-
+      
       isLoading(false);
       if(response.data['success']==true){
+        blockedid =response.data['data']['id'];
              Get.to(PickanddropView());
         // Get.rawSnackbar(
         //   backgroundColor: Colors.green,
@@ -84,6 +89,8 @@ class PassengerInfoController extends GetxController {
         //     response.data['message'],
         //     style: primaryFont.copyWith(color: Colors.white),
         //   ));
+        print(':::::::bloack seat id');
+        print(response.data);
       }
    }
 

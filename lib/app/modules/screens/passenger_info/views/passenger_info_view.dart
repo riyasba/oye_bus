@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/seat_block_api_service.dart';
 import 'package:oye_bus/app/data/api_service/models/booking_model/add_booking_model.dart';
 import 'package:oye_bus/app/data/api_service/models/booking_model/booking_history_model.dart';
 import 'package:oye_bus/app/data/api_service/models/get_bus_seat_layout_model.dart';
@@ -21,7 +22,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
   final copassangersController = Get.find<CopassengersController>();
       final boadingdroppingController = Get.find<BusseatmapingController>();
       final passengerController = Get.find<PassengerInfoController>();
-      //final homeController = Get.find<HomeController>();
+
        final buslistController = Get.find<HomeController>();
 
      
@@ -356,20 +357,21 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Passenger 01",style: smalbalckfont.copyWith(
+                                  Text("Passenger ${boadingdroppingController.selectedSeats.length}",style: smalbalckfont.copyWith(
                                     fontSize: 16,
                                   ),),
-                                  Text("Seat No: U10, Upper Deck",style: primaryFont.copyWith(
+                                  Text("Seat No:${
+                                    boadingdroppingController.selectedSeats.isEmpty?'': boadingdroppingController.selectedSeats.first.seatNo} , ${buslistController.busdata.first.busType}",style: primaryFont.copyWith(
                                     fontSize: 11
                                   ),)
                                 ],
                               ),
-                              Text("Reserved for Male",style: primaryFont.copyWith(
-                                color: kred,
-                                fontSize: 11
-                              ),)
+                              // Text( boadingdroppingController.selectedSeats.first.ladiesSeat.isNotEmpty?" Reserved for Female":"Reserved for Male",style: primaryFont.copyWith(
+                              //   color: kred,
+                              //   fontSize: 11
+                              // ),)
           
-                            ],
+                            ]
                           ),
                           //email - phone number field
                          const  SizedBox(
@@ -411,55 +413,56 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                         const SizedBox(
                             height: 10,
                           ),
-                            TextField(
-                              controller: controller.genderController,
-                            style: smalbalckfont.copyWith(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600
-                            ),
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              hintText:"Enter gender",
-                              labelText: "Gender",
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8)
-                            ),
-                          ),
-                           const SizedBox(
-                            height: 10,
-                          ),
-                            TextField(
-                            style: smalbalckfont.copyWith(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600
-                            ),
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),   
-                              ),
-                              hintText:"Enter residence",
-                              labelText: "City",
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8)
-                            ),
-                          ),
-                           const SizedBox(
-                            height: 10,
-                          ),
-                            TextField(
-                            style: smalbalckfont.copyWith(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600
-                            ),
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),   
-                              ),
-                              hintText:"Enter state",
-                              labelText: "State",
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8)
-                            ),
-                          ),
+                           GetBuilder<PassengerInfoController>(
+                             builder: (_) {
+                               return Row(
+                                 children: [
+                                   Expanded(
+                                     child: Container(
+                                       child: RadioListTile<String>(
+                                                 title: Text("Male"),
+                                                 value: "male", 
+                                                 groupValue:controller.gender.value, 
+                                                 onChanged: (String? value){
+                                                       controller.gender(value);
+                                                   controller.update();
+                                                 },
+                                             ),
+                                     ),
+                                   ),
+                                          Expanded(
+                                            child: Container(
+                                              child: RadioListTile<String>(
+                                                 title: Text("Female"),
+                                                 value: "female", 
+                                                 groupValue:controller.gender.value, 
+                                                 onChanged: (String? value){
+                                                       controller.gender(value);
+                                                   controller.update();
+                                                 },
+                                                                                   ),
+                                            ),
+                                          ),
+                                 ],
+                               );
+                             }
+                           ),
+                          //   TextField(
+                          //     controller: controller.genderController,
+                          //   style: smalbalckfont.copyWith(
+                          //     fontSize: 14,
+                          //     fontWeight: FontWeight.w600
+                          //   ),
+                          //   decoration: InputDecoration(
+                          //     border: OutlineInputBorder(
+                          //       borderRadius: BorderRadius.circular(10),
+                          //     ),
+                          //     hintText:"Enter gender",
+                          //     labelText: "Gender",
+                          //     contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8)
+                          //   ),
+                          // ),
+                        
                         ],
                       ),
                     ),
@@ -1091,12 +1094,16 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
             routeid:boadingdroppingController.routedata==null?'':
             boadingdroppingController.routedata!.id.toString(), 
             seatid: boadingdroppingController.selectedSeats, 
-            seatmapid:boadingdroppingController.selectedSeats.isEmpty?'':
-            boadingdroppingController.selectedSeats.first.id.toString(), 
+            seatmapid: passengerController.blockedid.toString(),
             tripid: boadingdroppingController.tripdata == null ? "": boadingdroppingController.tripdata!.id.toString(), 
             vendorid: boadingdroppingController.busDetailsdata==null?"": 
             boadingdroppingController.busDetailsdata!.vendorId, 
-            iswomenseat: "",
+            iswomenseat:boadingdroppingController.selectedSeats.isEmpty?'':
+             boadingdroppingController.selectedSeats.first.ladiesSeat, 
+             selectedSeats: boadingdroppingController.selectedSeats, 
+             passengermodel: [
+              
+             ],
              ) ;
             passengerController.addbooking(addBookingModel: addBookingModel);              
           //Get.to(ReviewbookingdetailsView());

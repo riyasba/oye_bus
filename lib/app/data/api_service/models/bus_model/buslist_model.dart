@@ -37,7 +37,7 @@ class BusData {
     String? vendorId;
     String? busName;
     String? busRegisterNumber;
-    BusType? busType;
+    String busType;
     String? registrationNumber;
     String? engineNumber;
     String? modelNumber;
@@ -72,7 +72,7 @@ class BusData {
         this.vendorId,
         this.busName,
         this.busRegisterNumber,
-        this.busType,
+        required this.busType,
         this.registrationNumber,
         this.engineNumber,
         this.modelNumber,
@@ -108,7 +108,7 @@ class BusData {
         vendorId: json["vendor_id"],
         busName: json["bus_name"],
         busRegisterNumber: json["bus_register_number"],
-        busType: busTypeValues.map[json["bus_type"]]!,
+        busType: json["bus_type"],
         registrationNumber: json["registration_number"],
         engineNumber: json["engine_number"],
         modelNumber: json["model_number"],

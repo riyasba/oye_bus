@@ -29,9 +29,10 @@ class  AddBookingApiService extends Config{
           "customer_mobile":addBookingModel.mobile,
           "customer_email":addBookingModel.emailId,
           "primary_customer_name":addBookingModel.primaryCustomerName,
-          "passenger_name":addBookingModel.passengerName,
-          "age":addBookingModel.age,
-           "gender":addBookingModel.gender,
+          "passengers[0][name]":addBookingModel.passengerName,
+          "passengers[0][age]":addBookingModel.passengerName,
+          "passengers[0][gender]":addBookingModel.passengerName,
+        
            "seat_count": 1
 
       }

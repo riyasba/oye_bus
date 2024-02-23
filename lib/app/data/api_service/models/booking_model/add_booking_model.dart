@@ -1,5 +1,8 @@
-class AddBookingModel{
 
+
+import 'package:oye_bus/app/data/api_service/models/get_bus_seat_layout_model.dart';
+
+class AddBookingModel{
   String perticketPrice;
   String boardingPoint;
   String droppingPoint;
@@ -16,6 +19,8 @@ class AddBookingModel{
   String routeid;
   String busid;
   List seatid; 
+  List<Seat> selectedSeats;
+  List<PassengerModel> passengermodel;
   String iswomenseat; 
 
   AddBookingModel({
@@ -35,8 +40,23 @@ class AddBookingModel{
     required this.seatmapid,
     required this.tripid,
     required this.vendorid,
+    required this.selectedSeats,
     required this.iswomenseat,
+    required this.passengermodel,
   });
 
+}
+
+class  PassengerModel{
+  String passengerName;
+  String gender;
+  int age;
+
+  PassengerModel({
+    required this.age,
+    required this.gender,
+    required this.passengerName
+
+  });
 }
 

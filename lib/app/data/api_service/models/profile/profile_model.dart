@@ -66,7 +66,7 @@ class ProfileData {
         referralCode: json["referral_code"],
         status: json["status"],
         createdAt: DateTime.parse(json["created_at"]),
-         age: json["age"], 
+         age: json["age"]??"", 
          gender: json["gender"],
     );
 
