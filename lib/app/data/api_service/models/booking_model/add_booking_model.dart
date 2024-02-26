@@ -1,6 +1,7 @@
 
 
 import 'package:oye_bus/app/data/api_service/models/get_bus_seat_layout_model.dart';
+import 'package:oye_bus/app/data/api_service/models/passengers/co_passangers_model.dart';
 
 class AddBookingModel{
   String perticketPrice;
@@ -20,7 +21,7 @@ class AddBookingModel{
   String busid;
   List seatid; 
   List<Seat> selectedSeats;
-  List<PassengerModel> passengermodel;
+  List<PassangersData> passengermodel;
   String iswomenseat; 
 
   AddBookingModel({

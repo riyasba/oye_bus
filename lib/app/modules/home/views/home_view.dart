@@ -157,7 +157,7 @@ class HomeView extends GetView<HomeController> {
                               width: size.width * 0.6.w,
                               color: const Color.fromRGBO(158, 158, 158, 1),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Text(
@@ -210,11 +210,11 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

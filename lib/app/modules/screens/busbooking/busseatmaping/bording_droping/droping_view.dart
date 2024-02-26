@@ -61,7 +61,7 @@ class _DroppingListViewState extends State<DroppingListView> {
                                   Text(
                                     getActualTime(boadingdroppingController
                                         .droppointdata[index].time),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500),
                                   ),
@@ -86,8 +86,8 @@ class _DroppingListViewState extends State<DroppingListView> {
                                       width: 180,
                                       child: Text(
                                         boadingdroppingController
-                                            .droppointdata[index].location,
-                                        style: TextStyle(
+                                            .droppointdata[index].point,
+                                        style: const TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w600,
                                             fontFamily: 'Proxima Nova'),

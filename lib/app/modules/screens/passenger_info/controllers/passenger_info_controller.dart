@@ -8,6 +8,8 @@ import 'package:oye_bus/app/data/api_service/models/booking_model/add_booking_mo
 import 'package:oye_bus/app/data/api_service/models/booking_model/bus_seat_blocked_model.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/pickanddrop_view.dart';
 
+import '../../busbooking/busseatmaping/views/paymentsuccesfull_view.dart';
+
 class PassengerInfoController extends GetxController {
   //TODO: Implement PassengerInfoController
 
@@ -60,7 +62,8 @@ class PassengerInfoController extends GetxController {
       print('>>>>>>>>>>>>>>>>>>>>>>>>>');
       print(response);
       if(response.data['status']==true){
-            Get.rawSnackbar(
+        Get.offAll(()=> PaymentsuccesfullView());
+        Get.rawSnackbar(
           backgroundColor: Colors.green,
           messageText: Text(
             response.data['message'],
@@ -69,7 +72,7 @@ class PassengerInfoController extends GetxController {
       }
    }
 
-int blockedid =0;
+   int blockedid = 0;
    SeatBlockApiService seatblockapiservice = 
    SeatBlockApiService();
     
@@ -82,13 +85,13 @@ int blockedid =0;
       isLoading(false);
       if(response.data['success']==true){
         blockedid =response.data['data']['id'];
-             Get.to(PickanddropView());
+        Get.to(PickanddropView());
         // Get.rawSnackbar(
-        //   backgroundColor: Colors.green,
-        //   messageText: Text(
-        //     response.data['message'],
-        //     style: primaryFont.copyWith(color: Colors.white),
-        //   ));
+        // backgroundColor: Colors.green,
+        // messageText: Text(
+        // response.data['message'],
+        // style: primaryFont.copyWith(color: Colors.white),
+        // ));
         print(':::::::bloack seat id');
         print(response.data);
       }

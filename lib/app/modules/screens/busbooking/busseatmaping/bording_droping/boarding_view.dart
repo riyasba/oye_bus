@@ -15,6 +15,7 @@ class BoardingListView extends StatefulWidget {
 class _BoardingListViewState extends State<BoardingListView> {
   static int  len =10;
  List<bool> isselected = List.generate(len, (index) => false);
+ 
   @override
   void initState() {
     super.initState();
@@ -91,7 +92,7 @@ class _BoardingListViewState extends State<BoardingListView> {
                                                  Container(
                                                                                    
                                                                       width: 180,
-                                                                       child: Text(boadingdroppingController.boardingpointdata[index].location,
+                                                                       child: Text(boadingdroppingController.boardingpointdata[index].point,
                                                                        style: const TextStyle(
                                                                         fontSize: 15,
                                                                         fontWeight: FontWeight.w600,

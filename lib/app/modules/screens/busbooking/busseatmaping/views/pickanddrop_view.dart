@@ -13,12 +13,13 @@ import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/bording_dro
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/reviewbookingdetails_view.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/controllers/passenger_info_controller.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
+import 'package:oye_bus/app/modules/screens/settingsscreens/copassengers/controllers/copassengers_controller.dart';
 
 class PickanddropView extends GetView {
-   PickanddropView({Key? key}) : super(key: key);
-    final boadingdroppingController = Get.find<BusseatmapingController>();
-    final homeController = Get.find<HomeController>();
-       int tabIndex = 0;
+  PickanddropView({Key? key}) : super(key: key);
+  final boadingdroppingController = Get.find<BusseatmapingController>();
+  final homeController = Get.find<HomeController>();
+  int tabIndex = 0;
   @override
   Widget build(BuildContext context) {
     Get.put(PassengerInfoController());
@@ -33,7 +34,7 @@ class PickanddropView extends GetView {
             style: appbarfont,
           ),
           bottom: TabBar(
-           // dividerHeight: 0,
+            // dividerHeight: 0,
             automaticIndicatorColorAdjustment: true,
             labelColor: kwhite,
             padding: const EdgeInsets.only(right: 15, left: 15),
@@ -47,52 +48,44 @@ class PickanddropView extends GetView {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.only(top: 8,bottom: 8),
+          padding: const EdgeInsets.only(top: 8, bottom: 8),
           child: TabBarView(
-        
             children: [
-              
               BoardingListView(),
               DropingselectionView(),
             ],
           ),
         ),
-        bottomNavigationBar:
-          GetBuilder<BusseatmapingController>(
-            builder: (_) {
-              return Padding(
-                padding: const EdgeInsets.only(left: 12,right: 12,bottom: 12),
-                child: CustomElevatedButton(
-                  height: 45.h,
-                  width: 1.sw,
-                  onPressed: () {
-                  
-                    if (boadingdroppingController.boardinglocationvalue.isEmpty||
-                    boadingdroppingController.destinationlocationvalue.isEmpty) {
-              Get.rawSnackbar(
-                title: 'Alert!. ',
-                message: 'Please Enter Your Boarding and Dropping',
-                backgroundColor: Colors.red 
-              );
-                    }else{
-                       Get.to(PassengerInfoView());
-                    }
-                    
-                    //    Get.toNamed(
-                    // Routes.BUSLOADINGSPLASH,
-                    //  );
-              
-              
-                  },
-                  text: 'proceed',
-                  color: kred,
-                  textColor: kwhite,
-                ),
-              );
-            }
-          ),
-        ),
-    
+        bottomNavigationBar: GetBuilder<BusseatmapingController>(builder: (_) {
+          return Padding(
+            padding: const EdgeInsets.only(left: 12, right: 12, bottom: 12),
+            child: CustomElevatedButton(
+              height: 45.h,
+              width: 1.sw,
+              onPressed: () {
+                if (boadingdroppingController.boardinglocationvalue.value ==
+                        "" ||
+                    boadingdroppingController.destinationlocationvalue.value ==
+                        "") {
+                  Get.rawSnackbar(
+                      message: 'Please Select Your Boarding and Dropping',
+                      backgroundColor: Colors.red);
+                } else {
+                  Get.find<CopassengersController>().copassangers();
+                  Get.to(PassengerInfoView());
+                }
+
+                //    Get.toNamed(
+                // Routes.BUSLOADINGSPLASH,
+                //  );
+              },
+              text: 'proceed',
+              color: kred,
+              textColor: kwhite,
+            ),
+          );
+        }),
+      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -44,7 +45,7 @@ class _SearchDestinyViewState extends State<SearchDestinyView> {
   }
 
 
-
+  Timer? _debounce;
  
 
 
@@ -100,8 +101,12 @@ class _SearchDestinyViewState extends State<SearchDestinyView> {
                   return Container(
                     height: 50.h,
                     child: TextField(
-                      
-                      controller: searchTextController,
+                      // controller: searchTextController,
+                       onChanged: (value) {
+                        // searchcityController.triggerFunction();
+                        _debounce?.cancel();
+                        _debounce = Timer(const Duration(milliseconds: 500), () => searchcityController.buscitysearch(city: value));
+                      },
                       style: primaryFont.copyWith(
                           fontSize: 18.sp, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(

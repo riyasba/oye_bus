@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -39,13 +41,17 @@ class _SearchViewState extends State<SearchView> {
 
 
   searchBusCitys() async{
-   await Future.delayed(const Duration(milliseconds: 300));
-
+  //  await Future.delayed(const Duration(milliseconds: 300));
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    
     searchcityController.buscitysearch(city: searchTextController.text);
+
+  });
+
   }
 
 
-
+Timer? _debounce;
  
 
 
@@ -100,10 +106,12 @@ class _SearchViewState extends State<SearchView> {
                   child: Container(
                     height: 50.h,
                     child: TextField(
-                      // onChanged: (value) {
-                      //   searchcityController.triggerFunction();
-                      // },
-                      controller: searchTextController,
+                      onChanged: (value) {
+                        // searchcityController.triggerFunction();
+                        _debounce?.cancel();
+                        _debounce = Timer(const Duration(milliseconds: 500), () => searchcityController.buscitysearch(city: value));
+                      },
+                      // controller: searchTextController,
                       style: primaryFont.copyWith(
                           fontSize: 18.sp, fontWeight: FontWeight.w500),
                       decoration: InputDecoration(

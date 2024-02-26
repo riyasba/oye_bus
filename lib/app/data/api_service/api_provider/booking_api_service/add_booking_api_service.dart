@@ -20,23 +20,26 @@ class  AddBookingApiService extends Config{
          "trip_id":addBookingModel.tripid,
          "route_id":addBookingModel.routeid,
          "bus_id":addBookingModel.busid,
-          "seat_id[0]":2,
+           for(int i = 0;i<addBookingModel.selectedSeats.length;i++)
+          "seat_id[$i]": addBookingModel.selectedSeats[i].id,
+          for(int i = 0;i<addBookingModel.selectedSeats.length;i++)
+          "passengers[$i][seats_id]": addBookingModel.selectedSeats[i].id,
           "per_ticket_price":addBookingModel.perticketPrice,
           "is_woman_seat":addBookingModel.iswomenseat,
           "boarding_point":addBookingModel.boardingPoint,
           "departure_point":addBookingModel.droppingPoint,
-          "date":addBookingModel.date,
+          "date": addBookingModel.date,
           "customer_mobile":addBookingModel.mobile,
           "customer_email":addBookingModel.emailId,
-          "primary_customer_name":addBookingModel.primaryCustomerName,
-          "passengers[0][name]":addBookingModel.passengerName,
-          "passengers[0][age]":addBookingModel.passengerName,
-          "passengers[0][gender]":addBookingModel.passengerName,
-        
-           "seat_count": 1
-
+          "primary_customer_name": addBookingModel.primaryCustomerName,
+           for(int i = 0; i< addBookingModel.passengermodel.length;i++)
+          "passengers[$i][name]": addBookingModel.passengermodel[i].name,
+           for(int i = 0; i< addBookingModel.passengermodel.length;i++)
+          "passengers[$i][age]": addBookingModel.passengermodel[i].age,
+           for(int i = 0; i< addBookingModel.passengermodel.length;i++)
+          "passengers[$i][gender]": addBookingModel.passengermodel[i].gender,
+          "seat_count": addBookingModel.selectedSeats.length
       }
-      
      );
      
       final prefs = await SharedPreferences.getInstance();

@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 import 'package:gif/gif.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
-
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 class PaymentsuccesfullView extends GetView {
-  const PaymentsuccesfullView({Key? key}) : super(key: key);
+ const PaymentsuccesfullView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Gif(fps: 30,
                   autostart: Autostart.once,
-           
-            fit: BoxFit.cover, image: AssetImage( 'assets/images/7efs.gif',),
+            fit: BoxFit.cover, image: const AssetImage( 'assets/images/7efs.gif',),
           ),
           //   ksizedbox30,
           Text(
@@ -53,10 +50,10 @@ class PaymentsuccesfullView extends GetView {
               height: 45.h,
               width: 1.sw,
               onPressed: () {
-               Get.toNamed(Routes.RESERVATIONDETAILS);
-                //    Get.toNamed(
-                // Routes.BOTTUMNAVIGATION,
-                //  );
+               //  Get.toNamed(Routes.RESERVATIONDETAILS);
+                Get.offAllNamed(
+                Routes.BOTTUMNAVIGATION,
+                 );
               },
               text: 'Next',
               color: kred,

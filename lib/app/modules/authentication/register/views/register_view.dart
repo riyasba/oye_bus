@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
@@ -220,6 +221,11 @@ class RegisterView extends GetView<RegisterController> {
                                 ),
                             autofocus: false,
                             keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    // LengthLimitingTextInputFormatter(10)
+                    FilteringTextInputFormatter.digitsOnly,
+                    FilteringTextInputFormatter.deny(RegExp(r'\s')),
+                  ],
                             decoration: InputDecoration(
                               isDense: true,
                               prefixIcon: Container(

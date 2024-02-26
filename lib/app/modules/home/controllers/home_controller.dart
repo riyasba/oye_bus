@@ -98,6 +98,8 @@ var cityid=0;
 
   BusListApiService buslistapiservice = BusListApiService();
   List<BusData>busdata=[];
+
+  BusData? selectedBusData;
    
    RxString selectedBookingDate="".obs;
    RxString boardinglocation =''.obs;

@@ -47,14 +47,14 @@ class BusListView extends GetView<BusListController> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(220),
+          preferredSize: const Size.fromHeight(150),
           child: GetBuilder<HomeController>(builder: (context) {
             return Column(
               children: [
                 AppBar(
                   elevation: 0,
                   title: Text(
-                    '${buslistController.fromPlaceTxtController.text} → ${buslistController.toPlaceTxtController.text}',
+                    '${buslistController.boardinglocation.value} → ${buslistController.destinationlocation.value}',
                     style: smalbalckfont.copyWith(color: kblack),
                   ),
                   centerTitle: true,
@@ -81,7 +81,7 @@ class BusListView extends GetView<BusListController> {
                   ],
                 ),
                 Container(
-                  height: 110,
+                  height: 70,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
@@ -186,14 +186,15 @@ class BusListView extends GetView<BusListController> {
                                    //BusModel  busModel = BusModel.fromJson(busSeatData);
                                   
                                   int busId =int.parse( buslistController
-                                      .busdata[index].id.toString());
+                                      .busdata[index].busId.toString());
                               BusModel? busModel = await Get.find<BusseatmapingController>().busseats(busId);
                                   int tripId = buslistController
-                                      .busdata[index].trip!.id!;
+                                      .busdata[index].tripId;
 
                                print("seat length --->>-->>-->>-->>-->>");      
                                 // print(busModel!.seatMap.length);
-
+buslistController.selectedBusData  = buslistController
+                                      .busdata[index];
                                   seatmappingController.getBusdetails(
                                       tripId: tripId.toString(),
                                       busId: busId.toString());
@@ -289,15 +290,14 @@ class BusListView extends GetView<BusListController> {
                                                   getActualTime(
                                                       buslistController
                                                           .busdata[index]
-                                                          .route!
-                                                          .arrivalTime.toString()),
+                                                          .arrivalTime),
                                                   style: smalbalckfont.copyWith(
                                                     fontSize: 14,
                                                   ),
                                                 ),
                                                 Text(
                                                   buslistController
-                                                      .busdata[index].route!.sourceLocation.toString(),
+                                                      .busdata[index].sourceLocation,
                                                   style: primaryFont.copyWith(
                                                       fontSize: 11,
                                                       color: Colors.black45),
@@ -309,8 +309,7 @@ class BusListView extends GetView<BusListController> {
                                                 Text(
                                                   buslistController
                                                       .busdata[index]
-                                                      .route!
-                                                      .totalHours.toString(),
+                                                      .totalHours,
                                                   style: primaryFont.copyWith(
                                                       fontSize: 10,
                                                       color: Colors.black54),
@@ -376,7 +375,7 @@ class BusListView extends GetView<BusListController> {
                                                 Text(
                                                   getActualTime(
                                                       buslistController
-                                                          .busdata[index].route!.departureTime.toString()),
+                                                          .busdata[index].departureTime),
                                                   style: smalbalckfont.copyWith(
                                                     fontSize: 14,
                                                   ),
@@ -384,8 +383,7 @@ class BusListView extends GetView<BusListController> {
                                                 Text(
                                                   buslistController
                                                       .busdata[index]
-                                                      .route!
-                                                      .destinationLocation.toString(),
+                                                      .destinationLocation,
                                                   style: primaryFont.copyWith(
                                                       fontSize: 11,
                                                       color: Colors.black45),
@@ -435,7 +433,7 @@ class BusListView extends GetView<BusListController> {
                                               ],
                                             ),
                                             Text(
-                                              "₹${buslistController.busdata[index].route!.price}",
+                                              "₹${buslistController.busdata[index].price}",
                                               style: smalbalckfont.copyWith(
                                                 fontSize: 15,
                                               ),
@@ -451,7 +449,6 @@ class BusListView extends GetView<BusListController> {
                           })
                       : Center(
                         child: Container(
-                        
                           height: 250,
                           width: 250,
                           child: Lottie.asset(
@@ -497,7 +494,7 @@ class BusListView extends GetView<BusListController> {
                                 child: Container(
                                   height: 31,
                                   width: 31,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: Colors.white),
                                 ),

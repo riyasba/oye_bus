@@ -29,7 +29,7 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
               builder: (_) {
                 return bookinghistoryController.bookinghistorydata.isNotEmpty? Container(
                                     child: ListView.builder(
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics: const NeverScrollableScrollPhysics(),
                                         shrinkWrap: true,
                                         itemCount: bookinghistoryController.bookinghistorydata.length,
                                         itemBuilder: (context, index) {
@@ -64,8 +64,8 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                             MainAxisAlignment.spaceBetween,
                                                         children: [
                                                           Text(
-                                                            '${bookinghistoryController.bookinghistorydata[index].bookingData!.boarding} → ${bookinghistoryController.bookinghistorydata[index].bookingData!.dropping}',
-                                                            style: TextStyle(
+                                                            '${bookinghistoryController.bookinghistorydata[index].bookingData!.boardingcityname} → ${bookinghistoryController.bookinghistorydata[index].bookingData!.droppingcityname}',
+                                                            style: const TextStyle(
                                                               fontSize: 17,
                                                               fontWeight: FontWeight.w500,
                                                             ),
@@ -91,7 +91,7 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                         crossAxisAlignment:
                                                             CrossAxisAlignment.start,
                                                         children: [
-                                                          Text('PNR : 2345678908'),
+                                                          Text('PNR : '),
                                                           Row(
                                                             mainAxisAlignment:
                                                                 MainAxisAlignment
@@ -102,7 +102,7 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                                 height: 27,
                                                                 width: 100,
                                                                 decoration: BoxDecoration(
-                                                                    color: Color(0xff05903C),
+                                                                    color: const Color(0xff05903C),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
                                                                             23)),
@@ -123,7 +123,7 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                             onTap: (){
                                                               Get.toNamed(Routes.BUSTRIP_REVIEWS);
                                                             },
-                                                            child: Text(
+                                                            child: const Text(
                                                               'You can rate once you complete thee trip',
                                                               style: TextStyle(
                                                                   color: Color(0xff1675DB),

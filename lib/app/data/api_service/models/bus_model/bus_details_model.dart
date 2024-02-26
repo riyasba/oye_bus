@@ -422,7 +422,6 @@ class Trip {
     
 }
 class BoardingPoint{
-      
       int id;
       String time;
       String location;
@@ -451,21 +450,23 @@ class BoardingPoint{
     }
 
 class DroppingPoint{
-      
       int id;
       String time;
       String location;
+        String point;
 
       DroppingPoint({
         required this.id,
         required this.location,
-        required this.time
+        required this.time,
+        required this.point
 
       });
 
       factory DroppingPoint.fromJson(Map<String,dynamic> json)=>DroppingPoint(
         id: json['id'], 
         location: json["location"],
+         point: json["point"],
         time: json["time"]);
 
         Map<String,dynamic>toJson()=>{

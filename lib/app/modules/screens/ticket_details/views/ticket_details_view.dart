@@ -590,7 +590,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
           onTap: (){
             Get.back();
           },
-          child: Icon(Icons.arrow_back)),
+          child: const Icon(Icons.arrow_back)),
         title:  Text('Your Ticket Details',
           style:appbarfont,
         ),
@@ -613,7 +613,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                  Container(
                   height: 532.h,
                   width: 374.w,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xffFFD400)
                   ),
                   child: Column(
@@ -684,7 +684,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   Container(
                                     height: 15.h,
                                     width: 20.w,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.black,
                                       shape: BoxShape.circle
                                     ),
@@ -692,14 +692,14 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   Container(
                                     height: 92.h,
                                     width: 5.w,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.black
                                     ),
                                   ),
                                      Container(
                                     height: 15.h,
                                     width: 20.w,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Colors.black,
                                       shape: BoxShape.circle
                                     ),
@@ -750,17 +750,16 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                           fontWeight: FontWeight.w600
                         ),),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 2,left: 10),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 2,left: 10),
                         child: Text(
-                          //'10 Nov 2023, Saturday',,
-                          ,
+                          '10 Nov 2023, Saturday',
                         style: TextStyle(
                         ),),
                       ),
                       ksizedbox10,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10,right: 10),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10,right: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -783,8 +782,8 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         ),
                       ),
                       ksizedbox10,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10,top: 0,right: 10),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10,top: 0,right: 10),
                         child: Row(
                           children: [
                             Text('PHR : '),

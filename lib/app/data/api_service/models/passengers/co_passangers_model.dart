@@ -37,12 +37,14 @@ class PassangersData {
     String age;
     String gender;
     int id;
+    bool isSelected;
 
     PassangersData({
         required this.name,
         required this.age,
         required this.gender,
         required this.id,
+         this.isSelected = false,
     });
 
     factory PassangersData.fromJson(Map<String, dynamic> json) => PassangersData(
@@ -50,6 +52,7 @@ class PassangersData {
         age: json["age"],
         gender: json["gender"], 
         id: json["id"],
+        isSelected: false,
     );
 
     Map<String, dynamic> toJson() => {
