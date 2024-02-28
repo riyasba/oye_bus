@@ -21,17 +21,21 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
     'Complete',
   ];
   final bookinghistoryController = Get.find<BookinghistoryController>();
+ 
   @override
   Widget build(BuildContext context) {
     return  ListView(
           children: [
             GetBuilder<BookinghistoryController>(
               builder: (_) {
-                return bookinghistoryController.bookinghistorydata.isNotEmpty? Container(
+                print(':::::::::::::Booking history::::::::::::datas');
+                
+                print(bookinghistoryController.bookinghistorydata);
+                return bookinghistoryController.bookinghistorydata!.isNotEmpty? Container(
                                     child: ListView.builder(
                                         physics: const NeverScrollableScrollPhysics(),
                                         shrinkWrap: true,
-                                        itemCount: bookinghistoryController.bookinghistorydata.length,
+                                        itemCount: bookinghistoryController.bookinghistorydata!.length,
                                         itemBuilder: (context, index) {
                                           return Padding(
                                             padding: const EdgeInsets.only(
@@ -39,7 +43,7 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                             child: GestureDetector(
                                               onTap: () {
                                                 Get.to(TicketDetailsView(
-                                                  bookingDetail: bookinghistoryController.bookinghistorydata[index]));
+                                                  bookingDetail: bookinghistoryController.bookinghistorydata![index]));
                                               },
                                               child: Container(
                                                 height: 125,
@@ -64,13 +68,14 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                             MainAxisAlignment.spaceBetween,
                                                         children: [
                                                           Text(
-                                                            '${bookinghistoryController.bookinghistorydata[index].bookingData!.boardingcityname} → ${bookinghistoryController.bookinghistorydata[index].bookingData!.droppingcityname}',
+                                                            
+                                                            '${bookinghistoryController.bookinghistorydata![index].busRoute!.startLocation} → ${bookinghistoryController.bookinghistorydata![index].busRoute!.endLocation}',
                                                             style: const TextStyle(
-                                                              fontSize: 17,
+                                                              fontSize: 16,
                                                               fontWeight: FontWeight.w500,
                                                             ),
                                                           ),
-                                                          Text(bookinghistoryController.bookinghistorydata[index].bookingData!.date.toString())
+                                                          Text(bookinghistoryController.bookinghistorydata![index].bookingData!.dateOfJourney.toString())
                                                           //Text('10, Nov 2023')
                                                         ],
                                                       ),
@@ -91,13 +96,13 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                         crossAxisAlignment:
                                                             CrossAxisAlignment.start,
                                                         children: [
-                                                          Text('PNR : '),
+                                                          Text('PNR : ${bookinghistoryController.bookinghistorydata![index].bookingData!.pnrNumber}'),
                                                           Row(
                                                             mainAxisAlignment:
                                                                 MainAxisAlignment
                                                                     .spaceBetween,
                                                             children: [
-                                                              Text('Booking ID: ${bookinghistoryController.bookinghistorydata[index].bookingData!.bookingId}'),
+                                                              Text('Booking ID: ${bookinghistoryController.bookinghistorydata![index].bookingData!.bookingId}'),
                                                               Container(
                                                                 height: 27,
                                                                 width: 100,

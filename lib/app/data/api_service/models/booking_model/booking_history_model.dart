@@ -10,11 +10,11 @@ String bookingHistoryModelToJson(BookingHistoryModel data) => json.encode(data.t
 
 class BookingHistoryModel {
     bool? status;
-    List<BookingDetail> bookingDetails;
+    List<BookingDetail>? bookingDetails;
 
     BookingHistoryModel({
         this.status,
-        required this.bookingDetails,
+        this.bookingDetails,
     });
 
     factory BookingHistoryModel.fromJson(Map<String, dynamic> json) => BookingHistoryModel(
@@ -54,73 +54,85 @@ class BookingDetail {
 
 class BookingData {
     int? bookingId;
-    String? perTicketPrice;
+    String? ticketPrice;
+    String? subTotal;
     String? totalPrice;
-    String? date;
+    String? dateOfJourney;
     String? transactionId;
-    String? boarding;
-    String? dropping;
-    String boardingtime;
-    String droppingtime;
-    String boardingcityname;
-    String droppingcityname;
+    String pnrNumber;
+    String? pickupPoint;
+    String? droppingPoint;
+    String? boardingTime;
+    String? droppingTime;
     List<String>? seats;
     List<Passenger>? passenger;
     String? isCancelled;
+    String? primaryCustomerName;
+    String? primaryCustomerEmail;
+    String? primaryCustomerMobile;
     dynamic cancellationCharges;
 
     BookingData({
         this.bookingId,
-        this.perTicketPrice,
+        this.ticketPrice,
+        this.subTotal,
         this.totalPrice,
-        this.date,
+        this.dateOfJourney,
         this.transactionId,
-        this.boarding,
-        this.dropping,
+        required this.pnrNumber,
+        this.pickupPoint,
+        this.droppingPoint,
+        this.boardingTime,
+        this.droppingTime,
         this.seats,
         this.passenger,
         this.isCancelled,
+        this.primaryCustomerName,
+        this.primaryCustomerEmail,
+        this.primaryCustomerMobile,
         this.cancellationCharges,
-        required this.boardingcityname,
-        required this.boardingtime,
-        required this.droppingcityname,
-        required this.droppingtime,
     });
 
     factory BookingData.fromJson(Map<String, dynamic> json) => BookingData(
         bookingId: json["booking_id"],
-        perTicketPrice: json["per_ticket_price"],
+        ticketPrice: json["ticket_price"],
+        subTotal: json["sub_total"],
         totalPrice: json["total_price"],
-        date: json["date"],
+        dateOfJourney: json["date_of_journey"],
         transactionId: json["transaction_id"],
-        boarding: json["boarding"],
-        dropping: json["dropping"],
+        pnrNumber: json["pnr_number"],
+        pickupPoint: json["pickup_point"],
+        droppingPoint: json["dropping_point"],
+        boardingTime: json["boarding_time"],
+        droppingTime: json["dropping_time"],
         seats: json["seats"] == null ? [] : List<String>.from(json["seats"]!.map((x) => x)),
         passenger: json["passenger"] == null ? [] : List<Passenger>.from(json["passenger"]!.map((x) => Passenger.fromJson(x))),
         isCancelled: json["is_cancelled"],
-        cancellationCharges: json["cancellation_charges"], 
-        boardingcityname: json["boarding_city_name"], 
-        boardingtime: json["boarding_time"], 
-        droppingcityname: json["dropping_city_name"], 
-        droppingtime: json["dropping_time"],
+        primaryCustomerName: json["primary_customer_name"],
+        primaryCustomerEmail: json["primary_customer_email"],
+        primaryCustomerMobile: json["primary_customer_mobile"],
+        cancellationCharges: json["cancellation_charges"],
     );
 
     Map<String, dynamic> toJson() => {
         "booking_id": bookingId,
-        "per_ticket_price": perTicketPrice,
+        "ticket_price": ticketPrice,
+        "sub_total": subTotal,
         "total_price": totalPrice,
-        "date": date,
+        "date_of_journey": dateOfJourney,
         "transaction_id": transactionId,
-        "boarding": boarding,
-        "dropping": dropping,
+        "pnr_number": pnrNumber,
+        "pickup_point": pickupPoint,
+        "dropping_point": droppingPoint,
+        "boarding_time": boardingTime,
+        "dropping_time": droppingTime,
         "seats": seats == null ? [] : List<dynamic>.from(seats!.map((x) => x)),
         "passenger": passenger == null ? [] : List<dynamic>.from(passenger!.map((x) => x.toJson())),
         "is_cancelled": isCancelled,
-        "cancellation_charges": cancellationCharges, 
-        "boarding_city_name":boardingcityname, 
-        "boarding_time":boardingtime, 
-        "dropping_city_name":droppingcityname, 
-        "dropping_time":droppingtime,
+        "primary_customer_name": primaryCustomerName,
+        "primary_customer_email": primaryCustomerEmail,
+        "primary_customer_mobile": primaryCustomerMobile,
+        "cancellation_charges": cancellationCharges,
     };
 }
 
@@ -128,23 +140,27 @@ class Passenger {
     String? name;
     String? age;
     String? gender;
+    String? seatNo;
 
     Passenger({
         this.name,
         this.age,
         this.gender,
+        this.seatNo,
     });
 
     factory Passenger.fromJson(Map<String, dynamic> json) => Passenger(
         name: json["name"],
         age: json["age"],
         gender: json["gender"],
+        seatNo: json["seat_no"],
     );
 
     Map<String, dynamic> toJson() => {
         "name": name,
         "age": age,
         "gender": gender,
+        "seat_no": seatNo,
     };
 }
 
@@ -179,8 +195,8 @@ class BusData {
 class BusRoute {
     String? startLocation;
     String? endLocation;
-    String? departureTime;
-    String? arrivalTime;
+    dynamic departureTime;
+    dynamic arrivalTime;
     String? price;
     String? totalKm;
     String? totalHours;

@@ -23,6 +23,10 @@ class AddBookingModel{
   List<Seat> selectedSeats;
   List<PassangersData> passengermodel;
   String iswomenseat; 
+  String sourcedestination;
+  String subtotal;
+  String unitprice;
+  String passengergender;
 
   AddBookingModel({
     required this.age,
@@ -44,6 +48,10 @@ class AddBookingModel{
     required this.selectedSeats,
     required this.iswomenseat,
     required this.passengermodel,
+    required this.sourcedestination,
+    required this.subtotal,
+    required this.unitprice,
+    required this.passengergender,
   });
 
 }

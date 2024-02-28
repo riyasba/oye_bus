@@ -1115,7 +1115,11 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                               : boadingdroppingController
                                   .selectedSeats.first.ladiesSeat,
                       selectedSeats: boadingdroppingController.selectedSeats,
-                      passengermodel: selectedPassengersdataList,
+                      passengermodel: selectedPassengersdataList, 
+                      sourcedestination:boadingdroppingController.routedata!.destinationLocation, 
+                      subtotal: boadingdroppingController.busDetailsdata!.totalSeat.toString(),
+                      unitprice: boadingdroppingController.routedata!.price,
+                      passengergender: controller.gender.value
                     );
                     passengerController.addbooking(
                         addBookingModel: addBookingModel);

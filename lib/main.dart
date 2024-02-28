@@ -14,6 +14,7 @@ import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controll
 import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
 import 'package:oye_bus/app/modules/screens/settingsscreens/copassengers/controllers/copassengers_controller.dart';
 import 'package:oye_bus/app/modules/screens/settingsscreens/settings/controllers/settings_controller.dart';
+import 'package:oye_bus/app/modules/screens/ticket_details/controllers/ticket_details_controller.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
 
@@ -30,6 +31,8 @@ void main() {
    Get.put(PassengerInfoController());
    Get.put(BusSearchController());
    Get.put(BookinghistoryController());
+   Get.put(TicketDetailsController());
+
   // Get.put(dynamic());
   // runApp(DevicePreview(
   //   builder: (context) => MyApp(), // Wrap your app

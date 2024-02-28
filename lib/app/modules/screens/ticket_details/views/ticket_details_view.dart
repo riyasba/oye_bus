@@ -26,12 +26,21 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
   final bookinghistoryController = Get.find<BookinghistoryController>();
   final passengerController = Get.find<PassengerInfoController>();
-  String getActualtime(String time){
+  String getActualTime(String time){
     var temptime = time.split(':');
     String actualTime = '${temptime[0]}:${temptime[1]}';
+
     return actualTime;
+   }
+
+  String getSeatsDetail(List<String>? seats){
+    String getseatdetails = "";
+     seats!.forEach((element) {
+      getseatdetails = getseatdetails + "$element ";
+      });
+     return getseatdetails;
   }
-  Future<Uint8List?> generatePDF({required BookingHistoryModel bookingHistoryModel}) async {
+  Future<Uint8List?> generatePDF() async {
   final pdfLib.Document pdf = pdfLib.Document();
   pdf.addPage(
     pdfLib.Page(
@@ -60,14 +69,13 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                       children: [
                         pdfLib.Text(
-                          bookinghistoryController.bookinghistorydata.isNotEmpty?
-                          bookinghistoryController.bookinghistorydata.first.busData!.busName.toString():'',
+                          bookingDetail.busData!.busName.toString(),
                         style: pdfLib.TextStyle(
                           fontSize: 20,
                           
                         
                         ),),
-                        pdfLib.Text('${bookinghistoryController.bookinghistorydata.isNotEmpty? bookinghistoryController.bookinghistorydata.first.busData!.busType:''} -')
+                        pdfLib.Text('${bookingDetail.busData!.busType} - Seat ${getSeatsDetail(bookingDetail.bookingData!.seats)}')
                       ],
                     ),
                   ),
@@ -85,23 +93,22 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                 children: [
                                   pdfLib.Column(
                                     children: [
-                                      pdfLib.Text(getActualtime(
-                                        bookinghistoryController.bookinghistorydata.isNotEmpty?
-                                        bookinghistoryController.bookinghistorydata.first.bookingData!.date.toString():'')),
-                                        pdfLib.Text('10 Nov',
+                                      pdfLib.Text(
+                                        bookingDetail.busRoute!.arrivalTime.toString()),
+                                        pdfLib.Text(bookingDetail.bookingData!.dateOfJourney.toString(),
                                   style: pdfLib.TextStyle(
                                     fontSize: 10
                                   ),)
                                     ],
                                   ),
-                                   pdfLib.Text('7h 15m',
+                                   pdfLib.Text(' ${bookingDetail.busRoute!.totalHours.toString()} Hr',
                                    style: pdfLib.TextStyle(
                                     fontSize: 10
                                    ),),
                                    pdfLib.Column(
                                     children: [
-                                      pdfLib.Text('05:05'),
-                                      pdfLib.Text('11 Nov',
+                                      pdfLib.Text(bookingDetail.busRoute!.departureTime.toString()),
+                                      pdfLib.Text(bookingDetail.bookingData!.dateOfJourney.toString(),
                                       style: pdfLib.TextStyle(
                                         fontSize: 10
                                       ),)
@@ -131,7 +138,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   color: PdfColors.black
                                 ),
                               ),
-                                 pdfLib.Container(
+                                 pdfLib.Container(  
                                 height: 15,
                                 width: 20,
                                 decoration: pdfLib.BoxDecoration(
@@ -154,8 +161,9 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   mainAxisAlignment: pdfLib.MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                                   children: [
-                                         pdfLib.Text('Chennai \nAirport (Meenambakkam Metro)'),
-                                         pdfLib.Text('Bangalore \nBommasandra')
+                                         pdfLib.Text('${bookingDetail.busRoute!.startLocation} ${bookingDetail.bookingData!.pickupPoint}'),
+                                         pdfLib.Text('${bookingDetail.busRoute!.endLocation.toString()} ${bookingDetail.bookingData!.droppingPoint}'),
+                                      
                                   ],
                                 ),
                               )  
@@ -179,14 +187,14 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                   ),
                  pdfLib. Padding(
                     padding:pdfLib.EdgeInsets.only(left: 10,top: 10),
-                    child: pdfLib.Text('21:50 PM - 06:15AM',
+                    child: pdfLib.Text('${bookingDetail.busRoute!.arrivalTime} - ${bookingDetail.busRoute!.departureTime}',
                     style: pdfLib.TextStyle( 
                       fontSize: 15,
                     ),),
                   ), 
                   pdfLib.Padding(
                     padding: pdfLib.EdgeInsets.only(top: 2,left: 10),
-                    child: pdfLib.Text('10 Nov 2023, Saturday',
+                    child: pdfLib.Text(bookingDetail.bookingData!.dateOfJourney.toString(),
                     style: pdfLib.TextStyle(
                     ),),
                   ),
@@ -195,7 +203,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     child: pdfLib.Row(
                       mainAxisAlignment: pdfLib.MainAxisAlignment.spaceBetween,
                       children: [
-                        pdfLib.Text('Seat Number : L19', 
+                        pdfLib.Text('Seat Number : ${getSeatsDetail(bookingDetail.bookingData!.seats)}', 
                         style: pdfLib.TextStyle(
                         ),),
                         pdfLib.Row(
@@ -216,7 +224,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     padding: pdfLib.EdgeInsets.only(left: 10,top: 10,right: 10),
                     child: pdfLib.Row(
                       children: [
-                        pdfLib.Text('PHR : '),
+                        pdfLib.Text('PNR : '),
                         pdfLib.Text('5565456679',
                         style: pdfLib.TextStyle(
                         ),)
@@ -228,7 +236,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     child: pdfLib.Row(
                       children: [
                         pdfLib.Text('Booking ID: '),
-                        pdfLib.Text('86J8645JE75',
+                        pdfLib.Text(bookingDetail.bookingData!.bookingId.toString(),
                         style: pdfLib.TextStyle(  
                         ),)
                       ],
@@ -250,7 +258,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     padding: pdfLib.EdgeInsets.only(left: 10),
                     child: pdfLib.Container(
                       width: 200,
-                      child: pdfLib.Text('KMPL Kalaimakal Travels TN 01 BC 3432',
+                      child: pdfLib.Text('${bookingDetail.busData!.busName} ${bookingDetail.busData!.busRegisterNumber}',
                       style: pdfLib.TextStyle( 
                       ),)),
                   ),
@@ -274,7 +282,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         pdfLib.Text('TOTAL:',
                         style: pdfLib.TextStyle(
                         ),),
-                        pdfLib.Text(' 4,558.00',
+                        pdfLib.Text(bookingDetail.busRoute!.price.toString(),
                         style: pdfLib.TextStyle(
                         ),)
                       ],
@@ -292,7 +300,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
     )
         );
         Directory root = await getTemporaryDirectory(); 
-        final file= File('${root.path}/sharmi.pdf');
+        final file= File('${root.path}/busticket.pdf');
         await file.writeAsBytes(await pdf.save());
         print("------------------------>>");
         print(file.path);
@@ -335,11 +343,11 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     child: pdfLib.Column(
                       crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                       children: [
-                        pdfLib.Text('KMRL Kalaimakal',
+                        pdfLib.Text(bookingDetail.busData!.busName.toString(),
                         style: pdfLib.TextStyle(
                           fontSize: 20.sp,
                         ),),
-                        pdfLib.Text('A/C Seater / Sleepr (2+1) - 1 Seat')
+                        pdfLib.Text('${bookingDetail.busData!.busType} / ${bookingDetail.bookingData!.seats}')
                       ],
                     ),
                   ),
@@ -357,21 +365,21 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                 children: [
                                   pdfLib.Column(
                                     children: [
-                                      pdfLib.Text('21:50'),
-                                        pdfLib.Text('10 Nov',
+                                      pdfLib.Text(bookingDetail.busRoute!.startLocation.toString()),
+                                        pdfLib.Text(bookingDetail.bookingData!.dateOfJourney.toString(),
                                   style: pdfLib.TextStyle(
                                     fontSize: 10.sp
                                   ),)
                                     ],
                                   ),
-                                   pdfLib.Text('7h 15m',
+                                   pdfLib.Text('${bookingDetail.busRoute!.totalHours}Hours',
                                    style: pdfLib.TextStyle(
                                     fontSize: 10.sp
                                    ),),
                                    pdfLib.Column(
                                     children: [
-                                      pdfLib.Text('05:05'),
-                                      pdfLib.Text('11 Nov',
+                                      pdfLib.Text(bookingDetail.bookingData!.boardingTime.toString()),
+                                      pdfLib.Text(bookingDetail.bookingData!.dateOfJourney.toString(),
                                       style: pdfLib.TextStyle(
                                         fontSize: 10.sp
                                       ),)
@@ -424,8 +432,8 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                   mainAxisAlignment: pdfLib.MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                                   children: [
-                                    pdfLib.Text('Chennai \nAirport (Meenambakkam Metro)'),
-                                    pdfLib.Text('Bangalore \nBommasandra')
+                                    pdfLib.Text('${bookingDetail.busRoute!.startLocation} ${bookingDetail.bookingData!.pickupPoint}'),
+                                    pdfLib.Text('${bookingDetail.busRoute!.endLocation} ${bookingDetail.bookingData!.droppingPoint}')
                                   ],
                                 ),
                               )        
@@ -449,14 +457,14 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                   ),
                  pdfLib. Padding(
                     padding:pdfLib.EdgeInsets.only(left: 10,top: 10),
-                    child: pdfLib.Text('21:50 PM - 06:15AM',
+                    child: pdfLib.Text('${bookingDetail.bookingData!.boardingTime} - ${bookingDetail.bookingData!.droppingTime}',
                     style: pdfLib.TextStyle(
                       fontSize: 15.sp,
                     ),),
                   ),
                   pdfLib.Padding(
                     padding: pdfLib.EdgeInsets.only(top: 2,left: 10),
-                    child: pdfLib.Text('10 Nov 2023, Saturday',
+                    child: pdfLib.Text(bookingDetail.bookingData!.dateOfJourney.toString(),
                     style: pdfLib.TextStyle(
                     ),),
                   ),
@@ -465,7 +473,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     child: pdfLib.Row(
                       mainAxisAlignment: pdfLib.MainAxisAlignment.spaceBetween,
                       children: [
-                        pdfLib.Text('Seat Number : L19', 
+                        pdfLib.Text('Seat Number : ${bookingDetail.bookingData!.seats}', 
                         style: pdfLib.TextStyle(
                         ),),
                         pdfLib.Row(
@@ -486,7 +494,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     padding: pdfLib.EdgeInsets.only(left: 10,top: 10,right: 10),
                     child: pdfLib.Row(
                       children: [
-                        pdfLib.Text('PHR : '),
+                        pdfLib.Text('PNR : '),
                         pdfLib.Text('5565456679',
                         style: pdfLib.TextStyle(
                         ),)
@@ -498,7 +506,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     child: pdfLib.Row(
                       children: [
                         pdfLib.Text('Booking ID: '),
-                        pdfLib.Text('86J8645JE75',
+                        pdfLib.Text(bookingDetail.bookingData!.bookingId.toString() ,
                         style: pdfLib.TextStyle(  
                         ),)
                       ],
@@ -521,7 +529,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                     padding: pdfLib.EdgeInsets.only(left: 10),
                     child: pdfLib.Container(
                       width: 200.w,
-                      child: pdfLib.Text('KMPL Kalaimakal Travels TN 01 BC 3432',
+                      child: pdfLib.Text('${bookingDetail.busData!.busName} ${bookingDetail.busData!.busRegisterNumber}',
                       style: pdfLib.TextStyle(
                       ),)),
                   ),
@@ -544,7 +552,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       children: [
                         pdfLib.Text('TOTAL:',
                         style: pdfLib.TextStyle(),),
-                        pdfLib.Text(' 4,558.00',
+                        pdfLib.Text(bookingDetail.busRoute!.price.toString(),
                         style: pdfLib.TextStyle(
                         ),)
                       ],
@@ -565,7 +573,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
 
         Directory root = await getTemporaryDirectory(); 
         
-        final file= File('${root.path}/sharmi.pdf');
+        final file= File('${root.path}/busticket.pdf');
         await file.writeAsBytes(await pdf.save());
         print("------------------------>>");
         print(file.path);
@@ -630,7 +638,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                               fontSize: 20.sp,
                               fontWeight: FontWeight.w500
                             ),),
-                            Text('${bookingDetail.busData!.busType} - Seats ${bookingDetail.bookingData!.seats}')
+                            Text('${bookingDetail.busData!.busType} - Seats ${getSeatsDetail(bookingDetail.bookingData!.seats)}')
                           ],
                         ),
                       ),
@@ -651,7 +659,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                         children: [
                                           Text(bookingDetail.busRoute!.arrivalTime.toString()),
                                             Text(
-                                              bookingDetail.bookingData!.date.toString(), 
+                                              bookingDetail.bookingData!.dateOfJourney.toString(), 
                                            
                                       style: TextStyle(
                                         fontSize: 10.sp
@@ -666,7 +674,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(bookingDetail.busRoute!.departureTime.toString()),
-                                          Text(bookingDetail.bookingData!.date.toString(),
+                                          Text(bookingDetail.bookingData!.dateOfJourney.toString(),
                                           style: TextStyle(
                                             fontSize: 10.sp
                                           ),)
@@ -720,8 +728,8 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
 
-                                             Text('${bookingDetail.bookingData!.boarding}\n${bookingDetail.bookingData!.boardingcityname}'),
-                                             Text('${bookingDetail.bookingData!.dropping} \n${bookingDetail.bookingData!.droppingcityname}')
+                                             Text('${bookingDetail.busRoute!.startLocation}\n${bookingDetail.bookingData!.pickupPoint}'),
+                                             Text('${bookingDetail.busRoute!.endLocation} \n${bookingDetail.bookingData!.droppingPoint}')
                                       ],
                                     ),
                                   )
@@ -744,26 +752,28 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       ksizedbox10,
                       Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: Text('${getActualtime(bookingDetail.bookingData!.boardingtime)} - ${getActualtime(bookingDetail.bookingData!.droppingtime)}',
+                        child: Text('${bookingDetail.bookingData!.boardingTime} - ${bookingDetail.bookingData!.droppingTime}',
                         style: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600
                         ),),
                       ),
-                      const Padding(
+                       Padding(
                         padding: EdgeInsets.only(top: 2,left: 10),
                         child: Text(
-                          '10 Nov 2023, Saturday',
+                          bookingDetail.bookingData!.dateOfJourney.toString()
+                          ,
+                          //'10 Nov 2023, Saturday',
                         style: TextStyle(
                         ),),
                       ),
                       ksizedbox10,
-                      const Padding(
+                       Padding(
                         padding: EdgeInsets.only(left: 10,right: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Seat Number : L19',
+                            Text('Seat Number : ${getSeatsDetail(bookingDetail.bookingData!.seats)}',
                             style: TextStyle(
                               fontWeight: FontWeight.w700
                             ),),
@@ -786,7 +796,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         padding: EdgeInsets.only(left: 10,top: 0,right: 10),
                         child: Row(
                           children: [
-                            Text('PHR : '),
+                            Text('PNR : '),
                             Text('5565456679',
                             style: TextStyle(
                               fontWeight: FontWeight.w600
@@ -799,7 +809,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         child: Row(
                           children: [
                             Text('Booking ID: '),
-                            Text('86J8645JE75',
+                            Text(bookingDetail.bookingData!.bookingId.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w600
                             ),)
@@ -820,7 +830,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         padding: const EdgeInsets.only(left: 10),
                         child: Container(
                           width: 200.w,
-                          child: Text('KMPL Kalaimakal Travels TN 01 BC 3432',
+                          child: Text('${bookingDetail.busData!.busName}  ${bookingDetail.busData!.busRegisterNumber}',
                           style: TextStyle(
                             fontWeight: FontWeight.w700
                           ),)),
@@ -845,7 +855,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                             style: TextStyle(
                               fontWeight: FontWeight.w700
                             ),),
-                            Text('₹ 4,558.00',
+                            Text('₹ ${bookingDetail.busRoute!.price}',
                             style: TextStyle(
                               fontWeight: FontWeight.w700
                             ),)
@@ -878,14 +888,14 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       child: Image.asset('assets/offers_icon/shareicon.png')),
                     GestureDetector(
                       onTap: (){
-                      generatePDF(bookingHistoryModel:Get.find<BookinghistoryController>().bookinghistory());
+                      generatePDF();
                       },
                       child: Image.asset('assets/offers_icon/downloadicon.png')),
                     GestureDetector(
                       onTap: (){
                          final bookingcancelController = Get.find<TicketDetailsController>().
-                         bookingCancellation(bookingid:bookingHistoryController.bookinghistorydata.isNotEmpty?
-                          bookingHistoryController.bookinghistorydata.first.bookingData!.bookingId.toString():'');
+                         bookingCancellation(bookingid:bookingHistoryController.bookinghistorydata!.isNotEmpty?
+                          bookingHistoryController.bookinghistorydata!.first.bookingData!.bookingId.toString():'');
                           final bookinghistoryController = Get.find<BookinghistoryController>().bookinghistory(); 
                       },
                       child: Image.asset('assets/offers_icon/cancelicon.png'))

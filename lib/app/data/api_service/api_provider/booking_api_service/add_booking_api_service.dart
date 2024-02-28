@@ -21,16 +21,16 @@ class  AddBookingApiService extends Config{
          "route_id":addBookingModel.routeid,
          "bus_id":addBookingModel.busid,
            for(int i = 0;i<addBookingModel.selectedSeats.length;i++)
-          "seat_id[$i]": addBookingModel.selectedSeats[i].id,
+          "seats[$i]": addBookingModel.selectedSeats[i].id,
           for(int i = 0;i<addBookingModel.selectedSeats.length;i++)
           "passengers[$i][seats_id]": addBookingModel.selectedSeats[i].id,
           "per_ticket_price":addBookingModel.perticketPrice,
-          "is_woman_seat":addBookingModel.iswomenseat,
-          "boarding_point":addBookingModel.boardingPoint,
-          "departure_point":addBookingModel.droppingPoint,
-          "date": addBookingModel.date,
-          "customer_mobile":addBookingModel.mobile,
-          "customer_email":addBookingModel.emailId,
+          "is_women_seat":addBookingModel.iswomenseat,
+          "pickup_point":addBookingModel.boardingPoint,
+          "dropping_point":addBookingModel.droppingPoint,
+          "date_of_journey": addBookingModel.date,
+          "primary_customer_mobile":addBookingModel.mobile,
+          "primary_customer_email":addBookingModel.emailId,
           "primary_customer_name": addBookingModel.primaryCustomerName,
            for(int i = 0; i< addBookingModel.passengermodel.length;i++)
           "passengers[$i][name]": addBookingModel.passengermodel[i].name,
@@ -38,7 +38,11 @@ class  AddBookingApiService extends Config{
           "passengers[$i][age]": addBookingModel.passengermodel[i].age,
            for(int i = 0; i< addBookingModel.passengermodel.length;i++)
           "passengers[$i][gender]": addBookingModel.passengermodel[i].gender,
-          "seat_count": addBookingModel.selectedSeats.length
+          "ticket_count": addBookingModel.selectedSeats.length,
+          "gender": "0",
+          "source_destination":addBookingModel.sourcedestination,
+          "sub_total":addBookingModel.subtotal,
+          "unit_price":addBookingModel.unitprice
       }
      );
      

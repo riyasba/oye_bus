@@ -36,7 +36,7 @@ class BookinghistoryController extends GetxController {
   BookingHistoryApiService bookinghistoryapiservice =
    BookingHistoryApiService();
 
-   List<BookingDetail>bookinghistorydata=[];
+   List<BookingDetail>? bookinghistorydata=[];
 
    bookinghistory()async{
     isLoading(true);

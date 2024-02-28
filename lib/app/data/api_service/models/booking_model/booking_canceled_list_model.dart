@@ -152,11 +152,11 @@ class BusRoute {
     });
 
     factory BusRoute.fromJson(Map<String, dynamic> json) => BusRoute(
-        startLocation: json["start_location"],
-        endLocation: json["end_location"],
-        departureTime: json["departure_time"],
-        arrivalTime: json["arrival_time"],
-        price: json["price"],
+        startLocation: json["start_location"]??'',
+        endLocation: json["end_location"]??'',
+        departureTime: json["departure_time"]??'',
+        arrivalTime: json["arrival_time"]??'',
+        price: json["price"]??'',
         totalKm: json["total_km"],
         totalHours: json["total_hours"],
     );
