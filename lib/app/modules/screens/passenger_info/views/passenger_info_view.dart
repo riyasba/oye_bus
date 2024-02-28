@@ -1117,11 +1117,32 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                       selectedSeats: boadingdroppingController.selectedSeats,
                       passengermodel: selectedPassengersdataList, 
                       sourcedestination:boadingdroppingController.routedata!.destinationLocation, 
-                      subtotal: boadingdroppingController.busDetailsdata!.totalSeat.toString(),
+                      subtotal: calculateTotalOf(
+                                boadingdroppingController.selectedSeats),
                       unitprice: boadingdroppingController.routedata!.price,
                       passengergender: controller.gender.value
                     );
-                    passengerController.addbooking(
+                    passengerController.payAndBook(
+                        amount: calculateTotalOf(
+                                boadingdroppingController.selectedSeats),
+                        email: Get.find<ProfileController>().profiledata.isEmpty
+                              ? "test@gmail.com"
+                              : Get.find<ProfileController>()
+                                  .profiledata
+                                  .first
+                                  .email,
+                        mobilenumber: Get.find<ProfileController>().profiledata.isEmpty
+                              ? "9876543210"
+                              : Get.find<ProfileController>()
+                                  .profiledata
+                                  .first
+                                  .mobile,
+                        name: Get.find<ProfileController>().profiledata.isEmpty
+                              ? "User1"
+                              : Get.find<ProfileController>()
+                                  .profiledata
+                                  .first
+                                  .name,
                         addBookingModel: addBookingModel);
                   }
                   //Get.to(ReviewbookingdetailsView());
