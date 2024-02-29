@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/seat_block_api_service.dart';
 import 'package:oye_bus/app/data/api_service/models/booking_model/add_booking_model.dart';
@@ -579,115 +580,205 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                       Padding(
                         padding: const EdgeInsets.only(left: 15, top: 5),
                         child: GetBuilder<CopassengersController>(builder: (_) {
-                          return Container(
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount:
-                                  copassangersController.passengersdata.length,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  children: [
+                          return InkWell(
+                            onLongPress: (){
+                                 showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  backgroundColor: Colors.white,
+                                  title: Column(
+                                    children: [
+                                      Lottie.asset(
+                                          'assets/images/deletepassengergif.json',
+                                          height: 80,
+                                          fit: BoxFit.fitHeight,),
+                                  
+                                    ],
+                                  ),
+                                  content: Container(
+                                    width: 150.w,
+                                    child: const Text(
+                                      "Are you sure want to your Passenger?",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 17,
+                                      ),
+                                    ),
+                                  ),
+                                  actions: [
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Row(
-                                          children: [
-                                            CircleAvatar(
-                                              radius: 23,
-                                              backgroundColor:
-                                                  Colors.pink.shade100,
-                                              child: const Center(
-                                                  child: Icon(Icons.person)),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 10),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  copassangersController
-                                                          .passengersdata
-                                                          .isNotEmpty
-                                                      ? Text(
-                                                          copassangersController
-                                                              .passengersdata[
-                                                                  index]
-                                                              .name,
-                                                          style: const TextStyle(
-                                                              fontSize: 17,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600),
-                                                        )
-                                                      : Text(''),
-                                                  Row(
-                                                    children: [
-                                                      copassangersController
-                                                              .passengersdata
-                                                              .isNotEmpty
-                                                          ? Text(
-                                                              copassangersController
-                                                                  .passengersdata[
-                                                                      index]
-                                                                  .gender)
-                                                          : Text(''),
-                                                      Text(' ,'),
-                                                      Text(
-                                                          '${copassangersController.passengersdata[index].age} years')
-                                                    ],
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                          ],
+                                        InkWell(
+                                          onTap: () {
+                                            Get.back();
+                                          },
+                                          child: Container(
+                                            height: 38,
+                                            width: 105,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                    BorderRadius.circular(6),
+                                                // ignore: unrelated_type_equality_checks
+                                                color: kgrey),
+                                            child: Center(
+                                                child: Text("No",
+                                                    style: TextStyle(
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: kblack))),
+                                          ),
                                         ),
-                                        Checkbox(
-                                            value: copassangersController
-                                                .passengersdata[index]
-                                                .isSelected,
-                                            onChanged: (value) {
-                                              bool isEqualTo =
-                                                  copassangersController
-                                                          .passengersdata
-                                                          .where((element) =>
-                                                              element
-                                                                  .isSelected ==
-                                                              true)
-                                                          .toList()
-                                                          .length !=
-                                                      boadingdroppingController
-                                                          .selectedSeats.length;
-                                              if (copassangersController
-                                                  .passengersdata[index]
-                                                  .isSelected) {
-                                              
-                                                  copassangersController
-                                                      .passengersdata[index]
-                                                      .isSelected = value!;
-                                                  copassangersController
-                                                      .update();
-                                              
-                                              }else{
-                                                 if (isEqualTo) {
-                                                  copassangersController
-                                                      .passengersdata[index]
-                                                      .isSelected = value!;
-                                                  copassangersController
-                                                      .update();
-                                                }
-                                              }
-                                            })
+                                        InkWell(
+                                          onLongPress: () {
+                                         copassangersController.deletepassenger(
+                                                    passengerid:copassangersController.passengersdata.isEmpty?"": copassangersController.passengersdata.first.id.toString()
+                                                  );
+                                                  copassangersController.update();
+                                                  Get.back();
+                                            
+                                          },
+                                          child: Container(
+                                            height: 38,
+                                            width: 105,
+                                            decoration: BoxDecoration(
+                                                color: kred,
+                                                borderRadius:
+                                                    BorderRadius.circular(6)),
+                                            child: Center(
+                                              child: Text("yes ",
+                                                  style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: kwhite)),
+                                            ),
+                                          ),
+                                        ),
                                       ],
                                     ),
-                                    const Padding(
-                                      padding: EdgeInsets.only(right: 15),
-                                      child: Divider(),
-                                    )
+                                    ksizedbox10
                                   ],
                                 );
-                              },
+                              });
+                            
+                            },
+                            child: Container(
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount:
+                                    copassangersController.passengersdata.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                radius: 23,
+                                                backgroundColor:
+                                                    Colors.pink.shade100,
+                                                child: const Center(
+                                                    child: Icon(Icons.person)),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 10),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    copassangersController
+                                                            .passengersdata
+                                                            .isNotEmpty
+                                                        ? Text(
+                                                            copassangersController
+                                                                .passengersdata[
+                                                                    index]
+                                                                .name,
+                                                            style: const TextStyle(
+                                                                fontSize: 17,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600),
+                                                          )
+                                                        : Text(''),
+                                                    Row(
+                                                      children: [
+                                                        copassangersController
+                                                                .passengersdata
+                                                                .isNotEmpty
+                                                            ? Text(
+                                                                copassangersController
+                                                                    .passengersdata[
+                                                                        index]
+                                                                    .gender)
+                                                            : Text(''),
+                                                        Text(' ,'),
+                                                        Text(
+                                                            '${copassangersController.passengersdata[index].age} years')
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          Checkbox(
+                                              value: copassangersController
+                                                  .passengersdata[index]
+                                                  .isSelected,
+                                              onChanged: (value) {
+                                                bool isEqualTo =
+                                                    copassangersController
+                                                            .passengersdata
+                                                            .where((element) =>
+                                                                element
+                                                                    .isSelected ==
+                                                                true)
+                                                            .toList()
+                                                            .length !=
+                                                        boadingdroppingController
+                                                            .selectedSeats.length;
+                                                if (copassangersController
+                                                    .passengersdata[index]
+                                                    .isSelected) {
+                                                
+                                                    copassangersController
+                                                        .passengersdata[index]
+                                                        .isSelected = value!;
+                                                    copassangersController
+                                                        .update();
+                                                
+                                                }else{
+                                                   if (isEqualTo) {
+                                                    copassangersController
+                                                        .passengersdata[index]
+                                                        .isSelected = value!;
+                                                    copassangersController
+                                                        .update();
+                                                  }
+                                                }
+                                              })
+                                        ],
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.only(right: 15),
+                                        child: Divider(),
+                                      )
+                                    ],
+                                  );
+                                },
+                              ),
                             ),
                           );
                         }),

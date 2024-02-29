@@ -58,14 +58,14 @@ class BookingCancelledWidget extends GetView<BookinghistoryController> {
                                   MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  '${bookingCancelledlistController.bookingcancelledlistdata[index].bookingData.boarding} → ${bookingCancelledlistController.bookingcancelledlistdata[index].bookingData.dropping}',
+                                  '${bookingCancelledlistController.bookingcancelledlistdata[index].busRoute!.startLocation} → ${bookingCancelledlistController.bookingcancelledlistdata[index].busRoute!.endLocation}',
                                   style: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
                               
-                                Text(bookingCancelledlistController.bookingcancelledlistdata[index].bookingData.date)
+                                Text(bookingCancelledlistController.bookingcancelledlistdata[index].bookingData!.dateOfJourney.toString())
                                 //Text('10, Nov 2023')
                               ],
                             ),
@@ -90,7 +90,7 @@ class BookingCancelledWidget extends GetView<BookinghistoryController> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('Booking ID: ${bookingCancelledlistController.bookingcancelledlistdata[index].bookingData.bookingId}'),
+                                    Text('Booking ID: ${bookingCancelledlistController.bookingcancelledlistdata[index].bookingData!.bookingId}'),
                                     GestureDetector(
                                       onTap: (){
                                         Get.toNamed(Routes.BOOKING_CANCELLATION);
@@ -105,7 +105,7 @@ class BookingCancelledWidget extends GetView<BookinghistoryController> {
                                                     23)),
                                         child: Center(
                                           child: Text(
-                                           bookingCancelledlistController.bookingcancelledlistdata[index].bookingData.isCancelled==null?'': 'Cancelled',
+                                           bookingCancelledlistController.bookingcancelledlistdata[index].bookingData!.isCancelled==null?'': 'Cancelled',
                                             style: TextStyle(
                                                 color: kwhite,
                                                 fontSize: 16,
