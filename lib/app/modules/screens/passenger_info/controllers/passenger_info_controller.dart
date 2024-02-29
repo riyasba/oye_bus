@@ -122,6 +122,7 @@ class PassengerInfoController extends GetxController {
       amount: amount,
       email: email,
       phone: mobilenumber,
+      id: "${DateTime.now().day}${DateTime.now().year}${DateTime.now().minute}${DateTime.now().second}${DateTime.now().millisecond}${DateTime.now().microsecond}",
       name: name,
     );
 

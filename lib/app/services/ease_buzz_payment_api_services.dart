@@ -12,23 +12,27 @@ class EaseBuzzTokenApiService {
   String key = "2PBP7IABZ2";
   String salt = "DAH88E3UWQ";
 
+   // String key = "2PBP7IABZ2";
+  // String salt = "DAH88E3UWQ";
+
   // String key = "G9Y2FJFQAD";
   // String salt = "MRFPTD851G";
 
   Future getPaymentToken(
       {required String amount,
       required String name,
+      required String id,
       required String email,
       required String phone}) async {
     dynamic responseJson;
     var bytes = utf8.encode(
-        "$key|12345|$amount|subscription|$name|$email|||||||||||$salt"); // data being hashed
+        "$key|$id|$amount|subscription|$name|$email|||||||||||$salt"); // data being hashed
 
     var hash = sha512.convert(bytes);
     print(hash);
     var body = {
       "key": key,
-      "txnid": '12345',
+      "txnid": id,
       'firstname': name,
       'amount': amount,
       'productinfo': 'subscription',
@@ -50,6 +54,7 @@ class EaseBuzzTokenApiService {
       print("......................$amount");
       print("......................$email");
       print("......................$phone");
+      print("......................$id");
       print(response.body.toString());
       responseJson = returnResponse(response);
     } on SocketException {

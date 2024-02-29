@@ -141,19 +141,13 @@ class BusseatmapingController extends GetxController {
     required String amount,
     required String name,
   }) async {
-    print('mobile number');
-    print(mobilenumber);
-    print('emailid');
-    print(email);
-    print('amount');
-    print(amount);
-    print('name');
-    print(name);
+
 
     var response = await easeBuzzApi.getPaymentToken(
       amount: amount,
       email: email,
       phone: mobilenumber,
+      id: "${DateTime.now().day}${DateTime.now().year}${DateTime.now().minute}${DateTime.now().second}${DateTime.now().millisecond}${DateTime.now().microsecond}",
       name: name,
     );
 

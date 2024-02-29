@@ -42,7 +42,7 @@ class  AddBookingApiService extends Config{
           "gender": "0",
           "source_destination":addBookingModel.sourcedestination,
           "sub_total":addBookingModel.subtotal,
-          "unit_price":addBookingModel.unitprice
+          // "unit_price":addBookingModel.unitprice
       }
      );
      
