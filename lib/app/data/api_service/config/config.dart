@@ -43,7 +43,7 @@ abstract class Config{
   final String buscitySearchURL = 'https://oye.batechnology.in/api/searchCities';
 
   //bus get offers
-   final String busoffersURL = 'https://oye.batechnology.in/api/getOffers';
+   final String busoffersURL = 'https://oye.batechnology.in/api/allOffers';
 
    //feedback
    final String feedbackURL = 'https://oye.batechnology.in/api/auth/feedback';

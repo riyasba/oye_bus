@@ -15,11 +15,27 @@ import 'package:oye_bus/app/modules/screens/passenger_info/controllers/passenger
 import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
 import 'package:oye_bus/app/modules/screens/settingsscreens/copassengers/controllers/copassengers_controller.dart';
 
-class PickanddropView extends GetView {
+class PickanddropView extends StatefulWidget {
   PickanddropView({Key? key}) : super(key: key);
+
+  @override
+  State<PickanddropView> createState() => _PickanddropViewState();
+}
+
+class _PickanddropViewState extends State<PickanddropView> with SingleTickerProviderStateMixin {
   final boadingdroppingController = Get.find<BusseatmapingController>();
+
   final homeController = Get.find<HomeController>();
+
   int tabIndex = 0;
+
+
+  @override
+  void initState() {
+    super.initState();
+    homeController.tabBarcontroller = TabController(length: 3, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     Get.put(PassengerInfoController());
@@ -47,14 +63,19 @@ class PickanddropView extends GetView {
             ],
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 8, bottom: 8),
-          child: TabBarView(
-            children: [
-              BoardingListView(),
-              DropingselectionView(),
-            ],
-          ),
+        body: GetBuilder<HomeController>(
+          builder: (_) {
+            return Padding(
+              padding: const EdgeInsets.only(top: 8, bottom: 8),
+              child: TabBarView(
+                controller: homeController.tabBarcontroller,
+                children: [
+                  BoardingListView(),
+                  DropingselectionView(),
+                ],
+              ),
+            );
+          }
         ),
         bottomNavigationBar: GetBuilder<BusseatmapingController>(builder: (_) {
           return Padding(

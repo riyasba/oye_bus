@@ -12,6 +12,7 @@ class BookinghistoryController extends GetxController {
   final count = 0.obs;
   RxBool isLoading = false.obs;
  RxInt containerindex =0.obs; 
+ 
   @override
   void onInit() {
     super.onInit();
@@ -62,6 +63,7 @@ class BookinghistoryController extends GetxController {
       BookingCancelledListModel bookingcancellistModel = 
       BookingCancelledListModel.fromJson(response.data);
     bookingcancelledlistdata =  bookingcancellistModel.bookingDetails!;
+    
     }
     update();
    }

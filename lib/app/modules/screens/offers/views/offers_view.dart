@@ -6,8 +6,14 @@ import 'package:oye_bus/app/components/const.dart';
 
 import '../controllers/offers_controller.dart';
 
-class OffersView extends GetView<OffersController> {
+class OffersView extends StatefulWidget {
    OffersView({Key? key}) : super(key: key);
+
+  @override
+  State<OffersView> createState() => _OffersViewState();
+}
+
+class _OffersViewState extends State<OffersView> {
   List offresimage=[
     'assets/offers_icon/offersimage1.png',
     'assets/offers_icon/offersimage2.png',
@@ -20,6 +26,13 @@ class OffersView extends GetView<OffersController> {
   ];
 
     final offerscontroller = Get.find<OffersController>();
+
+    @override
+    void initState() {
+      super.initState();
+      offerscontroller.getoffers();
+    }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +60,7 @@ class OffersView extends GetView<OffersController> {
                     return GridView.builder(
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: controller.offersdata.length,
+                      itemCount: offerscontroller.offersdata.length,
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 20,
@@ -55,7 +68,7 @@ class OffersView extends GetView<OffersController> {
                         crossAxisSpacing: 20), 
                         itemBuilder:(context,index){
                           return Container(
-                            width: 250.w,
+                            width: 300.w,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: kwhite,
@@ -68,52 +81,56 @@ class OffersView extends GetView<OffersController> {
                               ]
                             ),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8),
                                   child: Container(
-                                     height: 110.h,
-                                     width: 250.w,
-                                    child: Image.network(offerscontroller.offersdata[index].image,
+                                     height: 100.h,
+                                     width: 300.w,
+                                    child: Image.network(offerscontroller.offersdata[index].images.toString(),
                                     fit: BoxFit.fill,),
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5,top: 8),
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               
                                     children: [
-                                      Text(offerscontroller.offersdata[index].offerId,
+                                      Text(offerscontroller.offersdata[index].title.toString(),
                                       style: TextStyle(
                                          fontFamily: 'Proxima',
                                         fontSize: 15.sp,
                                         fontWeight: FontWeight.w600
                                       ),),
                                          Padding(
-                                  padding: const EdgeInsets.only(top: 8,right: 5),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  padding: const EdgeInsets.only(top: 6,right: 36),
+                                  child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(offerscontroller.offersdata[index].validTill,
+                                      Text('Valid till: ${offerscontroller.offersdata[index].validTill}',
                                       style: TextStyle(
                                          fontFamily: 'Proxima',
                                         fontSize: 12.sp
                                       ),
                                       ),
-                                      Container(
-                                        height: 18.h,
-                                        width: 60.w,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xff263238),
-                                          borderRadius: BorderRadius.circular(5)
-                                        ),
-                                        child: Center(
-                                          child: Text(offerscontroller.offersdata[index].couponCode,
-                                          style: TextStyle(
-                                            fontFamily: 'Proxima',
-                                            fontSize: 12.sp,
-                                            color: kwhite
-                                          ),),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 7),
+                                        child: Container(
+                                          height: 18.h,
+                                          width: 60.w,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xff263238),
+                                            borderRadius: BorderRadius.circular(5)
+                                          ),
+                                          child: Center(
+                                            child: Text(offerscontroller.offersdata[index].couponCode.toString(),
+                                            style: TextStyle(
+                                              fontFamily: 'Proxima',
+                                              fontSize: 12.sp,
+                                              color: kwhite
+                                            ),),
+                                          ),
                                         ),
                                       )
                                     ],

@@ -31,6 +31,8 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
+   TabController? tabBarcontroller ;
+
   var fromPlaceTxtController = TextEditingController();
   var toPlaceTxtController = TextEditingController();
 

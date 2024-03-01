@@ -39,6 +39,14 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
     //  });
     return selectedSeats;
   }
+  
+  String getActualTime(String time) {
+    var tempTime = time.split(":");
+
+    String actualTime = "${tempTime[0]}:${tempTime[1]}";
+
+    return actualTime;
+  }
 
   String getSelectedSeatTotalAmount(List<Seat> seatsList) {
     double totalAmount = 0.00;
@@ -127,8 +135,8 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        '${busdeatilsController.routedata==null?"":  busdeatilsController.routedata!.arrivalTime} → ${
-                                            busdeatilsController.routedata==null?'':busdeatilsController.routedata!.departureTime} ${formatDate(homeController.selectedDate, [D,',',d,' ',M])}',
+                                        '${busdeatilsController.routedata==null?"":  getActualTime(busdeatilsController.routedata!.arrivalTime)} → ${
+                                            busdeatilsController.routedata==null?'':getActualTime(busdeatilsController.routedata!.departureTime)} ${formatDate(homeController.selectedDate, [D,',',d,' ',M])}',
                                         style: TextStyle( 
                                             color: kgrey,
                                             fontSize: 15.sp,
@@ -140,7 +148,7 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        'Chennai - Bengaluru',
+                                        '${busdeatilsController.boardingpointdata.isEmpty?'': busdeatilsController.routedata!.sourceLocation} - ${busdeatilsController.droppointdata.isEmpty?'':busdeatilsController.routedata!.destinationLocation}',
                                         style: TextStyle(
                                             color: kgrey,
                                             fontSize: 15.sp,

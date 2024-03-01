@@ -17,7 +17,7 @@ class BusOffersApiService extends Config{
       options: Options(
         headers: {
           'Accept':'application/json',
-          'Authorization':'Bearer $authtoken'
+          // 'Authorization':'Bearer $authtoken'
         },
         followRedirects: false,
         validateStatus: (status){

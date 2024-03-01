@@ -100,10 +100,10 @@ class _DroppingListViewState extends State<DroppingListView> {
                               Radio(
                                 value: boadingdroppingController
                                     .droppointdata[index].id,
-                                groupValue: val,
+                                groupValue: boadingdroppingController.dropval,
                                 onChanged: (value) {
                                   setState(() {
-                                    val = value!;
+                                    boadingdroppingController.dropval = value!;
                                     boadingdroppingController
                                         .destinationlocationvalue
                                         .value = value.toString();

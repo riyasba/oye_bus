@@ -24,6 +24,8 @@ class BusseatmapingController extends GetxController {
   RxString boardinglocationvalue = ''.obs;
   RxString destinationlocationvalue = ''.obs;
   List seatname = [];
+  int val = -1;
+  int dropval = -1;
   @override
   void onInit() {
     // busseats();

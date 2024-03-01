@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/reservation_details/views/reservation_details_view.dart';
+import 'package:oye_bus/app/modules/screens/ticket_details/views/new_ticket_view.dart';
 import 'package:oye_bus/app/modules/screens/ticket_details/views/ticket_details_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 import 'package:flutter_svg/svg.dart';
@@ -43,8 +45,9 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                 top: 20, left: 10, right: 10),
                                             child: GestureDetector(
                                               onTap: () {
-                                                Get.to(TicketDetailsView(
-                                                  bookingDetail: bookinghistoryController.bookinghistorydata![index]));
+                                               Get.to(NewTicketView());
+                                                // Get.to(TicketDetailsView(
+                                                //   bookingDetail: bookinghistoryController.bookinghistorydata![index]));
                                               },
                                               child: Container(
                                                 height: 125,

@@ -5,6 +5,7 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
@@ -592,329 +593,361 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
     
          final bookingHistoryController = Get.find<BookinghistoryController>();
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        leading:     GestureDetector(
-          onTap: (){
-            Get.back();
-          },
-          child: const Icon(Icons.arrow_back)),
-        title:  Text('Your Ticket Details',
-          style:appbarfont,
-        ),
-        actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: Image.asset('assets/offers_icon/bellicon.png'),
-            )
-        ],
-      ),
+     
+      
        
       body: ListView(
         children: [
          Padding(
-           padding: const EdgeInsets.only(left: 8,right: 8),
-           child: GetBuilder<BookinghistoryController>(
-             builder: (_) {
-               return Column(
-                children: [
-                 Container(
-                  height: 532.h,
-                  width: 374.w,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffFFD400)
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ksizedbox10,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(bookingDetail.busData!.busName.toString(),
+           padding: const EdgeInsets.only(left: 0,right: 0),
+          child: Stack(
+            children:[ 
+              Expanded(
+                flex: 1,
+              child: Container(
+                height: 220,
+                width: MediaQuery.of(context).size.width,
+                color: kred,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5,left: 3,right: 3),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: (){
+                              Get.back();
+                            },
+                            child: Icon(Icons.arrow_back,
+                            color: kwhite,)),
+                          Text('Your Ticket Details',
                             style: TextStyle(
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w500
-                            ),),
-                            Text('${bookingDetail.busData!.busType} - Seats ${getSeatsDetail(bookingDetail.bookingData!.seats)}')
-                          ],
-                        ),
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: kwhite
+                                  ),), 
+                                  SvgPicture.asset('assets/home_pagebell_icons.svg',
+                                  color: kwhite,)
+                      
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10,top: 15),
-                        child: Row(
-                          children: [
-                            Column(
-                              children: [
-                                Container(
-                                  height: 130.h,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(bookingDetail.busRoute!.arrivalTime.toString()),
-                                            Text(
-                                              bookingDetail.bookingData!.dateOfJourney.toString(), 
+                    ),
+                  
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Positioned(
+                child: Container(
+                height: 500,
+                color: kwhite,
+              )),
+            )
+            ]
+          ),
+          //  child: GetBuilder<BookinghistoryController>(
+          //    builder: (_) {
+          //      return Column(
+          //       children: [
+          //        Container(
+          //         height: 532.h,
+          //         width: 374.w,
+          //         decoration: const BoxDecoration(
+          //           color: Color(0xffFFD400)
+          //         ),
+          //         child: Column(
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           children: [
+          //             ksizedbox10,
+          //             Padding(
+          //               padding: const EdgeInsets.only(left: 10),
+          //               child: Column(
+          //                 crossAxisAlignment: CrossAxisAlignment.start,
+          //                 children: [
+          //                   Text(bookingDetail.busData!.busName.toString(),
+          //                   style: TextStyle(
+          //                     fontSize: 20.sp,
+          //                     fontWeight: FontWeight.w500
+          //                   ),),
+          //                   Text('${bookingDetail.busData!.busType} - Seats ${getSeatsDetail(bookingDetail.bookingData!.seats)}')
+          //                 ],
+          //               ),
+          //             ),
+          //             Padding(
+          //               padding: const EdgeInsets.only(left: 10,top: 15),
+          //               child: Row(
+          //                 children: [
+          //                   Column(
+          //                     children: [
+          //                       Container(
+          //                         height: 130.h,
+          //                         child: Column(
+          //                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                           crossAxisAlignment: CrossAxisAlignment.start,
+          //                           children: [
+          //                             Column(
+          //                               crossAxisAlignment: CrossAxisAlignment.start,
+          //                               children: [
+          //                                 Text(bookingDetail.busRoute!.arrivalTime.toString()),
+          //                                   Text(
+          //                                     bookingDetail.bookingData!.dateOfJourney.toString(), 
                                            
-                                      style: TextStyle(
-                                        fontSize: 10.sp
-                                      ),)
-                                        ],
-                                      ),
-                                       Text('${bookingDetail.busRoute!.totalHours.toString()} hours',
-                                       style: TextStyle(
-                                        fontSize: 10.sp
-                                       ),),
-                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(bookingDetail.busRoute!.departureTime.toString()),
-                                          Text(bookingDetail.bookingData!.dateOfJourney.toString(),
-                                          style: TextStyle(
-                                            fontSize: 10.sp
-                                          ),)
-                                        ],
-                                       )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: 15.h,
-                                    width: 20.w,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.black,
-                                      shape: BoxShape.circle
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 92.h,
-                                    width: 5.w,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.black
-                                    ),
-                                  ),
-                                     Container(
-                                    height: 15.h,
-                                    width: 20.w,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.black,
-                                      shape: BoxShape.circle
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    height: 130.h,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
+          //                             style: TextStyle(
+          //                               fontSize: 10.sp
+          //                             ),)
+          //                               ],
+          //                             ),
+          //                              Text('${bookingDetail.busRoute!.totalHours.toString()} hours',
+          //                              style: TextStyle(
+          //                               fontSize: 10.sp
+          //                              ),),
+          //                              Column(
+          //                               crossAxisAlignment: CrossAxisAlignment.start,
+          //                               children: [
+          //                                 Text(bookingDetail.busRoute!.departureTime.toString()),
+          //                                 Text(bookingDetail.bookingData!.dateOfJourney.toString(),
+          //                                 style: TextStyle(
+          //                                   fontSize: 10.sp
+          //                                 ),)
+          //                               ],
+          //                              )
+          //                           ],
+          //                         ),
+          //                       ),
+          //                     ],
+          //                   ),
+          //                   Padding(
+          //                     padding: const EdgeInsets.only(left: 15),
+          //                     child: Column(
+          //                       children: [
+          //                         Container(
+          //                           height: 15.h,
+          //                           width: 20.w,
+          //                           decoration: const BoxDecoration(
+          //                             color: Colors.black,
+          //                             shape: BoxShape.circle
+          //                           ),
+          //                         ),
+          //                         Container(
+          //                           height: 92.h,
+          //                           width: 5.w,
+          //                           decoration: const BoxDecoration(
+          //                             color: Colors.black
+          //                           ),
+          //                         ),
+          //                            Container(
+          //                           height: 15.h,
+          //                           width: 20.w,
+          //                           decoration: const BoxDecoration(
+          //                             color: Colors.black,
+          //                             shape: BoxShape.circle
+          //                           ),
+          //                         ),
+          //                       ],
+          //                     ),
+          //                   ),
+          //                   Padding(
+          //                     padding: const EdgeInsets.only(left: 15),
+          //                     child: Column(
+          //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                       crossAxisAlignment: CrossAxisAlignment.start,
+          //                       children: [
+          //                         Container(
+          //                           height: 130.h,
+          //                           child: Column(
+          //                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                             crossAxisAlignment: CrossAxisAlignment.start,
+          //                             children: [
 
-                                             Text('${bookingDetail.busRoute!.startLocation}\n${bookingDetail.bookingData!.pickupPoint}'),
-                                             Text('${bookingDetail.busRoute!.endLocation} \n${bookingDetail.bookingData!.droppingPoint}')
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      ksizedbox10,
-                      Container(
-                        width: 374.w,
-                        decoration: BoxDecoration(
-                        ),
-                        child: Text('-----------------------------------------------------------------------------------',
-                        style: TextStyle(
-                          color: kwhite
-                        ),),
-                      ),
-                      ksizedbox10,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Text('${bookingDetail.bookingData!.boardingTime} - ${bookingDetail.bookingData!.droppingTime}',
-                        style: TextStyle(
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.w600
-                        ),),
-                      ),
-                       Padding(
-                        padding: EdgeInsets.only(top: 2,left: 10),
-                        child: Text(
-                          bookingDetail.bookingData!.dateOfJourney.toString()
-                          ,
-                          //'10 Nov 2023, Saturday',
-                        style: TextStyle(
-                        ),),
-                      ),
-                      ksizedbox10,
-                       Padding(
-                        padding: EdgeInsets.only(left: 10,right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Seat Number : ${getSeatsDetail(bookingDetail.bookingData!.seats)}',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700
-                            ),),
-                            Row(
-                              children: [
-                                Text('Ticket ID : ',
-                                style: TextStyle(),),
-                                Text('',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700
-                                ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                      ksizedbox10,
-                       Padding(
-                        padding: EdgeInsets.only(left: 10,top: 0,right: 10),
-                        child: Row(
-                          children: [
-                            Text('PNR : '),
-                            Text(bookingDetail.bookingData!.pnrNumber,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600
-                            ),)
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10,right: 10),
-                        child: Row(
-                          children: [
-                            Text('Booking ID: '),
-                            Text(bookingDetail.bookingData!.bookingId.toString(),
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600
-                            ),)
-                          ],
-                        ),
-                      ),
-                      ksizedbox10,
-                      Container(
-                        width: 374.w,
-                        decoration: BoxDecoration(
-                        ),
-                        child: Text('-----------------------------------------------------------------------------------',
-                        style: TextStyle(
-                          color: kwhite
-                        ),),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Container(
-                          width: 200.w,
-                          child: Text('${bookingDetail.busData!.busName}  ${bookingDetail.busData!.busRegisterNumber}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700
-                          ),)),
-                      ),
-                         ksizedbox10,
-                      Container(
-                        width: 374.w,
-                        decoration: BoxDecoration( 
-                        ),
-                        child: Text('-----------------------------------------------------------------------------------',
-                        style: TextStyle(
-                          color: kwhite
-                        ),),
-                      ),
-                      ksizedbox20,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10,right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text('TOTAL:',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700
-                            ),),
-                            Text('₹ ${bookingDetail.bookingData!.totalPrice}',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w700
-                            ),)
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                 ),
-                 ksizedbox10,
-                 Container(
-                  width: 374.w,
-                 child: Column(
-                   children: [
-                     Text('Bus information will be shared on the following number on the day trip of journey.',
-                     style: TextStyle(
-                      height: 1.5.h,
-                      fontFamily: 'Proxima '
-                     ),),   
-                   ],
-                 ),),
-                 ksizedbox20,
-                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                        onTap: (){
-                        sharePdfgeneration();
-                        },
-                      child: Image.asset('assets/offers_icon/shareicon.png')),
-                    GestureDetector(
-                      onTap: (){
-                      generatePDF();
-                      },
-                      child: Image.asset('assets/offers_icon/downloadicon.png')),
-                    GestureDetector(
-                      onTap: (){
-                         final bookingcancelController = Get.find<TicketDetailsController>().
-                         bookingCancellation(bookingid:bookingHistoryController.bookinghistorydata!.isNotEmpty?
-                          bookingHistoryController.bookinghistorydata!.first.bookingData!.bookingId.toString():'');
-                          final bookinghistoryController = Get.find<BookinghistoryController>().bookinghistory(); 
-                      },
-                      child: Image.asset('assets/offers_icon/cancelicon.png'))
-                  ],
-                 ), 
-                 ksizedbox10,
-                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text('Share'),
-                    Text('Download'),
-                    Text('Cancel')
-                  ],
-                 ),
-                 ksizedbox10
-                ],
-               );
-             }
-           ),
+          //                                    Text('${bookingDetail.busRoute!.startLocation}\n${bookingDetail.bookingData!.pickupPoint}'),
+          //                                    Text('${bookingDetail.busRoute!.endLocation} \n${bookingDetail.bookingData!.droppingPoint}')
+          //                             ],
+          //                           ),
+          //                         )
+          //                       ],
+          //                     ),
+          //                   )
+          //                 ],
+          //               ),
+          //             ),
+          //             ksizedbox10,
+          //             Container(
+          //               width: 374.w,
+          //               decoration: BoxDecoration(
+          //               ),
+          //               child: Text('-----------------------------------------------------------------------------------',
+          //               style: TextStyle(
+          //                 color: kwhite
+          //               ),),
+          //             ),
+          //             ksizedbox10,
+          //             Padding(
+          //               padding: const EdgeInsets.only(left: 10),
+          //               child: Text('${bookingDetail.bookingData!.boardingTime} - ${bookingDetail.bookingData!.droppingTime}',
+          //               style: TextStyle(
+          //                 fontSize: 15.sp,
+          //                 fontWeight: FontWeight.w600
+          //               ),),
+          //             ),
+          //              Padding(
+          //               padding: EdgeInsets.only(top: 2,left: 10),
+          //               child: Text(
+          //                 bookingDetail.bookingData!.dateOfJourney.toString()
+          //                 ,
+          //                 //'10 Nov 2023, Saturday',
+          //               style: TextStyle(
+          //               ),),
+          //             ),
+          //             ksizedbox10,
+          //              Padding(
+          //               padding: EdgeInsets.only(left: 10,right: 10),
+          //               child: Row(
+          //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                 children: [
+          //                   Text('Seat Number : ${getSeatsDetail(bookingDetail.bookingData!.seats)}',
+          //                   style: TextStyle(
+          //                     fontWeight: FontWeight.w700
+          //                   ),),
+          //                   Row(
+          //                     children: [
+          //                       Text('Ticket ID : ',
+          //                       style: TextStyle(),),
+          //                       Text('LA345678',
+          //                       style: TextStyle(
+          //                         fontWeight: FontWeight.w700
+          //                       ),
+          //                       )
+          //                     ],
+          //                   )
+          //                 ],
+          //               ),
+          //             ),
+          //             ksizedbox10,
+          //             const Padding(
+          //               padding: EdgeInsets.only(left: 10,top: 0,right: 10),
+          //               child: Row(
+          //                 children: [
+          //                   Text('PNR : '),
+          //                   Text('5565456679',
+          //                   style: TextStyle(
+          //                     fontWeight: FontWeight.w600
+          //                   ),)
+          //                 ],
+          //               ),
+          //             ),
+          //             Padding(
+          //               padding: const EdgeInsets.only(left: 10,right: 10),
+          //               child: Row(
+          //                 children: [
+          //                   Text('Booking ID: '),
+          //                   Text(bookingDetail.bookingData!.bookingId.toString(),
+          //                   style: TextStyle(
+          //                       fontWeight: FontWeight.w600
+          //                   ),)
+          //                 ],
+          //               ),
+          //             ),
+          //             ksizedbox10,
+          //             Container(
+          //               width: 374.w,
+          //               decoration: BoxDecoration(
+          //               ),
+          //               child: Text('-----------------------------------------------------------------------------------',
+          //               style: TextStyle(
+          //                 color: kwhite
+          //               ),),
+          //             ),
+          //             Padding(
+          //               padding: const EdgeInsets.only(left: 10),
+          //               child: Container(
+          //                 width: 200.w,
+          //                 child: Text('${bookingDetail.busData!.busName}  ${bookingDetail.busData!.busRegisterNumber}',
+          //                 style: TextStyle(
+          //                   fontWeight: FontWeight.w700
+          //                 ),)),
+          //             ),
+          //                ksizedbox10,
+          //             Container(
+          //               width: 374.w,
+          //               decoration: BoxDecoration( 
+          //               ),
+          //               child: Text('-----------------------------------------------------------------------------------',
+          //               style: TextStyle(
+          //                 color: kwhite
+          //               ),),
+          //             ),
+          //             ksizedbox20,
+          //             Padding(
+          //               padding: const EdgeInsets.only(left: 10,right: 10),
+          //               child: Row(
+          //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //                 children: [
+          //                   Text('TOTAL:',
+          //                   style: TextStyle(
+          //                     fontWeight: FontWeight.w700
+          //                   ),),
+          //                   Text('₹ ${bookingDetail.busRoute!.price}',
+          //                   style: TextStyle(
+          //                     fontWeight: FontWeight.w700
+          //                   ),)
+          //                 ],
+          //               ),
+          //             )
+          //           ],
+          //         ),
+          //        ),
+          //        ksizedbox10,
+          //        Container(
+          //         width: 374.w,
+          //        child: Column(
+          //          children: [
+          //            Text('Bus information will be shared on the following number on the day trip of journey.',
+          //            style: TextStyle(
+          //             height: 1.5.h,
+          //             fontFamily: 'Proxima '
+          //            ),),   
+          //          ],
+          //        ),),
+          //        ksizedbox20,
+          //        Row(
+          //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //         children: [
+          //           GestureDetector(
+          //               onTap: (){
+          //               sharePdfgeneration();
+          //               },
+          //             child: Image.asset('assets/offers_icon/shareicon.png')),
+          //           GestureDetector(
+          //             onTap: (){
+          //             generatePDF();
+          //             },
+          //             child: Image.asset('assets/offers_icon/downloadicon.png')),
+          //           GestureDetector(
+          //             onTap: (){
+          //                final bookingcancelController = Get.find<TicketDetailsController>().
+          //                bookingCancellation(bookingid:bookingHistoryController.bookinghistorydata!.isNotEmpty?
+          //                 bookingHistoryController.bookinghistorydata!.first.bookingData!.bookingId.toString():'');
+          //                 final bookinghistoryController = Get.find<BookinghistoryController>().bookinghistory(); 
+          //             },
+          //             child: Image.asset('assets/offers_icon/cancelicon.png'))
+          //         ],
+          //        ), 
+          //        ksizedbox10,
+          //        Row(
+          //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //         children: [
+          //           Text('Share'),
+          //           Text('Download'),
+          //           Text('Cancel')
+          //         ],
+          //        ),
+          //        ksizedbox10
+          //       ],
+          //      );
+          //    }
+          //  ),
          )
         ],
       ),

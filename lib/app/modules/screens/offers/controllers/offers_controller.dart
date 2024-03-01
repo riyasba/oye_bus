@@ -38,7 +38,9 @@ class OffersController extends GetxController {
     isLoading(false);
     if(response.data['status']==true){
       OffersModel offersModel = OffersModel.fromJson(response.data);
-      offersdata=offersModel.data;
+      offersdata = offersModel.offers!;
+      print("--------------->> offers list ");
+      print(offersdata.length);
       update();
     }
     else{

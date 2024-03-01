@@ -22,9 +22,9 @@ class _BoardingListViewState extends State<BoardingListView> {
   }
 
     bool isvalue = false;
-  int val = -1;
+  // int val = -1;
   final boadingdroppingController = Get.find<BusseatmapingController>();
-   final homeController = Get.find<HomeController>();
+  final homeController = Get.find<HomeController>();
 
    String getActualTime(String time){
     var temptime = time.split(':');
@@ -89,8 +89,7 @@ class _BoardingListViewState extends State<BoardingListView> {
                                              padding: const EdgeInsets.only(left: 11),
                                              child: Column(
                                                children: [
-                                                 Container(
-                                                                                   
+                                                 Container(              
                                                                       width: 180,
                                                                        child: Text(boadingdroppingController.boardingpointdata[index].point,
                                                                        style: const TextStyle(
@@ -106,14 +105,16 @@ class _BoardingListViewState extends State<BoardingListView> {
                                                               
                              Radio(
                                         value: boadingdroppingController.boardingpointdata[index].id,
-                                        groupValue: val,
+                                        groupValue: boadingdroppingController.val,
                                         onChanged: (value) {
-                                        //  DefaultTabController.of(context).animateTo(1);
+                                  
                                           setState(() {
-                                          val = value!;
+                                          boadingdroppingController.val = value!;
                                           boadingdroppingController.boardinglocationvalue.value=value.toString();
+                                          homeController.tabBarcontroller!.animateTo(1);
                                                   
                                           });
+                                          
                                         //  DefaultTabController.of(context).animateTo(1);
                                         },
                                         

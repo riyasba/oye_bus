@@ -9,6 +9,7 @@ import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/views/bus_list_view.dart';
 import 'package:oye_bus/app/modules/home/widgets/home_app_bar_widget.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/widgets/seperator_widgets.dart';
+import 'package:oye_bus/app/modules/screens/offers/controllers/offers_controller.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
 import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
 import 'package:oye_bus/app/modules/screens/search/views/search_destiny_view.dart';
@@ -33,7 +34,7 @@ class HomeView extends GetView<HomeController> {
 
     final homeController = Get.find<HomeController>();
     final searchcityController = Get.find<BusSearchController>();
-
+        final offerscontroller = Get.find<OffersController>();
     return Scaffold(
         appBar: const PreferredSize(
           preferredSize: Size.fromHeight(55),
@@ -542,83 +543,97 @@ class HomeView extends GetView<HomeController> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Container(
-                height: 180,
-                child: ListView.builder(
-                    itemCount: controller.offersList.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Container(
-                          height: 120,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: kwhite,
-                              boxShadow: <BoxShadow>[
-                                BoxShadow(
-                                    offset: const Offset(0.0, 0.75),
-                                    color: kgrey,
-                                    blurRadius: 5)
-                              ]),
-                          child: Column(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Image.asset(
-                                  controller.offersList[index].image,
-                                  height: 80,
-                                  fit: BoxFit.fitHeight,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                width: 150,
-                                child: Text(
-                                  controller.offersList[index].title,
-                                  style: const TextStyle(
-                                      fontFamily: 'Proxima',
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+              child: GetBuilder<OffersController>(
+                builder: (context) {
+                  return Container(
+                    height: 180,
+                    child: ListView.builder(
+                        itemCount: offerscontroller.offersdata.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Container(
+                              height: 120,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: kwhite,
+                                  boxShadow: <BoxShadow>[
+                                    BoxShadow(
+                                        offset: const Offset(0.0, 0.75),
+                                        color: kgrey,
+                                        blurRadius: 5)
+                                  ]),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Valid till: ${controller.offersList[index].validity}',
-                                    style: const TextStyle(
-                                        fontFamily: 'Proxima', fontSize: 10),
-                                  ),
-                                  const SizedBox(
-                                    width: 12,
-                                  ),
-                                  Container(
-                                    height: 18,
-                                    width: 60,
-                                    decoration: BoxDecoration(
-                                        color: Color(0xff263238),
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: Center(
-                                      child: Text(
-                                        controller.offersList[index].buttonName,
-                                        style: TextStyle(
-                                            fontFamily: 'Proxima',
-                                            fontSize: 10,
-                                            color: kwhite),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Container(
+                                      height: 100,
+                                      width: 180,
+                                      child: Image.network(
+                                        offerscontroller.offersdata[index].images.toString(),
+                                      fit: BoxFit.cover,
                                       ),
                                     ),
-                                  )
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 5,right: 5),
+                                    child: Container(
+                                      width: 150,
+                                      child: Text(
+                                        offerscontroller.offersdata[index].title.toString(),
+                                        style: const TextStyle(
+                                            fontFamily: 'Proxima',
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 5,right: 5),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Valid till: ${offerscontroller.offersdata[index].validTill}',
+                                          style: const TextStyle(
+                                              fontFamily: 'Proxima', fontSize: 10),
+                                        ),
+                                        const SizedBox(
+                                          width: 12,
+                                        ),
+                                        Container(
+                                          height: 18,
+                                          width: 60,
+                                          decoration: BoxDecoration(
+                                              color: Color(0xff263238),
+                                              borderRadius: BorderRadius.circular(5)),
+                                          child: Center(
+                                            child: Text(
+                                              offerscontroller.offersdata[index].couponCode.toString(),
+                                              style: TextStyle(
+                                                  fontFamily: 'Proxima',
+                                                  fontSize: 10,
+                                                  color: kwhite),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
-                            ],
-                          ),
-                        ),
-                      );
-                    }),
+                            ),
+                          );
+                        }),
+                  );
+                }
               ),
             ),
             const SizedBox(
