@@ -45,7 +45,7 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                 top: 20, left: 10, right: 10),
                                             child: GestureDetector(
                                               onTap: () {
-                                               Get.to(NewTicketView());
+                                               Get.to(NewTicketView(bookingDetail: bookinghistoryController.bookinghistorydata![index],));
                                                 // Get.to(TicketDetailsView(
                                                 //   bookingDetail: bookinghistoryController.bookinghistorydata![index]));
                                               },
