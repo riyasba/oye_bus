@@ -432,31 +432,31 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ],
                 )),
-            const SizedBox(
-              height: 5,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                children: [
-                  Obx(
-                    () => Checkbox(
-                      //  tristate: true,
-                      activeColor: Colors.green,
-                      value: controller.isAcBusOnly.value,
-                      onChanged: (bool? value) {
-                        controller.isAcBusOnly(value);
-                      },
-                    ),
-                  ),
-                  Text(
-                    "Show AC Buses only",
-                    style: primaryFont.copyWith(
-                        fontSize: 13, fontWeight: FontWeight.w400),
-                  )
-                ],
-              ),
-            ),
+            // const SizedBox(
+            //   height: 5,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 10),
+            //   child: Row(
+            //     children: [
+            //       Obx(
+            //         () => Checkbox(
+            //           //  tristate: true,
+            //           activeColor: Colors.green,
+            //           value: controller.isAcBusOnly.value,
+            //           onChanged: (bool? value) {
+            //             controller.isAcBusOnly(value);
+            //           },
+            //         ),
+            //       ),
+            //       Text(
+            //         "Show AC Buses only",
+            //         style: primaryFont.copyWith(
+            //             fontSize: 13, fontWeight: FontWeight.w400),
+            //       )
+            //     ],
+            //   ),
+            // ),
             const SizedBox(
               height: 15,
             ),

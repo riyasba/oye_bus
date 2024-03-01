@@ -215,50 +215,50 @@ Timer? _debounce;
                 SizedBox(
                   height: 20.h,
                 ),
-                searchcityController.citydata.isNotEmpty
-                    ? Container(
-                        height: 40.w,
-                        decoration:
-                            BoxDecoration(color: klightGrey.withOpacity(0.5)),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Recent Searches",
-                                style: smalbalckfont.copyWith(fontSize: 16.sp),
-                              ),
-                              Text(
-                                "Routes",
-                                style: primaryFont.copyWith(fontSize: 12.sp),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    : Text(''),
-                SizedBox(
-                  height: 20.h,
-                ),
-                searchcityController.citydata.isNotEmpty
-                    ? Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Row(
-                          children: [
-                            RecentChip(
-                              places: "Chennai - Salem",
-                            ),
-                            SizedBox(
-                              width: 15.w,
-                            ),
-                            RecentChip(
-                              places: "Chennai - Erode",
-                            ),
-                          ],
-                        ),
-                      )
-                    : Text('')
+                // searchcityController.citydata.isNotEmpty
+                //     ? Container(
+                //         height: 40.w,
+                //         decoration:
+                //             BoxDecoration(color: klightGrey.withOpacity(0.5)),
+                //         child: Padding(
+                //           padding: const EdgeInsets.symmetric(horizontal: 15),
+                //           child: Row(
+                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //             children: [
+                //               Text(
+                //                 "Recent Searches",
+                //                 style: smalbalckfont.copyWith(fontSize: 16.sp),
+                //               ),
+                //               Text(
+                //                 "Routes",
+                //                 style: primaryFont.copyWith(fontSize: 12.sp),
+                //               ),
+                //             ],
+                //           ),
+                //         ),
+                //       )
+                //     : Text(''),
+                // SizedBox(
+                //   height: 20.h,
+                // ),
+                // searchcityController.citydata.isNotEmpty
+                //     ? Padding(
+                //         padding: const EdgeInsets.symmetric(horizontal: 15),
+                //         child: Row(
+                //           children: [
+                //             RecentChip(
+                //               places: "Chennai - Salem",
+                //             ),
+                //             SizedBox(
+                //               width: 15.w,
+                //             ),
+                //             RecentChip(
+                //               places: "Chennai - Erode",
+                //             ),
+                //           ],
+                //         ),
+                //       )
+                //     : Text('')
               ],
             ),
           ],

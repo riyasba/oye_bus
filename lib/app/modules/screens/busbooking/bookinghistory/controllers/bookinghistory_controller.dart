@@ -14,10 +14,9 @@ class BookinghistoryController extends GetxController {
  RxInt containerindex =0.obs; 
   @override
   void onInit() {
-       bookinghistory();
-       bookingCancelledList();
     super.onInit();
-  
+     bookinghistory();
+     bookingCancelledList();
   }
 
   @override

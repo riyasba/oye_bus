@@ -24,6 +24,7 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
  
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => BookinghistoryController());
     return  ListView(
           children: [
             GetBuilder<BookinghistoryController>(

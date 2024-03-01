@@ -211,7 +211,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                             pdfLib.Text('Ticket ID : ',
                             style: pdfLib.TextStyle(
                             ),),
-                            pdfLib.Text('LA345678',
+                            pdfLib.Text("",
                             style: pdfLib.TextStyle(     
                             ),
                             )
@@ -282,7 +282,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         pdfLib.Text('TOTAL:',
                         style: pdfLib.TextStyle(
                         ),),
-                        pdfLib.Text(bookingDetail.busRoute!.price.toString(),
+                        pdfLib.Text(bookingDetail.bookingData!.totalPrice.toString(),
                         style: pdfLib.TextStyle(
                         ),)
                       ],
@@ -481,7 +481,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                             pdfLib.Text('Ticket ID : ',
                             style: pdfLib.TextStyle(
                             ),),
-                            pdfLib.Text('LA345678',
+                            pdfLib.Text('',
                             style: pdfLib.TextStyle(
                             ),
                             )
@@ -552,7 +552,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                       children: [
                         pdfLib.Text('TOTAL:',
                         style: pdfLib.TextStyle(),),
-                        pdfLib.Text(bookingDetail.busRoute!.price.toString(),
+                        pdfLib.Text(bookingDetail.bookingData!.totalPrice.toString(),
                         style: pdfLib.TextStyle(
                         ),)
                       ],
@@ -781,7 +781,7 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                               children: [
                                 Text('Ticket ID : ',
                                 style: TextStyle(),),
-                                Text('LA345678',
+                                Text('',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700
                                 ),
@@ -792,12 +792,12 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         ),
                       ),
                       ksizedbox10,
-                      const Padding(
+                       Padding(
                         padding: EdgeInsets.only(left: 10,top: 0,right: 10),
                         child: Row(
                           children: [
                             Text('PNR : '),
-                            Text('5565456679',
+                            Text(bookingDetail.bookingData!.pnrNumber,
                             style: TextStyle(
                               fontWeight: FontWeight.w600
                             ),)
@@ -851,12 +851,12 @@ class TicketDetailsView extends GetView<TicketDetailsController> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('TOTAL:',
+                            const Text('TOTAL:',
                             style: TextStyle(
                               fontWeight: FontWeight.w700
                             ),),
-                            Text('₹ ${bookingDetail.busRoute!.price}',
-                            style: TextStyle(
+                            Text('₹ ${bookingDetail.bookingData!.totalPrice}',
+                            style: const TextStyle(
                               fontWeight: FontWeight.w700
                             ),)
                           ],
