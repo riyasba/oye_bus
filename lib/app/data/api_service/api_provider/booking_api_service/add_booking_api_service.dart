@@ -40,8 +40,10 @@ class  AddBookingApiService extends Config{
           "passengers[$i][gender]": addBookingModel.passengermodel[i].gender,
           "ticket_count": addBookingModel.selectedSeats.length,
           "gender": "0",
-          "source_destination":addBookingModel.sourcedestination,
-          "sub_total":addBookingModel.subtotal,
+          "source_destination": addBookingModel.sourcedestination,
+          "sub_total": addBookingModel.subtotal,
+          "total_price": addBookingModel.subtotal,
+          "gst": "0",
           // "unit_price":addBookingModel.unitprice
       }
      );

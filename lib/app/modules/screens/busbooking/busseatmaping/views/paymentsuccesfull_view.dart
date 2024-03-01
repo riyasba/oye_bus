@@ -53,9 +53,9 @@ class PaymentsuccesfullView extends GetView {
                //  Get.toNamed(Routes.RESERVATIONDETAILS);
                 Get.offAllNamed(
                 Routes.BOTTUMNAVIGATION,
-                 );
+                );
               },
-              text: 'Next',
+              text: 'Done',
               color: kred,
               textColor: kwhite,
             ),

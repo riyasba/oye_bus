@@ -33,7 +33,7 @@ class _PickanddropViewState extends State<PickanddropView> with SingleTickerProv
   @override
   void initState() {
     super.initState();
-    homeController.tabBarcontroller = TabController(length: 3, vsync: this);
+    homeController.tabBarcontroller = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -42,30 +42,31 @@ class _PickanddropViewState extends State<PickanddropView> with SingleTickerProv
     return DefaultTabController(
       initialIndex: tabIndex,
       length: 2, // Number of tabs
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            '${homeController.boardinglocation}  to  ${homeController.destinationlocation}',
-            style: appbarfont,
-          ),
-          bottom: TabBar(
-            // dividerHeight: 0,
-            automaticIndicatorColorAdjustment: true,
-            labelColor: kwhite,
-            padding: const EdgeInsets.only(right: 15, left: 15),
-            unselectedLabelColor: Colors.black,
-            indicator: BoxDecoration(
-                borderRadius: BorderRadius.circular(30), color: kred),
-            tabs: [
-              Tab(text: '          BOARDING              '),
-              Tab(text: '        DROPPING         '),
-            ],
-          ),
-        ),
-        body: GetBuilder<HomeController>(
-          builder: (_) {
-            return Padding(
+      child: GetBuilder<HomeController>(
+              builder: (_) {
+          return Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              title: Text(
+                '${homeController.boardinglocation}  to  ${homeController.destinationlocation}',
+                style: appbarfont,
+              ),
+              bottom: TabBar(
+                // dividerHeight: 0,
+                automaticIndicatorColorAdjustment: true,
+                labelColor: kwhite,
+                  controller: homeController.tabBarcontroller,
+                padding: const EdgeInsets.only(right: 15, left: 15),
+                unselectedLabelColor: Colors.black,
+                indicator: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30), color: kred),
+                tabs: [
+                  Tab(text: '          BOARDING              '),
+                  Tab(text: '        DROPPING         '),
+                ],
+              ),
+            ),
+            body: Padding(
               padding: const EdgeInsets.only(top: 8, bottom: 8),
               child: TabBarView(
                 controller: homeController.tabBarcontroller,
@@ -74,38 +75,38 @@ class _PickanddropViewState extends State<PickanddropView> with SingleTickerProv
                   DropingselectionView(),
                 ],
               ),
-            );
-          }
-        ),
-        bottomNavigationBar: GetBuilder<BusseatmapingController>(builder: (_) {
-          return Padding(
-            padding: const EdgeInsets.only(left: 12, right: 12, bottom: 12),
-            child: CustomElevatedButton(
-              height: 45.h,
-              width: 1.sw,
-              onPressed: () {
-                if (boadingdroppingController.boardinglocationvalue.value ==
-                        "" ||
-                    boadingdroppingController.destinationlocationvalue.value ==
-                        "") {
-                  Get.rawSnackbar(
-                      message: 'Please Select Your Boarding and Dropping',
-                      backgroundColor: Colors.red);
-                } else {
-                  Get.find<CopassengersController>().copassangers();
-                  Get.to(PassengerInfoView());
-                }
-
-                //    Get.toNamed(
-                // Routes.BUSLOADINGSPLASH,
-                //  );
-              },
-              text: 'proceed',
-              color: kred,
-              textColor: kwhite,
             ),
+            bottomNavigationBar: GetBuilder<BusseatmapingController>(builder: (_) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 12, right: 12, bottom: 12),
+                child: CustomElevatedButton(
+                  height: 45.h,
+                  width: 1.sw,
+                  onPressed: () {
+                    if (boadingdroppingController.boardinglocationvalue.value ==
+                            "" ||
+                        boadingdroppingController.destinationlocationvalue.value ==
+                            "") {
+                      Get.rawSnackbar(
+                          message: 'Please Select Your Boarding and Dropping',
+                          backgroundColor: Colors.red);
+                    } else {
+                      Get.find<CopassengersController>().copassangers();
+                      Get.to(PassengerInfoView());
+                    }
+          
+                    //    Get.toNamed(
+                    // Routes.BUSLOADINGSPLASH,
+                    //  );
+                  },
+                  text: 'proceed',
+                  color: kred,
+                  textColor: kwhite,
+                ),
+              );
+            }),
           );
-        }),
+        }
       ),
     );
   }

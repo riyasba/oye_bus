@@ -8,9 +8,14 @@ import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/views/comp
 import '../controllers/bookinghistory_controller.dart';
 
 
-class BookinghistoryView extends GetView<BookinghistoryController> {
+class BookinghistoryView extends StatefulWidget {
   BookinghistoryView({Key? key}) : super(key: key);
 
+  @override
+  State<BookinghistoryView> createState() => _BookinghistoryViewState();
+}
+
+class _BookinghistoryViewState extends State<BookinghistoryView> {
   List containermsg = [
     'Booked',
     'Booked',
@@ -21,9 +26,18 @@ class BookinghistoryView extends GetView<BookinghistoryController> {
 
   int containerindex = 0;
 
+  final historyController = Get.find<BookinghistoryController>();
+
+  @override
+  void initState() { 
+    super.initState();
+    historyController.bookinghistory();
+    historyController.bookingCancelledList();
+  }
+
   @override
   Widget build(BuildContext context) {
-    Get.put(BookinghistoryController());
+    
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -32,7 +46,7 @@ class BookinghistoryView extends GetView<BookinghistoryController> {
               onTap: () {
                 Get.back();
               },
-              child: Icon(Icons.arrow_back),
+              child: const Icon(Icons.arrow_back),
             ),
             centerTitle: true,
             title: Text(
@@ -57,7 +71,7 @@ class BookinghistoryView extends GetView<BookinghistoryController> {
               unselectedLabelColor: Colors.black,
               indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(23),
-                  color: Color(0xffFFC107)),
+                  color: const Color(0xffFFC107)),
               tabs: [
                 Tab(
                   text: 'Completed',
