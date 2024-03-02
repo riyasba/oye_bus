@@ -654,7 +654,8 @@ class HomeView extends GetView<HomeController> {
               child: Container(
                 height: 60,
                 child: TextField(
-                  style: smalbalckfont.copyWith(fontSize: 17),
+                  controller:controller.pnrController,
+                  style: smalbalckfont.copyWith(fontSize: 15),
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderSide:
@@ -662,17 +663,22 @@ class HomeView extends GetView<HomeController> {
                       hintText: "PNR Number",
                       suffixIcon: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 40,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: const Color(0xffFFD400),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Check".toUpperCase(),
-                              style: smalbalckfont.copyWith(fontSize: 14),
+                        child: InkWell(
+                          onTap: (){
+                            Get.find<HomeController>().checkPnrstatus(pnrnumber: controller.pnrController.text);
+                          },
+                          child: Container(
+                            height: 40,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: const Color(0xffFFD400),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Check".toUpperCase(),
+                                style: smalbalckfont.copyWith(fontSize: 14),
+                              ),
                             ),
                           ),
                         ),

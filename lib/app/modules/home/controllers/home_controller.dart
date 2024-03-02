@@ -4,11 +4,14 @@ import 'package:get/get.dart';
 import 'package:dio/dio.dart'as dio;
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/bus_api_service/bus_list_api_service.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/check_pnr_api_service.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_model/buslist_model.dart';
+import 'package:oye_bus/app/data/api_service/models/bus_model/check_pnr_model.dart';
 import 'package:oye_bus/app/data/api_service/models/offers_models.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/views/bus_list_view.dart';
 import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';
 import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
+import 'package:oye_bus/app/routes/app_pages.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -35,6 +38,7 @@ class HomeController extends GetxController {
 
   var fromPlaceTxtController = TextEditingController();
   var toPlaceTxtController = TextEditingController();
+  var pnrController = TextEditingController(); 
 
   RxBool isAcBusOnly = false.obs;
  
@@ -141,6 +145,39 @@ var cityid=0;
           ));
       }
     
+    }
+
+    //checkpnrnumber
+
+    CheckPnrApiService checkpnrapiservice = CheckPnrApiService();
+
+    List<PnrData?> checkpnrdata =[];
+
+    checkPnrstatus({required String pnrnumber})async{
+      isLoading(true);
+      dio.Response<dynamic>response = await checkpnrapiservice.checkPnrApi(pnrnumber: pnrnumber);
+      isLoading(false);
+      if(response.data['status']==true){
+        CheckPnrModel checkPnrModel = CheckPnrModel.fromJson(response.data);
+        checkpnrdata.add(checkPnrModel.data);
+        Get.toNamed(Routes.PNR_STATUSVIEW);
+         Get.rawSnackbar(
+          backgroundColor: Colors.green,
+          messageText: Text(
+            response.data["message"],
+            style: primaryFont.copyWith(color: Colors.white),
+          ));
+         update();
+      }else{
+        Get.rawSnackbar(
+          backgroundColor: Colors.red,
+          messageText: Text(
+            response.data["message"],
+            style: primaryFont.copyWith(color: Colors.white),
+          ));
+      }
+     
+      
     }
   
 }

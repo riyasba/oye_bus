@@ -81,17 +81,10 @@ class _NewTicketViewState extends State<NewTicketView> {
               padding: pdfLib. EdgeInsets.symmetric(horizontal: 20),
               child: pdfLib.Container(
                 height: 470,
-                width:400,
+              
                 decoration:  pdfLib.BoxDecoration(
                   color: PdfColors.white,
-                  boxShadow: [
-                    pdfLib.BoxShadow(
-                      blurRadius: 5,
-                      //offset: Offset(, dy),
-                      color: PdfColors.grey,
-                      
-                    )
-                  ],
+               
                   borderRadius: pdfLib.BorderRadius.circular(20)
                 ),
                child: pdfLib.Padding(
@@ -179,7 +172,7 @@ class _NewTicketViewState extends State<NewTicketView> {
                                 fontWeight: pdfLib.FontWeight.bold
                               ),),
                               pdfLib.Text(widget.bookingDetail.bookingData!.droppingPoint.toString()),
-                              pdfLib.Text('${widget.bookingDetail.busRoute!.arrivalTime}  ${widget.bookingDetail.bookingData!.dateOfJourney}',
+                              pdfLib.Text('${getActualTime(widget.bookingDetail.busRoute!.arrivalTime)}  ${widget.bookingDetail.bookingData!.dateOfJourney}',
                               style: pdfLib.TextStyle(
                                 fontSize: 12
                               ),)
@@ -200,7 +193,7 @@ class _NewTicketViewState extends State<NewTicketView> {
                           pdfLib.Column(
                             crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                             children: [
-                              pdfLib.Text("${widget.bookingDetail.busRoute!.departureTime} - ${widget.bookingDetail.busRoute!.arrivalTime}",
+                              pdfLib.Text("${getActualTime(widget.bookingDetail.busRoute!.departureTime)} - ${getActualTime(widget.bookingDetail.busRoute!.arrivalTime)}",
                               style: pdfLib.TextStyle(
                                 fontWeight: pdfLib.FontWeight.bold
                               ),),
@@ -352,7 +345,7 @@ class _NewTicketViewState extends State<NewTicketView> {
                           style: pdfLib.TextStyle(
                             fontWeight: pdfLib.FontWeight.bold
                           ),),
-                          pdfLib.Text('₹ ${widget.bookingDetail.bookingData!.totalPrice}',
+                          pdfLib.Text(widget.bookingDetail.bookingData!.totalPrice.toString(),
                           style: pdfLib.TextStyle(
                             fontWeight: pdfLib.FontWeight.bold,
                           ),)
@@ -369,7 +362,7 @@ class _NewTicketViewState extends State<NewTicketView> {
             top: 50,
 
             child: pdfLib.Container(
-              width: 400,
+            
               child: pdfLib.Padding(
                 padding:pdfLib.EdgeInsets.only(left: 6,right: 6),
                 child: pdfLib.Row(
@@ -453,17 +446,10 @@ pdfLib.Stack(
               padding: pdfLib. EdgeInsets.symmetric(horizontal: 20),
               child: pdfLib.Container(
                 height: 470,
-                width:400,
+                
                 decoration:  pdfLib.BoxDecoration(
                   color: PdfColors.white,
-                  boxShadow: [
-                    pdfLib.BoxShadow(
-                      blurRadius: 5,
-                      //offset: Offset(, dy),
-                      color: PdfColors.grey,
-                      
-                    )
-                  ],
+                
                   borderRadius: pdfLib.BorderRadius.circular(20)
                 ),
                child: pdfLib.Padding(
@@ -475,7 +461,7 @@ pdfLib.Stack(
                                 fontSize: 20.sp,
                                 fontWeight: pdfLib.FontWeight.bold
                               )),
-                    pdfLib.Text('${widget.bookingDetail.busData!.busType} - ${widget.bookingDetail.bookingData!.seats} Seat'),
+                    pdfLib.Text('${widget.bookingDetail.busData!.busType} - ${getSeatsDetail(widget.bookingDetail.bookingData!.seats)} Seat'),
                    pdfLib.SizedBox(
                     height: 20,
                    ),
@@ -494,7 +480,7 @@ pdfLib.Stack(
                               ),),
                               pdfLib.Text(widget.bookingDetail.bookingData!.pickupPoint.toString(),
                               ),
-                              pdfLib.Text('${widget.bookingDetail.busRoute!.departureTime}  ${widget.bookingDetail.bookingData!.dateOfJourney}',
+                              pdfLib.Text('${getActualTime(widget.bookingDetail.busRoute!.departureTime)}  ${widget.bookingDetail.bookingData!.dateOfJourney}',
                               style: pdfLib.TextStyle(
                                 fontSize: 12
                               ),)
@@ -551,7 +537,7 @@ pdfLib.Stack(
                                 fontWeight: pdfLib.FontWeight.bold
                               ),),
                               pdfLib.Text(widget.bookingDetail.bookingData!.droppingPoint.toString()),
-                              pdfLib.Text('${widget.bookingDetail.busRoute!.arrivalTime}  ${widget.bookingDetail.bookingData!.dateOfJourney}',
+                              pdfLib.Text('${getActualTime(widget.bookingDetail.busRoute!.arrivalTime)}  ${widget.bookingDetail.bookingData!.dateOfJourney}',
                               style: pdfLib.TextStyle(
                                 fontSize: 12
                               ),)
@@ -572,7 +558,7 @@ pdfLib.Stack(
                           pdfLib.Column(
                             crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                             children: [
-                              pdfLib.Text("${widget.bookingDetail.busRoute!.departureTime} - ${widget.bookingDetail.busRoute!.arrivalTime}",
+                              pdfLib.Text("${getActualTime(widget.bookingDetail.busRoute!.departureTime)} - ${getActualTime(widget.bookingDetail.busRoute!.arrivalTime)}",
                               style: pdfLib.TextStyle(
                                 fontWeight: pdfLib.FontWeight.bold
                               ),),
@@ -614,7 +600,7 @@ pdfLib.Stack(
                               style: pdfLib.TextStyle(
                                 fontWeight: pdfLib.FontWeight.bold
                               ),),
-                              pdfLib.Text('LA345678',
+                              pdfLib.Text('',
                               style: pdfLib.TextStyle(
                                 fontWeight: pdfLib.FontWeight.bold
                               ),)
@@ -647,7 +633,7 @@ pdfLib.Stack(
                               style: pdfLib.TextStyle(
                                 fontWeight: pdfLib.FontWeight.bold
                               ),),
-                              pdfLib.Text('1234567890',
+                              pdfLib.Text(widget.bookingDetail.bookingData!.pnrNumber,
                               style: pdfLib.TextStyle(
                                 fontWeight: pdfLib.FontWeight.bold
                               ),)
@@ -660,7 +646,7 @@ pdfLib.Stack(
                               style: pdfLib.TextStyle(
                                 fontWeight: pdfLib.FontWeight.bold
                               ),),
-                              pdfLib.Text('LA345678',
+                              pdfLib.Text(widget.bookingDetail.bookingData!.bookingId.toString(),
                               style: pdfLib.TextStyle(
                                 fontWeight: pdfLib.FontWeight.bold
                               ),)
@@ -689,11 +675,11 @@ pdfLib.Stack(
                           pdfLib.Column(
                             crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                             children: [
-                              pdfLib.Text('KPR Klaimagal Travels',
+                              pdfLib.Text(widget.bookingDetail.busData!.busName.toString(),
                               style: pdfLib.TextStyle(
                                 fontWeight: pdfLib.FontWeight.bold
                               ),),
-                              pdfLib.Text('TN 28 BC1234',
+                              pdfLib.Text(widget.bookingDetail.busData!.busRegisterNumber.toString(),
                               style: pdfLib.TextStyle(
                                 fontWeight: pdfLib.FontWeight.bold
                               ),)
@@ -724,7 +710,7 @@ pdfLib.Stack(
                           style: pdfLib.TextStyle(
                             fontWeight: pdfLib.FontWeight.bold
                           ),),
-                          pdfLib.Text('₹ ${widget.bookingDetail.bookingData!.totalPrice}',
+                          pdfLib.Text(widget.bookingDetail.bookingData!.totalPrice.toString(),
                           style: pdfLib.TextStyle(
                             fontWeight: pdfLib.FontWeight.bold,
                           ),)
@@ -877,7 +863,7 @@ pdfLib.Stack(
                                 padding: const EdgeInsets.only(bottom: 15),
                                 child: Column(
                                   children: [
-                                    Text(widget.bookingDetail.busRoute!.totalHours.toString()),
+                                    Text('${widget.bookingDetail.busRoute!.totalHours} hr'),
                                     Row(
                                                           
                                       children: [
@@ -943,7 +929,7 @@ pdfLib.Stack(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('-------------------'),
+                              Text('-------------------------'),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -957,7 +943,7 @@ pdfLib.Stack(
                                   ),)
                                 ],
                               ),
-                                   Text('-------------------'),
+                                   Text('-------------------------'),
                             ],
                           ),
                         ),

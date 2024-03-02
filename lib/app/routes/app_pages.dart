@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/PnrStatusview/bindings/pnr_statusview_binding.dart';
+import '../modules/PnrStatusview/views/pnr_statusview_view.dart';
 import '../modules/authentication/login/bindings/login_binding.dart';
 import '../modules/authentication/login/views/login_view.dart';
 import '../modules/authentication/otp/bindings/otp_binding.dart';
@@ -247,8 +249,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.MYWALLET_SCREEN,
-      page: () =>  MywalletScreenView(),
+      page: () => MywalletScreenView(),
       binding: MywalletScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.PNR_STATUSVIEW,
+      page: () => const PnrStatusviewView(),
+      binding: PnrStatusviewBinding(),
     ),
   ];
 }

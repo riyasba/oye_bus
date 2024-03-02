@@ -59,6 +59,9 @@ abstract class Config{
   final String bookinghistoryURL = 'https://oye.batechnology.in/api/auth/getBookingDetails';
   final String bookingCancelURl = "https://oye.batechnology.in/api/auth/cancelBooking";
   final String bookingCancelledlistURL = "https://oye.batechnology.in/api/auth/cancelledBookingList";
+
+  //checkpnrstatus
+  final String checkpnrURL = "https://oye.batechnology.in/api/check-pnr?pnr_number=012-9606720";
 }
  
 
