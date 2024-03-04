@@ -3,11 +3,36 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
 
 import '../controllers/pnr_statusview_controller.dart';
 
 class PnrStatusviewView extends GetView<PnrStatusviewController> {
-  const PnrStatusviewView({Key? key}) : super(key: key);
+   PnrStatusviewView({Key? key}) : super(key: key);
+
+  final pnrcheckController = Get.find<HomeController>();
+  final historyController = Get.find<BookinghistoryController>();
+
+  //   String getSeatsDetail(List<String>? seats){
+  //   String getseatdetails = "";
+  //    seats!.forEach((element) {
+  //     getseatdetails = getseatdetails + "$element ";
+  //     });
+  //    return getseatdetails;
+  // }
+String getActualTime(String time){
+  var temptime = time.split(":");
+  String getTemptime = '${temptime[0]}:${temptime[1]}';
+  return getTemptime; 
+}
+  String getSeatsDetails(List<String>? seats){
+   String getseatsdetails ='';
+   seats!.forEach((element) {
+    getseatsdetails=getseatsdetails +"$element";
+   });
+   return getseatsdetails;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +64,7 @@ class PnrStatusviewView extends GetView<PnrStatusviewController> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Chennai  - Bengaluru',
+                                Text('${historyController.bookinghistorydata!.isEmpty?"": historyController.bookinghistorydata!.first.busRoute!.startLocation}  - ${historyController.bookinghistorydata!.isEmpty?"": historyController.bookinghistorydata!.first.busRoute!.endLocation}',
                                 style: TextStyle(
                                   //fontFamily: 'Proxima',
                                   fontSize: 20.5.sp,
@@ -49,7 +74,7 @@ class PnrStatusviewView extends GetView<PnrStatusviewController> {
                                
                               ],
                             ),
-                            Text('10 Nov 2023, Saturday',
+                            Text(historyController.bookinghistorydata!.isEmpty?'':historyController.bookinghistorydata!.first.bookingData!.dateOfJourney.toString(),
                             style: TextStyle(
                               fontSize: 16.sp,
                               //fontFamily: 'Proxima',
@@ -92,7 +117,7 @@ class PnrStatusviewView extends GetView<PnrStatusviewController> {
                                   children: [
                                     Container(
                                       width: 150.w,
-                                      child: Text('KMPL Kalaimakal Travels',
+                                      child: Text(historyController.bookinghistorydata!.isEmpty?'':historyController.bookinghistorydata!.first.busData!.busName.toString(),
                                       style: TextStyle(
                                         //fontFamily: 'Proxima ',
                                         color: kwhite,
@@ -100,7 +125,7 @@ class PnrStatusviewView extends GetView<PnrStatusviewController> {
                                         fontWeight: FontWeight.w700
                                       ),),
                                     ),
-                                    Text('L17',
+                                    Text(historyController.bookinghistorydata!.isEmpty?'':getSeatsDetails(historyController.bookinghistorydata!.first.bookingData!.seats),
                                     textAlign: TextAlign.start,
                                      style: TextStyle(
                                       
@@ -133,35 +158,7 @@ class PnrStatusviewView extends GetView<PnrStatusviewController> {
                                     color: kwhite))
                                 ],
                               ),
-                               ksizedbox20,
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('PNR Number',
-                                  style: TextStyle(
-                                    //fontFamily: 'Proxima ',
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: kwhite
-                                  ),),
-                                 
-                                ],
-                              ),
-                                Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('PNR Number',
-                                  style: TextStyle(
-                                    //fontFamily: 'Proxima ',
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: kwhite
-                                  ),),
-                                 
-                                ],
-                              ),
+                           
                               ksizedbox20,
                                  Padding(
                                 padding: const EdgeInsets.only(top: 8),
@@ -169,14 +166,14 @@ class PnrStatusviewView extends GetView<PnrStatusviewController> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('LA345678',
+                                    Text('',
                                     style: TextStyle(
                                       //fontFamily: 'Proxima ',
                                       color: kwhite,
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w700
                                     ),),
-                                    Text('TN 01 BC 3432',
+                                    Text(historyController.bookinghistorydata!.isEmpty?'':historyController.bookinghistorydata!.first.busData!.busRegisterNumber.toString(),
                                     textAlign: TextAlign.start,
                                      style: TextStyle(
                                       
@@ -189,6 +186,30 @@ class PnrStatusviewView extends GetView<PnrStatusviewController> {
                                   ],
                                 ),
                               ),
+                                  ksizedbox20,
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('PNR Number',
+                                  style: TextStyle(
+                                    //fontFamily: 'Proxima ',
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: kwhite
+                                  ),),
+                                  Text(historyController.bookinghistorydata!.isEmpty?'':historyController.bookinghistorydata!.first.bookingData!.pnrNumber,
+                                   style: TextStyle(
+                                      
+                                      color: kwhite,
+                                        //fontFamily: 'Proxima ',
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w700
+                                      ),),
+                                 
+                                ],
+                              ),
+                               
                               ksizedbox20,
                                    Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -215,14 +236,14 @@ class PnrStatusviewView extends GetView<PnrStatusviewController> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('21:50 PM',
+                                    Text(getActualTime(historyController.bookinghistorydata!.isEmpty?'':historyController.bookinghistorydata!.first.busRoute!.departureTime),
                                     style: TextStyle(
                                       //fontFamily: 'Proxima ',
                                       color: kwhite,
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w700
                                     ),),
-                                    Text('06:15AM',
+                                    Text(getActualTime(historyController.bookinghistorydata!.isEmpty?'':historyController.bookinghistorydata!.first.busRoute!.arrivalTime),
                                     textAlign: TextAlign.start,
                                      style: TextStyle(
                                       
@@ -256,7 +277,7 @@ class PnrStatusviewView extends GetView<PnrStatusviewController> {
                                     //fontFamily: 'Proxima ',
                                     color: kwhite
                                   ),),
-                                   Text('₹ 4,558.00',
+                                   Text('₹ ${historyController.bookinghistorydata!.isEmpty?'':historyController.bookinghistorydata!.first.bookingData!.totalPrice}',
                                   style: TextStyle(
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w700,

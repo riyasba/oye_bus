@@ -5,6 +5,7 @@ import 'package:dio/dio.dart'as dio;
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/bus_api_service/bus_list_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/check_pnr_api_service.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/filter_api_service/filter_api_service.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_model/buslist_model.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_model/check_pnr_model.dart';
 import 'package:oye_bus/app/data/api_service/models/offers_models.dart';
@@ -147,6 +148,39 @@ var cityid=0;
     
     }
 
+ FilterApiService filterapiservice = FilterApiService();
+  
+    
+  getFilter({
+    required String boardingname,
+    required String destinationname,
+    required String date,
+    String? busType,
+    String?acornonac,
+    String?amenities,
+    String?busname,
+    String? depaturetime,})async{
+    isLoading(true);
+    dio.Response<dynamic>response = await filterapiservice.filterApi(
+      boardingname: boardingname, 
+      destinationname: destinationname, 
+      date: date);
+             isLoading(false);
+         if(response.data['status'] == true){ 
+          print("----------->> here");
+          BusListModel buslistModel = BusListModel.fromJson(response.data);
+          busdata=buslistModel.data!;
+          update(); 
+      }else{
+        Get.rawSnackbar(
+          backgroundColor: Colors.red,
+          messageText: Text(
+            response.data["message"],
+            style: primaryFont.copyWith(color: Colors.white),
+          ));
+      }
+        
+  }
     //checkpnrnumber
 
     CheckPnrApiService checkpnrapiservice = CheckPnrApiService();

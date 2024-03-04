@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_filter/views/widgets/bus_arrivaltime_destination_widget.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_filter/views/widgets/bus_boardingpoint_widget.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_filter/views/widgets/bus_facilites_widget.dart';
@@ -18,7 +19,7 @@ class BusFilterView extends GetView<BusFilterController> {
    BusFilterView({Key? key}) : super(key: key);
   var boardingController = TextEditingController();
 
-
+  final busfilterController = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: kwhite,
@@ -812,21 +813,30 @@ class BusFilterView extends GetView<BusFilterController> {
                             ),),
                           ),
                         ),
-                        Container(
-                        height: 35.h,
-                          width: 200.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(26),
-                            color:kred
-                          ),
-                          child: Center(
-                            child: Text('APPLY',
-                            style: TextStyle(
-                             // fontFamily: 'Proxima ',
-                             fontFamily: 'Proxima ',
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,color: kwhite
-                            )),
+                        InkWell(
+                          onTap: (){
+                            // Get.find<HomeController>().getFilter(
+                            //   boardingname: boardingname, 
+                            //   destinationname: destinationname, 
+                            //   date: date,
+                            //   busType: );
+                          },
+                          child: Container(
+                          height: 35.h,
+                            width: 200.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(26),
+                              color:kred
+                            ),
+                            child: Center(
+                              child: Text('APPLY',
+                              style: TextStyle(
+                               // fontFamily: 'Proxima ',
+                               fontFamily: 'Proxima ',
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,color: kwhite
+                              )),
+                            ),
                           ),
                         )
                       ],

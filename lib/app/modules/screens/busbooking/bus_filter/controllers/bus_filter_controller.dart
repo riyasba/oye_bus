@@ -1,10 +1,16 @@
+import 'package:dio/dio.dart'as dio;
 import 'package:get/get.dart';
+
+import 'package:oye_bus/app/data/api_service/api_provider/filter_api_service/filter_api_service.dart';
+import 'package:oye_bus/app/data/api_service/models/booking_model/booking_canceled_list_model.dart';
+import 'package:oye_bus/app/data/api_service/models/bus_model/buslist_model.dart';
 
 class BusFilterController extends GetxController {
   //TODO: Implement BusFilterController
 
   final count = 0.obs;
     final colorindex = 0.obs;
+    RxBool isLoading = false.obs;
     RxBool checkbox1= false.obs;
     RxBool checkbox2= false.obs;
     RxBool checkbox3= false.obs;
@@ -140,4 +146,6 @@ class BusFilterController extends GetxController {
   }
 
   void increment() => count.value++;
+
+ 
 }

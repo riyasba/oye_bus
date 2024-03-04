@@ -662,10 +662,20 @@ class HomeView extends GetView<HomeController> {
                               BorderSide(color: Colors.grey.withOpacity(0.5))),
                       hintText: "PNR Number",
                       suffixIcon: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding:  EdgeInsets.all(8.0),
                         child: InkWell(
                           onTap: (){
-                            Get.find<HomeController>().checkPnrstatus(pnrnumber: controller.pnrController.text);
+                            if(controller.pnrController.text.isNotEmpty){
+                                    Get.find<HomeController>().checkPnrstatus(pnrnumber: controller.pnrController.text);
+                            }else{
+                               Get.rawSnackbar(
+          backgroundColor: Colors.red,
+          messageText: Text(
+          "Please Enter Your PNR Number",
+            style: primaryFont.copyWith(color: Colors.white),
+          ));
+                            }
+                         
                           },
                           child: Container(
                             height: 40,

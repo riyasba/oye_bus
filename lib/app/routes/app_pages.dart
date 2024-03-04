@@ -254,7 +254,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PNR_STATUSVIEW,
-      page: () => const PnrStatusviewView(),
+      page: () =>  PnrStatusviewView(),
       binding: PnrStatusviewBinding(),
     ),
   ];
