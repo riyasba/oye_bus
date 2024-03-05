@@ -11,7 +11,7 @@ class SplashController extends GetxController {
   final count = 0.obs;
   @override
   void onInit() {
-checkForAuth();
+   checkForAuth();
     super.onInit();
   }
       
@@ -31,7 +31,7 @@ checkForAuth();
     print("Token is here");
     print(authtoken);
     if (authtoken == "null" || authtoken == null) {
-    Get.toNamed( Routes.LOCATION);
+    Get.toNamed(Routes.ONBORDING);
     } else {
       Get.toNamed( Routes.BOTTUMNAVIGATION,);
     }

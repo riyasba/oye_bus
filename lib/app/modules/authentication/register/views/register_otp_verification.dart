@@ -47,7 +47,7 @@ class RegisterOtpView extends GetView<RegisterController> {
                   ),
                   ksizedbox20,
                   Text(
-                    '''Check your SMS messages. We've sent you the PIN at $mobile ''',
+                    '''Enter OTP sent to your mobile $mobile ''',
                     style: Theme.of(context).textTheme.displaySmall!.copyWith(
                           fontSize: 14.sp,
                           color: Colors.grey,
@@ -148,7 +148,7 @@ class RegisterOtpView extends GetView<RegisterController> {
         ],
       ),
       bottomNavigationBar: Obx(
-        () => controller.isLoading == true
+        () => controller.isLoading.isTrue
             ? Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Container(
@@ -164,15 +164,18 @@ class RegisterOtpView extends GetView<RegisterController> {
                   ),
                 ),
               )
-            : CustomElevatedButton(
-              height: 45.h,
-              width: 1.sw,
-              onPressed: () {
-                controller.RegisterOtpVerify(mobile: mobile, otp: otpValue);
-              },
-              text: 'CONTINUE',
-              color: kred,
-              textColor: kwhite,
+            : Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: CustomElevatedButton(
+                height: 45.h,
+                width: 1.sw,
+                onPressed: () {
+                  controller.RegisterOtpVerify(mobile: mobile, otp: otpValue);
+                },
+                text: 'CONTINUE',
+                color: kred,
+                textColor: kwhite,
+              ),
             ),
       ),
     );

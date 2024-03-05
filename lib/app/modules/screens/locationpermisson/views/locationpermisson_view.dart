@@ -79,7 +79,7 @@ class LocationpermissonView extends GetView<LocationpermissonController> {
                 height: 45.h,
                 width: 1.sw,
                 onPressed: () {
-                  Get.toNamed(
+                  Get.offAllNamed(
                     Routes.BUSLOADINGSPLASH,
                   );
                 },

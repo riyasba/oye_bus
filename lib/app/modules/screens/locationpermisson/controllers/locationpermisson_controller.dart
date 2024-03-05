@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:location/location.dart';
+import 'package:oye_bus/app/routes/app_pages.dart';
 
 class LocationpermissonController extends GetxController {
     final Location location = Location();
@@ -29,6 +30,9 @@ class LocationpermissonController extends GetxController {
         permissionGranted = permissionRequestedResult;
     
     }
+     Get.offAllNamed(
+                    Routes.BUSLOADINGSPLASH,
+                  );
   }
 
 

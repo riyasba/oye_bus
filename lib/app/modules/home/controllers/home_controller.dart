@@ -13,6 +13,8 @@ import 'package:oye_bus/app/modules/screens/busbooking/bus_list/views/bus_list_v
 import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';
 import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
+import 'package:path/path.dart' as path;
+import 'package:sqflite/sqflite.dart';
 
 class HomeController extends GetxController {
   //TODO: Implement HomeController
@@ -21,6 +23,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    _initializeDatabase();
     Get.put(NotificationController());
     Get.find<ProfileController>().getprofile();
   }
@@ -86,8 +89,13 @@ class HomeController extends GetxController {
     String fromPlace = fromPlaceTxtController.text;
     String toPlace = toPlaceTxtController.text;
 
+
     fromPlaceTxtController.text = toPlace;
     toPlaceTxtController.text = fromPlace;
+    fromcityid = toPlace;
+    tocityid = fromPlace;
+    fromCity = toPlace;
+    toCity = fromPlace;
 
     update();
   }
@@ -210,8 +218,28 @@ var cityid=0;
             style: primaryFont.copyWith(color: Colors.white),
           ));
       }
-     
-      
     }
-  
+ 
+
+
+
+
+   void _initializeDatabase() async {
+    // Initialize your database here
+    // Example:
+    final database = openDatabase(
+      path.join(await getDatabasesPath(), 'your_database_name.db'), // Fully qualify join
+      onCreate: (db, version) {
+        return db.execute(
+          "CREATE TABLE boarding_destinations(id INTEGER PRIMARY KEY, boardingName TEXT, destinationName TEXT)"
+        );
+      },
+      version: 1,
+    );
+  }
+
+
+
+
+
 }

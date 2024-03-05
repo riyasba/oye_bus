@@ -52,10 +52,10 @@ class PaymentsuccesfullView extends GetView {
               height: 45.h,
               width: 1.sw,
               onPressed: () {
-               Get.to(PaymentsuccesfullView());
+                Get.to(const PaymentsuccesfullView());
                 //    Get.toNamed(
                 // Routes.BOTTUMNAVIGATION,
-                //  );
+                //  ); 
               },
               text: 'Next',
               color: kred,

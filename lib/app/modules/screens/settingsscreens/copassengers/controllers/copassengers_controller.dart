@@ -5,6 +5,7 @@ import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/passengers/add_co_passengers_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/passengers/co_passengers_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/passengers/delete_co_passengers_api_service.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/passengers/edit_co_passengers_api_services.dart';
 import 'package:oye_bus/app/data/api_service/models/passengers/add_copassengers_model.dart';
 import 'package:dio/dio.dart'as dio;
 import 'package:oye_bus/app/data/api_service/models/passengers/co_passangers_model.dart';
@@ -132,6 +133,21 @@ class CopassengersController extends GetxController {
           ));
       }
       update();
+   }
+
+
+   EditCoPassangersApiService editCoPassangersApiService = EditCoPassangersApiService();
+
+
+   editCoPassengersApi({required int coPassengerId, required AddCoPassangersModel addCoPassangersModel}) async{
+    isLoading(true);
+     dio.Response<dynamic> response = await editCoPassangersApiService.editCoPassangersApi(coPassengerId: coPassengerId, addCoPassangersModel: addCoPassangersModel);
+    isLoading(false);
+     if(response.data["status"] == true){
+      Get.back();
+     }
+     copassangers();
+
    }
 
 }

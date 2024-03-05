@@ -203,15 +203,15 @@ class LoginView extends GetView<LoginController> {
                     ksizedbox30,
                     ksizedbox40,
                     Obx(
-                      () => loginController.isLoading == true
+                      () => loginController.isLoading.isTrue
                           ? Container(
-                              width: MediaQuery.of(context).size.width * 0.65,
+                              width: MediaQuery.of(context).size.width * 0.87,
                               height: 50,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 color: kred,
                                 borderRadius: BorderRadius.circular(
-                                  4,
+                                  10,
                                 ),
                                 border:
                                     Border.all(color: const Color(0xffFFBF7E)),

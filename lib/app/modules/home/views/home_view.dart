@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oye_bus/app/components/const.dart';
-
+import 'package:oye_bus/app/data/local_data/sqflite_data.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/views/bus_list_view.dart';
 import 'package:oye_bus/app/modules/home/widgets/home_app_bar_widget.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/widgets/seperator_widgets.dart';
@@ -15,7 +15,6 @@ import 'package:oye_bus/app/modules/screens/search/controllers/search_controller
 import 'package:oye_bus/app/modules/screens/search/views/search_destiny_view.dart';
 import 'package:oye_bus/app/modules/screens/search/views/search_view.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -34,7 +33,7 @@ class HomeView extends GetView<HomeController> {
 
     final homeController = Get.find<HomeController>();
     final searchcityController = Get.find<BusSearchController>();
-        final offerscontroller = Get.find<OffersController>();
+    final offerscontroller = Get.find<OffersController>();
     return Scaffold(
         appBar: const PreferredSize(
           preferredSize: Size.fromHeight(55),
@@ -215,9 +214,9 @@ class HomeView extends GetView<HomeController> {
               height: 20,
             ),
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
                       onTap: () {
@@ -230,7 +229,7 @@ class HomeView extends GetView<HomeController> {
                               borderRadius: BorderRadius.circular(10),
                               color: const Color(0xffEEEEEF)),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 7),
+                            padding: const EdgeInsets.symmetric(horizontal: 18),
                             child: Row(children: [
                               ClipRRect(
                                   borderRadius: BorderRadius.circular(35),
@@ -238,6 +237,9 @@ class HomeView extends GetView<HomeController> {
                                     "assets/home_page/calendar_gif.gif",
                                     height: 30.h,
                                   )),
+                              const SizedBox(
+                                width: 10,
+                              ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 8),
                                 child: Column(
@@ -266,40 +268,40 @@ class HomeView extends GetView<HomeController> {
                         );
                       }),
                     ),
-                    SizedBox(
-                      width: 6.w,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        //  Get.to(() => PassengerInfoView());
-                      },
-                      child: Container(
-                          height: 55.h,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: const Color(0xffEEEEEF)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                top: 7, left: 7, right: 7),
-                            child: Column(
-                              children: [
-                                Text(
-                                  "Traveller",
-                                  style: primaryFont.copyWith(fontSize: 9.sp),
-                                ),
-                                SizedBox(
-                                  height: 7.h,
-                                ),
-                                Text(
-                                  "01",
-                                  style: primaryFont.copyWith(
-                                      fontSize: 11.sp,
-                                      fontWeight: FontWeight.w900),
-                                )
-                              ],
-                            ),
-                          )),
-                    ),
+                    // SizedBox(
+                    //   width: 6.w,
+                    // ),
+                    // InkWell(
+                    //   onTap: () {
+                    //     //  Get.to(() => PassengerInfoView());
+                    //   },
+                    //   child: Container(
+                    //       height: 55.h,
+                    //       decoration: BoxDecoration(
+                    //           borderRadius: BorderRadius.circular(10),
+                    //           color: const Color(0xffEEEEEF)),
+                    //       child: Padding(
+                    //         padding: const EdgeInsets.only(
+                    //             top: 7, left: 7, right: 7),
+                    //         child: Column(
+                    //           children: [
+                    //             Text(
+                    //               "Traveller",
+                    //               style: primaryFont.copyWith(fontSize: 9.sp),
+                    //             ),
+                    //             SizedBox(
+                    //               height: 7.h,
+                    //             ),
+                    //             Text(
+                    //               "01",
+                    //               style: primaryFont.copyWith(
+                    //                   fontSize: 11.sp,
+                    //                   fontWeight: FontWeight.w900),
+                    //             )
+                    //           ],
+                    //         ),
+                    //       )),
+                    // ),
                     SizedBox(
                       width: 6.w,
                     ),
@@ -312,7 +314,7 @@ class HomeView extends GetView<HomeController> {
                               color: const Color(0xffEEEEEF)),
                           child: Padding(
                             padding: const EdgeInsets.only(
-                                top: 7, left: 7, right: 5),
+                                top: 7, left: 10, right: 10),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -471,9 +473,21 @@ class HomeView extends GetView<HomeController> {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: GetBuilder<HomeController>(builder: (_) {
                       return GestureDetector(
-                        onTap: () {
+                        onTap: () async {
                           if (controller.cityid != 0 ||
                               controller.fromcityid != 0) {
+                            String boardingName =
+                                homeController.fromcityid.toString();
+                            String destinationName =
+                                homeController.tocityid.toString();
+
+                            // Save boarding and destination names to local database
+                            await DatabaseHelper().insertBoardingDestination(
+                              BoardingDestination(
+                                boardingName: boardingName,
+                                destinationName: destinationName,
+                              ),
+                            );
                             homeController.getbuslist(
                                 boardingname:
                                     homeController.fromcityid.toString(),
@@ -492,7 +506,7 @@ class HomeView extends GetView<HomeController> {
                                   "Please Enter your details",
                                   style:
                                       primaryFont.copyWith(color: Colors.white),
-                                ));
+                                ) );
                           }
                         },
                         child: Container(
@@ -517,124 +531,134 @@ class HomeView extends GetView<HomeController> {
             const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Checkout some offers",
-                    style: smalbalckfont,
+            GetBuilder<OffersController>(
+              builder: (_) {
+                return offerscontroller.offersdata.isEmpty ? Container(): Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Checkout some offers",
+                        style: smalbalckfont,
+                      ),
+                      Text(
+                        "View All",
+                        style: primaryFont.copyWith(
+                            color: Colors.red,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.red,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "View All",
-                    style: primaryFont.copyWith(
-                        color: Colors.red,
-                        decoration: TextDecoration.underline,
-                        decorationColor: Colors.red,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
+                );
+              }
             ),
             const SizedBox(
               height: 7,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: GetBuilder<OffersController>(
-                builder: (context) {
-                  return Container(
-                    height: 180,
-                    child: ListView.builder(
-                        itemCount: offerscontroller.offersdata.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Container(
-                              height: 120,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: kwhite,
-                                  boxShadow: <BoxShadow>[
-                                    BoxShadow(
-                                        offset: const Offset(0.0, 0.75),
-                                        color: kgrey,
-                                        blurRadius: 5)
-                                  ]),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Container(
-                                      height: 100,
-                                      width: 180,
-                                      child: Image.network(
-                                        offerscontroller.offersdata[index].images.toString(),
+              child: GetBuilder<OffersController>(builder: (context) {
+                return offerscontroller.offersdata.isEmpty ? Container(): Container(
+                  height: 180,
+                  child: ListView.builder(
+                      itemCount: offerscontroller.offersdata.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            height: 120,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: kwhite,
+                                boxShadow: <BoxShadow>[
+                                  BoxShadow(
+                                      offset: const Offset(0.0, 0.75),
+                                      color: kgrey,
+                                      blurRadius: 5)
+                                ]),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Container(
+                                    height: 100,
+                                    width: 180,
+                                    child: Image.network(
+                                      offerscontroller.offersdata[index].images
+                                          .toString(),
                                       fit: BoxFit.cover,
-                                      ),
                                     ),
                                   ),
-                                  const SizedBox(
-                                    height: 5,
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 5, right: 5),
+                                  child: Container(
+                                    width: 150,
+                                    child: Text(
+                                      offerscontroller.offersdata[index].title
+                                          .toString(),
+                                      style: const TextStyle(
+                                          fontFamily: 'Proxima',
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w600),
+                                    ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 5,right: 5),
-                                    child: Container(
-                                      width: 150,
-                                      child: Text(
-                                        offerscontroller.offersdata[index].title.toString(),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 5, right: 5),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Valid till: ${offerscontroller.offersdata[index].validTill}',
                                         style: const TextStyle(
                                             fontFamily: 'Proxima',
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w600),
+                                            fontSize: 10),
                                       ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 5,right: 5),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Valid till: ${offerscontroller.offersdata[index].validTill}',
-                                          style: const TextStyle(
-                                              fontFamily: 'Proxima', fontSize: 10),
-                                        ),
-                                        const SizedBox(
-                                          width: 12,
-                                        ),
-                                        Container(
-                                          height: 18,
-                                          width: 60,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xff263238),
-                                              borderRadius: BorderRadius.circular(5)),
-                                          child: Center(
-                                            child: Text(
-                                              offerscontroller.offersdata[index].couponCode.toString(),
-                                              style: TextStyle(
-                                                  fontFamily: 'Proxima',
-                                                  fontSize: 10,
-                                                  color: kwhite),
-                                            ),
+                                      const SizedBox(
+                                        width: 12,
+                                      ),
+                                      Container(
+                                        height: 18,
+                                        width: 60,
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xff263238),
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        child: Center(
+                                          child: Text(
+                                            offerscontroller
+                                                .offersdata[index].couponCode
+                                                .toString(),
+                                            style: TextStyle(
+                                                fontFamily: 'Proxima',
+                                                fontSize: 10,
+                                                color: kwhite),
                                           ),
-                                        )
-                                      ],
-                                    ),
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          );
-                        }),
-                  );
-                }
-              ),
+                          ),
+                        );
+                      }),
+                );
+              }),
             ),
             const SizedBox(
               height: 20,
@@ -654,7 +678,7 @@ class HomeView extends GetView<HomeController> {
               child: Container(
                 height: 60,
                 child: TextField(
-                  controller:controller.pnrController,
+                  controller: controller.pnrController,
                   style: smalbalckfont.copyWith(fontSize: 15),
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -699,66 +723,66 @@ class HomeView extends GetView<HomeController> {
             const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                "Previously Viewed",
-                style: smalbalckfont,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                height: 65,
-                width: size.width,
-                decoration: BoxDecoration(
-                    color: Colors.yellow.withOpacity(0.55),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        "assets/home_page/oye_small_icon.png",
-                        height: 50,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Chennai",
-                                style: smalbalckfont.copyWith(
-                                    fontSize: 14, fontWeight: FontWeight.w500),
-                              ),
-                              const Icon(Icons.arrow_right_alt_outlined),
-                              Text(
-                                "Salem",
-                                style: smalbalckfont.copyWith(
-                                    fontSize: 14, fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            "Mon, 06 Nov 2023",
-                            style: primaryFont.copyWith(
-                                fontSize: 12, fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Text(
+            //     "Previously Viewed",
+            //     style: smalbalckfont,
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Container(
+            //     height: 65,
+            //     width: size.width,
+            //     decoration: BoxDecoration(
+            //         color: Colors.yellow.withOpacity(0.55),
+            //         borderRadius: BorderRadius.circular(10)),
+            //     child: Padding(
+            //       padding: const EdgeInsets.symmetric(horizontal: 15),
+            //       child: Row(
+            //         children: [
+            //           Image.asset(
+            //             "assets/home_page/oye_small_icon.png",
+            //             height: 50,
+            //           ),
+            //           const SizedBox(
+            //             width: 10,
+            //           ),
+            //           Column(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             crossAxisAlignment: CrossAxisAlignment.start,
+            //             children: [
+            //               Row(
+            //                 children: [
+            //                   Text(
+            //                     "Chennai",
+            //                     style: smalbalckfont.copyWith(
+            //                         fontSize: 14, fontWeight: FontWeight.w500),
+            //                   ),
+            //                   const Icon(Icons.arrow_right_alt_outlined),
+            //                   Text(
+            //                     "Salem",
+            //                     style: smalbalckfont.copyWith(
+            //                         fontSize: 14, fontWeight: FontWeight.w500),
+            //                   ),
+            //                 ],
+            //               ),
+            //               Text(
+            //                 "Mon, 06 Nov 2023",
+            //                 style: primaryFont.copyWith(
+            //                     fontSize: 12, fontWeight: FontWeight.w500),
+            //               ),
+            //             ],
+            //           )
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // ),
             const SizedBox(
               height: 50,
             )

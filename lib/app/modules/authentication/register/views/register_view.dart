@@ -38,12 +38,15 @@ class RegisterView extends GetView<RegisterController> {
           children: [
             Column(
               children: [
-                Gif(
-                  fps: 30,
-                  autostart: Autostart.once,
-                  fit: BoxFit.cover,
-                  image: AssetImage(
-                    'assets/images/image_processing20191205-7937-1ftlnk1.gif',
+                Container(
+                  height: 200,
+                  child: Gif(
+                    fps: 30,
+                    autostart: Autostart.once,
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      'assets/images/image_processing20191205-7937-1ftlnk1.gif',
+                    ),
                   ),
                 ),
                 Row(
@@ -83,7 +86,7 @@ class RegisterView extends GetView<RegisterController> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Form(
                     key: _formKey,
                     child: Column(
@@ -112,84 +115,8 @@ class RegisterView extends GetView<RegisterController> {
                             return null;
                           },
                         ),
-                        ksizedbox10,
-                        Row(
-                          children: [
-                            kwidth5,
-                            Text(
-                              'Email Address',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14.sp,
-                                    color: Colors.black,
-                                  ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5.h,
-                        ),
-                        TextFormField(
-                          controller: emailController,
-                          style:
-                              Theme.of(context).textTheme.titleLarge!.copyWith(
-                                    fontSize: 15.sp,
-                                    color: Colors.black,
-                                  ),
-                          autofocus: false,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                width: 1.5,
-                                color: Colors.black,
-                                style: BorderStyle.solid,
-                              ),
-                              borderRadius: BorderRadius.circular(
-                                60.r,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.only(
-                              left: 20,
-                              right: 10,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                width: 1.2,
-                                color: Colors.black,
-                                style: BorderStyle.solid,
-                              ),
-                              borderRadius: BorderRadius.circular(
-                                60.r,
-                              ),
-                            ),
-                            filled: true,
-                            hintStyle: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontSize: 14.sp,
-                                  color: Colors.grey[600],
-                                ),
-                            hintText: "Enter Email Id",
-                            fillColor: Colors.white,
-                          ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Email can't be empty";
-                            } else if (!RegExp(
-                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                .hasMatch(value)) {
-                              return "Enter correct email";
-                            }
-                            return null;
-                          },
-                        ),
-                        ksizedbox10,
+                        // ksizedbox10,
+                          ksizedbox10,
                         Row(
                           children: [
                             kwidth5,
@@ -313,6 +240,84 @@ class RegisterView extends GetView<RegisterController> {
                             },
                           ),
                         ),
+                        ksizedbox10,
+                        Row(
+                          children: [
+                            kwidth5,
+                            Text(
+                              'Email Address',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14.sp,
+                                    color: Colors.black,
+                                  ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        TextFormField(
+                          controller: emailController,
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    fontSize: 15.sp,
+                                    color: Colors.black,
+                                  ),
+                          autofocus: false,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                width: 1.5,
+                                color: Colors.black,
+                                style: BorderStyle.solid,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                60.r,
+                              ),
+                            ),
+                            contentPadding: const EdgeInsets.only(
+                              left: 20,
+                              right: 10,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                width: 1.2,
+                                color: Colors.black,
+                                style: BorderStyle.solid,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                60.r,
+                              ),
+                            ),
+                            filled: true,
+                            hintStyle: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  fontSize: 14.sp,
+                                  color: Colors.grey[600],
+                                ),
+                            hintText: "Enter Email Id",
+                            fillColor: Colors.white,
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Email can't be empty";
+                            } else if (!RegExp(
+                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                .hasMatch(value)) {
+                              return "Enter correct email";
+                            }
+                            return null;
+                          },
+                        ),
+                      
                         ksizedbox20,
                         Obx(
                           ()=> GestureDetector(

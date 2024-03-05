@@ -44,6 +44,9 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
   var nameTextController = TextEditingController();
   var ageTextController = TextEditingController();
 
+  var editnameTextController = TextEditingController();
+  var editageTextController = TextEditingController();
+
   calculateTotalOf(List<st.Seat> selectedSeats) {
     double totalValue = 0;
 
@@ -580,102 +583,113 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                       Padding(
                         padding: const EdgeInsets.only(left: 15, top: 5),
                         child: GetBuilder<CopassengersController>(builder: (_) {
-                          return InkWell(
-                            onLongPress: (){
-                                 showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  backgroundColor: Colors.white,
-                                  title: Column(
-                                    children: [
-                                      Lottie.asset(
-                                          'assets/images/deletepassengergif.json',
-                                          height: 80,
-                                          fit: BoxFit.fitHeight,),
-                                  
-                                    ],
-                                  ),
-                                  content: Container(
-                                    width: 150.w,
-                                    child: const Text(
-                                      "Are you sure want to your Passenger?",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 17,
-                                      ),
-                                    ),
-                                  ),
-                                  actions: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        InkWell(
-                                          onTap: () {
-                                            Get.back();
-                                          },
-                                          child: Container(
-                                            height: 38,
-                                            width: 105,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                    BorderRadius.circular(6),
-                                                // ignore: unrelated_type_equality_checks
-                                                color: kgrey),
-                                            child: Center(
-                                                child: Text("No",
-                                                    style: TextStyle(
-                                                        fontSize: 15,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color: kblack))),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          onLongPress: () {
-                                         copassangersController.deletepassenger(
-                                                    passengerid:copassangersController.passengersdata.isEmpty?"": copassangersController.passengersdata.first.id.toString()
-                                                  );
-                                                  copassangersController.update();
-                                                  Get.back();
-                                            
-                                          },
-                                          child: Container(
-                                            height: 38,
-                                            width: 105,
-                                            decoration: BoxDecoration(
-                                                color: kred,
+                          return Container(
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount:
+                                  copassangersController.passengersdata.length,
+                              itemBuilder: (context, index) {
+                                return InkWell(
+                                  onLongPress: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            shape: RoundedRectangleBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            child: Center(
-                                              child: Text("yes ",
-                                                  style: TextStyle(
-                                                      fontSize: 15,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: kwhite)),
+                                                    BorderRadius.circular(10)),
+                                            backgroundColor: Colors.white,
+                                            title: Column(
+                                              children: [
+                                                Lottie.asset(
+                                                  'assets/images/deletepassengergif.json',
+                                                  height: 80,
+                                                  fit: BoxFit.fitHeight,
+                                                ),
+                                              ],
                                             ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    ksizedbox10
-                                  ],
-                                );
-                              });
-                            
-                            },
-                            child: Container(
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount:
-                                    copassangersController.passengersdata.length,
-                                itemBuilder: (context, index) {
-                                  return Column(
+                                            content: Container(
+                                              width: 150.w,
+                                              child: const Text(
+                                                "Are you sure want to your Passenger?",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 17,
+                                                ),
+                                              ),
+                                            ),
+                                            actions: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () {
+                                                      Get.back();
+                                                    },
+                                                    child: Container(
+                                                      height: 38,
+                                                      width: 105,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(6),
+                                                          // ignore: unrelated_type_equality_checks
+                                                          color: kgrey),
+                                                      child: Center(
+                                                          child: Text("No",
+                                                              style: TextStyle(
+                                                                  fontSize: 15,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  color:
+                                                                      kblack))),
+                                                    ),
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      copassangersController
+                                                          .deletepassenger(
+                                                              passengerid:
+                                                                  copassangersController
+                                                                      .passengersdata[
+                                                                          index]
+                                                                      .id
+                                                                      .toString());
+                                                      Get.back();
+                                                      copassangersController
+                                                          .update();
+                                                    },
+                                                    child: Container(
+                                                      height: 38,
+                                                      width: 105,
+                                                      decoration: BoxDecoration(
+                                                          color: kred,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(6)),
+                                                      child: Center(
+                                                        child: Text("yes ",
+                                                            style: TextStyle(
+                                                                fontSize: 15,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                color: kwhite)),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              ksizedbox10
+                                            ],
+                                          );
+                                        });
+                                  },
+                                  child: Column(
                                     children: [
                                       Row(
                                         mainAxisAlignment:
@@ -717,29 +731,251 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                                                         copassangersController
                                                                 .passengersdata
                                                                 .isNotEmpty
-                                                            ? Text(
-                                                                copassangersController
-                                                                    .passengersdata[
-                                                                        index]
-                                                                    .gender)
+                                                            ? Text(copassangersController
+                                                                .passengersdata[
+                                                                    index]
+                                                                .gender)
                                                             : Text(''),
                                                         Text(' ,'),
                                                         Text(
                                                             '${copassangersController.passengersdata[index].age} years')
                                                       ],
-                                                    )
+                                                    ),
                                                   ],
                                                 ),
                                               )
                                             ],
                                           ),
-                                          Checkbox(
-                                              value: copassangersController
-                                                  .passengersdata[index]
-                                                  .isSelected,
-                                              onChanged: (value) {
-                                                bool isEqualTo =
-                                                    copassangersController
+                                          Row(
+                                            children: [
+                                              IconButton(
+                                                  onPressed: () {
+
+
+                                                    controller.editender(copassangersController
+                                                                .passengersdata[
+                                                                    index]
+                                                                .gender);
+
+                                                                editageTextController.text = copassangersController
+                                                                .passengersdata[
+                                                                    index]
+                                                                .age;
+
+                                                              editnameTextController.text = copassangersController
+                                                                .passengersdata[
+                                                                    index]
+                                                                .name;
+                                                    showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext
+                                                            context) {
+                                                          return AlertDialog(
+                                                            contentPadding: const EdgeInsets.symmetric(horizontal: 7,vertical: 25),
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10)),
+                                                            backgroundColor:
+                                                                Colors.white,
+                                                            // title: Column(
+                                                            //   children: [
+                                                            //     Lottie.asset(
+                                                            //         'assets/images/deletepassengergif.json',
+                                                            //         height: 80,
+                                                            //         fit: BoxFit.fitHeight,),
+
+                                                            //   ],
+                                                            // ),
+                                                            content: Container(
+                                                              height: 200,
+                                                              child: Column(
+                                                                children: [
+                                                                  TextField(
+                                                                    controller:
+                                                                        editnameTextController,
+                                                                    style: smalbalckfont.copyWith(
+                                                                        fontSize:
+                                                                            14,
+                                                                        fontWeight:
+                                                                            FontWeight.w600),
+                                                                    decoration: InputDecoration(
+                                                                        border: OutlineInputBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                        ),
+                                                                        hintText: "Enter name",
+                                                                        labelText: "Name",
+                                                                        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8)),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height: 10,
+                                                                  ),
+                                                                  TextField(
+                                                                    controller:
+                                                                        editageTextController,
+                                                                    keyboardType:
+                                                                        TextInputType
+                                                                            .number,
+                                                                    inputFormatters: [
+                                                                      LengthLimitingTextInputFormatter(
+                                                                          3),
+                                                                      FilteringTextInputFormatter
+                                                                          .digitsOnly,
+                                                                      FilteringTextInputFormatter
+                                                                          .deny(
+                                                                              RegExp(r'\s')),
+                                                                    ],
+                                                                    style: smalbalckfont.copyWith(
+                                                                        fontSize:
+                                                                            14,
+                                                                        fontWeight:
+                                                                            FontWeight.w600),
+                                                                    decoration: InputDecoration(
+                                                                        border: OutlineInputBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                        ),
+                                                                        hintText: "Enter age",
+                                                                        labelText: "Age",
+                                                                        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8)),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height: 10,
+                                                                  ),
+                                                                  GetBuilder<
+                                                                          PassengerInfoController>(
+                                                                      builder:
+                                                                          (_) {
+                                                                    return Row(
+                                                                      children: [
+                                                                        Expanded(
+                                                                          child:
+                                                                              Container(
+                                                                            child:
+                                                                                RadioListTile<String>(
+                                                                              title: Text("Male", style: primaryFont.copyWith(fontSize: 13)),
+                                                                              value: "male",
+                                                                              groupValue: controller.editender.value,
+                                                                              onChanged: (String? value) {
+                                                                                controller.editender(value);
+                                                                                controller.update();
+                                                                              },
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Expanded(
+                                                                          child:
+                                                                              Container(
+                                                                            child:
+                                                                                RadioListTile<String>(
+                                                                              title: Text("Female", style: primaryFont.copyWith(fontSize: 12)),
+                                                                              value: "female",
+                                                                              groupValue: controller.editender.value,
+                                                                              onChanged: (String? value) {
+                                                                                controller.editender(value);
+                                                                                controller.update();
+                                                                              },
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  }),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            actions: [
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  InkWell(
+                                                                    onTap: () {
+                                                                      Get.back();
+                                                                    },
+                                                                    child:
+                                                                        Container(
+                                                                      height:
+                                                                          38,
+                                                                      width:
+                                                                          105,
+                                                                      decoration: BoxDecoration(
+                                                                          borderRadius: BorderRadius.circular(6),
+                                                                          // ignore: unrelated_type_equality_checks
+                                                                          color: kgrey),
+                                                                      child: Center(
+                                                                          child: Text(
+                                                                              "Cancel",
+                                                                              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: kblack))),
+                                                                    ),
+                                                                  ),
+                                                                  Obx(()=>copassangersController.isLoading.isTrue ? Container(
+                                                                        height:
+                                                                            38,
+                                                                        width:
+                                                                            105,
+                                                                        decoration: BoxDecoration(
+                                                                            color:
+                                                                                kred,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(6)),
+                                                                        child: const Center(
+                                                                          child: CircularProgressIndicator(
+                                                                            color: Colors.white,
+                                                                          ),
+                                                                        ),
+                                                                      ): InkWell(
+                                                                      onTap: () {
+                                                                        copassangersController.editCoPassengersApi(
+                                                                            coPassengerId: copassangersController
+                                                                                .passengersdata[index]
+                                                                                .id,
+                                                                                addCoPassangersModel: AddCoPassangersModel(age: editageTextController.text, gender: controller.editender.value, name: editnameTextController.text));
+                                                                      
+                                                                        copassangersController
+                                                                            .update();
+                                                                      },
+                                                                      child:
+                                                                          Container(
+                                                                        height:
+                                                                            38,
+                                                                        width:
+                                                                            105,
+                                                                        decoration: BoxDecoration(
+                                                                            color:
+                                                                                kred,
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(6)),
+                                                                        child:
+                                                                            Center(
+                                                                          child: Text(
+                                                                              "Update",
+                                                                              style: TextStyle(
+                                                                                  fontSize: 15,
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                  color: kwhite)),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              ksizedbox10
+                                                            ],
+                                                          );
+                                                        });
+                                                  },
+                                                  icon: Icon(Icons
+                                                      .edit_note_outlined)),
+                                              Checkbox(
+                                                  value: copassangersController
+                                                      .passengersdata[index]
+                                                      .isSelected,
+                                                  onChanged: (value) {
+                                                    bool isEqualTo = copassangersController
                                                             .passengersdata
                                                             .where((element) =>
                                                                 element
@@ -748,27 +984,30 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                                                             .toList()
                                                             .length !=
                                                         boadingdroppingController
-                                                            .selectedSeats.length;
-                                                if (copassangersController
-                                                    .passengersdata[index]
-                                                    .isSelected) {
-                                                
-                                                    copassangersController
+                                                            .selectedSeats
+                                                            .length;
+                                                    if (copassangersController
                                                         .passengersdata[index]
-                                                        .isSelected = value!;
-                                                    copassangersController
-                                                        .update();
-                                                
-                                                }else{
-                                                   if (isEqualTo) {
-                                                    copassangersController
-                                                        .passengersdata[index]
-                                                        .isSelected = value!;
-                                                    copassangersController
-                                                        .update();
-                                                  }
-                                                }
-                                              })
+                                                        .isSelected) {
+                                                      copassangersController
+                                                          .passengersdata[index]
+                                                          .isSelected = value!;
+                                                      copassangersController
+                                                          .update();
+                                                    } else {
+                                                      if (isEqualTo) {
+                                                        copassangersController
+                                                                .passengersdata[
+                                                                    index]
+                                                                .isSelected =
+                                                            value!;
+                                                        copassangersController
+                                                            .update();
+                                                      }
+                                                    }
+                                                  }),
+                                            ],
+                                          )
                                         ],
                                       ),
                                       const Padding(
@@ -776,9 +1015,9 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                                         child: Divider(),
                                       )
                                     ],
-                                  );
-                                },
-                              ),
+                                  ),
+                                );
+                              },
                             ),
                           );
                         }),
@@ -1163,77 +1402,72 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
 
                     print(controller.mobileController);
                     AddBookingModel addBookingModel = AddBookingModel(
-                      age: controller.ageController.text,
-                      boardingPoint:
-                          boadingdroppingController.boardinglocationvalue.value,
-                      date: buslistController.selectedBookingDate.value,
-                      droppingPoint: boadingdroppingController
-                          .destinationlocationvalue.value,
-                      emailId: controller.emailController.text,
-                      gender: controller.gender.value,
-                      mobile: controller.mobileController.text,
-                      passengerName: controller.nameController.text,
-                      perticketPrice:
-                          boadingdroppingController.selectedSeats.isEmpty
-                              ? ''
-                              : boadingdroppingController
-                                  .selectedSeats.first.seatPrice,
-                      primaryCustomerName:
-                          Get.find<ProfileController>().profiledata.isEmpty
-                              ? "User1"
-                              : Get.find<ProfileController>()
-                                  .profiledata
-                                  .first
-                                  .name,
-                      busid: boadingdroppingController.busDetailsdata == null
-                          ? ""
-                          : boadingdroppingController.busDetailsdata!.id
-                              .toString(),
-                      routeid: boadingdroppingController.routedata == null
-                          ? ''
-                          : boadingdroppingController.routedata!.id.toString(),
-                      seatid: boadingdroppingController.selectedSeats,
-                      seatmapid: passengerController.blockedid.toString(),
-                      tripid: boadingdroppingController.tripdata == null
-                          ? ""
-                          : boadingdroppingController.tripdata!.id.toString(),
-                      vendorid: boadingdroppingController.busDetailsdata == null
-                          ? ""
-                          : boadingdroppingController.busDetailsdata!.vendorId,
-                      iswomenseat:
-                          boadingdroppingController.selectedSeats.isEmpty
-                              ? ''
-                              : boadingdroppingController
-                                  .selectedSeats.first.ladiesSeat,
-                      selectedSeats: boadingdroppingController.selectedSeats,
-                      passengermodel: selectedPassengersdataList, 
-                      sourcedestination:boadingdroppingController.routedata!.destinationLocation, 
-                      subtotal: calculateTotalOf(
-                                boadingdroppingController.selectedSeats),
-                      unitprice: boadingdroppingController.routedata!.price,
-                      passengergender: controller.gender.value
-                    );
+                        age: controller.ageController.text,
+                        boardingPoint: boadingdroppingController
+                            .boardinglocationvalue.value,
+                        date: buslistController.selectedBookingDate.value,
+                        droppingPoint: boadingdroppingController
+                            .destinationlocationvalue.value,
+                        emailId: controller.emailController.text,
+                        gender: controller.gender.value,
+                        mobile: controller.mobileController.text,
+                        passengerName: controller.nameController.text,
+                        perticketPrice: boadingdroppingController.selectedSeats.isEmpty
+                            ? ''
+                            : boadingdroppingController
+                                .selectedSeats.first.seatPrice,
+                        primaryCustomerName:
+                            Get.find<ProfileController>().profiledata.isEmpty
+                                ? "User1"
+                                : Get.find<ProfileController>()
+                                    .profiledata
+                                    .first
+                                    .name,
+                        busid: boadingdroppingController.busDetailsdata == null
+                            ? ""
+                            : boadingdroppingController.busDetailsdata!.id
+                                .toString(),
+                        routeid: boadingdroppingController.routedata == null
+                            ? ''
+                            : boadingdroppingController.routedata!.id
+                                .toString(),
+                        seatid: boadingdroppingController.selectedSeats,
+                        seatmapid: passengerController.blockedid.toString(),
+                        tripid: boadingdroppingController.tripdata == null
+                            ? ""
+                            : boadingdroppingController.tripdata!.id.toString(),
+                        vendorid: boadingdroppingController.busDetailsdata == null
+                            ? ""
+                            : boadingdroppingController.busDetailsdata!.vendorId,
+                        iswomenseat: boadingdroppingController.selectedSeats.isEmpty ? '' : boadingdroppingController.selectedSeats.first.ladiesSeat,
+                        selectedSeats: boadingdroppingController.selectedSeats,
+                        passengermodel: selectedPassengersdataList,
+                        sourcedestination: boadingdroppingController.routedata!.destinationLocation,
+                        subtotal: calculateTotalOf(boadingdroppingController.selectedSeats),
+                        unitprice: boadingdroppingController.routedata!.price,
+                        passengergender: controller.gender.value);
                     passengerController.payAndBook(
                         amount: calculateTotalOf(
-                                boadingdroppingController.selectedSeats),
+                            boadingdroppingController.selectedSeats),
                         email: Get.find<ProfileController>().profiledata.isEmpty
-                              ? "test@gmail.com"
-                              : Get.find<ProfileController>()
-                                  .profiledata
-                                  .first
-                                  .email,
-                        mobilenumber: Get.find<ProfileController>().profiledata.isEmpty
-                              ? "9876543210"
-                              : Get.find<ProfileController>()
-                                  .profiledata
-                                  .first
-                                  .mobile,
+                            ? "test@gmail.com"
+                            : Get.find<ProfileController>()
+                                .profiledata
+                                .first
+                                .email,
+                        mobilenumber:
+                            Get.find<ProfileController>().profiledata.isEmpty
+                                ? "9876543210"
+                                : Get.find<ProfileController>()
+                                    .profiledata
+                                    .first
+                                    .mobile,
                         name: Get.find<ProfileController>().profiledata.isEmpty
-                              ? "User1"
-                              : Get.find<ProfileController>()
-                                  .profiledata
-                                  .first
-                                  .name,
+                            ? "User1"
+                            : Get.find<ProfileController>()
+                                .profiledata
+                                .first
+                                .name,
                         addBookingModel: addBookingModel);
                   }
                   //Get.to(ReviewbookingdetailsView());

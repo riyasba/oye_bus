@@ -22,8 +22,14 @@ abstract class Config{
    
    final String copassengersURL = 
    'https://oye.batechnology.in/api/auth/get_co_passenger';
+
    final String addcoPassengersURL =
    'https://oye.batechnology.in/api/auth/add_co_passenger';
+
+
+   final String editcoPassengersURL =
+   'https://oye.batechnology.in/api/auth/updateCoPassenger';
+
    final String deletePassengersURL = 
    'https://oye.batechnology.in/api/delete_passenger';
 
@@ -62,6 +68,12 @@ abstract class Config{
 
   //checkpnrstatus
   final String checkpnrURL = "https://oye.batechnology.in/api/check-pnr?pnr_number=012-9606720";
+
+
+
+   final String sendBusReview = "https://oye.batechnology.in/api/auth/bus-rating-reviews";
+
+  
 }
  
 

@@ -31,9 +31,9 @@ class SettingsController extends GetxController {
 
   @override
   void onInit() {
-    getCountrys();
-    getcurrency();
-    getLanguage();
+    // getCountrys();
+    // getcurrency();
+    // getLanguage();
     super.onInit();
   }    
 

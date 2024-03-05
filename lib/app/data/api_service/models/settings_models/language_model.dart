@@ -40,7 +40,7 @@ class LanguageData {
     });
 
     factory LanguageData.fromJson(Map<String, dynamic> json) => LanguageData(
-        languages: json["Languages"],
+        languages: json["Languages"] ?? "",
     );
 
     Map<String, dynamic> toJson() => {

@@ -25,8 +25,15 @@ class BookingCancelledWidget extends GetView<BookinghistoryController> {
         GetBuilder<BookinghistoryController>(
           builder: (_) {
             // ignore: avoid_unnecessary_containers
-            return bookingCancelledlistController.bookingcancelledlistdata.isEmpty? Center(child: Text('No data')):ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+            return bookingCancelledlistController.bookingcancelledlistdata.isEmpty? Center(
+              child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset("assets/images/nodatabookingimage.jpg"),
+                Text("No cancellations found",style: primaryFont.copyWith(fontSize: 20,fontWeight: FontWeight.bold),)
+              ],
+            )) : ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: bookingCancelledlistController.bookingcancelledlistdata.length,
                 itemBuilder: (context, index) {

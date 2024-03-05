@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/data/api_service/models/booking_model/booking_history_model.dart';
 
 import '../controllers/bustrip_reviews_controller.dart';
 
 class BustripReviewsView extends GetView<BustripReviewsController> {
-  const BustripReviewsView({Key? key}) : super(key: key);
+  BookingDetail bookingDetail;
+  BustripReviewsView({Key? key,required this.bookingDetail}) : super(key: key);
+
+ var textController = TextEditingController();
+  
+  
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => BustripReviewsController());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -43,7 +51,7 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'KMPL Kalaimakal Travels',
+                        bookingDetail.busData!.busName.toString(),
                         style: TextStyle(
                             fontSize: 18.sp,
                             fontFamily: 'Proxima',
@@ -52,13 +60,13 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                       Row(
                         children: [
                           Text(
-                            '06:50AM   →  12:15PM  Fri,10 Nov',
+                            '${bookingDetail.bookingData!.boardingTime}   →  ${bookingDetail.bookingData!.droppingTime}  ${bookingDetail.bookingData!.dateOfJourney}',
                             style: TextStyle(color: kgrey),
                           )
                         ],
                       ),
                       Text(
-                        'Chennai  - Bengaluru',
+                        '${bookingDetail.bookingData!.pickupPoint}  - ${bookingDetail.bookingData!.droppingPoint}',
                         style: TextStyle(color: kgrey),
                       ),
                       Text(
@@ -82,36 +90,29 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: Color(0xffFFC107),
-                        ),
-                        Icon(
-                          Icons.star,
-                          color: Color(0xffFFC107),
-                        ),
-                        Icon(
-                          Icons.star,
-                          color: Color(0xffFFC107),
-                        ),
-                        Icon(
-                          Icons.star,
-                          color: kgrey,
-                        ),
-                        Icon(
-                          Icons.star,
-                          color: kgrey,
-                        )
-                      ],
-                    ),
-                    Text(
-                      '3.4 ',
-                      style: TextStyle(
-                          fontFamily: 'Proxima',
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600),
+                    RatingBar.builder(
+   initialRating: 3,
+   minRating: 1,
+   direction: Axis.horizontal,
+   allowHalfRating: true,
+   itemCount: 5,
+   itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+   itemBuilder: (context, _) => Icon(
+     Icons.star,
+     color: Colors.amber,
+   ),
+   onRatingUpdate: (rating) {
+     print(rating);
+     controller.rating(rating);
+   },
+),
+                    Obx(()=> Text(
+                        controller.rating.value.toString(),
+                        style: TextStyle(
+                            fontFamily: 'Proxima',
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600),
+                      ),
                     )
                   ],
                 ),
@@ -344,30 +345,25 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                   decoration: BoxDecoration(
                       border: Border.all(width: 1, color: kgrey),
                       borderRadius: BorderRadius.circular(4)),
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 5, right: 5),
-                      child: Text(
-                        'Hi this bus super and good qulaitys and pick up and dropping safe this bus..',
-                        style: TextStyle(
-                          height: 1.4.h,
-                          fontSize: 15.5.sp,
-                          fontFamily: 'Proxima ',
-                        ),
-                      ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      controller: textController,
+                     maxLines: 5,
+                     decoration: const InputDecoration.collapsed(hintText: "Enter your feedback here"),
                     ),
                   ),
                 ),
                 ksizedbox20,
                 GestureDetector(
                   onTap: () {
-                    Get.back();
+                    controller.reviewData(busId: bookingDetail.bookingData!.bookingId as int, rating: controller.rating.value, reviews: textController.text, travellersLikedId: "Bus");
                   },
                   child: Container(
                     height: 50.h,
                     width: 399.w,
                     decoration: BoxDecoration(
-                        color: Color(0xffEE0000),
+                        color: const Color(0xffEE0000),
                         borderRadius: BorderRadius.circular(4)),
                     child: Center(
                       child: Text(

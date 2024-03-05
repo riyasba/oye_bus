@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/bus_api_service/bus_city_search_api_service.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_city_search_model.dart';
+import 'package:oye_bus/app/data/local_data/sqflite_data.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart' as path;
 
 class BusSearchController extends GetxController {
   //TODO: Implement SearchController
@@ -78,5 +81,42 @@ class BusSearchController extends GetxController {
     update();
    }
  }
+
+
+
+
+
+
+
+ List<BoardingDestination> boardingDestinations = [];
+
+ 
+
+  Future<void> getBoardingDestinations() async {
+    final Database database = await openDatabase(
+          path.  join(await getDatabasesPath(), 'your_database_name.db'),
+    );
+
+    final List<Map<String, dynamic>> maps = await database.query('boarding_destinations');
+
+
+    print("Get destinations-------->>");
+    print(maps.length);
+
+   
+   // setState(() {
+      boardingDestinations = List.generate(
+        maps.length,
+        (index) {
+          return BoardingDestination(
+            boardingName: maps[index]['boardingName'],
+            destinationName: maps[index]['destinationName'],
+          );
+        },
+      );
+   // });
+
+   update();
+  }
 
 }

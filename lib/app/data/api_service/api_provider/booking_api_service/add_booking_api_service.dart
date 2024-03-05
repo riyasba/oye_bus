@@ -13,6 +13,12 @@ class  AddBookingApiService extends Config{
     dynamic responseJson;
     try{
      var dio = Dio();
+
+
+     print("Pickup Point -----> ${addBookingModel.boardingPoint}");
+     print("Dropping Point -----> ${addBookingModel.droppingPoint}");
+
+
      FormData formData = FormData.fromMap(
       {
         "seat_map_id":addBookingModel.seatmapid,
@@ -26,8 +32,8 @@ class  AddBookingApiService extends Config{
           "passengers[$i][seats_id]": addBookingModel.selectedSeats[i].id,
           "per_ticket_price":addBookingModel.perticketPrice,
           "is_women_seat":addBookingModel.iswomenseat,
-          "pickup_point":addBookingModel.boardingPoint,
-          "dropping_point":addBookingModel.droppingPoint,
+          "pickup_point":  addBookingModel.boardingPoint,
+          "dropping_point":  addBookingModel.droppingPoint,
           "date_of_journey": addBookingModel.date,
           "primary_customer_mobile":addBookingModel.mobile,
           "primary_customer_email":addBookingModel.emailId,

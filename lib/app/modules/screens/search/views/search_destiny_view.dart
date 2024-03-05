@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
+import 'package:oye_bus/app/modules/home/views/home_view.dart';
 import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
 import 'package:oye_bus/app/modules/screens/search/widgets/recent_chips.dart';
 
@@ -34,6 +35,7 @@ class _SearchDestinyViewState extends State<SearchDestinyView> {
   @override
   void initState() { 
     super.initState();
+    searchcityController.getBoardingDestinations();
        searchTextController.addListener(searchBusCitys);
   }
 
@@ -209,50 +211,97 @@ class _SearchDestinyViewState extends State<SearchDestinyView> {
                       SizedBox(
                         height: 20.h,
                       ),
+             
               // searchcityController.citydata.isNotEmpty
-              //     ? Container(
-              //         height: 40.h,
-              //         decoration:
-              //             BoxDecoration(color: klightGrey.withOpacity(0.5)),
-              //         child: Padding(
-              //           padding: const EdgeInsets.symmetric(horizontal: 15),
-              //           child: Row(
-              //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //             children: [
-              //               Text(
-              //                 "Recent Searches",
-              //                 style: smalbalckfont.copyWith(fontSize: 16.sp),
-              //               ),
-              //               Text(
-              //                 "Routes",
-              //                 style: primaryFont.copyWith(fontSize: 12.sp),
-              //               ),
-              //             ],
-              //           ),
-              //         ),
-              //       )
-              //     : Text(''),
-              // SizedBox(
-              //   height: 20.h,
-              // ),
-              // searchcityController.citydata.isNotEmpty
-              //     ? Padding(
-              //         padding: const EdgeInsets.symmetric(horizontal: 15),
-              //         child: Row(
-              //           children: [
-              //             RecentChip(
-              //               places: "Chennai - Salem",
-              //             ),
-              //             SizedBox(
-              //               width: 15.w,
-              //             ),
-              //             RecentChip(
-              //               places: "Chennai - Erode",
-              //             ),
-              //           ],
-              //         ),
-              //       )
-              //     : Text('')
+              //     ?
+              Container(
+                height: 40.h,
+                decoration: BoxDecoration(color: klightGrey.withOpacity(0.5)),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Recent Searches",
+                        style: smalbalckfont.copyWith(fontSize: 16.sp),
+                      ),
+                      Text(
+                        "Routes",
+                        style: primaryFont.copyWith(fontSize: 12.sp),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              //  : Text(''),
+              SizedBox(
+                height: 20.h,
+              ),
+              //   searchcityController.citydata.isNotEmpty
+              // ?
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Container(
+                  height: 300,
+                  child: GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: searchcityController.boardingDestinations.length >= 4
+                        ? 4
+                        : searchcityController.boardingDestinations.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 3,
+                      crossAxisCount: 2,
+                      // Only 1 item per row
+                      mainAxisSpacing: 8.0,
+                      // Spacing between rows
+                      //  crossAxisSpacing: 8.0, // Spacing between items in the same row
+                    ),
+                    itemBuilder: (context, index) {
+                      final reversedIndex =
+                          searchcityController.boardingDestinations.length - 1 - index;
+                      final item =
+                          searchcityController.boardingDestinations[reversedIndex];
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                          onTap: () {
+                            // homeController.fromPlaceTxtController.text =
+                            //     controller.boardingDestinations[index]
+                            //         .destinationName;
+                            // homeController.toPlaceTxtController.text =
+                            //     boardingDestinations[index].boardingName;
+                            // print("----------------------------------..VAL");
+                            // print(homeController.fromPlaceTxtController.text);
+                            Get.find<HomeController>().fromcityid =
+                                      item.boardingName;
+                                        Get.find<HomeController>().fromCity =
+                                      item.boardingName;
+                                  Get.find<HomeController>()
+                                          .fromPlaceTxtController
+                                          .text =item.boardingName;
+
+                                  Get.find<HomeController>().tocityid =
+                                    item.destinationName;
+                                    Get.find<HomeController>().toCity =
+                                    item.destinationName;
+                                Get.find<HomeController>()
+                                        .toPlaceTxtController
+                                        .text =item.destinationName;
+                            Get.to(
+                              HomeView(),
+                            );
+                          },
+                          child: RecentChip(
+                            places:
+                                "${item.boardingName} - ${item.destinationName}",
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              )
             ],
           ),
         ],

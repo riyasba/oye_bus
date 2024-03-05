@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/bustrip_reviews/views/bustrip_reviews_view.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/reservation_details/views/reservation_details_view.dart';
 import 'package:oye_bus/app/modules/screens/ticket_details/views/new_ticket_view.dart';
 import 'package:oye_bus/app/modules/screens/ticket_details/views/ticket_details_view.dart';
@@ -130,7 +131,9 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                           ),
                                                           GestureDetector(
                                                             onTap: (){
-                                                              Get.toNamed(Routes.BUSTRIP_REVIEWS);
+                                                              Get.to(BustripReviewsView(
+                                                                bookingDetail: bookinghistoryController.bookinghistorydata![index],
+                                                              ));
                                                             },
                                                             child: const Text(
                                                               'You can rate once you complete thee trip',
