@@ -1,3 +1,4 @@
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -17,6 +18,7 @@ class MywalletScreenView extends GetView<MywalletScreenController> {
      'assets/images/rupeesimage.png',
       'assets/images/rupeesimage.png',
   ];
+  final wallethistoryController = Get.find<MywalletScreenController>();
   Widget build(BuildContext context) {
     return Scaffold(
           appBar: AppBar(
@@ -83,56 +85,68 @@ class MywalletScreenView extends GetView<MywalletScreenController> {
                       fontWeight: FontWeight.w600,
                 ),),
                 ksizedbox20,
-                ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: image.length,
-                  itemBuilder: (context,index){
-                   return Container(
-                    
-                     color: kwhite,
-                     child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                GetBuilder<MywalletScreenController>(
+                  builder: (_) {
+                    return ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: wallethistoryController.wallethistorydata.length,
+                      itemBuilder: (context,index){
+                       return wallethistoryController.wallethistorydata.isNotEmpty? Container(
+                        
+                         color: kwhite,
+                         child: Column(
                           children: [
-                            Image.asset(image[index]),
-                            Column(
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  width: 220,
-                                  child: Text('New refer Join this app in OYE. So get 100 rupees for your wallets.'))
+                                Image.asset(image[index]),
+                                Column(
+                                  children: [
+                                    Container(
+                                      width: 150,
+                                      child: Text('New refer0 rupees for your wallets.'))
+                                  ],
+                                ),
+                                Column(           
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('₹${wallethistoryController.wallethistorydata[index].totalPrice}',
+                                    style: TextStyle(
+                                      fontFamily: 'Proxima Nova',
+                                      fontSize: 17.5,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.green
+                                    ),),
+                                    Text(formatDate(DateTime.parse(wallethistoryController.wallethistorydata[index].cancelledDate.toString()), [
+                                      d,' ',M,' ',yyyy
+                                    ]),
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: 'Lexend'
+                                    ),)
+                                    // Text('21,Jan,2024',
+                                    // style: TextStyle(
+                                    //   fontSize: 12,
+                                    //   fontWeight: FontWeight.w400,
+                                    //   fontFamily: 'Lexend'
+                                    // ),)
+                                  ],
+                                )
                               ],
                             ),
-                            Column(           
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('₹100',
-                                style: TextStyle(
-                                  fontFamily: 'Proxima Nova',
-                                  fontSize: 17.5,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.green
-                                ),),
-                                Text('21,Jan,2024',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Lexend'
-                                ),)
-                              ],
-                            )
+                            ksizedbox10,
+                            Divider(
+                              thickness: 2,
+                            ),
+                            ksizedbox10,
                           ],
-                        ),
-                        ksizedbox10,
-                        Divider(
-                          thickness: 2,
-                        ),
-                        ksizedbox10,
-                      ],
-                     ),
-                   );
-                })
+                         ),
+                       ):Text('');
+                    });
+                  }
+                )
               ],
             ),
           ],

@@ -69,11 +69,12 @@ abstract class Config{
   //checkpnrstatus
   final String checkpnrURL = "https://oye.batechnology.in/api/check-pnr?pnr_number=012-9606720";
 
-
-
+  //busrating_review
    final String sendBusReview = "https://oye.batechnology.in/api/auth/bus-rating-reviews";
 
-  
+  //wallet
+
+  final String wallethistoryURL = "https://oye.batechnology.in/api/auth/wallet-history";
 }
  
 
