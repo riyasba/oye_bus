@@ -296,31 +296,31 @@ String getActualTime(String time){
                         ),
                        Positioned(
                         top: 56,
-                        right: 330,
+                        right: 355,
                         child: CircleAvatar(
-                      radius: 28,
+                      radius: 24,
                       backgroundColor: Colors.white,
                     )),
                         Positioned(
                           top: 56,
                 
-                          left: 330,
+                          left: 355,
                           child: CircleAvatar(
-                            radius: 28,
+                            radius: 24,
                             backgroundColor: Colors.white,
                           )), 
                            Positioned(
-                          top: 357,
-                          right: 330,
+                          top: 355,
+                          right: 349,
                           child: CircleAvatar(
-                            radius: 28,
+                            radius: 24,
                             backgroundColor: Colors.white,
                           )),
                             Positioned(
-                          top: 357,
-                          left: 330,
+                          top: 355,
+                          left: 349,
                           child: CircleAvatar(
-                            radius: 28,
+                            radius: 24,
                             backgroundColor: Colors.white,
                           )),
                           
