@@ -37,6 +37,8 @@ abstract class Routes {
   static const BUSTRACKING = _Paths.BUSTRACKING;
   static const MYWALLET_SCREEN = _Paths.MYWALLET_SCREEN;
   static const PNR_STATUSVIEW = _Paths.PNR_STATUSVIEW;
+  static const GUESTLOGIN_VIEW = _Paths.GUESTLOGIN_VIEW;
+  static const GUESTOTP = _Paths.GUESTOTP;
 }
 
 abstract class _Paths {
@@ -75,4 +77,6 @@ abstract class _Paths {
   static const BUSTRACKING = '/bustracking';
   static const MYWALLET_SCREEN = '/mywallet-screen';
   static const PNR_STATUSVIEW = '/pnr-statusview';
+  static const GUESTLOGIN_VIEW = '/guestlogin-view';
+  static const GUESTOTP = '/guestotp';
 }

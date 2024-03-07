@@ -6,6 +6,7 @@ import 'package:dio/dio.dart'as dio;
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/auth_api_service/loginverify_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/auth_api_service/register_otp_verifiy_apisrvice.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/auth_api_service/resend_otp_api_service.dart';
 import 'package:oye_bus/app/data/api_service/models/register_model.dart';
 import 'package:oye_bus/app/modules/authentication/otp/views/otpsucess.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,11 +16,13 @@ class OtpController extends GetxController {
 
   final count = 0.obs;
      RxBool isLoading = false.obs;
+     RxBool isOTPLoading = false.obs;
           int start = 60; // Timer duration in seconds
   RxBool isActive = false.obs;
   late Timer _timer;
 
   void startTimer(){
+    isActive(true);
     const oneSec = Duration(seconds: 1);
      _timer = Timer.periodic(oneSec, 
      (timer) {
@@ -27,17 +30,19 @@ class OtpController extends GetxController {
           isActive(false);
           timer.cancel();
           start = 60;
+          update();
         }
         else{
           start--;
+          update();
         }
       });
+       update();
   }
   @override
   void onInit() {
     super.onInit();
     startTimer();
-    update();
   }
 
   @override
@@ -83,8 +88,27 @@ class OtpController extends GetxController {
             ));  
        } 
      }
+ ResendOtpApiService resendotpapiservice = ResendOtpApiService();
+ 
+ rendOtpFunction({required String mobileNumber}) async {
+    
+    isOTPLoading(true);
 
+    dio.Response<dynamic> response =
+        await resendotpapiservice.resendOtpApi(mobile: mobileNumber);
+    isOTPLoading(false);
 
+    if (response.data['status']==true) {
+     Get.rawSnackbar(
+      backgroundColor: Colors.green,
+            messageText: Text(
+              response.data["message"],
+              style: primaryFont.copyWith(color: Colors.white),
+            )
+     );
+    }
+   
+  }
 
 
 

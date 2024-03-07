@@ -11,6 +11,7 @@ abstract class Config{
   'https://oye.batechnology.in/api/login';
   final String loginverifyURL = 
   'https://oye.batechnology.in/api/login_verify';
+   final String resendOtpURL = 'https://oye.batechnology.in/api/resendOtp';
    
   //profile
   final String getProfileURL =

@@ -815,11 +815,50 @@ class BusFilterView extends GetView<BusFilterController> {
                         ),
                         InkWell(
                           onTap: (){
-                            // Get.find<HomeController>().getFilter(
-                            //   boardingname: boardingname, 
-                            //   destinationname: destinationname, 
-                            //   date: date,
-                            //   busType: );
+
+                        String tempBusType = "";
+
+                        if(controller.bustypecheck1.isTrue){
+                          tempBusType =makeAcomaString(actualString: tempBusType,addingString: "seater");
+                        }
+
+                         if(controller.bustypecheck2.isTrue){
+                            //  tempBusType = tempBusType + ",Sleeper";
+                             tempBusType =makeAcomaString(actualString: tempBusType,addingString: "sleeper");
+                        }
+
+                         if(controller.bustypecheck3.isTrue){
+                            //  tempBusType = tempBusType + "Ac,";
+                             tempBusType =makeAcomaString(actualString: tempBusType,addingString: "Ac");
+
+                        }
+
+                         if(controller.bustypecheck4.isTrue){
+                              // tempBusType = tempBusType + "Non -Ac,";
+                                 tempBusType =makeAcomaString(actualString: tempBusType,addingString: "Non -Ac");
+                        }
+                         String tempdepature ='';
+                         if(controller.depatcheck1.isTrue){
+                          tempdepature = tempdepature+'Morning,';
+
+                         }if(controller.depatcheck2.isTrue){
+                            tempdepature = tempdepature+"Afternoon,";
+                         }if(controller.depatcheck3.isTrue){
+                          tempdepature = tempdepature+'Evening,';
+                         }if(controller.depatcheck4.isTrue){
+                          tempdepature = tempdepature+"Night";
+                         } 
+                         print('>>>>>>>>>>>>>>>>>bus type..............');
+                             print(tempBusType);
+                             print('>>>>>>>>>>>>>>>depautre>>>>>>>>>>>>');
+                             print(tempdepature);
+                            Get.find<HomeController>().getFilter(
+                              boardingname: busfilterController.fromPlaceTxtController.text , 
+                              destinationname: busfilterController.toPlaceTxtController.text, 
+                              date: busfilterController.selectedBookingDate.toString(),
+                              busType: tempBusType == "" ? null : tempBusType,
+                              depaturetime: tempdepature==''?null:tempdepature,
+                              );
                           },
                           child: Container(
                           height: 35.h,
@@ -844,4 +883,15 @@ class BusFilterView extends GetView<BusFilterController> {
       ) ,
     );
   }
+
+  makeAcomaString({required String actualString,required String addingString}){
+  
+  if(actualString.isEmpty){
+    actualString = "$actualString$addingString";
+  }else {
+    actualString = "$actualString,$addingString";
+  }
+  
+  return actualString;
+}
 }

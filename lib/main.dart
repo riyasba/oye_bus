@@ -5,6 +5,9 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:oye_bus/app/modules/authentication/login/controllers/login_controller.dart';
 import 'package:oye_bus/app/modules/authentication/otp/controllers/otp_controller.dart';
 import 'package:oye_bus/app/modules/bottumnavigation/controllers/bottumnavigation_controller.dart';
+import 'package:oye_bus/app/modules/guestlogin_view/controllers/guestlogin_view_controller.dart';
+import 'package:oye_bus/app/modules/guestotp/controllers/guestotp_controller.dart';
+import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/onbording/controllers/onbording_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
@@ -32,6 +35,9 @@ void main() {
    Get.put(BusSearchController());
    Get.put(BookinghistoryController());
    Get.put(TicketDetailsController());
+   Get.put(GuestloginViewController());
+   Get.put(GuestotpController());
+   Get.put(HomeController());
 
   // Get.put(dynamic());
   // runApp(DevicePreview(

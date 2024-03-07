@@ -140,7 +140,7 @@ var cityid=0;
          if(response.data['status'] == true){ 
           print("----------->> here");
           BusListModel buslistModel = BusListModel.fromJson(response.data);
-          busdata=buslistModel.data!;
+          busdata=buslistModel.data;
           update();
         
          
@@ -172,13 +172,20 @@ var cityid=0;
     dio.Response<dynamic>response = await filterapiservice.filterApi(
       boardingname: boardingname, 
       destinationname: destinationname, 
+      busType: busType,
+      acornonac: acornonac,
+      amenities: amenities,busname: busname,
+
+      depaturetime:depaturetime ,
       date: date);
              isLoading(false);
          if(response.data['status'] == true){ 
           print("----------->> here");
           BusListModel buslistModel = BusListModel.fromJson(response.data);
-          busdata=buslistModel.data!;
+          busdata=buslistModel.data;
+          
           update(); 
+          Get.back();
       }else{
         Get.rawSnackbar(
           backgroundColor: Colors.red,

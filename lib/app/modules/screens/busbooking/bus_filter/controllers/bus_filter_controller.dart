@@ -147,5 +147,6 @@ class BusFilterController extends GetxController {
 
   void increment() => count.value++;
 
- 
+ FilterApiService filterapiservice = FilterApiService();
+  
 }

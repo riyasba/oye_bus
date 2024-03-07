@@ -12,6 +12,10 @@ import '../modules/bottumnavigation/bindings/bottumnavigation_binding.dart';
 import '../modules/bottumnavigation/views/bottumnavigation_view.dart';
 import '../modules/bustracking/bindings/bustracking_binding.dart';
 import '../modules/bustracking/views/bustracking_view.dart';
+import '../modules/guestlogin_view/bindings/guestlogin_view_binding.dart';
+import '../modules/guestlogin_view/views/guestlogin_view_view.dart';
+import '../modules/guestotp/bindings/guestotp_binding.dart';
+import '../modules/guestotp/views/guestotp_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/mywallet_screen/bindings/mywallet_screen_binding.dart';
@@ -254,8 +258,18 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PNR_STATUSVIEW,
-      page: () =>  PnrStatusviewView(),
+      page: () => PnrStatusviewView(),
       binding: PnrStatusviewBinding(),
     ),
+    GetPage(
+      name: _Paths.GUESTLOGIN_VIEW,
+      page: () => GuestloginView(),
+      binding: GuestloginViewBinding(),
+    ),
+    // GetPage(
+    //   name: _Paths.GUESTOTP,
+    //   page: () =>GuestotpView(),
+    //   binding: GuestotpBinding(),
+    // ),
   ];
 }

@@ -8,6 +8,7 @@ import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_seat_model.dart';
 import 'package:oye_bus/app/data/api_service/models/get_bus_seat_layout_model.dart';
 import 'package:oye_bus/app/data/local_data/bus_seat_data.dart';
+import 'package:oye_bus/app/modules/guestlogin_view/views/guestlogin_view_view.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_filter/views/bus_filter_view.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/widgets/seperator_widgets.dart';
@@ -15,6 +16,7 @@ import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/views/busseatmaping_view.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/views/passenger_info_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../bus_filter/views/bus_filter_view.dart';
 import '../controllers/bus_list_controller.dart';
@@ -182,27 +184,40 @@ class BusListView extends GetView<BusListController> {
                             return Padding(
                               padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
                               child: InkWell(
-                                onTap: () async{
-                                   //BusModel  busModel = BusModel.fromJson(busSeatData);
-                                  
-                                  int busId =int.parse( buslistController
-                                      .busdata[index].busId.toString());
-                              BusModel? busModel = await Get.find<BusseatmapingController>().busseats(busId);
-                                  int tripId = buslistController
-                                      .busdata[index].tripId;
+                                onTap: () async {
+                                  //BusModel  busModel = BusModel.fromJson(busSeatData);
 
-                               print("seat length --->>-->>-->>-->>-->>");      
-                                // print(busModel!.seatMap.length);
-buslistController.selectedBusData  = buslistController
-                                      .busdata[index];
+                                  final prefs =
+                                      await SharedPreferences.getInstance();
+                                  String? authtoken =
+                                      prefs.getString('auth_token');
+
+                                if(authtoken == null || authtoken == "null"){
+                                    Get.to(GuestloginView());
+                                }else{
+                                       int busId = int.parse(buslistController
+                                      .busdata[index].busId
+                                      .toString());
+                                  BusModel? busModel =
+                                      await Get.find<BusseatmapingController>()
+                                          .busseats(busId);
+                                  int tripId =
+                                      buslistController.busdata[index].tripId;
+
+                                  print("seat length --->>-->>-->>-->>-->>");
+                                  // print(busModel!.seatMap.length);
+                                  buslistController.selectedBusData =
+                                      buslistController.busdata[index];
                                   seatmappingController.getBusdetails(
                                       tripId: tripId.toString(),
                                       busId: busId.toString());
                                   Get.to(BusseatmapingView(
                                     busModel: busModel!,
-                                    busdata: buslistController
-                                        .busdata[index],
+                                    busdata: buslistController.busdata[index],
                                   ));
+                                }
+
+
                                   // Get.to(PassengerInfoView());
                                 },
                                 child: Container(
@@ -236,14 +251,18 @@ buslistController.selectedBusData  = buslistController
                                                   children: [
                                                     Text(
                                                       buslistController
-                                                          .busdata[index].busName.toString(),
+                                                          .busdata[index]
+                                                          .busName
+                                                          .toString(),
                                                       style: smalbalckfont
                                                           .copyWith(
                                                               fontSize: 14),
                                                     ),
                                                     Text(
                                                       buslistController
-                                                          .busdata[index].busType.toString(),
+                                                          .busdata[index]
+                                                          .busType
+                                                          .toString(),
                                                       style:
                                                           primaryFont.copyWith(
                                                               fontSize: 11),
@@ -297,7 +316,8 @@ buslistController.selectedBusData  = buslistController
                                                 ),
                                                 Text(
                                                   buslistController
-                                                      .busdata[index].sourceLocation,
+                                                      .busdata[index]
+                                                      .sourceLocation,
                                                   style: primaryFont.copyWith(
                                                       fontSize: 11,
                                                       color: Colors.black45),
@@ -375,7 +395,8 @@ buslistController.selectedBusData  = buslistController
                                                 Text(
                                                   getActualTime(
                                                       buslistController
-                                                          .busdata[index].departureTime),
+                                                          .busdata[index]
+                                                          .departureTime),
                                                   style: smalbalckfont.copyWith(
                                                     fontSize: 14,
                                                   ),
@@ -448,17 +469,17 @@ buslistController.selectedBusData  = buslistController
                             );
                           })
                       : Center(
-                        child: Container(
-                          height: 250,
-                          width: 250,
-                          child: Lottie.asset(
+                          child: Container(
+                            height: 250,
+                            width: 250,
+                            child: Lottie.asset(
                               'assets/images/buslistnodata.json',
-                                fit: BoxFit.cover,
+                              fit: BoxFit.cover,
                               reverse: true,
                               animate: true,
                             ),
-                        ),
-                      );
+                          ),
+                        );
                 })
               : getShimmerLoading(),
         ));

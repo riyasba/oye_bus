@@ -1,38 +1,29 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
-import 'package:oye_bus/app/modules/authentication/register/controllers/register_controller.dart';
-import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
+import 'package:oye_bus/app/modules/authentication/otp/controllers/otp_controller.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../controllers/otp_controller.dart';
 
-class OtpView extends GetView<OtpController> {
+import '../controllers/guestotp_controller.dart';
+
+class GuestotpView extends GetView<GuestotpController> {
   String mobile;
-  OtpView({Key? key, required this.mobile})
-      : super(
-          key: key,
-        );
-
+  GuestotpView({Key? key,required this.mobile}) : super(key: key);
+  
   final otpController = Get.find<OtpController>();
   String _otpValue = "";
-  String otpString = "";
-  bool _isActive = false;
-
-  int _start = 60; // Timer duration in seconds
-
   @override
   Widget build(BuildContext context) {
-    bool hasError = false;
+      bool hasError = false;
     return Scaffold(
-      backgroundColor: kwhite,
       appBar: AppBar(
-        backgroundColor: kwhite,
+        title: const Text('GuestotpView'),
+        centerTitle: true,
       ),
-      body: Center(
+      body:Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
@@ -61,7 +52,7 @@ class OtpView extends GetView<OtpController> {
                     ),
               ),
               ksizedbox30,
-              Container(
+               Container(
                 width: 300.w,
                 child: PinCodeTextField(
                   appContext: context,
@@ -135,44 +126,15 @@ class OtpView extends GetView<OtpController> {
                         ),
                   ),
                   // otpController._isActive
-                  Obx(()=> controller.isActive.isTrue
-                        ? GetBuilder<OtpController>(builder: (_) {
-                            return Text(
-                              "Resend in ${controller.start}",
-                              style: primaryFont.copyWith(color: Colors.blue),
-                            );
-                          })
-                        : InkWell(
-                            onTap: () async {
-                               await controller.rendOtpFunction(
-                                  mobileNumber: mobile);
-                    
-                              
-                              
-                              controller.startTimer();
-                            },
-                            child: Text(
-                              ' RESEND OTP -',
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displaySmall!
-                                  .copyWith(
-                                    fontSize: 14.sp,
-                                    color: kred,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                            )),
+                  Text(
+                    ' Resend Code',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                          fontSize: 14.sp,
+                          color: kred,
+                          fontWeight: FontWeight.w300,
+                        ),
                   )
-                  // Text(
-                  //   ' Resend Code',
-                  //   textAlign: TextAlign.center,
-                  //   style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                  //         fontSize: 14.sp,
-                  //         color: kred,
-                  //         fontWeight: FontWeight.w300,
-                  //       ),
-                  // )
                 ],
               ),
               ksizedbox40,
@@ -203,7 +165,7 @@ class OtpView extends GetView<OtpController> {
                   height: 45.h,
                   width: 1.sw,
                   onPressed: () {
-                    otpController.loginVerify(mobile: mobile, otp: _otpValue);
+                    controller.guestloginVerify(mobile: mobile, otp: _otpValue);
                   },
                   text: 'CONTINUE',
                   color: kred,

@@ -5,19 +5,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/components/custom_button.dart';
-import 'package:oye_bus/app/modules/guestlogin_view/views/guestlogin_view_view.dart';
+import 'package:oye_bus/app/modules/authentication/login/controllers/login_controller.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
-import '../controllers/login_controller.dart';
+import '../controllers/guestlogin_view_controller.dart';
 
-class LoginView extends GetView<LoginController> {
-  LoginView({Key? key}) : super(key: key);
-  final loginController = Get.find<LoginController>();
+class GuestloginView extends GetView<GuestloginViewController> {
+   GuestloginView({Key? key}) : super(key: key);
+   final loginController = Get.find<LoginController>();
   var phoneNumberController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kwhite,
+       backgroundColor: kwhite,
         appBar: AppBar(
           backgroundColor: kwhite,
           title: Text(
@@ -240,7 +240,7 @@ class LoginView extends GetView<LoginController> {
                               width: 1.sw,
                               onPressed: () {
                                 if (phoneNumberController.text.isNotEmpty) {
-                                  loginController.getLoginUser(
+                                  controller.getguestLoginUser(
                                       mobile: phoneNumberController.text);
                                   loginController.update();
                                 } else {
@@ -260,16 +260,16 @@ class LoginView extends GetView<LoginController> {
                             ),
                     ),
                     ksizedbox10,
-                    CustomElevatedButton(
-                      text: 'Guest Login',
-                      color: Color(0xFFFFBB24),
-                      textColor: kblack,
-                      onPressed: () {  Get.toNamed(
-                Routes.LOCATIONPERMISSON,
-              );},
-                      width: MediaQuery.of(context).size.width * 0.65,
-                      height: 50,
-                    ),
+              //       CustomElevatedButton(
+              //         text: 'Guest Login',
+              //         color: Color(0xFFFFBB24),
+              //         textColor: kblack,
+              //         onPressed: () {  Get.toNamed(
+              //   Routes.LOCATIONPERMISSON,
+              // );},
+              //         width: MediaQuery.of(context).size.width * 0.65,
+              //         height: 50,
+              //       ),
                     ksizedbox20,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -348,6 +348,7 @@ class LoginView extends GetView<LoginController> {
               ],
             );
           }),
-        ));
+        )
+    );
   }
 }

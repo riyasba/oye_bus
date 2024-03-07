@@ -7,7 +7,7 @@ import 'package:oye_bus/app/data/api_service/config/config.dart';
 class LoginVerificationApiservice extends Config{
   
   Future LoginVerifyApi({required String otp,
-  required String mobile,})async{
+  required String mobile})async{
 
     dynamic responseJson;
     try{
