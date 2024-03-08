@@ -55,6 +55,10 @@ dependencies:
   dropdown_search: ^5.0.6
   date_format: ^2.0.7
   sqflite: ^2.3.2
+  firebase_messaging: ^14.6.6
+  cloud_firestore: ^4.8.5
+  firebase_core: ^2.15.1
+  awesome_notifications: ^0.8.2
 
    
   

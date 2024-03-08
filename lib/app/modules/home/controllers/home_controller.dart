@@ -164,7 +164,7 @@ var cityid=0;
     required String destinationname,
     required String date,
     String? busType,
-    String?acornonac,
+    String?acornonac, 
     String?amenities,
     String?busname,
     String? depaturetime,})async{
@@ -218,13 +218,13 @@ var cityid=0;
           ));
          update();
       }else{
-        Get.rawSnackbar(
+        Get.rawSnackbar( 
           backgroundColor: Colors.red,
           messageText: Text(
             response.data["message"],
             style: primaryFont.copyWith(color: Colors.white),
           ));
-      }
+      } 
     }
  
 

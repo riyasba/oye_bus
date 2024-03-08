@@ -468,13 +468,31 @@ class RegisterView extends GetView<RegisterController> {
                             )
                           ],
                         ),
-                        ksizedbox40,
+                        ksizedbox10,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: (){
+                                Get.toNamed(Routes.LOGIN);
+                              },
+                              child: Text('Sign In',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: kred
+                              ),),
+                            )
+                          ],
+                        ),
+                        ksizedbox20,
                       ],
                     ),
                   ),
                 ),
               ],
             ),
+            
           ],
         ),
       ),

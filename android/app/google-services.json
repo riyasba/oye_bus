@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "267848673243",
+    "project_id": "oyebusapp",
+    "storage_bucket": "oyebusapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267848673243:android:69fd8bb259ef9570c429fe",
+        "android_client_info": {
+          "package_name": "com.example.oye_bus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWH_dtmWIIVpyYZg0b3TYsU6J42fqwgmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

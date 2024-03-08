@@ -19,7 +19,7 @@ class GuestotpView extends GetView<GuestotpController> {
   Widget build(BuildContext context) {
       bool hasError = false;
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(  
         title: const Text('GuestotpView'),
         centerTitle: true,
       ),

@@ -48,8 +48,10 @@ class BookinghistoryController extends GetxController {
     if(response.data['status']==true){
       BookingHistoryModel bookingHistoryModel = BookingHistoryModel.fromJson(response.data);
       bookinghistorydata = bookingHistoryModel.bookingDetails;
+       update();
+       Get.back();
     }
-    update();
+   
    }
    BookingCancelledListApiService bookingcancelledlistapiservice = 
    BookingCancelledListApiService();

@@ -10,7 +10,7 @@ import 'package:oye_bus/app/data/local_data/sqflite_data.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/home/views/home_view.dart';
 import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
-import 'package:oye_bus/app/modules/screens/search/widgets/recent_chips.dart';
+import 'package:oye_bus/app/modules/screens/search/widgets/recent_trips.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
 
@@ -303,7 +303,7 @@ Timer? _debounce;
                               HomeView(),
                             );
                           },
-                          child: RecentChip(
+                          child: RecentTrip(
                             places:
                                 "${item.boardingName} - ${item.destinationName}",
                           ),

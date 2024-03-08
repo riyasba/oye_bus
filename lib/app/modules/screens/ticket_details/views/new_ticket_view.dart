@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/models/booking_model/booking_history_model.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
@@ -1160,11 +1161,97 @@ pdfLib.Stack(
                         color: kgreen,)),
                       GestureDetector(
                         onTap: (){
-                    
-                           final bookingcancelController = Get.find<TicketDetailsController>().
+                     showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
+                                            backgroundColor: Colors.white,
+                                            title: Column(
+                                              children: [
+                                                Lottie.asset(
+                                                  'assets/images/deletepassengergif.json',
+                                                  height: 80,
+                                                  fit: BoxFit.fitHeight,
+                                                ),
+                                              ],
+                                            ),
+                                            content: Container(
+                                              width: 150.w,
+                                              child: const Text(
+                                                "Are you sure want to delete your booking?",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 17,
+                                                ),
+                                              ),
+                                            ),
+                                            actions: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () {
+                                                      Get.back();
+                                                    },
+                                                    child: Container(
+                                                      height: 38,
+                                                      width: 105,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(6),
+                                                          // ignore: unrelated_type_equality_checks
+                                                          color: kgrey),
+                                                      child: Center(
+                                                          child: Text("No",
+                                                              style: TextStyle(
+                                                                  fontSize: 15,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  color:
+                                                                      kblack))),
+                                                    ),
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                     final bookingcancelController = Get.find<TicketDetailsController>().
                            bookingCancellation(bookingid:bookingHistoryController.bookinghistorydata!.isNotEmpty?
                             bookingHistoryController.bookinghistorydata!.first.bookingData!.bookingId.toString():'');
                             final bookinghistoryController = Get.find<BookinghistoryController>().bookinghistory(); 
+                                                    },
+                                                    child: Container(
+                                                      height: 38,
+                                                      width: 105,
+                                                      decoration: BoxDecoration(
+                                                          color: kred,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(6)),
+                                                      child: Center(
+                                                        child: Text("yes ",
+                                                            style: TextStyle(
+                                                                fontSize: 15,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                color: kwhite)),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              ksizedbox10
+                                            ],
+                                          );
+                                        });
+                           
                         },
                         child: Image.asset('assets/offers_icon/cancelicon.png',
                         color: kred,))

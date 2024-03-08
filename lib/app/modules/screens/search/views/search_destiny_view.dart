@@ -9,7 +9,7 @@ import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/home/views/home_view.dart';
 import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
-import 'package:oye_bus/app/modules/screens/search/widgets/recent_chips.dart';
+import 'package:oye_bus/app/modules/screens/search/widgets/recent_trips.dart';
 
 class SearchDestinyView extends StatefulWidget {
   const SearchDestinyView({Key? key}) : super(key: key);
@@ -292,7 +292,7 @@ class _SearchDestinyViewState extends State<SearchDestinyView> {
                               HomeView(),
                             );
                           },
-                          child: RecentChip(
+                          child: RecentTrip(
                             places:
                                 "${item.boardingName} - ${item.destinationName}",
                           ),

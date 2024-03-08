@@ -342,9 +342,27 @@ class LoginView extends GetView<LoginController> {
                           ),
                         )
                       ],
-                    )
+                    ),
                   ],
                 ),
+                ksizedbox20,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        Get.toNamed(Routes.REGISTER);
+                      },
+                      child: Text('Sign Up',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: kred,
+                        fontWeight: FontWeight.w600
+                      ),),
+                    ),
+                  ],
+                ),
+                ksizedbox20,
               ],
             );
           }),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 
-class RecentChip extends StatelessWidget {
+class RecentTrip extends StatelessWidget {
   String places;
-   RecentChip({super.key,required this.places});
+   RecentTrip({super.key,required this.places});
 
   @override
   Widget build(BuildContext context) {
