@@ -133,12 +133,12 @@ firebaseNotification() async {
     alert: true,
     announcement: false,
     badge: true,
-    carPlay: false,
+    carPlay: false,   
     criticalAlert: false,
     provisional: false,
     sound: true,
   );
-
+ 
   print('User granted permission: ${settings.authorizationStatus}');
 }
 
@@ -155,7 +155,7 @@ class MyApp extends StatelessWidget {
       ),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
+        theme: ThemeData(  
           useMaterial3: true,
         ),
         initialRoute: AppPages.INITIAL,

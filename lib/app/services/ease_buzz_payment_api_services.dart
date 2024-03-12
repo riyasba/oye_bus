@@ -10,7 +10,7 @@ import 'package:crypto/crypto.dart';
 class EaseBuzzTokenApiService {
   // test
   String key = "2PBP7IABZ2";
-  String salt = "DAH88E3UWQ";
+  String salt = "DAH88E3UWQ"; 
 
    // String key = "2PBP7IABZ2";
   // String salt = "DAH88E3UWQ";
