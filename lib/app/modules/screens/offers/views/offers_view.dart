@@ -58,7 +58,7 @@ class _OffersViewState extends State<OffersView> {
                 child: GetBuilder<OffersController>(
                   builder: (_) {
                     return GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: offerscontroller.offersdata.length,
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
