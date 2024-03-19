@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:dio/dio.dart'as dio;
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/booking_cancel_api_service.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
 
 class TicketDetailsController extends GetxController {
   //TODO: Implement TicketDetailsController
@@ -33,10 +34,12 @@ class TicketDetailsController extends GetxController {
     isLoading(true);
    dio.Response<dynamic>response = await bookingcancelapiservice.bookingCancelApi(
     bookingId: bookingid);
-Get.back();
+
     isLoading(false);
     if(response.data['status']==true){
-
+      Get.find<BookinghistoryController>(). bookinghistory();
+      Get.find<BookinghistoryController>(). bookingCancelledList();
+      Get.back();
        Get.rawSnackbar(
           backgroundColor: Colors.green,
           messageText: Text(
@@ -45,6 +48,13 @@ Get.back();
           ));
           
           
+    }else{
+       Get.rawSnackbar(
+          backgroundColor: Colors.red,
+          messageText: Text(
+            response.data['message'],
+            style: primaryFont.copyWith(color: Colors.white),
+          ));
     }
     
   }

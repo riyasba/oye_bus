@@ -72,8 +72,6 @@ class ProfileController extends GetxController {
     ProfileModel profileModel = ProfileModel.fromJson(response.data);
     profiledata.add(profileModel.data);
     update();
-   }else{
-    
    }
   }
   //profileupdater

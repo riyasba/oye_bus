@@ -42,6 +42,7 @@ class ProfileData {
     dynamic age;
     String referralCode;
     String status;
+    String walletamount;
     DateTime createdAt;
 
     ProfileData({
@@ -55,6 +56,7 @@ class ProfileData {
         required this.referralCode,
         required this.status,
         required this.createdAt,
+        required this.walletamount,
     });
 
     factory ProfileData.fromJson(Map<String, dynamic> json) => ProfileData(
@@ -67,7 +69,8 @@ class ProfileData {
         status: json["status"],
         createdAt: DateTime.parse(json["created_at"]),
          age: json["age"] ?? "", 
-         gender: json["gender"]?? "",
+         gender: json["gender"]?? "", 
+         walletamount: json["wallet_amount"]??  "",
     );
 
     Map<String, dynamic> toJson() => {
@@ -81,5 +84,6 @@ class ProfileData {
         "referral_code": referralCode,
         "status": status,
         "created_at": createdAt.toIso8601String(),
+        "wallet_amount":walletamount
     };
 }

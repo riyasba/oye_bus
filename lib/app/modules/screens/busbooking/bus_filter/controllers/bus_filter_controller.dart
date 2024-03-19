@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart'as dio;
 import 'package:get/get.dart';
+import 'package:oye_bus/app/data/api_service/api_provider/amenities_api_service.dart';
 
 import 'package:oye_bus/app/data/api_service/api_provider/filter_api_service/filter_api_service.dart';
+import 'package:oye_bus/app/data/api_service/models/amenities_model/amenities_model.dart';
 import 'package:oye_bus/app/data/api_service/models/booking_model/booking_canceled_list_model.dart';
 import 'package:oye_bus/app/data/api_service/models/bus_model/buslist_model.dart';
 
@@ -132,6 +134,7 @@ class BusFilterController extends GetxController {
   ];
   @override
   void onInit() {
+    getAmenities();
     super.onInit();
   }
 
@@ -147,6 +150,18 @@ class BusFilterController extends GetxController {
 
   void increment() => count.value++;
 
- FilterApiService filterapiservice = FilterApiService();
-  
+ AmenitiesApiService amenitiesapiservice = AmenitiesApiService();
+  List<AmenitiesData> amenitydata=[];
+
+ getAmenities()async{
+  isLoading(true);
+  dio.Response<dynamic>response = await amenitiesapiservice.amenitiesapi();
+
+  isLoading(false);
+  if(response.data['status']==true){
+  AmenitiesModel amenitiesModel = AmenitiesModel.fromJson(response.data);
+  amenitydata = amenitiesModel.data!;
+  update();
+ }
+ }
 }

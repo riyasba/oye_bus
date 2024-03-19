@@ -49,6 +49,7 @@ class Seat {
     String fareKey;
     String isBookable;
     bool isSelected;
+    bool isBooked;
 
     Seat({
         required this.id,
@@ -66,6 +67,7 @@ class Seat {
         required this.ladiesSeat,
         required this.fareKey,
         required this.isBookable,
+        required this.isBooked,
          this.isSelected = false,
     });
 
@@ -85,6 +87,7 @@ class Seat {
         ladiesSeat: json["ladies_seat"]??'',
         fareKey: json["fare_key"]??'',
         isBookable: json["is_bookable"]??'',
+        isBooked: json["is_booked"]??'',
     );
 
     Map<String, dynamic> toJson() => {

@@ -33,7 +33,7 @@ class BusReviewApiServices extends Config {
             "reviews": reviews,
             "travellers_liked_id":travellersLikedId
           });
-      print('::::::::Bus City Search Api:::::::::<status code>:::::::');
+      print('::::::::Bus Reveiw Api:::::::::<status code>:::::::');
       print(response.data);
       print(response.statusCode);
       responseJson = response;

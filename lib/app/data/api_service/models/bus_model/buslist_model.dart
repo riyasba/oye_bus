@@ -54,6 +54,7 @@ class BusData {
     String vendorId;
     DateTime startTime;
     DateTime endTime;
+    bool ischeck;
 
     BusData({
         required this.busId,
@@ -77,6 +78,7 @@ class BusData {
         required this.tripId,
         required this.startTime,
         required this.endTime,
+        this.ischeck=false,
     });
 
     factory BusData.fromJson(Map<String, dynamic> json) => BusData(

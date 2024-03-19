@@ -15,6 +15,7 @@ class FilterApiService extends Config{
     String?amenities,
     String?busname,
     String? depaturetime,
+    String? priceorder,
 
 
     })async{
@@ -34,7 +35,8 @@ class FilterApiService extends Config{
     if(acornonac !=null) "ac_or_non_ac":acornonac,
     if(amenities !=null)"amenities":amenities,
     if(busname !=null)"bus_name":busname,
-    if(depaturetime !=null)"departure_time":depaturetime
+    if(depaturetime !=null)"departure_time":depaturetime,
+    if(priceorder!=null)"price_order":priceorder,
 };
 
 print("These are the data we are passing");

@@ -10,6 +10,7 @@ import 'package:oye_bus/app/data/api_service/models/get_bus_seat_layout_model.da
 import 'package:oye_bus/app/data/local_data/bus_seat_data.dart';
 import 'package:oye_bus/app/modules/guestlogin_view/views/guestlogin_view_view.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_filter/views/bus_filter_view.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/widgets/seperator_widgets.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
@@ -44,6 +45,7 @@ class BusListView extends GetView<BusListController> {
   }
 
   final seatmappingController = Get.find<BusseatmapingController>();
+  final bookingController = Get.find<BookinghistoryController>();
 
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -198,9 +200,10 @@ class BusListView extends GetView<BusListController> {
                                        int busId = int.parse(buslistController
                                       .busdata[index].busId
                                       .toString());
+                                      String date = formatDate(Get.find<HomeController>().selectedDate, [yyyy,"-",mm,"-",dd]);
                                   BusModel? busModel =
                                       await Get.find<BusseatmapingController>()
-                                          .busseats(busId);
+                                          .busseats(busId,date); 
                                   int tripId =
                                       buslistController.busdata[index].tripId;
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/bus_review_api-services/bus_review_api_services.dart';
 import 'package:dio/dio.dart' as dio;
+import 'package:oye_bus/app/routes/app_pages.dart';
 
 class BustripReviewsController extends GetxController {
   //TODO: Implement BustripReviewsController
@@ -38,10 +39,12 @@ class BustripReviewsController extends GetxController {
 
 
     if(response.data['status'] == true){
-  Get.rawSnackbar(
-    message: "Submitted Successfully",
+  Get.rawSnackbar( 
+    message: response.statusMessage,
     backgroundColor: Colors.green
   );
+ update();
+   Get.toNamed(Routes.BOOKINGHISTORY);
     }
 
 

@@ -223,8 +223,8 @@ Timer? _debounce;
                   height: 20.h,
                 ),
               
-              // searchcityController.citydata.isNotEmpty
-              //     ?
+              searchcityController.citydata.isNotEmpty
+                  ?
               Container(
                 height: 40.h,
                 decoration: BoxDecoration(color: klightGrey.withOpacity(0.5)),
@@ -244,7 +244,7 @@ Timer? _debounce;
                     ],
                   ),
                 ),
-              ),
+              ):Text(''),
               //  : Text(''),
               SizedBox(
                 height: 20.h,

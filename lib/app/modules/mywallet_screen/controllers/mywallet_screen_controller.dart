@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/wallet_api_service/wallet_history_api_service.dart';
 import 'package:oye_bus/app/data/api_service/models/wallet_model/wallet_history_model.dart';
+import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
 
 class MywalletScreenController extends GetxController {
   //TODO: Implement MywalletScreenController
@@ -16,6 +17,7 @@ class MywalletScreenController extends GetxController {
   void onInit() {
     super.onInit();
     getWallethistory();
+    Get.find<ProfileController>().getprofile();
   } 
 
   @override

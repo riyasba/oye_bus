@@ -13,6 +13,7 @@ class SeatBlockedData {
     int vendorId;
     List<Seat> seatId;
     int seatCount;
+    String date;
    
 
     SeatBlockedData({
@@ -23,6 +24,7 @@ class SeatBlockedData {
         required this.vendorId,
         required this.seatId,
         required this.seatCount,
+        required this.date,
        
     });
 

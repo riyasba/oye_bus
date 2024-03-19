@@ -20,9 +20,10 @@ class SeatBlockApiService extends Config{
           "trip_id":seatBlockedData.tripId,
           "route_id":seatBlockedData.routeId,
           "vendor_id":seatBlockedData.vendorId,
+          "date":seatBlockedData.date,
           for(int i =0;i<seatBlockedData.seatId.length;i++)
           "seat_id[$i]":seatBlockedData.seatId[i].id,
-          "seat_count":seatBlockedData.seatCount
+          "seat_count":seatBlockedData.seatCount,
         });
 
         print("-------Seat blocking api------");

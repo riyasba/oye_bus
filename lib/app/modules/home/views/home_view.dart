@@ -499,6 +499,7 @@ class HomeView extends GetView<HomeController> {
                             print('bus list................');
                             print(homeController.fromcityid.toString());
                             print(homeController.tocityid.toString());
+                            print(homeController.selectedDate);
                           } else {
                             Get.rawSnackbar(
                                 backgroundColor: Colors.red,

@@ -12,6 +12,7 @@ import 'package:oye_bus/app/modules/guestlogin_view/controllers/guestlogin_view_
 import 'package:oye_bus/app/modules/guestotp/controllers/guestotp_controller.dart';
 import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/onbording/controllers/onbording_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/booking_cancellation/controllers/booking_cancellation_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
 import 'package:oye_bus/app/modules/screens/notification/views/firebase_notification.dart';
@@ -115,6 +116,7 @@ void main()async {
    Get.put(GuestloginViewController());
    Get.put(GuestotpController());
    Get.put(HomeController());
+   Get.put(BookingCancellationController());
 
   // Get.put(dynamic());
   // runApp(DevicePreview(

@@ -62,7 +62,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('passenger information'),
+        title: const Text('Passenger information'),
         centerTitle: true,
       ),
       body: GetBuilder<HomeController>(builder: (_) {
@@ -404,7 +404,7 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Passenger ${boadingdroppingController.selectedSeats.length}",
+                                  "Passenger",
                                   style: smalbalckfont.copyWith(
                                     fontSize: 16,
                                   ),

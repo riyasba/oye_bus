@@ -73,7 +73,7 @@ class HomeController extends GetxController {
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: selectedDate,
       firstDate: DateTime.now(), // Set the starting date for the picker
       lastDate: DateTime(2101), // Set the ending date for the picker
     );
@@ -146,6 +146,8 @@ var cityid=0;
          
       
       }else{
+        busdata.clear();
+        update();
         Get.rawSnackbar(
           backgroundColor: Colors.red,
           messageText: Text(
@@ -167,7 +169,8 @@ var cityid=0;
     String?acornonac, 
     String?amenities,
     String?busname,
-    String? depaturetime,})async{
+    String? depaturetime,
+    String? priceorder})async{
     isLoading(true);
     dio.Response<dynamic>response = await filterapiservice.filterApi(
       boardingname: boardingname, 
@@ -175,7 +178,7 @@ var cityid=0;
       busType: busType,
       acornonac: acornonac,
       amenities: amenities,busname: busname,
-
+       priceorder: priceorder,
       depaturetime:depaturetime ,
       date: date);
              isLoading(false);

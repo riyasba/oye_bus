@@ -20,6 +20,7 @@ class BusFilterView extends GetView<BusFilterController> {
   var boardingController = TextEditingController();
 
   final busfilterController = Get.find<HomeController>();
+  final amenitiesController = Get.find<BusFilterController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: kwhite,
@@ -91,39 +92,39 @@ class BusFilterView extends GetView<BusFilterController> {
                                     ),
                                   ),
                                 ),
-                                  Container(
-                                  height: 1.h,
-                                  width: 150.w,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[300]
-                                  ),
-                                ),
-                                 GestureDetector(
-                                  onTap: (){
-                                    controller.colorindex(1);
-                                    controller.update();
-                                  },
-                                   child: Container(
-                                    height: 40.h,
-                                    width: 150.w,
-                                    decoration: BoxDecoration(
+                                //   Container(
+                                //   height: 1.h,
+                                //   width: 150.w,
+                                //   decoration: BoxDecoration(
+                                //     color: Colors.grey[300]
+                                //   ),
+                                // ),
+                                //  GestureDetector(
+                                //   onTap: (){
+                                //     controller.colorindex(1);
+                                //     controller.update();
+                                //   },
+                                //    child: Container(
+                                //     height: 40.h,
+                                //     width: 150.w,
+                                //     decoration: BoxDecoration(
                                                           
-                                       color:controller.colorindex.value==1? kwhite:
-                                        Colors.grey[200]
-                                    ),
-                                     child: Center(
-                                      child: Text('Bus departure ',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                //        color:controller.colorindex.value==1? kwhite:
+                                //         Colors.grey[200]
+                                //     ),
+                                //      child: Center(
+                                //       child: Text('Bus departure ',
+                                //       textAlign: TextAlign.center,
+                                //       style: TextStyle(
                                         
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==1?kred:Colors.black
-                                      ),),
-                                    ),
-                                   ),
-                                 ),
+                                //         fontSize: 14.sp,
+                                //         fontWeight: FontWeight.w400,
+                                //         fontFamily: 'Proxima ',
+                                //         color: controller.colorindex.value==1?kred:Colors.black
+                                //       ),),
+                                //     ),
+                                //    ),
+                                //  ),
                                   Container(
                                   height: 1.h,
                                   width: 150.w,
@@ -164,31 +165,31 @@ class BusFilterView extends GetView<BusFilterController> {
                                     color: Colors.grey[300]
                                   ),
                                 ),
-                                 GestureDetector(
-                                  onTap: (){
-                                     controller.colorindex(3);
-                                     controller.update();
-                                  },
-                                   child: Container(
-                                    height: 40.h,
-                                    width: 150.w,
-                                    decoration: BoxDecoration(
-                                    color:controller.colorindex.value==3? kwhite:
-                                        Colors.grey[200]
-                                    ),
-                                     child: Center(
-                                      child: Text('Single Window Sleeper/Seater',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                //  GestureDetector(
+                                //   onTap: (){
+                                //      controller.colorindex(3);
+                                //      controller.update();
+                                //   },
+                                //    child: Container(
+                                //     height: 40.h,
+                                //     width: 150.w,
+                                //     decoration: BoxDecoration(
+                                //     color:controller.colorindex.value==3? kwhite:
+                                //         Colors.grey[200]
+                                //     ),
+                                //      child: Center(
+                                //       child: Text('Single Window Sleeper/Seater',
+                                //       textAlign: TextAlign.center,
+                                //       style: TextStyle(
                                         
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==3?kred:Colors.black
-                                      ),),
-                                    ),
-                                   ),
-                                 ),
+                                //         fontSize: 14.sp,
+                                //         fontWeight: FontWeight.w400,
+                                //         fontFamily: 'Proxima ',
+                                //         color: controller.colorindex.value==3?kred:Colors.black
+                                //       ),),
+                                //     ),
+                                //    ),
+                                //  ),
                                 Container(
                                   height: 1.h,
                                   width: 150.w,
@@ -196,63 +197,64 @@ class BusFilterView extends GetView<BusFilterController> {
                                     color: Colors.grey[300]
                                   ),
                                 ),
-                                 GestureDetector(
-                                  onTap: (){
-                                    controller.colorindex(4);
-                                    controller.update();
-                                  },
-                                   child: Container(
-                                    height: 40.h,
-                                    width: 150.w,
-                                    decoration: BoxDecoration(
-                                      color:controller.colorindex.value==4? kwhite:
-                                        Colors.grey[200]
-                                    ),
-                                            child: Center(
-                                      child: Text('Boarding Point',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                //  GestureDetector(
+                                //   onTap: (){
+                                //     controller.colorindex(4);
+                                //     controller.update();
+                                //   },
+                                //    child: Container(
+                                //     height: 40.h,
+                                //     width: 150.w,
+                                //     decoration: BoxDecoration(
+                                //       color:controller.colorindex.value==4? kwhite:
+                                //         Colors.grey[200]
+                                //     ),
+                                //             child: Center(
+                                //       child: Text('Boarding Point',
+                                //       textAlign: TextAlign.center,
+                                //       style: TextStyle(
                                         
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==4?kred:Colors.black
-                                      ),),
-                                    ),
-                                   ),
-                                 ),
-                                  Container(
-                                  height: 1.h,
-                                  width: 150.w,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[300]
-                                  ),
-                                ),
-                                 GestureDetector(
-                                  onTap: (){
-                                    controller.colorindex(5);
-                                    controller.update();
-                                  },
-                                   child: Container(
-                                    height: 40.h,
-                                    width: 150.w,
-                                    decoration: BoxDecoration(
-                                      color:controller.colorindex.value==5? kwhite:
-                                        Colors.grey[200]
-                                    ),
-                                       child: Center(
-                                      child: Text('Dropping Point',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                //         fontSize: 14.sp,
+                                //         fontWeight: FontWeight.w400,
+                                //         fontFamily: 'Proxima ',
+                                //         color: controller.colorindex.value==4?kred:Colors.black
+                                //       ),),
+                                //     ),
+                                //    ),
+                                //  ),
+                                //   Container(
+                                //   height: 1.h,
+                                //   width: 150.w,
+                                //   decoration: BoxDecoration(
+                                //     color: Colors.grey[300]
+                                //   ),
+                                // ),
+                                //  GestureDetector(
+                                //   onTap: (){
+                                //     controller.colorindex(5);
+                                //     controller.update();
+                                //   },
+                                //    child: Container(
+                                //     height: 40.h,
+                                //     width: 150.w,
+                                //     decoration: BoxDecoration(
+                                //       color:controller.colorindex.value==5? kwhite:
+                                //         Colors.grey[200]
+                                //     ),
+                                //        child: Center(
+                                //       child: Text('Dropping Point',
+                                //       textAlign: TextAlign.center,
+                                //       style: TextStyle(
                                         
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==5?kred:Colors.black
-                                      ),),
-                                    ),
-                                    ),
-                                 ),  Container(
+                                //         fontSize: 14.sp,
+                                //         fontWeight: FontWeight.w400,
+                                //         fontFamily: 'Proxima ',
+                                //         color: controller.colorindex.value==5?kred:Colors.black
+                                //       ),),
+                                //     ),
+                                //     ),
+                                //  ),  
+                                 Container(
                                   height: 1.h,
                                   width: 150.w,
                                   decoration: BoxDecoration(
@@ -323,63 +325,64 @@ class BusFilterView extends GetView<BusFilterController> {
                                     color: Colors.grey[300]
                                   ),
                                 ),
-                                 GestureDetector(
-                                  onTap: (){
-                                    controller.colorindex(8);
-                                    controller.update();
-                                  },
-                                   child: Container(
-                                    height: 40.h,
-                                    width: 150.w,
-                                    decoration: BoxDecoration(
-                                         color:controller.colorindex.value==8? kwhite:
-                                        Colors.grey[200]
-                                    ),
-                                         child: Center(
-                                      child: Text('Bus Features',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                //  GestureDetector(
+                                //   onTap: (){
+                                //     controller.colorindex(8);
+                                //     controller.update();
+                                //   },
+                                //    child: Container(
+                                //     height: 40.h,
+                                //     width: 150.w,
+                                //     decoration: BoxDecoration(
+                                //          color:controller.colorindex.value==8? kwhite:
+                                //         Colors.grey[200]
+                                //     ),
+                                //          child: Center(
+                                //       child: Text('Bus Features',
+                                //       textAlign: TextAlign.center,
+                                //       style: TextStyle(
                                         
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==8?kred:Colors.black
-                                      ),),
-                                    ),
-                                   ),
-                                 ),
-                                   Container(
-                                  height: 1.h,
-                                  width: 150.w,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[300]
-                                  ),
-                                ),
-                                 GestureDetector(
-                                  onTap: (){
-                                    controller.colorindex(9);
-                                    controller.update();
-                                  },
-                                   child: Container(
-                                    height: 40.h,
-                                    width: 150.w,
-                                    decoration: BoxDecoration(
-                                         color:controller.colorindex.value==9? kwhite:
-                                        Colors.grey[200]
-                                    ),
-                                       child: Center(
-                                      child: Text('Bus arrival time at destination',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                //         fontSize: 14.sp,
+                                //         fontWeight: FontWeight.w400,
+                                //         fontFamily: 'Proxima ',
+                                //         color: controller.colorindex.value==8?kred:Colors.black
+                                //       ),),
+                                //     ),
+                                //    ),
+                                //  ),
+                                //    Container(
+                                //   height: 1.h,
+                                //   width: 150.w,
+                                //   decoration: BoxDecoration(
+                                //     color: Colors.grey[300]
+                                //   ),
+                                // ),
+                                //  GestureDetector(
+                                //   onTap: (){
+                                //     controller.colorindex(9);
+                                //     controller.update();
+                                //   },
+                                //    child: Container(
+                                //     height: 40.h,
+                                //     width: 150.w,
+                                //     decoration: BoxDecoration(
+                                //          color:controller.colorindex.value==9? kwhite:
+                                //         Colors.grey[200]
+                                //     ),
+                                //        child: Center(
+                                //       child: Text('Bus arrival time at destination',
+                                //       textAlign: TextAlign.center,
+                                //       style: TextStyle(
                                         
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'Proxima ',
-                                        color: controller.colorindex.value==9?kred:Colors.black
-                                      ),),
-                                    ),
-                                   ),
-                                 ),   Container(
+                                //         fontSize: 14.sp,
+                                //         fontWeight: FontWeight.w400,
+                                //         fontFamily: 'Proxima ',
+                                //         color: controller.colorindex.value==9?kred:Colors.black
+                                //       ),),
+                                //     ),
+                                //    ),
+                                //  ),   
+                                 Container(
                                   height: 1.h,
                                   width: 150.w,
                                   decoration: BoxDecoration(
@@ -396,27 +399,13 @@ class BusFilterView extends GetView<BusFilterController> {
                             
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                              
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
                                       width: 120.w,
-                                      child: Text('Relevance')),
-                                   Checkbox( activeColor: kred,
-                                    
-                                      shape: CircleBorder(),
-                                      value: controller.checkbox1.value, 
-                                    onChanged:(value){
-                                     controller.checkbox1.value=value!;
-                                    } )
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width: 120.w,
-                                      child: Text('Price - Low to High')),
+                                      child: Text('Low - Price')),
                                     Checkbox( 
                                       activeColor: kred,
                                       shape: CircleBorder(),
@@ -426,14 +415,14 @@ class BusFilterView extends GetView<BusFilterController> {
                                     } )
                                   ],
                                 ),
-                                Row(
+                                  Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
                                       width: 120.w,
-                                      child: Text('Best rated first')),
-                                    Checkbox( activeColor: kred,
-                                      
+                                      child: Text('High - Price')),
+                                    Checkbox( 
+                                      activeColor: kred,
                                       shape: CircleBorder(),
                                       value: controller.checkbox3.value, 
                                     onChanged:(value){
@@ -441,6 +430,7 @@ class BusFilterView extends GetView<BusFilterController> {
                                     } )
                                   ],
                                 ),
+                            
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
@@ -474,157 +464,157 @@ class BusFilterView extends GetView<BusFilterController> {
                               ],
                             ),
                           ),
-                          if(controller.colorindex.value==1)
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
+                          // if(controller.colorindex.value==1)
+                          // Container(
+                          //   child: Column(
+                          //     crossAxisAlignment: CrossAxisAlignment.start,
+                          //     children: [
+                          //       Row(
                                                          
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width: 20.w,
-                                      child: Image.asset('assets/offers_icon/depatureicon1.png')),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 10,left: 3),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: 95.w,
-                                            child: Text('06:00 - 12:00')),
-                                          Container(
-                                            width:95.w,
-                                            child: Text('Morning ',
-                                            style: TextStyle(
-                                              fontSize: 11.sp
-                                            ),),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Checkbox( activeColor: kred,
+                          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Container(
+                          //             width: 20.w,
+                          //             child: Image.asset('assets/offers_icon/depatureicon1.png')),
+                          //           Padding(
+                          //             padding: const EdgeInsets.only(top: 10,left: 3),
+                          //             child: Column(
+                          //               mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          //               crossAxisAlignment: CrossAxisAlignment.start,
+                          //               children: [
+                          //                 Container(
+                          //                   width: 95.w,
+                          //                   child: Text('06:00 - 12:00')),
+                          //                 Container(
+                          //                   width:95.w,
+                          //                   child: Text('Morning ',
+                          //                   style: TextStyle(
+                          //                     fontSize: 11.sp
+                          //                   ),),
+                          //                 )
+                          //               ],
+                          //             ),
+                          //           ),
+                          //           Checkbox( activeColor: kred,
                                       
-                                      shape: CircleBorder(),
-                                      value: controller.depatcheck1.value, 
-                                    onChanged:(value){
-                                     controller.depatcheck1.value=value!;
-                                    } )
-                                  ],
-                                ),
-                                  Row(
+                          //             shape: CircleBorder(),
+                          //             value: controller.depatcheck1.value, 
+                          //           onChanged:(value){
+                          //            controller.depatcheck1.value=value!;
+                          //           } )
+                          //         ],
+                          //       ),
+                          //         Row(
                                                          
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width: 20.w,
-                                      child: Image.asset('assets/offers_icon/depatureicon2.png')),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 10,left: 3),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: 95.w,
-                                            child: Text('12:00 - 18:00')),
-                                          Container(
-                                            width: 95.w,
-                                            child: Text('Afternoon',
-                                            style: TextStyle(
-                                              fontSize: 11.sp
-                                            ),),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Checkbox( activeColor: kred,
+                          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Container(
+                          //             width: 20.w,
+                          //             child: Image.asset('assets/offers_icon/depatureicon2.png')),
+                          //           Padding(
+                          //             padding: const EdgeInsets.only(top: 10,left: 3),
+                          //             child: Column(
+                          //               mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          //               crossAxisAlignment: CrossAxisAlignment.start,
+                          //               children: [
+                          //                 Container(
+                          //                   width: 95.w,
+                          //                   child: Text('12:00 - 18:00')),
+                          //                 Container(
+                          //                   width: 95.w,
+                          //                   child: Text('Afternoon',
+                          //                   style: TextStyle(
+                          //                     fontSize: 11.sp
+                          //                   ),),
+                          //                 )
+                          //               ],
+                          //             ),
+                          //           ),
+                          //           Checkbox( activeColor: kred,
                                       
-                                      shape: CircleBorder(),
-                                      value: controller.depatcheck2.value, 
-                                    onChanged:(value){
-                                     controller.depatcheck2.value=value!;
-                                    } )
-                                  ],
-                                ),
-                                Row(
+                          //             shape: CircleBorder(),
+                          //             value: controller.depatcheck2.value, 
+                          //           onChanged:(value){
+                          //            controller.depatcheck2.value=value!;
+                          //           } )
+                          //         ],
+                          //       ),
+                          //       Row(
                                                          
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width: 20.w,
-                                      child: Image.asset('assets/offers_icon/depatureicon3.png',
+                          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Container(
+                          //             width: 20.w,
+                          //             child: Image.asset('assets/offers_icon/depatureicon3.png',
                                 
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 10,left: 3),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width:95.w,
-                                            child: Text('18:00 - 24:00')),
-                                          Container(
-                                            width: 95.w,
-                                            child: Text('Evening',
-                                            style: TextStyle(
-                                              fontSize: 11.sp
-                                            ),),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Checkbox( activeColor: kred,
+                          //             ),
+                          //           ),
+                          //           Padding(
+                          //             padding: const EdgeInsets.only(top: 10,left: 3),
+                          //             child: Column(
+                          //               mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          //               crossAxisAlignment: CrossAxisAlignment.start,
+                          //               children: [
+                          //                 Container(
+                          //                   width:95.w,
+                          //                   child: Text('18:00 - 24:00')),
+                          //                 Container(
+                          //                   width: 95.w,
+                          //                   child: Text('Evening',
+                          //                   style: TextStyle(
+                          //                     fontSize: 11.sp
+                          //                   ),),
+                          //                 )
+                          //               ],
+                          //             ),
+                          //           ),
+                          //           Checkbox( activeColor: kred,
                                       
-                                      shape: CircleBorder(),
-                                      value: controller.depatcheck3.value, 
-                                    onChanged:(value){
-                                     controller.depatcheck3.value=value!;
-                                    } )
-                                  ],
-                                ),
-                                  Row(
+                          //             shape: CircleBorder(),
+                          //             value: controller.depatcheck3.value, 
+                          //           onChanged:(value){
+                          //            controller.depatcheck3.value=value!;
+                          //           } )
+                          //         ],
+                          //       ),
+                          //         Row(
                                                          
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width: 20.w,
-                                      child: Image.asset('assets/offers_icon/depatureicon4.png')),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 10,left: 3),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width:95.w,
-                                            child: Text('00:00 - 06:00')),
-                                          Container(
-                                            width: 95.w,
-                                            child: Text('Night',
-                                            style: TextStyle(
-                                              fontSize: 11.sp
-                                            ),),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Checkbox( activeColor: kred,
+                          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Container(
+                          //             width: 20.w,
+                          //             child: Image.asset('assets/offers_icon/depatureicon4.png')),
+                          //           Padding(
+                          //             padding: const EdgeInsets.only(top: 10,left: 3),
+                          //             child: Column(
+                          //               mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          //               crossAxisAlignment: CrossAxisAlignment.start,
+                          //               children: [
+                          //                 Container(
+                          //                   width:95.w,
+                          //                   child: Text('00:00 - 06:00')),
+                          //                 Container(
+                          //                   width: 95.w,
+                          //                   child: Text('Night',
+                          //                   style: TextStyle(
+                          //                     fontSize: 11.sp
+                          //                   ),),
+                          //                 )
+                          //               ],
+                          //             ),
+                          //           ),
+                          //           Checkbox( activeColor: kred,
                                       
-                                      shape: CircleBorder(),
-                                      value: controller.depatcheck4.value, 
-                                    onChanged:(value){
-                                     controller.depatcheck4.value=value!;
-                                    } )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
+                          //             shape: CircleBorder(),
+                          //             value: controller.depatcheck4.value, 
+                          //           onChanged:(value){
+                          //            controller.depatcheck4.value=value!;
+                          //           } )
+                          //         ],
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
                           if(controller.colorindex.value==2)
                           Container(
                             child: Column(
@@ -734,52 +724,52 @@ class BusFilterView extends GetView<BusFilterController> {
                               ],
                             ),
                           ),
-                             if(controller.colorindex.value==3)
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
+                          //    if(controller.colorindex.value==3)
+                          // Container(
+                          //   child: Column(
+                          //     crossAxisAlignment: CrossAxisAlignment.start,
+                          //     children: [
+                          //       Row(
                                                          
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width: 20.w,
-                                      child: Image.asset('assets/offers_icon/singlewinseaticon.png')),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 0,left: 5),
-                                      child: 
-                                          Container(
-                                            width: 95.w,
-                                            child: Text('Single Seats')),
+                          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Container(
+                          //             width: 20.w,
+                          //             child: Image.asset('assets/offers_icon/singlewinseaticon.png')),
+                          //           Padding(
+                          //             padding: const EdgeInsets.only(top: 0,left: 5),
+                          //             child: 
+                          //                 Container(
+                          //                   width: 95.w,
+                          //                   child: Text('Single Seats')),
                                           
                                         
-                                    ),
-                                    Checkbox( activeColor: kred,
+                          //           ),
+                          //           Checkbox( activeColor: kred,
                                       
-                                      shape: CircleBorder(),
-                                      value: controller.singlewindcheck.value, 
-                                    onChanged:(value){
-                                     controller.singlewindcheck.value=value!;
-                                    } )
-                                  ],
-                                ),
+                          //             shape: CircleBorder(),
+                          //             value: controller.singlewindcheck.value, 
+                          //           onChanged:(value){
+                          //            controller.singlewindcheck.value=value!;
+                          //           } )
+                          //         ],
+                          //       ),
                               
-                              ],
-                            ),
-                          ),
-                          if(controller.colorindex.value==4)
-                          BusBoardingwidget(),
-                          if(controller.colorindex.value==5)
-                          BusDroppingwidget(),
+                          //     ],
+                          //   ),
+                          // ),
+                          // if(controller.colorindex.value==4)
+                          // BusBoardingwidget(),
+                          // if(controller.colorindex.value==5)
+                          // BusDroppingwidget(),
                           if(controller.colorindex.value==6)
                           BusOperatorWidget(),
                           if(controller.colorindex.value==7)
                           BusfacilitiesWidget(),
-                          if(controller.colorindex.value==8)
-                          BusfeaturesWidget(),
-                          if(controller.colorindex.value==9)
-                          BusArrivaltimeAndDestinationWidget()
+                          // if(controller.colorindex.value==8)
+                          // BusfeaturesWidget(),
+                          // if(controller.colorindex.value==9)
+                          // BusArrivaltimeAndDestinationWidget()
                         ],
                       ),
                     ),
@@ -838,16 +828,20 @@ class BusFilterView extends GetView<BusFilterController> {
                                  tempBusType =makeAcomaString(actualString: tempBusType,addingString: "Non -Ac");
                         }
                          String tempdepature ='';
-                         if(controller.depatcheck1.isTrue){
-                          tempdepature = tempdepature+'Morning,';
+                         if(controller.checkbox4.isTrue){
+                          tempdepature = tempdepature+'Early departure,';
 
-                         }if(controller.depatcheck2.isTrue){
-                            tempdepature = tempdepature+"Afternoon,";
-                         }if(controller.depatcheck3.isTrue){
-                          tempdepature = tempdepature+'Evening,';
-                         }if(controller.depatcheck4.isTrue){
-                          tempdepature = tempdepature+"Night";
-                         } 
+                         }if(controller.checkbox5.isTrue){
+                            tempdepature = tempdepature+"Late departure,";
+                         }
+                         String travelprice = '';
+                         if(controller.checkbox2.isTrue){
+                          travelprice = travelprice+"Low - Price,";
+                         }
+                         if(controller.checkbox3.isTrue){
+                          travelprice = travelprice+"High - Price";
+                         }
+                     
                          print('>>>>>>>>>>>>>>>>>bus type..............');
                              print(tempBusType);
                              print('>>>>>>>>>>>>>>>depautre>>>>>>>>>>>>');
@@ -858,6 +852,8 @@ class BusFilterView extends GetView<BusFilterController> {
                               date: busfilterController.selectedBookingDate.toString(),
                               busType: tempBusType == "" ? null : tempBusType,
                               depaturetime: tempdepature==''?null:tempdepature,
+                              priceorder: travelprice==''?null:travelprice,
+                              amenities:amenitiesController.amenitydata.first.amenitiesId.toString()
                               );
                           },
                           child: Container(

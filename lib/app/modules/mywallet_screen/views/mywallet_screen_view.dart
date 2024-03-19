@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
 
 import '../controllers/mywallet_screen_controller.dart';
 
@@ -19,6 +20,7 @@ class MywalletScreenView extends GetView<MywalletScreenController> {
       'assets/images/rupeesimage.png',
   ];
   final wallethistoryController = Get.find<MywalletScreenController>();
+  final profileController = Get.find<ProfileController>();
   Widget build(BuildContext context) {
     return Scaffold(
           appBar: AppBar(
@@ -55,26 +57,32 @@ class MywalletScreenView extends GetView<MywalletScreenController> {
                     color: kred,
                     borderRadius: BorderRadius.circular(9)
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text('₹5,479',
-                      style: TextStyle(
-                        fontFamily: 'Proxima Nova',
-                         color: kwhite,
-                         fontSize: 35,
-                         fontWeight: FontWeight.w700
-                      ),),
-                      Text('Wallet Main Balance',
-                      style: TextStyle(
-                        letterSpacing: 1,
-                        fontSize: 17,
-                      fontFamily: 'Proxima Nova',
-                      fontWeight: FontWeight.w600,
-                      color: kwhite
-                      ),)
-                    ],
+                  child: GetBuilder<ProfileController>(
+                    builder: (_) {
+                      print('>>>>>>>>>>>>profile data>>>>>>>>>>>>');
+                      print(profileController.profiledata);
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                         profileController.profiledata.isNotEmpty? Text('₹${profileController.profiledata.first.walletamount}',
+                          style: TextStyle(
+                            fontFamily: 'Proxima Nova',
+                             color: kwhite,
+                             fontSize: 30,
+                             fontWeight: FontWeight.w700
+                          ),):Text(''),
+                          Text('Wallet Main Balance',
+                          style: TextStyle(
+                            letterSpacing: 1,
+                            fontSize: 17,
+                          fontFamily: 'Proxima Nova',
+                          fontWeight: FontWeight.w600,
+                          color: kwhite
+                          ),)
+                        ],
+                      );
+                    }
                   ),
                 ),
                 ksizedbox20,

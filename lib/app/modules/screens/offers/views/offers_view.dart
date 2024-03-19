@@ -57,7 +57,16 @@ class _OffersViewState extends State<OffersView> {
                 padding: const EdgeInsets.only(left: 10,right: 10),
                 child: GetBuilder<OffersController>(
                   builder: (_) {
-                    return GridView.builder(
+                    return offerscontroller.offersdata.isEmpty?Center(
+                      child: Container(
+                        child: Column(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                          children:[
+                            ksizedbox40,
+                            ksizedbox40,
+                            ksizedbox30,
+                           Image.asset('assets/images/offers_image.jpg')])),
+                    ) :GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: offerscontroller.offersdata.length,

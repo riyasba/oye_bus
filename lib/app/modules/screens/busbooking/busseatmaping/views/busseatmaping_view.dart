@@ -135,8 +135,8 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        '${busdeatilsController.routedata==null?"":  getActualTime(busdeatilsController.routedata!.arrivalTime)} → ${
-                                            busdeatilsController.routedata==null?'':getActualTime(busdeatilsController.routedata!.departureTime)} ${formatDate(homeController.selectedDate, [D,',',d,' ',M])}',
+                                        '${busdeatilsController.routedata==null?"":  getActualTime(busdeatilsController.routedata!.departureTime)} → ${
+                                            busdeatilsController.routedata==null?'':getActualTime(busdeatilsController.routedata!.arrivalTime)} ${formatDate(homeController.selectedDate, [D,',',d,' ',M])}',
                                         style: TextStyle( 
                                             color: kgrey,
                                             fontSize: 15.sp,
@@ -210,7 +210,7 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                               ),
                                               kwidth5,
                                               Text(
-                                                'Booked',
+                                                'Selected',
                                                 style: TextStyle(
                                                     fontSize: 8, color: kgrey),
                                               )
@@ -225,16 +225,18 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                               ),
                                               kwidth5,
                                               Text(
-                                                'Selected',
+                                                'Booked',
                                                 style: TextStyle(
                                                     fontSize: 8, color: kgrey),
                                               )
                                             ],
                                           ),
+                                 
                                           Row(
                                             children: [
                                               Icon(Icons.female),
                                               kwidth5,
+                                              
                                               Text(
                                                 'Female Only\nSeat Booked',
                                                 style: TextStyle(
@@ -349,6 +351,7 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                       .generateSeatLayoutLower(busModel),
                                   nonAcUpperSeats: busdeatilsController
                                       .generateSeatLayoutUpper(busModel),
+                                     
                                 ),
                               ),
                             ),
@@ -458,7 +461,8 @@ class BusseatmapingView extends GetView<BusseatmapingController> {
                                         .getSelectedSeats(busModel),
                                     seatCount: busdeatilsController
                                         .getSelectedSeats(busModel)
-                                        .length,
+                                        .length, 
+                                        date: Get.find<HomeController>().selectedDate.toString(),
                                   );
                                   busseatController.seatblock(
                                       busSeatBlockedModel: busSeatBlockedModel);

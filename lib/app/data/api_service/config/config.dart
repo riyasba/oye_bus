@@ -74,8 +74,10 @@ abstract class Config{
    final String sendBusReview = "https://oye.batechnology.in/api/auth/bus-rating-reviews";
 
   //wallet
-
   final String wallethistoryURL = "https://oye.batechnology.in/api/auth/wallet-history";
+
+  //amenities
+  final String amenitiesURL = "https://oye.batechnology.in/api/busAmenities";
 }
  
 

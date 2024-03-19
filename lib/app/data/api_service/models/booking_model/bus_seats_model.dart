@@ -47,6 +47,7 @@ class BusSeatData {
     String ladiesSeat;
     String fareKey;
     String isBookable;
+    bool isbooked;
 
     BusSeatData({
         required this.id,
@@ -63,6 +64,7 @@ class BusSeatData {
         required this.ladiesSeat,
         required this.fareKey,
         required this.isBookable,
+        required this.isbooked,
     });
 
     factory BusSeatData.fromJson(Map<String, dynamic> json) => BusSeatData(
@@ -79,7 +81,8 @@ class BusSeatData {
         isWindowSeat: json["is_window_seat"],
         ladiesSeat: json["ladies_seat"],
         fareKey: json["fare_key"],
-        isBookable: json["is_bookable"],
+        isBookable: json["is_bookable"], 
+        isbooked: json['is_booked'],
     );
 
     Map<String, dynamic> toJson() => {
@@ -97,5 +100,6 @@ class BusSeatData {
         "ladies_seat": ladiesSeat,
         "fare_key": fareKey,
         "is_bookable": isBookable,
+        "is_booked":isbooked
     };
 }

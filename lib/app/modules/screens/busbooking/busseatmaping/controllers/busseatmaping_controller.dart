@@ -115,12 +115,15 @@ class BusseatmapingController extends GetxController {
       width: "0",
       busId: "",
       id: 0,
+      isBooked: false,
       seatPrice: "");
 
   Seat driverSeat = Seat(
       columnNo: "0",
       fareKey: "",
       isBookable: "",
+
+      isBooked: false,
       isWindowSeat: "",
       ladiesSeat: "",
       layout: "Driver",
@@ -186,10 +189,10 @@ class BusseatmapingController extends GetxController {
 
 // List<BusSeatData> busseatdata=[];
 
-  Future<BusModel?> busseats(int busId) async {
+  Future<BusModel?> busseats(int busId,String date) async {
     BusModel? busModel;
     isLoading(true);
-    dio.Response<dynamic> response = await busseatapiservice.busSeatapi(busId);
+    dio.Response<dynamic> response = await busseatapiservice.busSeatapi(busId,date);
 
     isLoading(false);
     if (response.data['status'] == true) {

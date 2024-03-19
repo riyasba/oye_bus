@@ -189,71 +189,71 @@ class ProfileView extends GetView<ProfileController> {
                         //   controller:profileController.nameController,
                         // ),
                         
-                        SizedBox(
-                          height: 10,
-                        ),
-                       Padding(
-                       padding: const EdgeInsets.all(10.0),
-                       child: Container(
-                        height: 54,
-                         child: TextField(
-                          readOnly: true,
-                          controller: ageController,
-                                autofocus: true,
-                                 decoration: InputDecoration(
-                                   focusedBorder: OutlineInputBorder(
-                                     borderRadius: BorderRadius.circular(10),
-                                     borderSide:
-                                         BorderSide(color: kblack, width: 2.0), // Border when focused
-                                   ),
-                                   enabledBorder: OutlineInputBorder(
-                                     borderRadius: BorderRadius.circular(10),
-                                     borderSide: BorderSide(
-                                         color: kblack, width: 2.0), // Border when not focused
-                                   ),
+                    //     SizedBox(
+                    //       height: 10,
+                    //     ),
+                    //    Padding(
+                    //    padding: const EdgeInsets.all(10.0),
+                    //    child: Container(
+                    //     height: 54,
+                    //      child: TextField(
+                    //       readOnly: true,
+                    //       controller: ageController,
+                    //             autofocus: true,
+                    //              decoration: InputDecoration(
+                    //                focusedBorder: OutlineInputBorder(
+                    //                  borderRadius: BorderRadius.circular(10),
+                    //                  borderSide:
+                    //                      BorderSide(color: kblack, width: 2.0), // Border when focused
+                    //                ),
+                    //                enabledBorder: OutlineInputBorder(
+                    //                  borderRadius: BorderRadius.circular(10),
+                    //                  borderSide: BorderSide(
+                    //                      color: kblack, width: 2.0), // Border when not focused
+                    //                ),
                                   
-                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
-                                   labelText: 'Age', // Changed label text
-                                   labelStyle: TextStyle(
-                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
-                                   // Text style for the label
-                                 ),
-                         ),
-                       ),
-                     ),
-                     SizedBox(
-                          height: 10,
-                        ),
-                        Padding(
-                       padding: const EdgeInsets.all(10.0),
-                       child: Container(
-                        height: 54,
+                    //                hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                    //                labelText: 'Age', // Changed label text
+                    //                labelStyle: TextStyle(
+                    //                    color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                    //                // Text style for the label
+                    //              ),
+                    //      ),
+                    //    ),
+                    //  ),
+                    //  SizedBox(
+                    //       height: 10,
+                    //     ),
+                    //     Padding(
+                    //    padding: const EdgeInsets.all(10.0),
+                    //    child: Container(
+                    //     height: 54,
                         
-                         child: TextField(
-                          readOnly: true,
-                          controller:genderController,
-                                autofocus: true,
-                                 decoration: InputDecoration(
-                                   focusedBorder: OutlineInputBorder(
-                                     borderRadius: BorderRadius.circular(10),
-                                     borderSide:
-                                         BorderSide(color: kblack, width: 2.0), // Border when focused
-                                   ),
-                                   enabledBorder: OutlineInputBorder(
-                                     borderRadius: BorderRadius.circular(10),
-                                     borderSide: BorderSide(
-                                         color: kblack, width: 2.0), // Border when not focused
-                                   ),
+                    //      child: TextField(
+                    //       readOnly: true,
+                    //       controller:genderController,
+                    //             autofocus: true,
+                    //              decoration: InputDecoration(
+                    //                focusedBorder: OutlineInputBorder(
+                    //                  borderRadius: BorderRadius.circular(10),
+                    //                  borderSide:
+                    //                      BorderSide(color: kblack, width: 2.0), // Border when focused
+                    //                ),
+                    //                enabledBorder: OutlineInputBorder(
+                    //                  borderRadius: BorderRadius.circular(10),
+                    //                  borderSide: BorderSide(
+                    //                      color: kblack, width: 2.0), // Border when not focused
+                    //                ),
                                   
-                                   hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
-                                   labelText: 'Gender', // Changed label text
-                                   labelStyle: TextStyle(
-                                       color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
-                                   // Text style for the label
-                                 ),
-                         ),
-                       ),
-                     ),
+                    //                hintStyle: TextStyle(fontWeight: FontWeight.w300, color: kgrey),
+                    //                labelText: 'Gender', // Changed label text
+                    //                labelStyle: TextStyle(
+                    //                    color: kblack, fontSize: 18.0, fontWeight: FontWeight.w600),
+                    //                // Text style for the label
+                    //              ),
+                    //      ),
+                    //    ),
+                    //  ),
                      SizedBox(
                           height: 10,
                         ),

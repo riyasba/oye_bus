@@ -201,11 +201,11 @@ class AppPages {
     //   page: () => const BustripReviewsView(),
     //   binding: BustripReviewsBinding(),
     // ),
-    GetPage(
-      name: _Paths.BOOKING_CANCELLATION,
-      page: () => BookingCancellationView(),
-      binding: BookingCancellationBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.BOOKING_CANCELLATION,
+    //   page: () => BookingCancellationView(),
+    //   binding: BookingCancellationBinding(),
+    // ),
     GetPage(
       name: _Paths.REVIEW_REFUND_DETAILS,
       page: () => const ReviewRefundDetailsView(),

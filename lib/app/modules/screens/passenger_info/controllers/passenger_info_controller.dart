@@ -73,6 +73,14 @@ class PassengerInfoController extends GetxController {
             style: primaryFont.copyWith(color: Colors.white),
           ));
       }
+      else{
+         Get.rawSnackbar(
+          backgroundColor: Colors.red,
+          messageText: Text(
+            response.data['message'],
+            style: primaryFont.copyWith(color: Colors.white),
+          ));
+      }
    }
 
    int blockedid = 0;
@@ -86,6 +94,8 @@ class PassengerInfoController extends GetxController {
       seatBlockedData:busSeatBlockedModel );
       
       isLoading(false);
+      print('::::::::seat block data::::::::::');
+      print(response.data);
       if(response.data['success']==true){
         blockedid =response.data['data']['id'];
         Get.to(PickanddropView());

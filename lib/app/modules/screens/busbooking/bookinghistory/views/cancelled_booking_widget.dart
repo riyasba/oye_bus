@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:oye_bus/app/components/const.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/booking_cancellation/views/booking_cancellation_view.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 
@@ -67,7 +68,7 @@ class BookingCancelledWidget extends GetView<BookinghistoryController> {
                                 Text(
                                   '${bookingCancelledlistController.bookingcancelledlistdata[index].busRoute!.startLocation} → ${bookingCancelledlistController.bookingcancelledlistdata[index].busRoute!.endLocation}',
                                   style: TextStyle(
-                                    fontSize: 17,
+                                    fontSize: 17, 
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -92,15 +93,16 @@ class BookingCancelledWidget extends GetView<BookinghistoryController> {
                               crossAxisAlignment:
                                   CrossAxisAlignment.start,
                               children: [
-                                Text('PNR : 2345678908'),
+                                Text('PNR : ${bookingCancelledlistController.bookingcancelledlistdata[index].bookingData!.pnrNumber}'),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text('Booking ID: ${bookingCancelledlistController.bookingcancelledlistdata[index].bookingData!.bookingId}'),
-                                    GestureDetector(
+                                    GestureDetector(  
                                       onTap: (){
-                                        Get.toNamed(Routes.BOOKING_CANCELLATION);
+                                        Get.to(BookingCancellationView(bookingHistoryModel: bookingCancelledlistController.bookingcancelledlistdata[index],
+                                       ));
                                       },
                                       child: Container(
                                         height: 27,

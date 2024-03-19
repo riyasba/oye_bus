@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class BusSeatApiService extends Config{
 
-  Future busSeatapi(int busId)async{
+  Future busSeatapi(int busId,String date)async{
     dynamic responseJson;
     try{
       var dio = Dio();
@@ -24,11 +24,12 @@ class BusSeatApiService extends Config{
         }
       ),
       data: {
-         "bus_id":busId
+         "bus_id":busId,
+         "date":date
       },
     
       );
-      print('::::::::Bus Seat Api Service::::::::::<status code>::::::::::');
+      print('::::::::Bus Seat Api Service::::::::::<status code>:::::::::${date}:');
       print(response.data);
       print(response.statusCode);
       responseJson = response;

@@ -149,7 +149,7 @@ class RegisterView extends GetView<RegisterController> {
                             autofocus: false,
                             keyboardType: TextInputType.number,
                   inputFormatters: [
-                    // LengthLimitingTextInputFormatter(10)
+                     LengthLimitingTextInputFormatter(10),
                     FilteringTextInputFormatter.digitsOnly,
                     FilteringTextInputFormatter.deny(RegExp(r'\s')),
                   ],

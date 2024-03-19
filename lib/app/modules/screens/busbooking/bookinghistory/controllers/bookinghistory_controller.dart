@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart'as dio;
+import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/booking_cancel_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/booking_cancel_list_api_service.dart';
 import 'package:oye_bus/app/data/api_service/api_provider/booking_api_service/booking_history_api_service.dart';
@@ -17,9 +18,10 @@ class BookinghistoryController extends GetxController {
  
   @override
   void onInit() {
-    super.onInit();
-     bookinghistory();
+    bookinghistory();
      bookingCancelledList();
+    super.onInit();
+     
   }
 
   @override
@@ -49,7 +51,7 @@ class BookinghistoryController extends GetxController {
       BookingHistoryModel bookingHistoryModel = BookingHistoryModel.fromJson(response.data);
       bookinghistorydata = bookingHistoryModel.bookingDetails;
        update();
-       Get.back();
+      //  Get.back();
     }
    
    }
@@ -67,9 +69,9 @@ class BookinghistoryController extends GetxController {
       BookingCancelledListModel bookingcancellistModel = 
       BookingCancelledListModel.fromJson(response.data);
     bookingcancelledlistdata =  bookingcancellistModel.bookingDetails!;
-    
+        update();
     }
-    update();
+
    }
 
 

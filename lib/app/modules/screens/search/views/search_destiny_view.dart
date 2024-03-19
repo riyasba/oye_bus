@@ -212,8 +212,8 @@ class _SearchDestinyViewState extends State<SearchDestinyView> {
                         height: 20.h,
                       ),
              
-              // searchcityController.citydata.isNotEmpty
-              //     ?
+              searchcityController.citydata.isNotEmpty
+                  ?
               Container(
                 height: 40.h,
                 decoration: BoxDecoration(color: klightGrey.withOpacity(0.5)),
@@ -233,7 +233,7 @@ class _SearchDestinyViewState extends State<SearchDestinyView> {
                     ],
                   ),
                 ),
-              ),
+              ):Text(''),
               //  : Text(''),
               SizedBox(
                 height: 20.h,

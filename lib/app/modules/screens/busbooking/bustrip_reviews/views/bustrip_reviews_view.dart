@@ -357,7 +357,11 @@ class BustripReviewsView extends GetView<BustripReviewsController> {
                 ksizedbox20,
                 GestureDetector(
                   onTap: () {
-                    controller.reviewData(busId: bookingDetail.bookingData!.bookingId as int, rating: controller.rating.value, reviews: textController.text, travellersLikedId: "Bus");
+                    controller.reviewData(
+                      busId: bookingDetail.bookingData!.bookingId as int, 
+                      rating: controller.rating.value, 
+                      reviews: textController.text, 
+                      travellersLikedId: "Bus");
                   },
                   child: Container(
                     height: 50.h,
