@@ -1,6 +1,7 @@
 
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,8 +9,13 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/data/api_service/models/booking_model/booking_history_model.dart';
+import 'package:oye_bus/app/data/api_service/models/profile/profile_model.dart';
+import 'package:oye_bus/app/modules/home/controllers/home_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
+import 'package:oye_bus/app/modules/screens/busbooking/busseatmaping/controllers/busseatmaping_controller.dart';
 import 'package:oye_bus/app/modules/screens/passenger_info/controllers/passenger_info_controller.dart';
+import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
+import 'package:oye_bus/app/modules/screens/settingsscreens/copassengers/controllers/copassengers_controller.dart';
 import 'package:oye_bus/app/modules/screens/ticket_details/controllers/ticket_details_controller.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
@@ -21,6 +27,7 @@ import 'package:pdf/pdf.dart';
 
 class NewTicketView extends StatefulWidget {
    BookingDetail bookingDetail;
+ 
    NewTicketView({super.key,required this.bookingDetail});
 
   @override
@@ -32,6 +39,11 @@ class _NewTicketViewState extends State<NewTicketView> {
 
   final passengerController = Get.find<PassengerInfoController>();
     final bookingHistoryController = Get.find<BookinghistoryController>();
+    final profileController = Get.find<ProfileController>();
+    final homeController = Get.find<HomeController>();
+     final copassangersController = Get.find<CopassengersController>();
+     final whybookingbusController = Get.find<BusseatmapingController>();
+    
   String getActualTime(String time){
     var temptime = time.split(':');
     String actualTime = '${temptime[0]}:${temptime[1]}';
@@ -409,24 +421,7 @@ class _NewTicketViewState extends State<NewTicketView> {
 
   
 }
-// createPdfFile() {
-//     pdfLib.addPage(pdfLib.MultiPage(
-//         margin: pdfLib.EdgeInsets.all(10),
-//         pageFormat: PdfPageFormat.a4,
-//         build: (pdfLib.Context context) {
-//           return <pw.Widget>[
-//             pw.Column(
-//                 crossAxisAlignment: pw.CrossAxisAlignment.center,
-//                 mainAxisSize: pw.MainAxisSize.min,
-//                 children: [
-//                   pw.Text('Create a Simple PDF',
-//                       textAlign: pw.TextAlign.center,
-//                       style: pw.TextStyle(fontSize: 26)),
-//                   pw.Divider(),
-//                 ]),
-//           ];
-//         }));
-//   }
+
 
   Future<Uint8List?> sharePdfgeneration() async {
   final pdfLib.Document pdf = pdfLib.Document();
@@ -445,11 +440,12 @@ class _NewTicketViewState extends State<NewTicketView> {
                  
                   mainAxisAlignment: pdfLib.MainAxisAlignment.center,
                   children: [
-                    pdfLib.Row(
+                    pdfLib.Padding(padding: pdfLib.EdgeInsets.only(left: 5),
+                   child:pdfLib.Row(
                       children: [
-                        //Text('bus image'),
+                      
                         pdfLib.Column(
-                          crossAxisAlignment: pdfLib.CrossAxisAlignment.center,
+                          crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                           children: [
                             pdfLib.Text('OyeBus Ticket Information',
                             style: pdfLib.TextStyle(
@@ -457,17 +453,15 @@ class _NewTicketViewState extends State<NewTicketView> {
                               fontSize: 16.8,
                               fontWeight: pdfLib.FontWeight.bold
                             ),),
-                            pdfLib.Text('Coimbature - Chennai on Thursday January',
+                            pdfLib.Text('${widget.bookingDetail.busRoute!.startLocation} - ${widget.bookingDetail.busRoute!.endLocation} on ${widget.bookingDetail.bookingData!.dateOfJourney}',
                             style: pdfLib.TextStyle(
                               color: PdfColors.white
                             ),),
-                            pdfLib.Text('16,2024',
-                            style: pdfLib.TextStyle(
-                              color: PdfColors.white
-                            ),)
+                            
                           ],
                         )
                       ],
+                    ),
                     ),
                     pdfLib.SizedBox(
                       height: 7,
@@ -497,21 +491,28 @@ class _NewTicketViewState extends State<NewTicketView> {
                         ),
                         pdfLib.Padding(
                           padding:pdfLib.EdgeInsets.only(left: 5),
-                          child: pdfLib.Text('PNR NO : 12345678',
+                          child: pdfLib.Text('PNR NO : ${widget.bookingDetail.bookingData!.pnrNumber}',
                           style: pdfLib.TextStyle(
                             color: PdfColors.white
                           ),),
                         )
                       ],
                     )
+                    
                   ],
                 ),
               ),
+              pdfLib.SizedBox(
+                height: 20
+              ),
               pdfLib.Row(
                 children: [
-                  pdfLib.Text('Hey Anas ,',
+                  pdfLib.Text('Hey ${profileController.profiledata.first.name},',
                   ),
                 ],
+              ),
+               pdfLib.SizedBox(
+                height: 10
               ),
               pdfLib.Text('Thank you for booking your bus ticket with Oyebus. Here are the ticket details for your upcoming trip from Coimbature to Chennai on Thursday, january 16, 2024'),
              
@@ -519,8 +520,8 @@ class _NewTicketViewState extends State<NewTicketView> {
               height: 10,
               ),              
               pdfLib.Container(
-                 height:500 ,
-                width: 280,
+                 height:600 ,
+                
                 decoration: pdfLib.BoxDecoration(
                   border: pdfLib.Border.all(
                     color: PdfColors.black,
@@ -532,10 +533,12 @@ class _NewTicketViewState extends State<NewTicketView> {
                   children: [
                   pdfLib.Container(
                     height: 50,
-                    width: 280,
+                    
                     decoration: pdfLib.BoxDecoration(
                       color: PdfColors.blueGrey100
                     ),
+                    child:pdfLib.Padding(
+                      padding: pdfLib.EdgeInsets.only(left: 5),
                     child: pdfLib.Row(
                       children: [
                         pdfLib.Text('Ticket Details',
@@ -545,11 +548,14 @@ class _NewTicketViewState extends State<NewTicketView> {
                         ),)
                       ],
                     ),
+                    ),
                   ),
                   pdfLib.SizedBox(
                     height: 15,
                   ),
-                  pdfLib.Column(
+                  pdfLib.Padding(
+                      padding: pdfLib.EdgeInsets.only(left: 5),
+                 child: pdfLib.Column(
                     crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                     children: [
                       pdfLib.Text('Journey Date and Time'),
@@ -559,7 +565,7 @@ class _NewTicketViewState extends State<NewTicketView> {
                           children: [
                             //pdfLib.Icon(Icons.calendar_month,
                             //color: PdfColors.red,),
-                            pdfLib.Text('16/03/2024, 9:00 PM',
+                            pdfLib.Text('${widget.bookingDetail.bookingData!.dateOfJourney}, ${widget.bookingDetail.bookingData!.boardingTime}',
                             style: pdfLib.TextStyle(
                               fontWeight: pdfLib.FontWeight.bold
                             ),),
@@ -569,12 +575,15 @@ class _NewTicketViewState extends State<NewTicketView> {
                       )
           
                     ],
+                 ),
                   ),
                     pdfLib.SizedBox(
                     height: 15,
                   ),
                  
-                  pdfLib.Column(   
+                 pdfLib.Padding(
+                      padding: pdfLib.EdgeInsets.only(left: 5),
+                      child: pdfLib.Column(   
                    
                     crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                     children: [
@@ -589,12 +598,12 @@ class _NewTicketViewState extends State<NewTicketView> {
                               child: pdfLib.Column(
                                 crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                                 children: [
-                                  pdfLib.Text('BSP Bus',
+                                  pdfLib.Text(widget.bookingDetail.busData!.busName.toString(),
                                   style: pdfLib.TextStyle(
                                     fontWeight: pdfLib.FontWeight.bold
                                   ),),
-                                  pdfLib.Text('non A/C,Seater Sleeper(2+1)'),
-                                  pdfLib.Text('9633749714',
+                                  pdfLib.Text(widget.bookingDetail.busData!.busType.toString()),
+                                  pdfLib.Text(widget.bookingDetail.busData!.contactNumber.toString(),
                                   style: pdfLib.TextStyle(
                                     color: PdfColors.blueAccent200,
                                     fontWeight:pdfLib. FontWeight.bold
@@ -609,11 +618,13 @@ class _NewTicketViewState extends State<NewTicketView> {
                     
                     ],
                   ),
+                 ),
                   pdfLib.SizedBox(
                     height: 15,
                   ),
-                 
-                  pdfLib.Column(   
+                 pdfLib.Padding(
+                      padding: pdfLib.EdgeInsets.only(left: 5),
+                  child:pdfLib.Column(   
                     crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                     children: [
                       pdfLib.Text('Ticket Price'),
@@ -627,7 +638,7 @@ class _NewTicketViewState extends State<NewTicketView> {
                               child: pdfLib.Column(
                                 crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                                 children: [
-                                  pdfLib.Text('Rs. 1234.86',
+                                  pdfLib.Text('Rs. ${widget.bookingDetail.bookingData!.ticketPrice}',
                                   style: pdfLib.TextStyle(
                                     fontWeight: pdfLib.FontWeight.bold
                                   ),),
@@ -641,11 +652,13 @@ class _NewTicketViewState extends State<NewTicketView> {
                       ),
                     ],
                   ),
+                 ),
                     pdfLib.SizedBox(
                     height: 15,
                   ),
-                 
-                  pdfLib.Column(   
+                 pdfLib.Padding(
+                      padding: pdfLib.EdgeInsets.only(left: 5),
+                 child: pdfLib.Column(   
                     crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                     children: [
                       pdfLib.Text('Boarding Point'),
@@ -661,13 +674,13 @@ class _NewTicketViewState extends State<NewTicketView> {
                                 children: [
                                   pdfLib.Row(
                                     children: [
-                                      pdfLib.Text('Coimbatore',
+                                      pdfLib.Text(widget.bookingDetail.busRoute!.startLocation.toString(),
                                       style: pdfLib.TextStyle(
                                         fontWeight: pdfLib.FontWeight.bold
                                       ),),
                                     ],
                                   ),
-                                  pdfLib.Text('Gandhipuram'),
+                                  pdfLib.Text(widget.bookingDetail.bookingData!.pickupPoint.toString()),
                                   pdfLib.Container(
                                     width: 260,
                                     child: pdfLib.Text('BSP Bus. C/o Guru Travels, 2nd Street Gandhipuram, Next to Cross Cut Signal,12345678')),
@@ -692,11 +705,13 @@ class _NewTicketViewState extends State<NewTicketView> {
                       ),
                     ],
                   ),
+                 ),
                       pdfLib.SizedBox(
                     height: 15,
                   ),
-                 
-                  pdfLib.Column(   
+                 pdfLib.Padding(
+                      padding: pdfLib.EdgeInsets.only(left: 5),
+                 child: pdfLib.Column(   
                     crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                     children: [
                       pdfLib.Text('Dropping Point'),
@@ -712,16 +727,14 @@ class _NewTicketViewState extends State<NewTicketView> {
                                 children: [
                                   pdfLib.Row(
                                     children: [
-                                      pdfLib.Text('Chennai',
+                                      pdfLib.Text(widget.bookingDetail.busRoute!.endLocation.toString(),
                                       style: pdfLib.TextStyle(
                                         fontWeight: pdfLib.FontWeight.bold
                                       ),),
                                     ],
                                   ),
-                                  pdfLib.Text('Gandhipuram'),
-                                  pdfLib.Container(
-                                    width: 260,
-                                    child: pdfLib.Text('BSP Bus. C/o Guru Travels, 2nd Street Gandhipuram, Next to Cross Cut Signal')),
+                                  pdfLib.Text(widget.bookingDetail.bookingData!.droppingPoint.toString()),
+                                  pdfLib.Text('BSP Bus. C/o Guru Travels, 2nd Street Gandhipuram, Next to Cross Cut Signal'),
                                  pdfLib.Text('DROPPING DATE & TIME:'),
                                  pdfLib.Text('17/01/2024, 06:15 AM ',
                                  style: pdfLib.TextStyle(
@@ -736,11 +749,12 @@ class _NewTicketViewState extends State<NewTicketView> {
                       ),
                     ],
                   ),
+                 ),
                   pdfLib.SizedBox(
                     height: 20,
                   ),
                   pdfLib.Padding(
-                    padding:pdfLib.EdgeInsets.only(right: 15),
+                    padding:pdfLib.EdgeInsets.only(left: 5),
                     child: pdfLib.Row(
                       mainAxisAlignment: pdfLib.MainAxisAlignment.spaceBetween,
                       children: [
@@ -753,30 +767,33 @@ class _NewTicketViewState extends State<NewTicketView> {
                       pdfLib.Column(
                         crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                         children: [
-                          pdfLib.Text('Anas',
+                          pdfLib.Text(copassangersController.passengersdata.isNotEmpty? copassangersController.passengersdata.first.name:'',
                           style: pdfLib.TextStyle(
                             fontWeight: pdfLib.FontWeight.bold
                           ),),
-                          pdfLib.Text('24Yrs,MALE')
+                          pdfLib.Text('${copassangersController.passengersdata.isNotEmpty?copassangersController.passengersdata.first.age:''}Yrs,${copassangersController.passengersdata.isNotEmpty?copassangersController.passengersdata.first.gender:''}')
                         ],
                       )
                     ],
                   )
                           ],
                         ),
-                        pdfLib.Column(
+                       pdfLib.Padding(
+                      padding: pdfLib.EdgeInsets.only(right: 5),
+                      child: pdfLib.Column(
                       crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                           children: [
                             pdfLib.Padding(
                               padding:pdfLib.EdgeInsets.only(bottom: 18),
                               child: pdfLib.Text('Seat No'),
                             ),
-                            pdfLib.Text('3',
+                            pdfLib.Text(getSeatsDetail(widget.bookingDetail.bookingData!.seats),
                             style: pdfLib.TextStyle(
                               color: PdfColors.red
                             ),)
                           ],  
                         )
+                       )
                       ],
                     ),
                   ),
@@ -788,8 +805,8 @@ class _NewTicketViewState extends State<NewTicketView> {
                 height: 10,
               ),
               pdfLib.Container(
-                  
-                width: 280,
+                  height: 380,
+               
                 decoration: pdfLib.BoxDecoration(
                  border: pdfLib.Border.all(
                   color: PdfColors.black,
@@ -800,11 +817,12 @@ class _NewTicketViewState extends State<NewTicketView> {
                   children: [
                     pdfLib.Container(
                       height: 50,
-                      width: 280,
+                     
                       decoration: pdfLib.BoxDecoration(
                         color: PdfColors.blueGrey100
                       ),
-                      child: pdfLib.Row(
+                      child:pdfLib.Padding(padding: pdfLib.EdgeInsets.only(left: 5),
+                      child:pdfLib.Row(
                         children: [
                           pdfLib.Text('Date Change',
                           style: pdfLib.TextStyle(
@@ -814,17 +832,24 @@ class _NewTicketViewState extends State<NewTicketView> {
                         ],
                       ),
                     ),
+                    ),
                     pdfLib.SizedBox(
                       height: 8,
                     ),
-                    pdfLib.Text('The journey date for this ticket can be changed, you can advance or postpone ticket to a different date as per your convenience.'
-                    ),
+                    pdfLib.Padding(padding: pdfLib.EdgeInsets.only(left: 5),
+                   child: pdfLib.Text('The journey date for this ticket can be changed, you can advance or postpone ticket to a different date as per your convenience.'
+                    ),),
                     pdfLib.SizedBox(
                       height: 12,
                     ),
-                    pdfLib.Text('Date change time and charges for this operator is shown below.'),
+                    pdfLib.Padding(padding: pdfLib.EdgeInsets.only(left: 5),
+                   child: pdfLib.Row(children: 
+                    [
+                       pdfLib.Text('Date change time and charges for this operator is shown below.'),
+                    ]),),
+                    
                     pdfLib.Padding(
-                      padding:pdfLib.EdgeInsets.only(right: 10,top: 15),
+                      padding:pdfLib.EdgeInsets.only(left: 5,top: 15),
                       child: pdfLib.Row(
                         mainAxisAlignment: pdfLib.MainAxisAlignment.spaceBetween,
                         children: [
@@ -834,7 +859,7 @@ class _NewTicketViewState extends State<NewTicketView> {
                             fontWeight: pdfLib.FontWeight.bold
                           ),),
                           pdfLib.Padding(
-                            padding:pdfLib.EdgeInsets.only(right: 40),
+                            padding:pdfLib.EdgeInsets.only(right: 5),
                             child: pdfLib.Text('Charges',
                              style: pdfLib.TextStyle(
                               fontSize: 15.6,
@@ -851,25 +876,24 @@ class _NewTicketViewState extends State<NewTicketView> {
                       children: [
                         pdfLib.Container(
                           height: 62,
-                          width: 250,
+                          
                           decoration: pdfLib.BoxDecoration(
                             border: pdfLib.Border.all(
                               color: PdfColors.black,
                               width: 1
                             )
                           ),
-                          child: pdfLib.Column(
-                            children: [
-                              pdfLib.Text(
-                                'Date change allowed till 16 jan 2024 12:30:00 PM (8 hours before depature)'
-                              ),
-                                
-                            ],
-                          ),
+                          child:pdfLib.Padding(padding: pdfLib.EdgeInsets.only(left: 5),
+                          child:pdfLib.Center(
+                            child: pdfLib.Text(
+                              'Date change allowed till 16 jan 2024 12:30:00 PM (8 hours before depature)'
+                            ),
+                        ),
+                        ),
                         ),
                          pdfLib.Container(
                           height: 62,
-                          width: 100,
+                           width: 74,
                           decoration: pdfLib.BoxDecoration(
                             color: PdfColors.grey100,
                             border: pdfLib.Border.all(
@@ -877,7 +901,7 @@ class _NewTicketViewState extends State<NewTicketView> {
                              
                             )
                           ),
-                          child: pdfLib.Center(
+                          child: pdfLib.Center( 
                             child: pdfLib.Text('FREE',
                           style: pdfLib.TextStyle(
                             fontWeight: pdfLib.FontWeight.bold
@@ -888,7 +912,8 @@ class _NewTicketViewState extends State<NewTicketView> {
                     pdfLib.SizedBox(
                       height: 10,
                     ),
-                    pdfLib.Row(
+                    pdfLib.Padding(padding: pdfLib.EdgeInsets.only(left: 5),
+                   child: pdfLib.Row(
                       crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                       children: [
                         pdfLib.Text('Note : ',
@@ -902,10 +927,14 @@ class _NewTicketViewState extends State<NewTicketView> {
                         )
                       ],
                     ),
+                    ),
                     pdfLib.SizedBox(
                       height: 30,
                     ),
-                    pdfLib.Column(
+                    pdfLib.Padding(padding: pdfLib.EdgeInsets.only(left: 5),
+                    child:pdfLib.Row(children: [
+                         pdfLib.Column(
+                      
                       crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
                       children: [
                         pdfLib.Text('How to Change the journey date of your ticket in Oyebus app',
@@ -918,6 +947,9 @@ class _NewTicketViewState extends State<NewTicketView> {
                          pdfLib.Text('Go to my bookings, choose the journey & change date')
                       ],
                     ),
+                    ]),
+                    ),
+                   
                    
                     pdfLib.SizedBox(
                       height: 10,
@@ -925,14 +957,14 @@ class _NewTicketViewState extends State<NewTicketView> {
                   ],
                 ),
               ),
-              pdfLib.SizedBox(
+                 pdfLib.SizedBox(
                 height: 30,
               ),
               pdfLib.Column(
                 children: [
                   pdfLib.Container(
-                     height: 100,
-                     width: 280,
+                     height: 450,
+                    
                     decoration: pdfLib.BoxDecoration(
                       border: pdfLib.Border.all(
                         color: PdfColors.black,
@@ -947,7 +979,172 @@ class _NewTicketViewState extends State<NewTicketView> {
                           decoration: pdfLib.BoxDecoration(
                             color: PdfColors.blueGrey100
                           ),
+                          child:pdfLib.Padding(
+                      padding: pdfLib.EdgeInsets.only(left: 5),child: pdfLib.Row(
+                            children: [
+                              pdfLib.Text('Cancellation policy',
+                                style: pdfLib.TextStyle(
+                            fontSize: 15.8,
+                            fontWeight: pdfLib.FontWeight.bold
+                          ),), 
+                            ],
+                          ),
+                          ),
+                        ),
+                        pdfLib.SizedBox(
+                          height: 15
+                        ),
+                        pdfLib.Text(
+                          'Our current cancellation charges according to the cancellation policy is highlighted below'
+                        ),
+                        pdfLib.Padding(
+                          padding:pdfLib.EdgeInsets.only(top: 15,left: 5,right: 5),
                           child: pdfLib.Row(
+                            mainAxisAlignment: pdfLib.MainAxisAlignment.spaceBetween,
+                            children: [
+                             pdfLib.Text('Cancellation time',
+                              style: pdfLib.TextStyle(fontWeight: pdfLib.FontWeight.bold)),
+                               pdfLib.Text('Cancellation charges',
+                                style: pdfLib.TextStyle(fontWeight: pdfLib.FontWeight.bold)),
+                          
+                            ],
+                          ),
+                        ),
+                        pdfLib.SizedBox(height: 10),
+                        pdfLib.Row(children: [
+                          pdfLib.Container(
+                              height: 150,
+                              width: 331,
+                              decoration: pdfLib.BoxDecoration(
+                                border: pdfLib.Border.all(
+                                  color: PdfColors.black,
+                                  width: 1
+                                )
+                              ),
+                              child: pdfLib.Column(
+                          
+                                crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
+                                children: [
+                                  pdfLib.Padding(padding: pdfLib.EdgeInsets.only(top: 5,left: 5),
+                                 child: pdfLib.Text('Before 15th Jan 09:00 PM')),
+                                  pdfLib.Divider(),
+                                  pdfLib.Padding(padding: pdfLib.EdgeInsets.only(top: 5,left: 5),
+                                   child:pdfLib.Text('After 15th Jan 09:00 PM & Before 16th Jan 09:00 AM')),
+                                  pdfLib.Divider(),
+                                  pdfLib.Padding(padding: pdfLib.EdgeInsets.only(top: 5,left: 5),
+                                     child: pdfLib.Text('After 16th Jan 09:00 AM & Before 16th Jan 03:00 PM')),
+                                  pdfLib.Divider(),
+                                   pdfLib.Padding(padding: pdfLib.EdgeInsets.only(top: 5,left: 5),
+                                     child: pdfLib.Text('After 16th Jan 03:00 PM & Before 16th Jan 09:00 PM')),
+                               
+                                    
+                                ])
+                          ),
+                          pdfLib.Container(
+                                  height: 150,
+                                  width: 150,
+                                  decoration:pdfLib.BoxDecoration(
+                                    border: pdfLib.Border.all(
+                                      color: PdfColors.black,
+                                      width: 1
+                                    )),
+                                    child: pdfLib.Column(
+                                     crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
+                                      children:[
+                                        pdfLib.Padding(padding: pdfLib.EdgeInsets.only(top: 5,left: 5),
+                                     child: pdfLib.Text('Rs. 164.85(15%)',
+                                     style: pdfLib.TextStyle(fontWeight: pdfLib.FontWeight.bold))),
+                                  pdfLib.Divider(),
+                                  pdfLib.Padding(padding: pdfLib.EdgeInsets.only(top: 5,left: 5),
+                                     child: pdfLib.Text('Rs. 329.7(30%)',
+                                      style: pdfLib.TextStyle(fontWeight: pdfLib.FontWeight.bold))),
+                                  pdfLib.Divider(),
+                                  pdfLib.Padding(padding: pdfLib.EdgeInsets.only(top: 5,left: 5),
+                                     child: pdfLib.Text('Rs. 329.7(30%)',
+                                      style: pdfLib.TextStyle(fontWeight: pdfLib.FontWeight.bold))),
+                                  pdfLib.Divider(),
+                                  pdfLib.Padding(padding: pdfLib.EdgeInsets.only(top: 5,left: 5),
+                                     child: pdfLib.Text('Rs. 1099.0(100%)',
+                                      style: pdfLib.TextStyle(fontWeight: pdfLib.FontWeight.bold))),
+                                 
+                                    ])
+                          )
+                        ]),
+                        pdfLib.Padding(padding: pdfLib.EdgeInsets.only(left: 5),
+                        child:
+                        pdfLib.Row(
+                          children:[
+                         pdfLib.Column(
+                          mainAxisAlignment: pdfLib.MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
+                          children: [
+                            pdfLib.SizedBox(
+                              height: 10
+                            ),
+                          pdfLib.Text('Cancellation charges are computed on per seat basis.'),
+                           pdfLib.SizedBox(
+                              height: 10
+                            ),
+                          pdfLib.Text('For Group bookings, cancellation of individual seats is not allowed.'),
+                           pdfLib.SizedBox(
+                              height: 10
+                            ),
+                          pdfLib.Text('Note: Cancellation charges mentioned above are excluding GST.')
+                         ]),
+                        
+                          ]
+                        ),
+                        ),
+                        pdfLib.SizedBox(
+                          height: 20
+                        ),
+                        pdfLib.Padding(padding: pdfLib.EdgeInsets.only(left: 5),
+                        child:
+                        pdfLib.Row(children: [
+                                pdfLib.Column(
+                          crossAxisAlignment: pdfLib.CrossAxisAlignment.start,
+                          children: [
+                                pdfLib.Text('How to cancel your ticket on redbus app',
+                        style: pdfLib.TextStyle(
+                          fontWeight: pdfLib.FontWeight.bold
+                        )),
+                        pdfLib.SizedBox(
+                          height: 10
+                        ),
+                        pdfLib.Text('Go to my bookings and choose the journey and cancel the ticket')
+                        ])
+                        ]),
+                       
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              pdfLib.SizedBox(
+                height: 30,
+              ),
+              pdfLib.Column(
+                children: [
+                  pdfLib.Container(
+                     height: 470,
+                    
+                    decoration: pdfLib.BoxDecoration(
+                      border: pdfLib.Border.all(
+                        color: PdfColors.black,
+                        width: 1
+                      )
+                    ),
+                    child: pdfLib.Column(
+                      children: [
+                        pdfLib.Container(
+                          height: 50,
+                          //width: size.width,
+                          decoration: pdfLib.BoxDecoration(
+                            color: PdfColors.blueGrey100
+                          ),
+                          child:pdfLib.Padding(
+                      padding: pdfLib.EdgeInsets.only(left: 5),child: pdfLib.Row(
                             children: [
                               pdfLib.Text('Booking Policies',
                                 style: pdfLib.TextStyle(
@@ -955,6 +1152,7 @@ class _NewTicketViewState extends State<NewTicketView> {
                             fontWeight: pdfLib.FontWeight.bold
                           ),), 
                             ],
+                          ),
                           ),
                         ),
                         pdfLib.Padding(
@@ -974,7 +1172,7 @@ class _NewTicketViewState extends State<NewTicketView> {
                                     ),),
                                     pdfLib.Padding(
                                       padding:pdfLib.EdgeInsets.only(top: 6),
-                                      child: pdfLib.Text('Children above the age of 3 will need a ticket'),
+                                      child: pdfLib.Text(whybookingbusController.policiesdata==null?"":whybookingbusController.policiesdata!.childPolicy),
                                     ),
                                  
                                   ],
@@ -1007,7 +1205,10 @@ class _NewTicketViewState extends State<NewTicketView> {
                                     ),),
                                     pdfLib.Padding(
                                       padding:pdfLib.EdgeInsets.only(top: 6),
-                                      child: pdfLib.Text('1 pieces of luggage will be accepted free of \ncharges for passenger. Excess items will be \nchargeable Excess Baggage over 10 kgs \nper passanges will be chargeable'),
+                                      child: pdfLib.Column(children: [
+                                     pdfLib.Text(whybookingbusController.policiesdata==null?'': whybookingbusController.policiesdata!.luggagePolicy),
+                                      ]),
+
                                     ),
                                  
                                   ],
@@ -1116,12 +1317,9 @@ class _NewTicketViewState extends State<NewTicketView> {
                                                    
                            
                             ],
-                                                   ),
-                         ), 
-                            pdfLib.SizedBox(
-                              height: 8,
                             ),
-                           pdfLib. Divider()
+                         ), 
+                      
                       ],
                     ),
                   )

@@ -7,6 +7,7 @@ import 'package:oye_bus/app/components/const.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bookinghistory/controllers/bookinghistory_controller.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bustrip_reviews/views/bustrip_reviews_view.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/reservation_details/views/reservation_details_view.dart';
+import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
 import 'package:oye_bus/app/modules/screens/ticket_details/views/new_ticket_view.dart';
 import 'package:oye_bus/app/modules/screens/ticket_details/views/ticket_details_view.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
@@ -24,6 +25,7 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
     'Complete',
   ];
   final bookinghistoryController = Get.find<BookinghistoryController>();
+  final profileController = Get.find<ProfileController>();
  
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,8 @@ class BookingCompletedWidget extends GetView<BookinghistoryController> {
                                                 top: 20, left: 10, right: 10),
                                             child: GestureDetector(
                                               onTap: () {
-                                               Get.to(NewTicketView(bookingDetail: bookinghistoryController.bookinghistorydata![index],));
+                                               Get.to(NewTicketView(bookingDetail: bookinghistoryController.bookinghistorydata![index], 
+                                               ));
                                                 // Get.to(TicketDetailsView(
                                                 //   bookingDetail: bookinghistoryController.bookinghistorydata![index]));
                                               },
