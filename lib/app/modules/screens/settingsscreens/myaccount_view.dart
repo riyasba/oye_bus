@@ -66,15 +66,15 @@ class MyaccountView extends GetView<SettingsController> {
                             text: 'My Booking',
                           ),
                           //ksizedbox20,
-                          ksizedbox20,
-                          MyaccountbuttonView(
-                            onPressed: () {
-                              Get.toNamed(
-                                Routes.CARD,
-                              );
-                            },
-                            text: 'Cards',
-                          ),
+                          // ksizedbox20,
+                          // MyaccountbuttonView(
+                          //   onPressed: () {
+                          //     Get.toNamed(
+                          //       Routes.CARD,
+                          //     );
+                          //   },
+                          //   text: 'Cards',
+                          // ),
                             ksizedbox20,
                           MyaccountbuttonView(
                             onPressed: () {

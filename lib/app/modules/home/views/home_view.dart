@@ -34,6 +34,9 @@ class HomeView extends GetView<HomeController> {
     final homeController = Get.find<HomeController>();
     final searchcityController = Get.find<BusSearchController>();
     final offerscontroller = Get.find<OffersController>();
+   
+    DateTime  date;
+    DateTime  datetomorrow;
     return Scaffold(
         appBar: const PreferredSize(
           preferredSize: Size.fromHeight(55),
@@ -129,7 +132,8 @@ class HomeView extends GetView<HomeController> {
                       const SizedBox(
                         width: 10,
                       ),
-                      GetBuilder<HomeController>(builder: (_) {
+                      GetBuilder<HomeController>(
+                        builder: (_) {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -318,117 +322,79 @@ class HomeView extends GetView<HomeController> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  "Seat Type (optional)",
-                                  style: primaryFont.copyWith(fontSize: 9.sp),
-                                ),
+                                // Text(
+                                //   "Seat Type (optional)",
+                                //   style: primaryFont.copyWith(fontSize: 9.sp),
+                                // ),
                                 SizedBox(
                                   height: 10.h,
                                 ),
-                                Obx(
-                                  () => Row(
+                              Row(
                                     children: [
                                       InkWell(
                                         onTap: () {
-                                          controller.ontapindex(1);
+                                      date = DateTime.now();
+                                         controller.selectedDate = date;
+                                         controller.update();
                                         },
                                         child: Container(
-                                          height: 10.h,
+                                          height: 20.h,
+                                          width: 55,
                                           decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(30),
                                               color:
-                                                  controller.currenttap.value ==
-                                                          1
-                                                      ? kblack
-                                                      : Color(0xffD9D9D9)),
+                                                 Colors.pink.shade100),
                                           child: Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 5),
                                             child: Center(
                                               child: Text(
-                                                "Seater",
+                                                "Today",
                                                 style: GoogleFonts.montserrat(
-                                                    fontSize: 7.sp,
-                                                    color: controller.currenttap
-                                                                .value ==
-                                                            1
-                                                        ? kwhite
-                                                        : kblack),
+                                                    fontSize: 10.sp,
+                                                    color: kblack,
+                                                    fontWeight: FontWeight.w600),
                                               ),
                                             ),
                                           ),
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 3.w,
+                                        width: 5.w,
                                       ),
                                       InkWell(
                                         onTap: () {
-                                          controller.ontapindex(2);
+                                         datetomorrow = DateTime.now().add(Duration(days: 1));
+                                         controller.selectedDate = datetomorrow;
+                                         controller.update();
                                         },
                                         child: Container(
-                                          height: 10.h,
+                                          height: 20.h,
+                                          width: 70,
                                           decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(30),
-                                              color: controller.currenttap == 2
-                                                  ? kblack
-                                                  : const Color(0xffD9D9D9)),
+                                              color:Colors.pink.shade100),
                                           child: Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 5),
                                             child: Center(
                                               child: Text(
-                                                "Sleeper",
+                                                "Tomorrow",
                                                 style: GoogleFonts.montserrat(
-                                                    fontSize: 7.sp,
-                                                    color: controller.currenttap
-                                                                .value ==
-                                                            2
-                                                        ? kwhite
-                                                        : kblack),
+                                                    fontSize: 10.sp,
+                                                    color: kblack,
+                                                    fontWeight: FontWeight.w600),
                                               ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                      const SizedBox(
-                                        width: 3,
-                                      ),
-                                      InkWell(
-                                        onTap: () {
-                                          controller.ontapindex(3);
-                                        },
-                                        child: Container(
-                                          height: 10.h,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(30),
-                                              color: controller.currenttap == 3
-                                                  ? kblack
-                                                  : const Color(0xffD9D9D9)),
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 5),
-                                            child: Center(
-                                              child: Text(
-                                                "Semi-Sleeper",
-                                                style: GoogleFonts.montserrat(
-                                                    fontSize: 7.sp,
-                                                    color: controller.currenttap
-                                                                .value ==
-                                                            3
-                                                        ? kwhite
-                                                        : kblack),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
+                                     
                                     ],
                                   ),
-                                ),
+                                
                               ],
                             ),
                           )),
@@ -569,6 +535,7 @@ class HomeView extends GetView<HomeController> {
                       itemCount: offerscontroller.offersdata.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
+                        
                         return Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Container(
@@ -664,63 +631,133 @@ class HomeView extends GetView<HomeController> {
             const SizedBox(
               height: 20,
             ),
-            Padding(
+              Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                "Check PNR Status",
+                "Preferred Routes",
                 style: smalbalckfont,
               ),
             ),
-            const SizedBox(
-              height: 15,
-            ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.only(top: 20),
               child: Container(
-                height: 60,
-                child: TextField(
-                  controller: controller.pnrController,
-                  style: smalbalckfont.copyWith(fontSize: 15),
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.grey.withOpacity(0.5))),
-                      hintText: "PNR Number",
-                      suffixIcon: Padding(
-                        padding:  EdgeInsets.all(8.0),
-                        child: InkWell(
-                          onTap: (){
-                            if(controller.pnrController.text.isNotEmpty){
-                                    Get.find<HomeController>().checkPnrstatus(pnrnumber: controller.pnrController.text);
-                            }else{
-                               Get.rawSnackbar(
-          backgroundColor: Colors.red,
-          messageText: Text(
-          "Please Enter Your PNR Number",
-            style: primaryFont.copyWith(color: Colors.white),
-          ));
-                            }
-                         
-                          },
-                          child: Container(
-                            height: 40,
-                            width: 80,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: const Color(0xffFFD400),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "Check".toUpperCase(),
-                                style: smalbalckfont.copyWith(fontSize: 14),
+                height: 400,
+                child: GetBuilder<BusSearchController>(
+                  builder: (_) {
+                    return  ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemCount: searchcityController.boardingDestinations.length,
+                      itemBuilder: (context,index){
+                      //    final reversedIndex =
+                      //     searchcityController.boardingDestinations.length - 1 - index;
+                      // final item =
+                      //     searchcityController.boardingDestinations[reversedIndex];
+                      return
+                       searchcityController.boardingDestinations.isNotEmpty? Padding(
+                        padding: const EdgeInsets.only(left: 20,right: 10,top: 5),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              height: 66,
+                              width: 220,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(13),
+                                color: kwhite,
+                                boxShadow: <BoxShadow>
+                              [
+                                    BoxShadow(
+                            offset: Offset(0.0, 0.5),
+                            blurRadius: 1,
+                            color: kgrey
+                                    ),
+                                    
+                              ]     ),
+                              child: Row(
+                                
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Image.asset('assets/icons/transport.png',
+                                    fit: BoxFit.fitHeight,height: 45,),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Text(searchcityController.boardingDestinations[index].boardingName),
+                                  ),
+                                  Icon(Icons.arrow_forward,color: kgrey,
+                                  size: 17,),
+                                  Text(searchcityController.boardingDestinations[index].destinationName)
+                                ],
                               ),
                             ),
-                          ),
+                          ],
                         ),
-                      )),
+                      ):Text('No Routes');
+                    });
+                  }
                 ),
               ),
             ),
+             
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20),
+            //   child: Text(
+            //     "Check PNR Status",
+            //     style: smalbalckfont,
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: 15,
+            // ),
+          //   Padding(
+          //     padding: const EdgeInsets.symmetric(horizontal: 20),
+          //     child: Container(
+          //       height: 60,
+          //       child: TextField(
+          //         controller: controller.pnrController,
+          //         style: smalbalckfont.copyWith(fontSize: 15),
+          //         decoration: InputDecoration(
+          //             border: OutlineInputBorder(
+          //                 borderSide:
+          //                     BorderSide(color: Colors.grey.withOpacity(0.5))),
+          //             hintText: "PNR Number",
+          //             suffixIcon: Padding(
+          //               padding:  EdgeInsets.all(8.0),
+          //               child: InkWell(
+          //                 onTap: (){
+          //                   if(controller.pnrController.text.isNotEmpty){
+          //                           Get.find<HomeController>().checkPnrstatus(pnrnumber: controller.pnrController.text);
+          //                   }else{
+          //                      Get.rawSnackbar(
+          // backgroundColor: Colors.red,
+          // messageText: Text(
+          // "Please Enter Your PNR Number",
+          //   style: primaryFont.copyWith(color: Colors.white),
+          // ));
+          //                   }
+                         
+          //                 },
+          //                 child: Container(
+          //                   height: 40,
+          //                   width: 80,
+          //                   decoration: BoxDecoration(
+          //                     borderRadius: BorderRadius.circular(30),
+          //                     color: const Color(0xffFFD400),
+          //                   ),
+          //                   child: Center(
+          //                     child: Text(
+          //                       "Check".toUpperCase(),
+          //                       style: smalbalckfont.copyWith(fontSize: 14),
+          //                     ),
+          //                   ),
+          //                 ),
+          //               ),
+          //             )),
+          //       ),
+          //     ),
+          //   ),
             const SizedBox(
               height: 20,
             ),

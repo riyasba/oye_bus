@@ -12,6 +12,7 @@ import 'package:oye_bus/app/data/api_service/models/offers_models.dart';
 import 'package:oye_bus/app/modules/screens/busbooking/bus_list/views/bus_list_view.dart';
 import 'package:oye_bus/app/modules/screens/notification/controllers/notification_controller.dart';
 import 'package:oye_bus/app/modules/screens/profile/controllers/profile_controller.dart';
+import 'package:oye_bus/app/modules/screens/search/controllers/search_controller.dart';
 import 'package:oye_bus/app/routes/app_pages.dart';
 import 'package:path/path.dart' as path;
 import 'package:sqflite/sqflite.dart';
@@ -26,6 +27,7 @@ class HomeController extends GetxController {
     _initializeDatabase();
     Get.put(NotificationController());
     Get.find<ProfileController>().getprofile();
+    Get.find<BusSearchController>().getBoardingDestinations();
   }
 
   @override

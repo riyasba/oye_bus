@@ -94,23 +94,39 @@ class BusSearchController extends GetxController {
 
   Future<void> getBoardingDestinations() async {
     final Database database = await openDatabase(
-          path.  join(await getDatabasesPath(), 'your_database_name.db'),
+          path.join(await getDatabasesPath(), 'your_database_name.db'),
     );
 
     final List<Map<String, dynamic>> maps = await database.query('boarding_destinations');
-
+     
 
     print("Get destinations-------->>");
     print(maps.length);
 
-   
+     List sortedArray = [];
+
+    maps.forEach((e){
+    var tempvalue = e["boardingName"] + e["destinationName"];
+    bool isContais = false;
+    sortedArray.forEach((v){
+        var tempvalue2 = v["boardingName"] + v["destinationName"];
+        
+        if(tempvalue == tempvalue2){
+          isContais = true;
+        }
+    });
+    if(isContais == false){
+      sortedArray.add(e);
+    }
+  });
+  
    // setState(() {
       boardingDestinations = List.generate(
-        maps.length,
+        sortedArray.length,
         (index) {
           return BoardingDestination(
-            boardingName: maps[index]['boardingName'],
-            destinationName: maps[index]['destinationName'],
+            boardingName: sortedArray[index]['boardingName'],
+            destinationName: sortedArray[index]['destinationName'],
           );
         },
       );

@@ -101,6 +101,8 @@ class NotificationView extends GetView<NotificationController> {
          
           ksizedbox40,
           ListView.builder(
+        
+            physics: ClampingScrollPhysics(),
             itemCount: names.length,
             shrinkWrap: true,
             itemBuilder: (context,index){
