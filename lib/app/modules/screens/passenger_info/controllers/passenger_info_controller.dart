@@ -20,6 +20,7 @@ class PassengerInfoController extends GetxController {
   RxBool ischeckvalue = false.obs;
    RxString gender=''.obs;
    RxString editender=''.obs;
+     RxBool istogglevalue = false.obs;
   
   
   @override

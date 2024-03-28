@@ -1347,6 +1347,155 @@ class PassengerInfoView extends GetView<PassengerInfoController> {
                 ),
               ),
             ),
+            ksizedbox20,
+            Padding(
+              padding: const EdgeInsets.only(left: 15,right: 15),
+              child: Container(
+               
+                width: size.width,
+                decoration: BoxDecoration(
+                color: kwhite,
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    offset: Offset(0.0, 0.75),
+                    blurRadius: 1,
+                    color:kgrey
+                  )
+                ],
+                borderRadius: BorderRadius.circular(12)
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 6,right: 6,top: 8),
+                  child: GetBuilder<PassengerInfoController>(
+                    builder: (_) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('FARE BREAKUP',
+                              style:primaryFont.copyWith(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600,
+                                          color: kred),),
+                                          // InkWell(
+                                          //   onTap: (){
+                                          //  controller.istogglevalue.value=!controller.istogglevalue.value;
+                                          //     controller.update();
+                                          //   },
+                                          //   child: Icon(Icons.keyboard_arrow_down_outlined,
+                                          //   color: kgrey,),
+                                          // )
+                                          
+                            ],
+                          ),
+                                      ksizedbox10,
+                                      Text('Onward Trip',
+                                      style:TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500,
+                                        fontFamily: 'Proxima'
+                                      ),),
+                                      // if(controller.istogglevalue.isTrue)
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('Base Fare',
+                                          style: TextStyle(
+                                            fontFamily:"Proxima"
+                                          ),),
+                                          Text('INR 1190',
+                                          style: TextStyle(
+                                            fontFamily: 'Proxima',
+                                            fontWeight: FontWeight.w500
+                                          ))
+                                        ],
+                                      ),
+                                      //  if(controller.istogglevalue.isTrue)
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('Relief Fund',
+                                          style: TextStyle(
+                                            fontFamily:"Proxima"
+                                          ),),
+                                          Text('+ INR 5',
+                                         style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily:"Proxima"
+                                          ) )
+                                        ],
+                                      ),
+                                      //  if(controller.istogglevalue.isTrue)
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('GST',
+                                           style: TextStyle(
+                                            fontFamily:"Proxima"
+                                          ),),
+                                          Text('+ INR 59.5',
+                                          style: TextStyle(
+                                            fontFamily:"Proxima",
+                                            fontWeight: FontWeight.w500
+                                          ))
+                                        ],
+                                      ),
+                                      //  if(controller.istogglevalue.isTrue)
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('Onward Fare'),
+                                          Text('INR 1254.5',
+                                          style: TextStyle(
+                                            fontFamily:"Proxima",
+                                            fontWeight: FontWeight.w500
+                                          ),)
+                                        ],
+                                      ),
+                                      ksizedbox10,
+                                      //  if(controller.istogglevalue.isTrue)
+                                      Divider(),
+                                      ksizedbox10,
+                                      
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('Total Payable',
+                                           style: TextStyle(
+                                            fontFamily:"Proxima"
+                                          ),
+                                          ),
+                                          Text('INR 1254.5',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                                    fontFamily:"Proxima"
+                                          ))
+                                        ],
+                                      ),
+                                      ksizedbox20,
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('Total Discount',
+                                           style: TextStyle(
+                                            fontFamily:"Proxima"
+                                          ),),
+                                          Text('50',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                                    fontFamily:"Proxima"
+                                          ))
+                                        ],
+                                      )
+                        ],
+                      );
+                    }
+                  ),
+                ),
+              ),
+            ),
 
             const SizedBox(
               height: 50,
